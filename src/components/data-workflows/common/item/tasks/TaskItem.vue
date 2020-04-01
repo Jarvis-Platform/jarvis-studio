@@ -90,6 +90,7 @@
 									:dag-run-id="getLogsProps.dagRunId"
 									:dag-type="getLogsProps.dagType"
 									:dag-execution-date="getLogsProps.dagExecutionDate"
+									class="px-0"
 								/>
 							</v-card-text>
 

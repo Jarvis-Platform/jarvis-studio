@@ -240,6 +240,18 @@ export interface RunDetailsTab extends Tab {
 	};
 }
 
+export interface RunLogsTab extends Tab {
+	component: {
+		name: string;
+		props: {
+			dagId: string;
+			dagRunId: string;
+			dagType: string;
+			dagExecutionDate: string;
+		};
+	};
+}
+
 export interface OtherRunTab extends Tab {
 	component: {
 		name: string;
