@@ -15,7 +15,6 @@ exports.createUser = functions.https.onCall((data, context) => createUserHandler
 exports.updateUser = functions.https.onCall((data, context) => updateUserHandler(data, context));
 exports.deleteUser = functions.https.onCall((data, context) => deleteUserHandler(data, context));
 
-// Automatically delete stale references
 exports.deleteThreadNotes = integrify({
 	rule: 'DELETE_REFERENCES',
 	source: {
@@ -25,15 +24,49 @@ exports.deleteThreadNotes = integrify({
 		{
 			collection: 'notes',
 			foreignKey: 'parentNoteId'
-			// Optional:
-			// isCollectionGroup: true // Delete from collection group, see more below
 		}
 	]
-	// Optional:
-	// hooks: {
-	// 	pre: (snap, context) => {
-	// 		// Code to execute before deleting references
-	// 		// See: https://firebase.google.com/docs/functions/firestore-events
-	// 	}
-	// }
+});
+
+// module.exports.replicateMasterToDetail = integrify({
+// 	rule: 'REPLICATE_ATTRIBUTES',
+// 	source: {
+// 		collection: 'user'
+// 	},
+// 	targets: [
+// 		{
+// 			collection: 'notes',
+// 			compositeKey: new Map([['userId', 'userId']]),
+// 			attributeMapping: new Map([
+// 				['email', 'email'],
+// 				['photoURL', 'photoURL'],
+// 				['fullName', 'displayName']
+// 			])
+// 		}
+// 	],
+// 	// TODO: Add module name in hook
+// 	hooks: {
+// 		pre: (snap, context) => {
+// 			// Code to execute before deleting references
+// 			// See: https://firebase.google.com/docs/functions/firestore-events
+// 		}
+// 	}
+// });
+
+exports.replicateUserAttributes = integrify({
+	rule: 'REPLICATE_ATTRIBUTES',
+	source: {
+		collection: 'users'
+	},
+	targets: [
+		{
+			collection: 'notes',
+			foreignKey: 'userId',
+			attributeMapping: {
+				email: 'userEmail',
+				photoURL: 'userPhotoURL',
+				displayName: 'userDisplayName'
+			}
+		}
+	]
 });
