@@ -40,7 +40,7 @@ export default class NoteEditor extends Vue {
 	}
 
 	handleCmdEnter(e: KeyboardEvent) {
-		if ((e.metaKey || e.ctrlKey) && e.keyCode == 13) this.onValidated();
+		if ((e.metaKey || e.ctrlKey) && e.keyCode == 13) !this.isSaveButtonDisabled ? this.onValidated() : null;
 	}
 
 	onValidated() {
