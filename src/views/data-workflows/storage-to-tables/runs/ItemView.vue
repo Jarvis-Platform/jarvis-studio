@@ -269,6 +269,11 @@ export default class StorageToTablesRunsItemView extends Mixins(HeaderInfosMixin
 							value: this.item.dag_execution_date
 						},
 						{
+							id: 'duration',
+							label: 'Duration',
+							value: this.item.duration.split('.')[0]
+						},
+						{
 							id: 'dag_run_id',
 							label: 'Dag Run Id',
 							value: this.item.dag_run_id
