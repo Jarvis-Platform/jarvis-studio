@@ -13,6 +13,8 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.7.4",
+    "@sentry/browser": "^5.15.4",
+    "@sentry/integrations": "^5.15.4",
     "ajv": "^6.10.2",
     "babel-runtime": "^6.26.0",
     "chart.js": "^2.8.0",
