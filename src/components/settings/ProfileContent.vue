@@ -141,7 +141,7 @@ export default class InformationTab extends Vue {
 }
 
 .input {
-	width: max-content;
+	flex: 1;
 
 	&::placeholder {
 		color: #bdbdbd !important;
