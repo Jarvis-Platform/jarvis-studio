@@ -32,6 +32,7 @@ export const state: FilterState = {
 		{ label: 'Success', value: 'SUCCESS' },
 		{ label: 'Failed', value: 'FAILED' },
 		{ label: 'Running', value: 'RUNNING' },
+		{ label: 'No Match', value: 'NO_MATCH' },
 		{ label: 'Checked', value: 'CHECKED' }
 	],
 	confActivatedFilterSelected: {

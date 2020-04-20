@@ -32,10 +32,6 @@
 						is-thread-note
 					/>
 				</template>
-
-				<v-container v-else>
-					<p>Start a thread.</p>
-				</v-container>
 			</div>
 		</div>
 

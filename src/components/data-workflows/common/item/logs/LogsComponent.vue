@@ -1,5 +1,5 @@
 <template>
-	<div class="pt-6">
+	<v-container class="py-6">
 		<div v-if="isLoading" class="text-center">
 			<v-progress-circular indeterminate size="42" color="primary" />
 		</div>
@@ -33,7 +33,7 @@
 				</v-tab-item>
 			</v-tabs>
 		</div>
-	</div>
+	</v-container>
 </template>
 
 <script lang="ts">
@@ -51,10 +51,10 @@ export default class LogsComponent extends Vue {
 	activeTab: null = null;
 
 	@Prop({ required: true }) private dagId!: string;
-	@Prop({ required: true }) private taskId!: string;
 	@Prop({ required: true }) private dagRunId!: string;
 	@Prop({ required: true }) private dagType!: string;
 	@Prop({ required: true }) private dagExecutionDate!: string;
+	@Prop(String) private taskId?: string;
 
 	mounted() {
 		this.getLogs();
@@ -91,7 +91,9 @@ export default class LogsComponent extends Vue {
 	}
 
 	downloadLogFile(airflowFileName: string): void {
-		const fileName = `${this.dagId}-${this.taskId}-${this.dagExecutionDate}-${airflowFileName}`;
+		const fileName = this.taskId
+			? `${this.dagId}-${this.taskId}-${this.dagExecutionDate}-${airflowFileName}`
+			: `${this.dagId}-${this.dagExecutionDate}-${airflowFileName}`;
 
 		const element = document.createElement('a');
 		element.setAttribute('href', `data:text/plain;charset=utf-8,${this.logs[airflowFileName]}`);

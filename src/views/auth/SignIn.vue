@@ -135,14 +135,8 @@ export default class SignIn extends Vue {
 
 		this.$store
 			.dispatch('user/googleSignIn')
-			.then(() => {
-				this.loading = false;
-				this.$router.push({ name: HOME });
-			})
-			.catch(() => {
-				this.loading = false;
-				this.userNotAuthorized = true;
-			});
+			.then(() => this.successCallback())
+			.catch(() => this.errorCallback());
 	}
 
 	signIn() {
@@ -152,15 +146,19 @@ export default class SignIn extends Vue {
 		if ((this.$refs.form as Vue & { validate: () => boolean }).validate()) {
 			this.$store
 				.dispatch('user/signIn', { email: this.model.email, password: this.model.password })
-				.then(() => {
-					this.loading = false;
-					this.$router.push({ name: HOME });
-				})
-				.catch(() => {
-					this.loading = false;
-					this.userNotAuthorized = true;
-				});
+				.then(() => this.successCallback())
+				.catch(() => this.errorCallback());
 		}
+	}
+
+	successCallback() {
+		this.loading = false;
+		this.$router.push(this.$route.query.redirect.toString() || { name: HOME });
+	}
+
+	errorCallback() {
+		this.loading = false;
+		this.userNotAuthorized = true;
 	}
 }
 </script>

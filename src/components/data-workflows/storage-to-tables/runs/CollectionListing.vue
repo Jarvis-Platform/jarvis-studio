@@ -48,7 +48,7 @@ export default class CollectionListing extends Mixins(RunCollectionMixin) {
 				{
 					text: 'Source Storage',
 					sortable: true,
-					value: 'configuration_context.source'
+					value: 'source_storage'
 				},
 				{
 					text: 'Destinations',

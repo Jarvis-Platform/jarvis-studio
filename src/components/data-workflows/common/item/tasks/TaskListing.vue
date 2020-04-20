@@ -58,6 +58,8 @@ export default {
 	},
 	methods: {
 		prepareSQL(sqlFile) {
+			if (!sqlFile) return;
+
 			let sql = '';
 			if (sqlFile._binaryString !== undefined) {
 				try {

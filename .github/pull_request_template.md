@@ -1,30 +1,31 @@
+## Related issue(s)
+<!--
+Link your pull request to an issue using a keyword:
+https://help.github.com/en/github/managing-your-work-on-github/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword
+-->
+...
+
+
 ## Description
-A few sentences describing the overall goals of the pull request's commits.
+<!-- Describe globally your PR in its context -->
+...
 
 
-## Todos
-- [ ] Tests
-- [ ] Documentation
+## What does this PR do?
+<!-- List all stuff that have been done -->
 - [ ] ...
 
 
-## Deploy Notes
-Notes regarding deployment the contained body of work.
+## Deploy notes
+<!-- Add additional instructions is necessary to deploy this PR -->
+Review & merge.
 
 
-## Steps to Test or Reproduce
-Outline the steps to test or reproduce the PR here.
-
-```sh
-git checkout master
-git pull
-git checkout <feature_branch>
-```
-
+## Steps to test or reproduce
+<!-- List different steps to approve your PR -->
 1. ...
 
 
-## Impacted Areas in Application
-List general components of the application that this PR will affect:
-
-* ...
+## Impacted area(s) in Application
+<!-- List impacted areas by being generally -->
+- `...`

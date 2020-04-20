@@ -23,7 +23,7 @@
 
 <script lang="ts">
 import { Component, Vue, Watch } from 'vue-property-decorator';
-import { HOME, TABLES_LISTING } from '@/constants/router/routes-names';
+import { TABLES_LISTING } from '@/constants/router/routes-names';
 import { mapState } from 'vuex';
 
 interface TreeItem {
@@ -43,6 +43,7 @@ export default class TreeView extends Vue {
 	private dataModels: any;
 
 	active: string[] = [];
+	lastActivated: string = '';
 	open: string[] = [];
 	models: TreeItem[] = [];
 	isLoading: boolean = true;
@@ -50,15 +51,18 @@ export default class TreeView extends Vue {
 	@Watch('active')
 	onActiveChange(value: string[]) {
 		if (!value.length) {
-			this.$router.push({ name: HOME });
+			this.active = [this.lastActivated];
 			return;
 		}
 
 		const id = value[0];
-		this.$router.push({
-			name: TABLES_LISTING,
-			params: { projectId: id.split('/')[0], datasetId: id.split('/')[1] }
-		});
+		this.lastActivated = id;
+		this.$router
+			.push({
+				name: TABLES_LISTING,
+				params: { projectId: id.split('/')[0], datasetId: id.split('/')[1] }
+			})
+			.catch(err => {});
 	}
 
 	mounted() {

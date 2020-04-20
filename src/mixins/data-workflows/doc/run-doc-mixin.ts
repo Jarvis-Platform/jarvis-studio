@@ -1,14 +1,5 @@
 import { Component } from 'vue-property-decorator';
-import {
-	ConfigurationTab,
-	DataItem,
-	DataWorkflowsType,
-	FullJSONTab,
-	NotesTab,
-	OtherRunTab,
-	RunDetailsTab,
-	RunProps
-} from '@/types';
+import { DataItem, DataWorkflowsType, OtherRunTab, RunDetailsTab, RunLogsTab, RunProps } from '@/types';
 import DocMixin from '@/mixins/data-workflows/doc/doc-mixin';
 import { RUNS } from '@/constants/data-workflows/status';
 
@@ -37,11 +28,27 @@ export default class RunDocMixin extends DocMixin {
 	get runDetailsTab(): RunDetailsTab {
 		return {
 			label: 'Run Details',
-			href: 'run-details',
+			href: 'run-logs',
 			component: {
 				name: 'overview-component',
 				props: {
 					data: this.runDetailsData
+				}
+			}
+		};
+	}
+
+	get runLogsTab(): RunLogsTab {
+		return {
+			label: 'Run Logs',
+			href: 'run-details',
+			component: {
+				name: 'logs-component',
+				props: {
+					dagId: this.item.dag_id,
+					dagRunId: this.item.dag_run_id,
+					dagType: this.item.dag_type,
+					dagExecutionDate: this.item.dag_execution_date
 				}
 			}
 		};
