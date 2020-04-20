@@ -11,7 +11,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 
-import ProfileContent from '@/components/settings/ProfileContent.vue';
+import ProfileContent from '@/components/settings/profile/ProfileContent.vue';
 
 @Component({
 	components: { ProfileContent }

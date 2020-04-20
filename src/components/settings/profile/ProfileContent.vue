@@ -54,7 +54,7 @@ import { copyToClipboard } from '@/util/copy-to-clipboard';
 
 import AvatarComponent from '@/components/common/AvatarComponent.vue';
 import ParametersList from '@/components/data-workflows/common/item/parameters/ParametersList.vue';
-import ProfileAccounts from './profile/ProfileAccounts.vue';
+import ProfileAccounts from './ProfileAccounts.vue';
 
 @Component({
 	components: { AvatarComponent, ParametersList }
