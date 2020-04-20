@@ -1,4 +1,4 @@
-type ConfActivated = boolean | 'RUNNING';
+type ConfActivated = boolean | undefined;
 type ConfArchived = boolean;
 
 export const getActiveConfColor = (activated: ConfActivated, archived: ConfArchived) => {
@@ -12,9 +12,6 @@ export const getActiveConfColor = (activated: ConfActivated, archived: ConfArchi
 			break;
 		case false:
 			activeColor = 'grey';
-			break;
-		case 'RUNNING':
-			activeColor = 'light-blue';
 			break;
 		default:
 			activeColor = 'amber';

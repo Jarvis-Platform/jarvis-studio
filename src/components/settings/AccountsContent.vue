@@ -1,6 +1,6 @@
 <template>
 	<v-container>
-		<v-data-table :headers="headers" :items="getAccounts" class="elevation-1">
+		<v-data-table :headers="headers" :items="accounts" class="elevation-1">
 			<template v-slot:items="props">
 				<td>{{ props.item['account_name'] }}</td>
 				<td>{{ props.item['id'] }}</td>
@@ -14,7 +14,7 @@
 				<v-card dark>
 					<v-card-text>
 						<vue-json-pretty
-							:data="getAccounts"
+							:data="accounts"
 							:deep="2"
 							:show-double-quotes="true"
 							:show-length="true"
@@ -56,30 +56,30 @@
 					</v-row>
 				</v-container>
 
+				<!-- TODO: Add behavior -->
 				<v-card-actions>
-					<v-btn flat color="primary">More</v-btn>
+					<v-btn text color="primary">More</v-btn>
 					<v-spacer />
-					<v-btn flat color="primary" @click="dialog = false">Cancel</v-btn>
-					<v-btn flat @click="dialog = false">Save</v-btn>
+					<v-btn text color="primary" @click="dialog = false">Cancel</v-btn>
+					<v-btn text @click="dialog = false">Save</v-btn>
 				</v-card-actions>
 			</v-card>
 		</v-dialog>
 	</v-container>
 </template>
 
-<script>
-import { mapState } from 'vuex';
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
 import VueJsonPretty from 'vue-json-pretty';
-import store from '@/store';
 
-export default {
-	name: 'accounts-component',
-	components: {
-		VueJsonPretty
-	},
-	data: () => ({
-		dialog: false,
-		headers: [
+@Component({
+	components: { VueJsonPretty }
+})
+export default class AccountsContent extends Vue {
+	dialog: boolean = false;
+
+	get headers() {
+		return [
 			{
 				text: 'Account Name',
 				align: 'left',
@@ -104,12 +104,11 @@ export default {
 				sortable: true,
 				value: 'exc_gcp_id_project'
 			}
-		]
-	}),
-	computed: {
-		getAccounts() {
-			return Object.values(store.state.accounts.data);
-		}
+		];
 	}
-};
+
+	get accounts() {
+		return Object.values(this.$store.state.accounts.data);
+	}
+}
 </script>

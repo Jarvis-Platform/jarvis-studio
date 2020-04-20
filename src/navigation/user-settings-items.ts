@@ -1,6 +1,14 @@
 import { LOGOUT, PROFILE } from '@/constants/router/routes-names';
 
-export default [
+export type UserSetting = {
+	title: string;
+	link: {
+		name: string;
+	};
+	icon: string;
+};
+
+export const userSettings: UserSetting[] = [
 	{
 		title: 'Profile',
 		link: { name: PROFILE },

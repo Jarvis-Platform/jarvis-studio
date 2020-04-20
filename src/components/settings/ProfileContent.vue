@@ -26,44 +26,44 @@
 	</div>
 </template>
 
-<script>
-import { mapState } from 'vuex';
-import { mapGetters } from 'vuex';
-import ParametersList from '@/components/data-workflows/common/item/parameters/ParametersList';
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
+import { User } from '@/types';
+import { State } from 'vuex-class';
 
-export default {
-	name: 'profile-content',
-	components: { ParametersList },
-	computed: {
-		...mapState({
-			user: state => state.user.user
-		}),
-		...mapGetters(['periodFiltered', 'filters/whereConfFilter']),
-		userIdentity() {
-			return [
-				{ id: 'email', label: 'Email', value: this.user.email },
-				{
-					id: 'emailVerified',
-					label: 'Email Verified',
-					value: this.user.emailVerified
-				},
-				{
-					id: 'creationTime',
-					label: 'Creation Time',
-					value: this.user.metadata.creationTime
-				}
-			];
-		},
-		userRolesAndAccounts() {
-			return [
-				{ id: 'studioRoles', label: 'Role', value: this.user.studioRoles },
-				{
-					id: 'userAccounts',
-					label: 'User Accounts',
-					value: this.user.accounts
-				}
-			];
-		}
+import ParametersList from '@/components/data-workflows/common/item/parameters/ParametersList.vue';
+
+@Component({
+	components: { ParametersList }
+})
+export default class ProfileContent extends Vue {
+	@State(state => state.user.user) user!: User;
+
+	get userIdentity() {
+		return [
+			{ id: 'email', label: 'Email', value: this.user.email },
+			{
+				id: 'emailVerified',
+				label: 'Email Verified',
+				value: this.user.emailVerified
+			},
+			{
+				id: 'creationTime',
+				label: 'Creation Time',
+				value: this.user.metadata.creationTime
+			}
+		];
 	}
-};
+
+	get userRolesAndAccounts() {
+		return [
+			{ id: 'studioRoles', label: 'Role', value: this.user.studioRoles },
+			{
+				id: 'userAccounts',
+				label: 'User Accounts',
+				value: this.user.accounts
+			}
+		];
+	}
+}
 </script>

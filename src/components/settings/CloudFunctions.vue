@@ -2,7 +2,7 @@
 	<v-container>
 		<v-row>
 			<v-col cols="12" offset="0">
-				<v-card dark>
+				<v-card>
 					<v-card-text>
 						<vue-json-pretty
 							:data="moduleJson"
@@ -19,23 +19,20 @@
 	</v-container>
 </template>
 
-<script>
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
 import VueJsonPretty from 'vue-json-pretty';
-import store from '@/store';
 
-export default {
-	name: 'cloud-functions',
-	components: {
-		VueJsonPretty
-	},
-	created() {
-		//load the content of the module
-		store.dispatch('gcpCloudFunctions/fetchAndAdd').catch(console.error);
-	},
-	computed: {
-		moduleJson() {
-			return store.state.gcpCloudFunctions.data;
-		}
+@Component({
+	components: { VueJsonPretty }
+})
+export default class CloudFunctions extends Vue {
+	mounted() {
+		this.$store.dispatch('gcpCloudFunctions/fetchAndAdd');
 	}
-};
+
+	get moduleJson() {
+		return this.$store.state.gcpCloudFunctions.data;
+	}
+}
 </script>

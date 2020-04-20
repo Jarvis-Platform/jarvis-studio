@@ -15,20 +15,18 @@
 	</v-container>
 </template>
 
-<script>
-import DagChart from '@/components/data-workflows/common/item/overview/DagChart';
-import ParametersList from '../parameters/ParametersList';
-import ParametersTable from '../parameters/ParametersTable';
-import ViewHeader from './ViewHeader';
+<script lang="ts">
+import { Component, Prop, Vue } from 'vue-property-decorator';
+import { DataItem } from '@/types';
+import DagChart from '@/components/data-workflows/common/item/overview/DagChart.vue';
+import ParametersList from '../parameters/ParametersList.vue';
+import ParametersTable from '../parameters/ParametersTable.vue';
+import ViewHeader from './ViewHeader.vue';
 
-export default {
-	name: 'overview-component',
-	components: { DagChart, ParametersList, ParametersTable, ViewHeader },
-	props: {
-		data: {
-			type: Array,
-			required: true
-		}
-	}
-};
+@Component({
+	components: { DagChart, ParametersList, ParametersTable, ViewHeader }
+})
+export default class OverviewComponent extends Vue {
+	@Prop({ type: Array, required: true }) data!: DataItem[];
+}
 </script>
