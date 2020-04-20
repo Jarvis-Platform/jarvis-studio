@@ -177,10 +177,10 @@ export default {
 	mounted() {
 		this.getFirestoreData();
 	},
-	activated() {
-		// TODO: refetch without isLoading and removing all displayed data, and them when refetch is done
-		this.getFirestoreData();
-	},
+	// activated() {
+	// 	// TODO: refetch without isLoading and removing all displayed data, and them when refetch is done
+	// 	this.getFirestoreData();
+	// },
 	methods: {
 		toggleExpand(item) {
 			const isAlreadyExpand = this.expanded.filter(expandedItem => expandedItem.id === item.id).length === 1;
@@ -252,7 +252,7 @@ export default {
 				});
 			} else {
 				await store.dispatch(`${this.moduleName}/closeDBChannel`, { clearModule: true });
-				await store.dispatch(`${this.moduleName}/fetchAndAdd`, { where, limit: 0 });
+				await store.dispatch(`${this.moduleName}/openDBChannel`, { where, limit: 0 });
 
 				this.isLoading = false;
 			}
