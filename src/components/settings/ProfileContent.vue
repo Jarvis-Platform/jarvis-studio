@@ -54,6 +54,7 @@ import { copyToClipboard } from '@/util/copy-to-clipboard';
 
 import AvatarComponent from '@/components/common/AvatarComponent.vue';
 import ParametersList from '@/components/data-workflows/common/item/parameters/ParametersList.vue';
+import ProfileAccounts from './profile/ProfileAccounts.vue';
 
 @Component({
 	components: { AvatarComponent, ParametersList }
@@ -127,7 +128,14 @@ export default class InformationTab extends Vue {
 	get userRolesAndAccounts() {
 		return [
 			{ id: 'studioRoles', label: 'Role', value: this.user.studioRoles },
-			{ id: 'userAccounts', label: 'User Accounts', value: this.user.accounts }
+			{
+				id: 'userAccounts',
+				label: 'User Accounts',
+				component: ProfileAccounts,
+				properties: {
+					accounts: this.user.accounts
+				}
+			}
 		];
 	}
 }

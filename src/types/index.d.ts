@@ -85,7 +85,7 @@ export interface ConfActivatedFilter {
 	value: ConfActivatedValue;
 }
 
-type AccountId = '000000' | '000010' | '000020' | '000040' | '000050' | '000060' | '000099';
+export type AccountId = '000000' | '000010' | '000020' | '000040' | '000050' | '000060' | '000099';
 
 export interface Account {
 	account_name: 'All Accounts' | 'Jules' | 'Pimkie' | 'Grain de Malice' | 'Orsay' | 'RougeGorge' | 'jarvis-demo';
