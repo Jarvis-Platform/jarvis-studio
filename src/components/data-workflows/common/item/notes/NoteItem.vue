@@ -1,7 +1,7 @@
 <template>
 	<v-container
 		class="note-item transition-ease-in-out"
-		:class="{ 'grey lighten-3': isFocused || note.id === parentNote.id }"
+		:class="{ 'grey lighten-3': isFocused || isParentNote }"
 		@mouseenter="isHovering = true"
 		@mouseleave="isHovering = false"
 	>
@@ -130,6 +130,10 @@ export default class NoteItem extends Vue {
 
 	get showThreadAction(): boolean {
 		return !this.isThreadNote && this.isFocused;
+	}
+
+	get isParentNote(): boolean {
+		return this.note.id === this.parentNote.id;
 	}
 }
 </script>

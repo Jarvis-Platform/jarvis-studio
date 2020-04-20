@@ -149,15 +149,6 @@ export default class TablesToTablesConfigurationsItemView extends Mixins(HeaderI
 					dagId: this.item.configuration.dag_name,
 					task_dependencies: this.item.configuration.task_dependencies
 				}
-			},
-			{
-				component: 'create-update-conf-overview',
-				props: {
-					creationDate: this.item.creation_date,
-					updateDate: this.item.update_date || this.item.updated_date,
-					createdBy: this.item.created_by,
-					updatedBy: this.item.updated_by
-				}
 			}
 		];
 	}

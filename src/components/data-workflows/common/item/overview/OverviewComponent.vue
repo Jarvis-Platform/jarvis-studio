@@ -16,7 +16,6 @@
 </template>
 
 <script>
-import CreateUpdateConfOverview from '@/components/data-workflows/common/configuration/CreateUpdateConfOverview';
 import DagChart from '@/components/data-workflows/common/item/overview/DagChart';
 import ParametersList from '../parameters/ParametersList';
 import ParametersTable from '../parameters/ParametersTable';
@@ -24,7 +23,7 @@ import ViewHeader from './ViewHeader';
 
 export default {
 	name: 'overview-component',
-	components: { CreateUpdateConfOverview, DagChart, ParametersList, ParametersTable, ViewHeader },
+	components: { DagChart, ParametersList, ParametersTable, ViewHeader },
 	props: {
 		data: {
 			type: Array,
