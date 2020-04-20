@@ -65,6 +65,7 @@ export default class NoteThread extends Mixins(NotesMixin) {
 			isThreadNote: true,
 			moduleName: this.moduleName,
 			relatedDocId: this.relatedDocId,
+			routeName: this.$route.name,
 			parentNoteId: this.parentNote.id,
 			userId: this.user.uid,
 			userEmail: this.user.email,

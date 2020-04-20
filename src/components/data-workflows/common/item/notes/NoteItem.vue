@@ -30,6 +30,9 @@
 
 		<note-editor
 			v-if="isEditing"
+			:module-name="moduleName"
+			:related-doc-id="relatedDocId"
+			:account="note.account"
 			:default-text="note.text"
 			:is-editing="isEditing"
 			:is-loading="isEditorLoading"
@@ -56,9 +59,10 @@ import NoteEditor from './editor/NoteEditor.vue';
 })
 export default class NoteItem extends Vue {
 	@Prop({ type: Object, required: true }) note!: Note;
-	@Prop({ type: String, required: true }) moduleName!: string;
-	@Prop({ type: String, required: true }) relatedDocId!: string;
+	@Prop(String) moduleName?: string;
+	@Prop(String) relatedDocId?: string;
 	@Prop(Boolean) isThreadNote?: boolean;
+	@Prop(Boolean) readOnly?: boolean;
 
 	@State(state => state.notes.parentNote) parentNote!: Note;
 	@State(state => state.notes.threadNotes) threadNotes!: Note[];
@@ -117,11 +121,11 @@ export default class NoteItem extends Vue {
 	}
 
 	get isFocused(): boolean {
-		return this.isEditing || this.isHovering;
+		return !this.readOnly && (this.isEditing || this.isHovering);
 	}
 
 	get showActions(): boolean {
-		return this.isFocused && this.user.uid === this.note.created_by && !this.isParentNote;
+		return !this.readOnly && this.isFocused && this.user.uid === this.note.created_by;
 	}
 
 	get showThreadAction(): boolean {

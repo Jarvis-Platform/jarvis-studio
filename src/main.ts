@@ -6,6 +6,7 @@ import store from '@/store';
 import vuetify from '@/plugins/vuetify';
 import { firebase } from '@/config/firebase';
 import { TiptapVuetifyPlugin } from 'tiptap-vuetify';
+import vueDebounce, { PluginConfig } from 'vue-debounce';
 
 Vue.config.productionTip = false;
 
@@ -14,6 +15,7 @@ Vue.use(TiptapVuetifyPlugin, {
 	vuetify,
 	iconsGroup: 'mdi'
 });
+Vue.use<PluginConfig>(vueDebounce, { lock: true, defaultTime: '400ms', listenTo: 'keyup' });
 
 let app: Vue;
 

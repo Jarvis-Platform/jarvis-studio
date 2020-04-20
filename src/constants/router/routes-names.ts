@@ -6,64 +6,64 @@ export const NO_ACCOUNT: RouteName = 'no-account';
 export const NOT_FOUND: RouteName = 'not-found';
 
 /* AUTH */
-export const SIGN_IN: RouteName = 'SignIn';
-export const LOGOUT: RouteName = 'Logout';
+export const SIGN_IN: RouteName = 'sign-in';
+export const LOGOUT: RouteName = 'logout';
 
 /* DATA MODELS */
-export const TABLES_LISTING: RouteName = 'TablesListing';
-export const DATA_TABLE_DETAILS: RouteName = 'TableDetails.vue';
+export const TABLES_LISTING: RouteName = 'tables-listing';
+export const DATA_TABLE_DETAILS: RouteName = 'table-details.vue';
 
 /* DATA WORKFLOWS */
-export const GCS_TO_GCS_RUNS_LISTING: RouteName = 'GcsToGcsRuns';
-export const GCS_TO_GCS_RUNS_ITEM: RouteName = 'GcsToGcsRun';
-export const GCS_TO_GCS_CONFIGURATIONS_LISTING: RouteName = 'GcsToGcsConfs';
-export const GCS_TO_GCS_CONFIGURATIONS_ITEM: RouteName = 'GcsToGcsConf';
+export const GCS_TO_GCS_RUNS_LISTING: RouteName = 'gcs-to-gcs-runs-listing';
+export const GCS_TO_GCS_RUNS_ITEM: RouteName = 'gcs-to-gcs-runs-item';
+export const GCS_TO_GCS_CONFIGURATIONS_LISTING: RouteName = 'gcs-to-gcs-confs-listing';
+export const GCS_TO_GCS_CONFIGURATIONS_ITEM: RouteName = 'gcs-to-gcs-confs-item';
 
-export const STORAGE_TO_STORAGE_RUNS_LISTING: RouteName = 'StorageToStorageRuns';
-export const STORAGE_TO_STORAGE_RUNS_ITEM: RouteName = 'StorageToStorageRun';
-export const STORAGE_TO_STORAGE_CONFIGURATIONS_LISTING: RouteName = 'StorageToStorageConfs';
-export const STORAGE_TO_STORAGE_CONFIGURATIONS_ITEM: RouteName = 'StorageToStorageConf';
+export const STORAGE_TO_STORAGE_RUNS_LISTING: RouteName = 'storage-to-storage-runs-listing';
+export const STORAGE_TO_STORAGE_RUNS_ITEM: RouteName = 'storage-to-storage-runs-item';
+export const STORAGE_TO_STORAGE_CONFIGURATIONS_LISTING: RouteName = 'storage-to-storage-confs-listing';
+export const STORAGE_TO_STORAGE_CONFIGURATIONS_ITEM: RouteName = 'storage-to-storage-conf-item';
 
-export const STORAGE_TO_TABLE_RUNS_LISTING: RouteName = 'StorageToTableRuns';
-export const STORAGE_TO_TABLE_RUNS_ITEM: RouteName = 'StorageToTableRun';
-export const STORAGE_TO_TABLE_CONFIGURATIONS_LISTING: RouteName = 'StorageToTableConfs';
-export const STORAGE_TO_TABLE_CONFIGURATIONS_ITEM: RouteName = 'StorageToTableConf';
+export const STORAGE_TO_TABLE_RUNS_LISTING: RouteName = 'storage-to-table-runs-listing';
+export const STORAGE_TO_TABLE_RUNS_ITEM: RouteName = 'storage-to-table-runs-item';
+export const STORAGE_TO_TABLE_CONFIGURATIONS_LISTING: RouteName = 'storage-to-table-confs-listing';
+export const STORAGE_TO_TABLE_CONFIGURATIONS_ITEM: RouteName = 'storage-to-table-confs-item';
 
-export const STORAGE_TO_TABLES_RUNS_LISTING: RouteName = 'StorageToTablesRunsListing';
-export const STORAGE_TO_TABLES_RUNS_ITEM: RouteName = 'StorageToTablesRunsItem';
-export const STORAGE_TO_TABLES_CONFIGURATIONS_LISTING: RouteName = 'StorageToTablesConfigurationsListing';
-export const STORAGE_TO_TABLES_CONFIGURATIONS_ITEM: RouteName = 'StorageToTablesConfigurationsItem';
+export const STORAGE_TO_TABLES_RUNS_LISTING: RouteName = 'storage-to-tables-runs-listing';
+export const STORAGE_TO_TABLES_RUNS_ITEM: RouteName = 'storage-to-tables-runs-item';
+export const STORAGE_TO_TABLES_CONFIGURATIONS_LISTING: RouteName = 'storage-to-tables-configurations-listing';
+export const STORAGE_TO_TABLES_CONFIGURATIONS_ITEM: RouteName = 'storage-to-tables-configurations-item';
 
-export const TABLES_TO_TABLES_RUNS_LISTING: RouteName = 'TablesToTablesRuns';
-export const TABLES_TO_TABLES_RUNS_ITEM: RouteName = 'TablesToTablesRun';
-export const TABLES_TO_TABLES_CONFIGURATIONS_LISTING: RouteName = 'TablesToTablesConfs';
-export const TABLES_TO_TABLES_CONFIGURATIONS_ITEM: RouteName = 'TablesToTablesConf';
+export const TABLES_TO_TABLES_RUNS_LISTING: RouteName = 'tables-to-tables-runs-listing';
+export const TABLES_TO_TABLES_RUNS_ITEM: RouteName = 'tables-to-tables-runs-item';
+export const TABLES_TO_TABLES_CONFIGURATIONS_LISTING: RouteName = 'tables-to-tables-confs-listing';
+export const TABLES_TO_TABLES_CONFIGURATIONS_ITEM: RouteName = 'tables-to-tables-conf-item';
 
-export const GBQ_TO_GCS_RUNS_LISTING: RouteName = 'gbqToGcsRuns';
-export const GBQ_TO_GCS_RUNS_ITEM: RouteName = 'gbqToGcsRun';
-export const GBQ_TO_GCS_CONFIGURATIONS_LISTING: RouteName = 'gbqToGcsConfs';
-export const GBQ_TO_GCS_CONFIGURATIONS_ITEM: RouteName = 'GbqToGcsConf';
+export const GBQ_TO_GCS_RUNS_LISTING: RouteName = 'gbq-to-gcs-runs-listing';
+export const GBQ_TO_GCS_RUNS_ITEM: RouteName = 'gbq-to-gcs-runs-item';
+export const GBQ_TO_GCS_CONFIGURATIONS_LISTING: RouteName = 'gbq-to-gcs-confs-listing';
+export const GBQ_TO_GCS_CONFIGURATIONS_ITEM: RouteName = 'gbq-to-gcs-confs-item';
 
-export const TABLE_TO_STORAGE_RUNS_LISTING: RouteName = 'TableToStorageRuns';
-export const TABLE_TO_STORAGE_RUNS_ITEM: RouteName = 'TableToStorageRun';
-export const TABLE_TO_STORAGE_CONFIGURATIONS_LISTING: RouteName = 'TableToStorageConfs';
-export const TABLE_TO_STORAGE_CONFIGURATIONS_ITEM: RouteName = 'TableToStorageConf';
+export const TABLE_TO_STORAGE_RUNS_LISTING: RouteName = 'table-to-storage-runs-listing';
+export const TABLE_TO_STORAGE_RUNS_ITEM: RouteName = 'table-to-storage-runs-item';
+export const TABLE_TO_STORAGE_CONFIGURATIONS_LISTING: RouteName = 'table-to-storage-confs-listing';
+export const TABLE_TO_STORAGE_CONFIGURATIONS_ITEM: RouteName = 'table-to-storage-confs-item';
 
-export const VM_LAUNCHER_RUNS_LISTING: RouteName = 'vmLauncherRuns';
-export const VM_LAUNCHER_RUNS_ITEM: RouteName = 'vmLauncherRunsItem';
-export const VM_LAUNCHER_CONFIGURATIONS_LISTING: RouteName = 'vmLauncherConfs';
-export const VM_LAUNCHER_CONFIGURATIONS_ITEM: RouteName = 'vmLauncherConfsItem';
+export const VM_LAUNCHER_RUNS_LISTING: RouteName = 'vm-launcher-runs-listing';
+export const VM_LAUNCHER_RUNS_ITEM: RouteName = 'vm-launcher-runs-item';
+export const VM_LAUNCHER_CONFIGURATIONS_LISTING: RouteName = 'vm-launcher-confs-listing';
+export const VM_LAUNCHER_CONFIGURATIONS_ITEM: RouteName = 'vm-launcher-confs-item';
 
-export const WORKFLOW_STATUS_LISTING: RouteName = 'WorkflowStatus';
-export const WORKFLOW_STATUS_ITEM: RouteName = 'WorkflowStatusItem';
-export const WORKFLOW_CONFIGURATIONS_LISTING: RouteName = 'WorkflowConfs';
-export const WORKFLOW_CONFIGURATIONS_ITEM: RouteName = 'WorkflowConfsItem';
+export const WORKFLOW_STATUS_LISTING: RouteName = 'workflow-status-listing';
+export const WORKFLOW_STATUS_ITEM: RouteName = 'workflow-status-item';
+export const WORKFLOW_CONFIGURATIONS_LISTING: RouteName = 'workflow-confs-listing';
+export const WORKFLOW_CONFIGURATIONS_ITEM: RouteName = 'workflow-confs-item';
 
 /* SETTINGS */
-export const PROFILE: RouteName = 'userProfile';
+export const PROFILE: RouteName = 'user-profile';
 export const USERS: RouteName = 'users';
 export const ACCOUNTS: RouteName = 'accounts';
-export const CLOUD_FUNCTIONS: RouteName = 'gcpCloudFunctions';
+export const CLOUD_FUNCTIONS: RouteName = 'gcp-cloud-functions';
 
 export default {
 	NOT_FOUND,

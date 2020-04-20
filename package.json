@@ -33,6 +33,7 @@
     "vue": "^2.6.10",
     "vue-chartjs": "^3.4.2",
     "vue-class-component": "^7.0.2",
+    "vue-debounce": "^2.5.0",
     "vue-eslint-parser": "^7.0.0",
     "vue-flowy": "^0.2.1",
     "vue-good-table": "^2.18.0",
