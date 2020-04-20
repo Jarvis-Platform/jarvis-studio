@@ -102,12 +102,6 @@ export default class InformationTab extends Vue {
 				value: this.currentUser ? this.currentUser.phone : ''
 			},
 			{
-				icon: 'mdi-skype',
-				label: 'Skype',
-				placeholder: 'Enter a Skype number',
-				value: this.currentUser ? this.currentUser.skype : ''
-			},
-			{
 				icon: 'mdi-map-marker',
 				label: 'Location',
 				placeholder: 'Enter a location',
