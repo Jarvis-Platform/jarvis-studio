@@ -183,13 +183,10 @@ export interface Note {
 	text: string;
 	updated_at: string;
 	updated_by: string;
-	user: {
-		id: string;
-		displayName: string;
-		email: string;
-		photoURL: string;
-		get: () => Promise<any>;
-	};
+	userId: string;
+	userDisplayName: string;
+	userEmail: string;
+	userPhotoURL: string;
 }
 
 export interface Snackbar {

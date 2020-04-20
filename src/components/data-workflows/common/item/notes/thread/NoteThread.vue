@@ -3,7 +3,7 @@
 		<div ref="notesThread" class="notes-wrapper">
 			<v-toolbar dense flat class="mb-4 thread-toolbar" absolute>
 				<v-toolbar-title>
-					<span class="font-weight-bold">Thread</span> - {{ parentNote.user.displayName }}
+					<span class="font-weight-bold">Thread</span> - {{ parentNote.userDisplayName }}
 				</v-toolbar-title>
 
 				<v-spacer></v-spacer>
@@ -66,7 +66,10 @@ export default class NoteThread extends Mixins(NotesMixin) {
 			moduleName: this.moduleName,
 			relatedDocId: this.relatedDocId,
 			parentNoteId: this.parentNote.id,
-			user: this.userRef
+			userId: this.user.uid,
+			userEmail: this.user.email,
+			userPhotoURL: this.user.photoURL,
+			userDisplayName: this.user.displayName
 		};
 	}
 }
