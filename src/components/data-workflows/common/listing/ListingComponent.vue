@@ -136,7 +136,7 @@ export default class ListingComponent extends Vue {
 	@Prop({ type: Number, default: 10 }) itemsPerPage?: number;
 	@Prop({ type: Boolean, default: false }) showAirflowAction?: boolean;
 	@Prop({ type: Boolean, default: false }) showDeleteAction?: boolean;
-	@Prop(Function) customDataFetching?: Promise;
+	@Prop(Function) customDataFetching?: () => Promise<any>;
 	@Prop(Boolean) isOtherRunDisplay?: boolean;
 	@Prop(String) jobId?: string;
 	@Prop(Array) overriddenColumns?: string[];
@@ -264,7 +264,7 @@ export default class ListingComponent extends Vue {
 
 	get formattedItems() {
 		const dataArray = Object.values(this.firestoreItems);
-		const formattedData = dataArray.map(function(data) {
+		const formattedData = dataArray.map(function(data: any) {
 			return {
 				activeConfColor: getActiveConfColor(data.activated, data.archived)
 			};

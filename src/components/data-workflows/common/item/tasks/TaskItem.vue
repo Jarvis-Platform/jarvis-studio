@@ -120,6 +120,14 @@ import { RUNS } from '@/constants/data-workflows/status';
 
 import 'prismjs/themes/prism.css';
 
+type CommunParam = {
+	id: string;
+	label: string;
+	value: string;
+	default: string | boolean;
+	description: string;
+};
+
 @Component({
 	components: { LogsComponent, ParametersList, VueMarkdown, Prism, tableSchemaView }
 })
@@ -138,7 +146,7 @@ export default class TaskItem extends Vue {
 	logsDialog: boolean = false;
 
 	get paramItemsTask() {
-		let communParams = [
+		let communParams: CommunParam[] = [
 			{
 				id: 'short_description',
 				label: 'Short Description',
