@@ -17,9 +17,9 @@
 						@click="openThread(parentNote)"
 					>
 						<avatar-component
-							v-for="(user, index) in getInvolvedUsers(parentNote)"
-							:key="`${user.id}-${index}`"
-							:user="user"
+							v-for="(note, index) in getInvolvedUsers(parentNote)"
+							:key="`${note.id}-${index}`"
+							:user="{ email: note.userEmail, photoURL: note.userPhotoURL }"
 							size="x-small"
 							class="mr-1"
 						/>
@@ -95,10 +95,10 @@ export default class NotesRoot extends Mixins(NotesMixin) {
 	}
 
 	getInvolvedUsers(parentNote: Note) {
-		const users = this.getThreadNotes(parentNote.id).map(note => note.user);
+		const users = this.getThreadNotes(parentNote.id);
 
 		return users.filter((obj, pos, arr) => {
-			return arr.map(mapObj => mapObj.id).indexOf(obj.id) === pos;
+			return arr.map(mapObj => mapObj.userId).indexOf(obj.userId) === pos;
 		});
 	}
 
@@ -129,7 +129,10 @@ export default class NotesRoot extends Mixins(NotesMixin) {
 			moduleName: this.moduleName,
 			relatedDocId: this.relatedDocId,
 			routeName: this.$route.name,
-			user: this.userRef
+			userId: this.user.uid,
+			userEmail: this.user.email,
+			userPhotoURL: this.user.photoURL,
+			userDisplayName: this.user.displayName
 		};
 	}
 }

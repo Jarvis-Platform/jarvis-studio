@@ -2,10 +2,15 @@ import * as firebase from 'firebase/app';
 import 'firebase/firestore';
 import { FirebaseOptions } from '@firebase/app-types';
 
+// const isLoacalHost = location.hostname === 'localhost';
+const isLoacalHost = false;
+
 const options: FirebaseOptions = {
 	apiKey: process.env.VUE_APP_FIREBASE_API_KEY,
 	authDomain: process.env.VUE_APP_FIREBASE_AUTH_DOMAIN,
-	databaseURL: process.env.VUE_APP_FIREBASE_DATABASE_URL,
+	databaseURL: isLoacalHost
+		? `http://localhost:9000?ns=${process.env.VUE_APP_FIREBASE_PROJECT_ID}`
+		: process.env.VUE_APP_FIREBASE_DATABASE_URL,
 	projectId: process.env.VUE_APP_FIREBASE_PROJECT_ID,
 	storageBucket: process.env.VUE_APP_FIREBASE_STORAGE_BUCKET,
 	messagingSenderId: process.env.VUE_APP_FIREBASE_MESSAGING_SENDER_ID
@@ -13,6 +18,11 @@ const options: FirebaseOptions = {
 
 function initFirebase() {
 	firebase.initializeApp(options);
+
+	if (isLoacalHost) {
+		firebase.functions().useFunctionsEmulator('http://localhost:5001');
+		firebase.firestore().settings({ host: 'localhost:8081', ssl: false });
+	}
 
 	firebase
 		.auth()

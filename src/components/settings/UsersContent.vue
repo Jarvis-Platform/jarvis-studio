@@ -232,31 +232,35 @@ export default class UsersContent extends Vue {
 		this.isLoading = true;
 
 		const listAllUsers = firebase.functions().httpsCallable('listUsers');
-		listAllUsers({}).then(res => {
-			const dataUsers = Object.values(res.data.users);
+		listAllUsers({})
+			.then(res => {
+				const dataUsers = Object.values(res.data.users);
 
-			let usersFormatted = res.data.users.map(function(user: User) {
-				let nb_accounts = 0;
-				try {
-					nb_accounts = user.customClaims.accounts.length;
-				} catch (error) {
-					nb_accounts = 0;
-				}
-				let studioRolesIndex = 0;
-				try {
-					studioRolesIndex = user.customClaims.studioRoles;
-				} catch (error) {
-					studioRolesIndex = 0;
-				}
-				return {
-					nb_accounts: nb_accounts,
-					studioRolesIndex: studioRolesIndex
-				};
+				let usersFormatted = res.data.users.map(function(user: User) {
+					let nb_accounts = 0;
+					try {
+						nb_accounts = user.customClaims.accounts.length;
+					} catch (error) {
+						nb_accounts = 0;
+					}
+					let studioRolesIndex = 0;
+					try {
+						studioRolesIndex = user.customClaims.studioRoles;
+					} catch (error) {
+						studioRolesIndex = 0;
+					}
+					return {
+						nb_accounts: nb_accounts,
+						studioRolesIndex: studioRolesIndex
+					};
+				});
+
+				this.users = merge(dataUsers, usersFormatted);
+				this.isLoading = false;
+			})
+			.catch(() => {
+				this.isLoading = false;
 			});
-
-			this.users = merge(dataUsers, usersFormatted);
-			this.isLoading = false;
-		});
 	}
 
 	dispatchUser(action: 'set' | 'patch', data: AnyObject) {

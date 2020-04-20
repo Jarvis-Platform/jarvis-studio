@@ -6,8 +6,8 @@
 		@mouseleave="isHovering = false"
 	>
 		<div class="d-flex align-center">
-			<avatar-component class="mr-2" :user="note.user" />
-			<span class="mr-2 font-weight-bold">{{ note.user.displayName }}</span>
+			<avatar-component class="mr-2" :user="{ email: note.userEmail, photoURL: note.userPhotoURL }" />
+			<span class="mr-2 font-weight-bold">{{ note.userDisplayName }}</span>
 			<span class="mr-2">{{ getFormattedTimestamp(note.created_at) }}</span>
 			<span v-if="note.updated_at" class="mr-2">(edited {{ getFormattedTimestamp(note.updated_at) }})</span>
 
