@@ -70,8 +70,8 @@ import moment from 'moment';
 
 import DataModelHeader from '@/components/data-models/DataModelHeader.vue';
 
+import { DATA_TABLE_DETAILS, TABLES_LISTING } from '@/constants/router/routes-names';
 import { getBigQueryURL, getFormattedNumBytes, getFormattedNumRows } from '@/util/data-models';
-import { DATA_TABLE_DETAILS } from '@/constants/router/routes-names';
 
 @Component({
 	components: { DataModelHeader }
@@ -170,14 +170,14 @@ export default class TablesListing extends Vue {
 	get tableItems() {
 		return [
 			{
-				text: this.projectId,
-				disabled: true,
-				href: ''
+				text: this.projectId
 			},
 			{
 				text: this.datasetId,
-				disabled: true,
-				href: ''
+				to: {
+					name: TABLES_LISTING,
+					params: { projectId: this.projectId, datasetId: this.datasetId }
+				}
 			}
 		];
 	}

@@ -176,6 +176,18 @@ export default class StorageToStorageRunsItemView extends Mixins(HeaderInfosMixi
 		return destinationStorageRows;
 	}
 
+	get itemTabsItems(): any {
+		if (Object.keys(this.item).length === 0) return [];
+		return [
+			this.runDetailsTab,
+			this.runLogsTab,
+			this.configurationTab,
+			this.fullJSONTab,
+			this.otherRunsTab,
+			this.notesTab
+		];
+	}
+
 	get runDetailsData() {
 		return [
 			{
@@ -235,6 +247,11 @@ export default class StorageToStorageRunsItemView extends Mixins(HeaderInfosMixi
 							id: 'dag_execution_date',
 							label: 'Execution Date',
 							value: this.item.dag_execution_date
+						},
+						{
+							id: 'duration',
+							label: 'Duration',
+							value: this.item.duration.split('.')[0]
 						},
 						{
 							id: 'dag_run_id',

@@ -33,34 +33,35 @@ export const notes: IEasyFirestoreModule = {
 	sync: {
 		orderBy: ['created_at'],
 		insertHook: function(updateStore, doc, store) {
-			const user = store.getters['user/user'];
-
-			doc.user.displayName = user.displayName;
-			doc.user.photoURL = user.photoURL;
-			doc.user.email = user.email;
+			// const user = store.getters['user/user'];
+			//
+			// doc.user.displayName = user.displayName;
+			// doc.user.photoURL = user.photoURL;
+			// doc.user.email = user.email;
 
 			if (doc.isThreadNote) store.commit('notes/PUSH_NOTE_TO_THREAD', doc);
-
 			updateStore(doc);
 		},
 		deleteHook: function(updateStore, id, store) {
+			// TODO: Add thread note verif
+
 			store.commit('notes/REMOVE_NOTE_FROM_THREAD', id);
 			updateStore(id);
 		}
 	},
 	serverChange: {
-		addedHook: function(updateStore, note) {
-			note.user.get().then((res: any) => {
-				note.user = res.data();
-				updateStore(note);
-			});
-		},
-		modifiedHook: function(updateStore, note) {
-			note.user.get().then((res: any) => {
-				note.user = res.data();
-				updateStore(note);
-			});
-		},
+		// addedHook: function(updateStore, note) {
+		// 	note.user.get().then((res: any) => {
+		// 		note.user = res.data();
+		// 		updateStore(note);
+		// 	});
+		// },
+		// modifiedHook: function(updateStore, note) {
+		// 	note.user.get().then((res: any) => {
+		// 		note.user = res.data();
+		// 		updateStore(note);
+		// 	});
+		// },
 		convertTimestamps: {
 			created_at: '%convertTimestamp%',
 			updated_at: '%convertTimestamp%'

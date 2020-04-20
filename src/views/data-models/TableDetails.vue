@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<DataModelHeader :tableItems="tableItems" />
+		<data-model-header :tableItems="tableItems" />
 
 		<v-container class="grey lighten-5">
 			<v-progress-linear v-if="isLoading" :indeterminate="true" />
@@ -244,10 +244,9 @@ import NotesTab from '@/components/data-workflows/common/item/notes/NotesTab.vue
 // library to validate Object Json Schema from Firestore
 import Ajv, { ErrorObject } from 'ajv';
 // library to convert units (bite to Go ) and format number
-import convert from 'convert-units';
-import numeral from 'numeral';
 import VueMarkdown from 'vue-markdown';
 
+import { DATA_TABLE_DETAILS, TABLES_LISTING } from '@/constants/router/routes-names';
 import { getBigQueryURL, getFormattedNumBytes, getFormattedNumRows } from '@/util/data-models';
 
 import 'vue-good-table/dist/vue-good-table.css';
@@ -367,19 +366,21 @@ export default class DataTableDetails extends Vue {
 	get tableItems() {
 		return [
 			{
-				text: this.projectId,
-				disabled: true,
-				href: ''
+				text: this.projectId
 			},
 			{
 				text: this.datasetId,
-				disabled: true,
-				href: ''
+				to: {
+					name: TABLES_LISTING,
+					params: { projectId: this.projectId, datasetId: this.datasetId }
+				}
 			},
 			{
 				text: this.tableId,
-				disabled: true,
-				href: ''
+				to: {
+					name: DATA_TABLE_DETAILS,
+					params: { projectId: this.projectId, datasetId: this.datasetId }
+				}
 			}
 		];
 	}
