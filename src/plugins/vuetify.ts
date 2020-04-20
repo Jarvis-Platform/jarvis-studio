@@ -3,6 +3,8 @@ import Vuetify from 'vuetify/lib';
 
 Vue.use(Vuetify);
 
+// This file has to be synchronized with global.scss file
+
 export default new Vuetify({
 	iconfont: 'md',
 	theme: {

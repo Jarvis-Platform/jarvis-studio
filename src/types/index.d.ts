@@ -85,7 +85,7 @@ export interface ConfActivatedFilter {
 	value: ConfActivatedValue;
 }
 
-type AccountId = '000000' | '000010' | '000020' | '000040' | '000050' | '000060' | '000099';
+export type AccountId = '000000' | '000010' | '000020' | '000040' | '000050' | '000060' | '000099';
 
 export interface Account {
 	account_name: 'All Accounts' | 'Jules' | 'Pimkie' | 'Grain de Malice' | 'Orsay' | 'RougeGorge' | 'jarvis-demo';
@@ -115,7 +115,12 @@ export interface User extends FirebaseUser {
 	accounts: string[];
 	customClaims: AnyObject;
 	disabled: boolean;
+	location: string;
+	phone: string;
+	skype: string;
 	studioRoles: RoleCode;
+	timezone: string;
+	title: string;
 }
 
 // Vue App
@@ -180,16 +185,14 @@ export interface Note {
 	moduleName: string;
 	parentNoteId: string;
 	relatedDocId: string;
+	routeName: string;
 	text: string;
 	updated_at: string;
 	updated_by: string;
-	user: {
-		id: string;
-		displayName: string;
-		email: string;
-		photoURL: string;
-		get: () => Promise<any>;
-	};
+	userId: string;
+	userDisplayName: string;
+	userEmail: string;
+	userPhotoURL: string;
 }
 
 export interface Snackbar {

@@ -7,6 +7,9 @@ module.exports = {
 		overlay: {
 			warnings: true,
 			errors: true
+		},
+		watchOptions: {
+			poll: true
 		}
 	},
 	css: {

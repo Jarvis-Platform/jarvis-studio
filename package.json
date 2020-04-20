@@ -13,6 +13,8 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.7.4",
+    "@sentry/browser": "^5.15.4",
+    "@sentry/integrations": "^5.15.4",
     "ajv": "^6.10.2",
     "babel-runtime": "^6.26.0",
     "chart.js": "^2.8.0",
@@ -33,6 +35,7 @@
     "vue": "^2.6.10",
     "vue-chartjs": "^3.4.2",
     "vue-class-component": "^7.0.2",
+    "vue-debounce": "^2.5.0",
     "vue-eslint-parser": "^7.0.0",
     "vue-flowy": "^0.2.1",
     "vue-good-table": "^2.18.0",

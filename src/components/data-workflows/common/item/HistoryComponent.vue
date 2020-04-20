@@ -1,7 +1,7 @@
 <template>
 	<div class="d-flex justify-center align-center fill-height">
 		<div class="d-flex flex-column text-right body-2">
-			<span class="text--secondary">{{ email }}</span>
+			<span class="text--secondary">{{ email ? email : 'No email' }}</span>
 
 			<v-menu v-model="showMenu" transition="slide-y-transition" offset-y>
 				<template v-slot:activator="{ on }">
@@ -41,8 +41,7 @@
 			</v-menu>
 		</div>
 
-		<!-- TODO: Bind user instead of initials -->
-		<avatar-component class="mx-2" :email="email" />
+		<avatar-component :user="{ email }" class="mx-2" />
 	</div>
 </template>
 
@@ -67,8 +66,7 @@ export default class HistoryComponent extends Vue {
 	@Prop({ required: true }) moduleName!: string;
 	@Prop({ required: true }) archivedConfsModuleName!: string;
 	@Prop({ required: true }) docId!: string;
-	// TODO: Replace with User info
-	@Prop({ required: true, default: 'No email' }) email!: string;
+	@Prop({ required: true }) email!: string;
 	@Prop({ required: true, default: 'No updated date' }) updatedDate!: string;
 
 	showMenu: boolean = false;
