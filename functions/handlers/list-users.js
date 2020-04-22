@@ -9,12 +9,12 @@ module.exports = (data, context) => {
 	return admin
 		.auth()
 		.listUsers(1000, data.nextPageToken)
-		.then(users => {
+		.then((users) => {
 			// if (listUsersResult.pageToken) {
 			//   // List next batch of users.
 			//   listAllUsers(listUsersResult.pageToken);
 			// }
 			return users;
 		})
-		.catch(err => err);
+		.catch((err) => err);
 };
