@@ -22,39 +22,36 @@
 	</v-dialog>
 </template>
 
-<script>
-import Prism from 'vue-prismjs';
+<script lang="ts">
+import { Component, Prop, Vue } from 'vue-property-decorator';
+import { AnyObject } from '@/types';
 import { Base64 } from 'js-base64';
+import Prism from 'vue-prismjs';
 
 import 'prismjs/themes/prism.css';
 
-export default {
-	name: 'sql-viewer',
-	props: {
-		properties: Object
-	},
-	components: { Prism },
-	data: () => ({
-		showDialog: false,
-		base64: Base64
-	}),
-	methods: {
-		closeDialog() {
-			this.showDialog = false;
-		}
-	},
-	computed: {
-		rawSQL() {
-			let sql = '';
-			if (this.properties.sqlBinary !== undefined) {
-				sql = Base64.decode(this.properties.sqlBinary._binaryString);
-			} else if (this.properties.sql !== undefined) {
-				sql = this.properties.sql;
-			} else {
-				sql = 'No SQL Data';
-			}
-			return sql;
-		}
+@Component({
+	components: { Prism }
+})
+export default class SQLViewer extends Vue {
+	@Prop(Object) properties!: AnyObject;
+
+	showDialog: boolean = false;
+
+	closeDialog() {
+		this.showDialog = false;
 	}
-};
+
+	get rawSQL() {
+		let sql = '';
+		if (this.properties.sqlBinary !== undefined) {
+			sql = Base64.decode(this.properties.sqlBinary._binaryString);
+		} else if (this.properties.sql !== undefined) {
+			sql = this.properties.sql;
+		} else {
+			sql = 'No SQL Data';
+		}
+		return sql;
+	}
+}
 </script>

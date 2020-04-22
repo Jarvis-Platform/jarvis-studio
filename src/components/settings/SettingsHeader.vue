@@ -1,6 +1,7 @@
 <template>
 	<v-toolbar dense tabs color="primary">
 		<v-toolbar-title class="pl-2 display-1">{{ headerTitle }}</v-toolbar-title>
+		<p>Hello</p>
 
 		<v-tabs color="white" slider-color="white" slot="extension" background-color="primary">
 			<v-tab v-for="tabsItem in tabsItems" :key="tabsItem.id" :to="tabsItem.link">
@@ -10,18 +11,14 @@
 	</v-toolbar>
 </template>
 
-<script>
-export default {
-	props: {
-		tabsItems: Array,
-		headerTitle: String
-	},
-	data() {
-		return {
-			tabs: null
-		};
-	}
-};
+<script lang="ts">
+import { Component, Prop, Vue } from 'vue-property-decorator';
+
+@Component
+export default class SettingsHeader extends Vue {
+	@Prop(Array) tabsItems?: [];
+	@Prop(String) headerTitle?: string;
+}
 </script>
 
 <style lang="scss" scoped>

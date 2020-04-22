@@ -7,15 +7,12 @@
 	</v-toolbar>
 </template>
 
-<script>
-export default {
-	name: 'data-overview-header',
-	props: {
-		title: {
-			type: String,
-			required: true
-		},
-		subTitle: String
-	}
-};
+<script lang="ts">
+import { Component, Prop, Vue } from 'vue-property-decorator';
+
+@Component
+export default class DataOverviewHeader extends Vue {
+	@Prop({ type: String, required: true }) title!: string;
+	@Prop(String) subTitle!: string;
+}
 </script>

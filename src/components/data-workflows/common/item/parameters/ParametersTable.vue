@@ -42,63 +42,39 @@
 	</v-container>
 </template>
 
-<script>
+<script lang="ts">
+import { Component, Prop, Vue } from 'vue-property-decorator';
+import { AnyObject } from '@/types';
 import { VueGoodTable } from 'vue-good-table';
-import 'vue-good-table/dist/vue-good-table.css';
-import TableName from './overridden-rows/TableName';
+import TableName from './overridden-rows/TableName.vue';
 
-export default {
-	name: 'parameters-table',
-	components: {
-		TableName,
-		VueGoodTable
-	},
-	props: {
-		tableTitle: {
-			type: String,
-			required: true
-		},
-		description: {
-			type: String,
-			required: true
-		},
-		columns: {
-			type: Array,
-			required: true
-		},
-		rows: {
-			type: Array,
-			required: true
-		},
-		overriddenRows: {
-			type: Array
-		},
-		filterable: {
-			type: Boolean,
-			default: true
-		},
-		lineNumbers: {
-			type: Boolean
-		},
-		searchOptionsEnabled: {
-			type: Boolean,
-			default: false
-		}
-	},
-	methods: {
-		overriddenRow(rowName) {
-			return this.overriddenRows ? this.overriddenRows.find(row => row.name === rowName) : null;
-		}
-	},
-	computed: {
-		searchOptions() {
-			return {
-				enabled: this.searchOptionsEnabled,
-				placeholder: 'Search for parameters'
-			};
-		}
+import 'vue-good-table/dist/vue-good-table.css';
+
+@Component({
+	components: { TableName, VueGoodTable }
+})
+export default class ParametersTable extends Vue {
+	@Prop({ type: String, required: true }) tableTitle!: string;
+	@Prop({ type: String, required: true }) description!: string;
+	@Prop({ type: Array, required: true }) columns!: { label: string; field: string }[];
+	@Prop({ type: Array, required: true }) rows!: AnyObject[];
+	@Prop({ type: Boolean, default: true }) filterable!: boolean;
+	@Prop({ type: Boolean, default: false }) searchOptionsEnabled!: boolean;
+
+	@Prop(Boolean) lineNumbers?: boolean;
+	@Prop(Array) overriddenRows?: AnyObject[];
+
+	overriddenRow(rowName: string) {
+		return this.overriddenRows ? this.overriddenRows.find(row => row.name === rowName) : null;
 	}
-};
+
+	get searchOptions() {
+		return {
+			enabled: this.searchOptionsEnabled,
+			placeholder: 'Search for parameters'
+		};
+	}
+}
 </script>
 
 <style lang="scss">

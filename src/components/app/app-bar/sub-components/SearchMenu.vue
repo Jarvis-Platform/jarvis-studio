@@ -20,23 +20,24 @@
 	</v-row>
 </template>
 
-<script>
-export default {
-	data: () => ({
-		searching: false,
-		search: ''
-	}),
-	methods: {
-		searchBegin() {
-			this.searching = true;
-			setTimeout(() => this.$refs.search.focus(), 200);
-		},
-		clearSearch() {
-			this.searching = false;
-			this.search = '';
-		}
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
+
+@Component
+export default class SearchMenu extends Vue {
+	searching: boolean = false;
+	search: string = '';
+
+	searchBegin() {
+		this.searching = true;
+		setTimeout(() => (this.$refs.search as HTMLInputElement).focus(), 200);
 	}
-};
+
+	clearSearch() {
+		this.searching = false;
+		this.search = '';
+	}
+}
 </script>
 
 <style scoped lang="scss">
