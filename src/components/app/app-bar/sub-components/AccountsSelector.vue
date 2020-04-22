@@ -2,7 +2,7 @@
 	<div class="accounts-selector-wrapper">
 		<v-autocomplete
 			v-model="selectedAccounts"
-			:items="getItems"
+			:items="getAccounts()"
 			item-text="account_name"
 			return-object
 			:label="selectedAccounts.length === 0 ? 'All Accounts' : 'Accounts'"
@@ -20,43 +20,37 @@
 	</div>
 </template>
 
-<script>
-import { mapState, mapGetters } from 'vuex';
-import store from '@/store';
+<script lang="ts">
+import { Component, Vue, Watch } from 'vue-property-decorator';
+import { Getter, State } from 'vuex-class';
+import { Account, AccountId, User } from '@/types';
 
-export default {
-	name: 'accounts-selector',
-	data() {
-		return {
-			isLoading: true,
-			selectedAccounts: JSON.parse(localStorage.vuex).filters.filteredAccounts
-		};
-	},
-	computed: {
-		...mapState({
-			accounts: state => state.accounts.data,
-			user: state => state.user.user
-		}),
-		...mapGetters({
-			userAccounts: 'user/accounts'
-		}),
-		getItems() {
-			let items = [];
+@Component
+export default class AccountSelector extends Vue {
+	@State(state => state.accounts.data) accounts!: Account[];
+	@State(state => state.user.user) user!: User;
 
-			this.userAccounts.forEach(id => {
-				const element = this.accounts[id];
-				if (element) items.push(element);
-			});
+	@Getter('user/accounts') userAccounts!: AccountId[];
 
-			return items;
-		}
-	},
-	watch: {
-		selectedAccounts(accounts) {
-			store.dispatch('filters/updateFilteredAccounts', accounts);
-		}
+	@Watch('selectedAccounts')
+	onSelectedAccountChange(accounts: Account) {
+		this.$store.dispatch('filters/updateFilteredAccounts', accounts);
 	}
-};
+
+	isLoading: boolean = true;
+	selectedAccounts: string = JSON.parse(localStorage.vuex).filters.filteredAccounts;
+
+	getAccounts() {
+		let accounts: AccountId[] = [];
+
+		this.userAccounts.forEach(id => {
+			const element = this.accounts[id];
+			if (element) accounts.push(element);
+		});
+
+		return accounts;
+	}
+}
 </script>
 
 <style lang="scss">

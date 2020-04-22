@@ -33,8 +33,9 @@
 	</div>
 </template>
 
-<script>
-export default {
-	name: 'notification-content'
-};
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
+
+@Component
+export default class NotificationContent extends Vue {}
 </script>

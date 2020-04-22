@@ -19,26 +19,19 @@
 	</v-container>
 </template>
 
-<script>
+<script lang="ts">
+import { Component, Prop, Vue } from 'vue-property-decorator';
+import { AnyObject } from '@/types';
 import VueJsonPretty from 'vue-json-pretty';
 
-export default {
-	name: 'view-json',
-	components: { VueJsonPretty },
-	props: {
-		json: {
-			type: Object,
-			required: true
-		},
-		jsonId: {
-			type: String
-		},
-		deep: {
-			type: Number,
-			default: 5
-		}
-	}
-};
+@Component({
+	components: { VueJsonPretty }
+})
+export default class ViewJSON extends Vue {
+	@Prop({ type: Object, required: true }) json!: AnyObject;
+	@Prop({ type: Number, default: 5 }) deep!: number;
+	@Prop(String) jsonId?: string;
+}
 </script>
 
 <style lang="scss" scoped>

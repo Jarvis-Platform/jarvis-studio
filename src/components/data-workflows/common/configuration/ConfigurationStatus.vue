@@ -17,105 +17,102 @@
 			<span v-else>{{ label }}</span>
 		</v-chip>
 
-		<v-snackbar v-model="snackbarParam.show" :color="snackbarParam.color" :timeout="timeout">
-			{{ snackbarParam.message }}
+		<v-snackbar v-model="snackbarParam.isVisible" :color="snackbarParam.color" :timeout="timeout">
+			{{ snackbarParam.text }}
 			<v-btn text @click="closeSnackbar">Close</v-btn>
 		</v-snackbar>
 	</div>
 </template>
 
-<script>
-import store from '@/store';
+<script lang="ts">
+import { Component, Prop, Vue } from 'vue-property-decorator';
 import { getActiveConfColor, getActiveConfLabel } from '@/util/data-workflows/configuration';
+import { AnyObject, Snackbar } from '@/types';
 
-export default {
-	name: 'activated-status-chip',
-	props: {
-		item: {
-			type: Object,
-			required: true
-		},
-		collection: {
-			type: String,
-			required: true
-		},
-		isActivated: {
-			type: Boolean
-		},
-		isSmall: {
-			type: Boolean,
-			default: true
-		},
-		isLabel: {
-			type: Boolean,
-			default: false
-		},
-		customKey: {
-			type: String,
-			default: null
-		}
-	},
-	data: () => ({
-		isLoading: false,
-		snackbarParam: {},
-		alertParam: {}
-	}),
-	methods: {
-		changeActivatedStatus(item, collection) {
-			if (this.isActivated === undefined) {
-				this.statusUpdateCallback({
-					message:
-						'The Activated attribute is not well set in the source configuration. Please update and deploy it again',
-					show: true,
-					color: 'error'
-				});
+import { SNACKBAR } from '@/constants/ui/snackbar';
 
-				return;
-			}
+@Component
+export default class ConfigurationStatus extends Vue {
+	@Prop({ type: Object, required: true }) item!: AnyObject;
+	@Prop({ type: String, required: true }) collection!: string;
+	@Prop({ type: Boolean, default: undefined }) isActivated: boolean | undefined;
+	@Prop({ type: Boolean, default: true }) isSmall!: boolean;
+	@Prop({ type: Boolean, default: false }) isLabel!: boolean;
+	@Prop({ type: String, default: null }) customKey!: string;
 
-			this.isLoading = true;
-			this.snackbarParam = {
-				message: null,
-				show: false,
-				color: null
-			};
-			const id = item.id;
-			const collectionPath = `${collection}/patch`;
+	isLoading: boolean = false;
+	snackbarParam: Snackbar = {
+		isVisible: false,
+		text: '',
+		timeout: SNACKBAR.TIMEOUT,
+		color: ''
+	};
 
-			let activated, message;
-
-			if (this.isActivated) {
-				activated = false;
-				message = 'Configuration disabled';
-			} else {
-				activated = true;
-				message = 'Configuration activated';
-			}
-
-			const payload = this.customKey ? { id, [this.customKey]: { activated } } : { id, activated };
-
-			store.dispatch(collectionPath, payload).then(() => {
-				this.statusUpdateCallback({ message: message, show: true, color: getActiveConfColor(activated) });
+	changeActivatedStatus(item: AnyObject, collection: string) {
+		if (this.isActivated === undefined) {
+			this.statusUpdateCallback({
+				isVisible: true,
+				text: 'The Activated attribute is not well set in the source configuration. Please update and deploy it again',
+				timeout: SNACKBAR.TIMEOUT,
+				color: 'error'
 			});
-		},
-		statusUpdateCallback(snackbarParams) {
-			this.snackbarParam = snackbarParams;
-			this.isLoading = false;
-		},
-		closeSnackbar() {
-			this.snackbarParam.show = false;
+
+			return;
 		}
-	},
-	computed: {
-		color() {
-			return getActiveConfColor(this.isActivated, this.item.archived);
-		},
-		label() {
-			return getActiveConfLabel(this.isActivated);
-		},
-		timeout: () => 3500
+
+		this.isLoading = true;
+		this.snackbarParam = {
+			isVisible: false,
+			text: '',
+			timeout: SNACKBAR.TIMEOUT,
+			color: ''
+		};
+		const id = item.id;
+		const collectionPath = `${collection}/patch`;
+
+		let activated: boolean, text: string;
+
+		if (this.isActivated) {
+			activated = false;
+			text = 'Configuration disabled';
+		} else {
+			activated = true;
+			text = 'Configuration activated';
+		}
+
+		const payload = this.customKey ? { id, [this.customKey]: { activated } } : { id, activated };
+
+		this.$store.dispatch(collectionPath, payload).then(() => {
+			this.statusUpdateCallback({
+				isVisible: true,
+				text,
+				timeout: SNACKBAR.TIMEOUT,
+				color: getActiveConfColor(activated, item.archived)
+			});
+		});
 	}
-};
+
+	statusUpdateCallback(snackbarParams: Snackbar) {
+		this.snackbarParam = snackbarParams;
+		this.isLoading = false;
+	}
+
+	closeSnackbar() {
+		this.snackbarParam.isVisible = false;
+	}
+
+	get color() {
+		return getActiveConfColor(this.isActivated, this.item.archived);
+	}
+
+	get label() {
+		return getActiveConfLabel(this.isActivated);
+	}
+
+	get timeout() {
+		return 3500;
+	}
+}
 </script>
 
 <style lang="scss">

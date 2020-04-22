@@ -98,201 +98,180 @@
 	</v-container>
 </template>
 
-<script>
-import ConfigurationStatus from '../configuration/ConfigurationStatus.vue';
-import ListingFilters from './ListingFilters';
-import VueJsonPretty from 'vue-json-pretty';
-import RunStatusChip from '@/components/data-workflows/common/runs/RunStatusChip';
-
-import { mapState } from 'vuex';
-import { mapGetters } from 'vuex';
-import store from '@/store';
+<script lang="ts">
+import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
+import { AnyObject } from '@/types';
+import { Getter } from 'vuex-class';
 import merge from 'lodash.merge';
 import moment from 'moment';
+
+import ConfigurationStatus from '../configuration/ConfigurationStatus.vue';
+import ListingFilters from './ListingFilters.vue';
+import VueJsonPretty from 'vue-json-pretty';
+import RunStatusChip from '@/components/data-workflows/common/runs/RunStatusChip.vue';
+
 import { CONFIGURATIONS, RUNS, STATUS } from '@/constants/data-workflows/status';
 import { getActiveConfColor } from '@/util/data-workflows/configuration';
 import { dagRunAirflowUrl } from '@/util/data-workflows/run';
+import { mapState } from 'vuex';
 
-export default {
-	name: 'listing-component',
+type Filter = [string, string, any];
+
+@Component({
 	components: { ConfigurationStatus, ListingFilters, VueJsonPretty, RunStatusChip },
-	props: {
-		type: {
-			// Use RUNS or CONFIGURATIONS constants
-			type: String,
-			required: true
-		},
-		moduleName: {
-			type: String,
-			required: true
-		},
-		headers: {
-			type: Array,
-			required: true
-		},
-		customDataFetching: {
-			type: Function
-		},
-		isOtherRunDisplay: {
-			type: Boolean
-		},
-		jobId: {
-			type: String
-		},
-		overriddenColumns: {
-			type: Array
-		},
-		sortBy: {
-			type: String,
-			default: 'dag_execution_date'
-		},
-		sortDesc: {
-			type: Boolean,
-			default: true
-		},
-		itemsPerPage: {
-			type: Number,
-			default: 10
-		},
-		showAirflowAction: {
-			type: Boolean
-		},
-		showDeleteAction: {
-			type: Boolean
-		}
-	},
-	data() {
-		return {
-			isLoading: false,
-			search: '',
-			expanded: [],
-			viewedItem: {},
-			showDeleteDialog: false,
-			showDeleteItemDetails: false,
-			showSnackbarDeleteConfSuccess: false,
-			itemToDelete: {},
-			customFetchedItems: []
-		};
-	},
+	computed: {
+		...mapState({
+			firestoreItems(state: any) {
+				return state[this.moduleName].data;
+			}
+		})
+	}
+})
+export default class ListingComponent extends Vue {
+	@Prop({ type: String, required: true }) type!: string; // TODO: Use RUNS or CONFIGURATIONS constants
+	@Prop({ type: String, required: true }) moduleName!: string;
+	@Prop({ type: Array, required: true }) headers!: [];
+	@Prop({ type: String, default: 'dag_execution_date' }) sortBy?: string[];
+	@Prop({ type: Boolean, default: true }) sortDesc?: boolean;
+	@Prop({ type: Number, default: 10 }) itemsPerPage?: number;
+	@Prop({ type: Boolean, default: false }) showAirflowAction?: boolean;
+	@Prop({ type: Boolean, default: false }) showDeleteAction?: boolean;
+	@Prop(Function) customDataFetching?: () => Promise<any>;
+	@Prop(Boolean) isOtherRunDisplay?: boolean;
+	@Prop(String) jobId?: string;
+	@Prop(Array) overriddenColumns?: string[];
+
+	@Getter('filters/periodFiltered') periodFiltered!: string[];
+	@Getter('filters/whereStatusFilter') whereStatusFilter!: Filter[];
+	@Getter('filters/whereRunsFilter') whereRunsFilter!: Filter[];
+	@Getter('filters/whereConfFilter') whereConfFilter!: Filter[];
+
+	@Watch('whereStatusFilter')
+	onWhereStatusFilterChange() {
+		this.getFirestoreData();
+	}
+
+	@Watch('whereRunsFilter')
+	onWhereRunsFilterChange() {
+		this.getFirestoreData();
+	}
+
+	@Watch('whereConfFilter')
+	onWhereConfFilterChange() {
+		this.getFirestoreData();
+	}
+
+	private firestoreItems: any;
+	isLoading: boolean = false;
+	search: string = '';
+	expanded: AnyObject[] = [];
+	viewedItem: object = {};
+	showDeleteDialog: boolean = false;
+	showDeleteItemDetails: boolean = false;
+	showSnackbarDeleteConfSuccess: boolean = false;
+	itemToDelete: AnyObject = {};
+	customFetchedItems: AnyObject[] = [];
+
 	mounted() {
 		this.getFirestoreData();
-	},
+	}
+
 	// activated() {
 	// 	// TODO: refetch without isLoading and removing all displayed data, and them when refetch is done
 	// 	this.getFirestoreData();
-	// },
-	methods: {
-		toggleExpand(item) {
-			const isAlreadyExpand = this.expanded.filter(expandedItem => expandedItem.id === item.id).length === 1;
+	// }
 
-			if (isAlreadyExpand) {
-				this.expanded = [];
-			} else {
-				this.expanded = [item];
-				this.viewedItem = item;
-			}
-		},
-		openAirflowDagRunUrl(item) {
-			window.open(dagRunAirflowUrl(item.dag_id, item.dag_run_id, item.dag_execution_date), '_blank');
-		},
-		openDeleteDialog(item) {
-			this.itemToDelete = item;
-			this.showDeleteDialog = true;
-		},
-		cancelDeleteConfFromFirestore() {
-			this.showDeleteDialog = false;
-			this.itemToDelete = {};
-			this.showDeleteItemDetails = false;
-		},
-		confirmDeleteConfFromFirestore() {
-			this.showDeleteDialog = false;
-			this.showSnackbarDeleteConfSuccess = false;
-			store.dispatch(`${this.moduleName}/delete`, this.itemToDelete.id).then(() => {
-				this.showSnackbarDeleteConfSuccess = true;
-			});
-			this.itemToDelete = {};
-			this.showDeleteItemDetails = false;
-		},
-		async getFirestoreData() {
-			let where;
+	toggleExpand(item: AnyObject) {
+		const isAlreadyExpand = this.expanded.filter(expandedItem => expandedItem.id === item.id).length === 1;
 
-			if (this.isOtherRunDisplay) {
-				const minDate = moment()
-					.utc()
-					.startOf('day')
-					.subtract(1, 'month')
-					.toISOString();
-
-				where = [
-					['dag_execution_date', '>=', minDate],
-					['job_id', '==', this.jobId]
-				];
-			} else {
-				switch (this.type) {
-					case RUNS:
-						where = this.whereRunsFilter;
-						break;
-					case CONFIGURATIONS:
-						where = this.whereConfFilter;
-						break;
-					case STATUS:
-						where = this.whereStatusFilter;
-						break;
-					default:
-						where = [];
-				}
-			}
-
-			this.isLoading = true;
-
-			if (this.customDataFetching) {
-				this.customDataFetching().then(items => {
-					this.customFetchedItems = items;
-					this.isLoading = false;
-				});
-			} else {
-				await store.dispatch(`${this.moduleName}/closeDBChannel`, { clearModule: true });
-				await store.dispatch(`${this.moduleName}/openDBChannel`, { where, limit: 0 });
-
-				this.isLoading = false;
-			}
-		}
-	},
-	computed: {
-		...mapState({
-			firestoreItems(state) {
-				return state[this.moduleName].data;
-			}
-		}),
-		...mapGetters({
-			periodFiltered: 'filters/periodFiltered',
-			whereStatusFilter: 'filters/whereStatusFilter',
-			whereRunsFilter: 'filters/whereRunsFilter',
-			whereConfFilter: 'filters/whereConfFilter'
-		}),
-		formattedItems() {
-			const dataArray = Object.values(this.firestoreItems);
-			const formattedData = dataArray.map(function(data) {
-				return {
-					//color for the activated status
-					activeConfColor: getActiveConfColor(data.activated)
-				};
-			});
-			return merge(dataArray, formattedData);
-		}
-	},
-	watch: {
-		whereStatusFilter() {
-			this.getFirestoreData();
-		},
-		whereRunsFilter() {
-			this.getFirestoreData();
-		},
-		whereConfFilter() {
-			this.getFirestoreData();
+		if (isAlreadyExpand) {
+			this.expanded = [];
+		} else {
+			this.expanded = [item];
+			this.viewedItem = item;
 		}
 	}
-};
+
+	openAirflowDagRunUrl(item: AnyObject) {
+		window.open(dagRunAirflowUrl(item.dag_id, item.dag_run_id, item.dag_execution_date), '_blank');
+	}
+
+	openDeleteDialog(item: AnyObject) {
+		this.itemToDelete = item;
+		this.showDeleteDialog = true;
+	}
+
+	cancelDeleteConfFromFirestore() {
+		this.showDeleteDialog = false;
+		this.itemToDelete = {};
+		this.showDeleteItemDetails = false;
+	}
+
+	confirmDeleteConfFromFirestore() {
+		this.showDeleteDialog = false;
+		this.showSnackbarDeleteConfSuccess = false;
+		this.$store.dispatch(`${this.moduleName}/delete`, this.itemToDelete.id).then(() => {
+			this.showSnackbarDeleteConfSuccess = true;
+		});
+		this.itemToDelete = {};
+		this.showDeleteItemDetails = false;
+	}
+
+	async getFirestoreData() {
+		let where: Filter[];
+
+		if (this.isOtherRunDisplay) {
+			const minDate = moment()
+				.utc()
+				.startOf('day')
+				.subtract(1, 'month')
+				.toISOString();
+
+			where = [
+				['dag_execution_date', '>=', minDate],
+				['job_id', '==', this.jobId]
+			];
+		} else {
+			switch (this.type) {
+				case RUNS:
+					where = this.whereRunsFilter;
+					break;
+				case CONFIGURATIONS:
+					where = this.whereConfFilter;
+					break;
+				case STATUS:
+					where = this.whereStatusFilter;
+					break;
+				default:
+					where = [];
+			}
+		}
+
+		this.isLoading = true;
+
+		if (this.customDataFetching) {
+			this.customDataFetching().then((items: AnyObject[]) => {
+				this.customFetchedItems = items;
+				this.isLoading = false;
+			});
+		} else {
+			await this.$store.dispatch(`${this.moduleName}/closeDBChannel`, { clearModule: true });
+			await this.$store.dispatch(`${this.moduleName}/openDBChannel`, { where, limit: 0 });
+
+			this.isLoading = false;
+		}
+	}
+
+	get formattedItems() {
+		const dataArray = Object.values(this.firestoreItems);
+		const formattedData = dataArray.map(function(data: any) {
+			return {
+				activeConfColor: getActiveConfColor(data.activated, data.archived)
+			};
+		});
+		return merge(dataArray, formattedData);
+	}
+}
 </script>
 
 <style lang="scss">

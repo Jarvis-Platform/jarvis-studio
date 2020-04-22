@@ -3,7 +3,7 @@
 		<v-col cols="3">
 			<span class="subheading">{{ paramItem.label }}:</span>
 
-			<v-tooltip right v-if="paramItem.description != undefined">
+			<v-tooltip right v-if="paramItem.description">
 				<template v-slot:activator="{ on }">
 					<v-icon small color="blue-grey lighten-5" dark v-on="on">info</v-icon>
 				</template>
@@ -24,19 +24,15 @@
 	</v-row>
 </template>
 
-<script>
-import SqlViewer from '@/components/data-workflows/common/item/overview/SqlViewer';
+<script lang="ts">
+import { Component, Prop, Vue } from 'vue-property-decorator';
+import { AnyObject } from '@/types';
+import SqlViewer from '@/components/data-workflows/common/item/overview/SqlViewer.vue';
 
-export default {
-	name: 'parameters-item',
-	components: { SqlViewer },
-	props: {
-		paramItem: {
-			type: Object,
-			default() {
-				return { id: 'account', label: 'Account', value: '000021' };
-			}
-		}
-	}
-};
+@Component({
+	components: { SqlViewer }
+})
+export default class ParametersItem extends Vue {
+	@Prop({ type: Object, default: { id: 'account', label: 'Account', value: '000021' } }) paramItem!: AnyObject;
+}
 </script>
