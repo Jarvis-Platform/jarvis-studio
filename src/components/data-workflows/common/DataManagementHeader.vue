@@ -10,17 +10,12 @@
 	</v-toolbar>
 </template>
 
-<script>
-export default {
-	props: {
-		workflowName: {
-			type: String,
-			required: true
-		},
-		tabsItems: {
-			type: Array,
-			required: true
-		}
-	}
-};
+<script lang="ts">
+import { Component, Prop, Vue } from 'vue-property-decorator';
+
+@Component
+export default class DataManagementHeader extends Vue {
+	@Prop({ type: String, required: true }) workflowName!: string;
+	@Prop({ type: Array, required: true }) tabsItems!: [];
+}
 </script>

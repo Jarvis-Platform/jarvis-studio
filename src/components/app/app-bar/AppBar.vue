@@ -54,49 +54,59 @@
 	</v-app-bar>
 </template>
 
-<script>
-import AccountSelector from './sub-components/AccountsSelector';
-import SearchMenu from './sub-components/SearchMenu';
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
+import { State } from 'vuex-class';
+import { User } from '@/types';
 
-import { mapState } from 'vuex';
+import AccountSelector from './sub-components/AccountsSelector.vue';
+import SearchMenu from './sub-components/SearchMenu.vue';
 
-import userSettingsItems from '../../../navigation/user-settings-items';
+import { UserSetting, userSettings } from '@/navigation/user-settings-items';
 
-export default {
-	name: 'app-bar',
-	components: { AccountSelector, SearchMenu },
-	data: () => ({
-		userSettingsItems: userSettingsItems
-	}),
-	methods: {
-		toggleFullScreen: () => {
-			const doc = window.document;
-			const docEl = doc.documentElement;
-			const requestFullScreen =
-				docEl.requestFullscreen ||
-				docEl.mozRequestFullScreen ||
-				docEl.webkitRequestFullScreen ||
-				docEl.msRequestFullscreen;
-			const cancelFullScreen =
-				doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
+@Component({
+	components: { AccountSelector, SearchMenu }
+})
+export default class AppBar extends Vue {
+	@State(state => state.user.isAuthenticated) isAuthenticated!: boolean;
+	@State(state => state.user.user) user!: User;
 
-			if (
-				!doc.fullscreenElement &&
-				!doc.mozFullScreenElement &&
-				!doc.webkitFullscreenElement &&
-				!doc.msFullscreenElement
-			) {
-				requestFullScreen.call(docEl);
-			} else {
-				cancelFullScreen.call(doc);
-			}
+	userSettingsItems: UserSetting[] = userSettings;
+
+	toggleFullScreen() {
+		const doc = window.document as Document & {
+			mozFullScreenElement(): Promise<void>;
+			webkitFullscreenElement(): Promise<void>;
+			msFullscreenElement(): Promise<void>;
+			mozCancelFullScreen(): Promise<void>;
+			webkitExitFullscreen(): Promise<void>;
+			msExitFullscreen(): Promise<void>;
+		};
+
+		const docEl = doc.documentElement as HTMLElement & {
+			mozRequestFullScreen(): Promise<void>;
+			webkitRequestFullScreen(): Promise<void>;
+			msRequestFullscreen(): Promise<void>;
+		};
+
+		const requestFullScreen =
+			docEl.requestFullscreen ||
+			docEl.mozRequestFullScreen ||
+			docEl.webkitRequestFullScreen ||
+			docEl.msRequestFullscreen;
+		const cancelFullScreen =
+			doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
+
+		if (
+			!doc.fullscreenElement &&
+			!doc.mozFullScreenElement &&
+			!doc.webkitFullscreenElement &&
+			!doc.msFullscreenElement
+		) {
+			requestFullScreen.call(docEl);
+		} else {
+			cancelFullScreen.call(doc);
 		}
-	},
-	computed: {
-		...mapState({
-			isAuthenticated: state => state.user.isAuthenticated,
-			user: state => state.user.user
-		})
 	}
-};
+}
 </script>

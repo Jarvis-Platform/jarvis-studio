@@ -87,32 +87,22 @@
 	</div>
 </template>
 
-<script>
-import TreeView from '../data-models/TreeView';
+<script lang="ts">
+import { Component, Prop, Vue } from 'vue-property-decorator';
+import TreeView from '../data-models/TreeView.vue';
 
-import packageJson from '../../../package';
+import packageJson from '../../../package.json';
 
-export default {
-	name: 'navigation-content',
-	components: { TreeView },
-	props: {
-		drawer: {
-			type: Object,
-			required: true
-		},
-		analyticsItems: {
-			type: Array,
-			required: true
-		},
-		settingsItems: {
-			type: Array,
-			required: true
-		}
-	},
-	computed: {
-		appName() {
-			return packageJson.name.replace('-', ' ');
-		}
+@Component({
+	components: { TreeView }
+})
+export default class NavigationContent extends Vue {
+	@Prop({ type: Object, required: true }) drawer!: object;
+	@Prop({ type: Array, required: true }) analyticsItems!: object;
+	@Prop({ type: Array, required: true }) settingsItems!: object;
+
+	get appName() {
+		return packageJson.name.replace('-', ' ');
 	}
-};
+}
 </script>

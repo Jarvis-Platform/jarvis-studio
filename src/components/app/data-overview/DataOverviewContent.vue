@@ -23,38 +23,38 @@
 	</v-container>
 </template>
 
-<script>
-export default {
-	name: 'data-overview-content',
-	computed: {
-		links() {
-			return [
-				{
-					id: '1',
-					title: 'Data Models',
-					description: 'Get fast and detailed overview on all datasets and tables managed by Jarvis',
-					color: 'orange'
-				},
-				{
-					id: '2',
-					title: 'Data Workflows',
-					description: 'Monitor data workflows executions, check configurations and execute jobs.',
-					color: 'teal'
-				},
-				{
-					id: '3',
-					title: 'Data Quality',
-					description: 'Supervise data quality with simple tSQL queries and maintaining a high quality of information',
-					color: 'blue'
-				},
-				{
-					id: '4',
-					title: 'Data Visualization',
-					description: 'Access to Data Visualizations and Dashboards built on the top of the Data available in Jarvis',
-					color: 'purple'
-				}
-			];
-		}
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
+
+@Component
+export default class DataOverviewContent extends Vue {
+	get links() {
+		return [
+			{
+				id: '1',
+				title: 'Data Models',
+				description: 'Get fast and detailed overview on all datasets and tables managed by Jarvis',
+				color: 'orange'
+			},
+			{
+				id: '2',
+				title: 'Data Workflows',
+				description: 'Monitor data workflows executions, check configurations and execute jobs.',
+				color: 'teal'
+			},
+			{
+				id: '3',
+				title: 'Data Quality',
+				description: 'Supervise data quality with simple tSQL queries and maintaining a high quality of information',
+				color: 'blue'
+			},
+			{
+				id: '4',
+				title: 'Data Visualization',
+				description: 'Access to Data Visualizations and Dashboards built on the top of the Data available in Jarvis',
+				color: 'purple'
+			}
+		];
 	}
-};
+}
 </script>

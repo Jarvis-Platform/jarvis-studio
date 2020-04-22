@@ -22,44 +22,24 @@
 	</v-container>
 </template>
 
-<script>
+<script lang="ts">
+import { Component, Prop, Vue } from 'vue-property-decorator';
 import ParametersItem from './ParametersItem.vue';
 
-export default {
-	name: 'parameters-list',
-	components: {
-		ParametersItem
-	},
-	props: {
-		vflexLength: {
-			type: String,
-			default: 'xs12'
-		},
-		vflexOffset: {
-			type: String,
-			default: 'offset-xs0'
-		},
-		groupTitle: {
-			type: String,
-			default: 'Parameters Group Title'
-		},
-		description: {
-			type: String,
-			default: 'Parameters List Description'
-		},
-		tooltip: {
-			type: Boolean,
-			default: false
-		},
-		paramItems: {
-			type: Array,
-			default() {
-				return [
-					{ id: 'account', label: 'Account', value: '000020' },
-					{ id: 'environment', label: 'Environment', value: 'PROD' }
-				];
-			}
-		}
-	}
-};
+@Component({
+	components: { ParametersItem }
+})
+export default class ParametersList extends Vue {
+	@Prop({ type: String, required: true }) groupTitle!: string;
+	@Prop(String) description?: string;
+	@Prop({ type: Boolean, default: false }) tooltip!: boolean;
+	@Prop({
+		type: Array,
+		default: [
+			{ id: 'account', label: 'Account', value: '000020' },
+			{ id: 'environment', label: 'Environment', value: 'PROD' }
+		]
+	})
+	paramItems!: object;
+}
 </script>
