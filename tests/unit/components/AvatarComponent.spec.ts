@@ -16,10 +16,10 @@ describe('AvatarComponent.vue', () => {
 			propsData: {
 				user: {
 					email: 'user.name@gmail.com',
-					photoUrl: 'https://fakelink.fr'
-				}
+					photoUrl: 'https://fakelink.fr',
+				},
 			},
-			...options
+			...options,
 		});
 	};
 

@@ -12,11 +12,11 @@ export const userSettings: UserSetting[] = [
 	{
 		title: 'Profile',
 		link: { name: PROFILE },
-		icon: 'account_circle'
+		icon: 'account_circle',
 	},
 	{
 		title: 'Logout',
 		link: { name: LOGOUT },
-		icon: 'exit_to_app'
-	}
+		icon: 'exit_to_app',
+	},
 ];

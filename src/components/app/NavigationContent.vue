@@ -94,7 +94,7 @@ import TreeView from '../data-models/TreeView.vue';
 import packageJson from '../../../package.json';
 
 @Component({
-	components: { TreeView }
+	components: { TreeView },
 })
 export default class NavigationContent extends Vue {
 	@Prop({ type: Object, required: true }) drawer!: object;

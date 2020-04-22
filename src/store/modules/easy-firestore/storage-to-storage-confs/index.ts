@@ -8,5 +8,5 @@ export const storageToStorageConfs: IEasyFirestoreModule = {
 	moduleName: 'storageToStorageConfs',
 	statePropName: 'data',
 	sync: SYNC,
-	mutations: { UPDATE_DOCUMENT_LOCALLY }
+	mutations: { UPDATE_DOCUMENT_LOCALLY },
 };

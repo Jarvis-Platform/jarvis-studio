@@ -1,3 +1,3 @@
 export const SNACKBAR = {
-	TIMEOUT: 3500
+	TIMEOUT: 3500,
 };

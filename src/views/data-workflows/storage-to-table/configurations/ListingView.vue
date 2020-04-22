@@ -35,7 +35,7 @@ import {
 	ENVIRONMENT,
 	GBQ_DATASET,
 	GCP_PROJECT,
-	TABLE_NAME
+	TABLE_NAME,
 } from '@/constants/data-workflows/listing/header-items';
 
 @Component
@@ -46,8 +46,8 @@ export default class StorageToTableConfigurationsListingView extends Mixins(
 	moduleName: string = mirrorExcGcsToGbqConfs.moduleName;
 	overriddenColumns: string[] = ['table_name'];
 
-	@State(state => state.mirrorExcGcsToGbqConfs.data) mirrorExcGcsToGbqConfs!: Object;
-	@State(state => state.mirrorExcGcsToGbqConfDetails.data) mirrorExcGcsToGbqConfDetails!: Object;
+	@State((state) => state.mirrorExcGcsToGbqConfs.data) mirrorExcGcsToGbqConfs!: Object;
+	@State((state) => state.mirrorExcGcsToGbqConfDetails.data) mirrorExcGcsToGbqConfDetails!: Object;
 
 	@Getter('filters/whereConfFilter') whereConfFilter!: WhereConfFilter;
 
@@ -64,7 +64,7 @@ export default class StorageToTableConfigurationsListingView extends Mixins(
 			await this.$store
 				.dispatch('mirrorExcGcsToGbqConfDetails/fetchAndAdd', { bucketId, where: this.whereConfFilter })
 				.then(() => {
-					Object.values(this.mirrorExcGcsToGbqConfDetails).forEach(val => (val.bucket_id = bucketId));
+					Object.values(this.mirrorExcGcsToGbqConfDetails).forEach((val) => (val.bucket_id = bucketId));
 					items.push(Object.values(this.mirrorExcGcsToGbqConfDetails));
 				});
 		}

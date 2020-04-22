@@ -13,7 +13,7 @@
 					<span class="mr-3 body-2">{{ information.label }}:</span>
 					<input
 						type="text"
-						v-debounce:1s="value => saveUserInformation(information.label, value)"
+						v-debounce:1s="(value) => saveUserInformation(information.label, value)"
 						:placeholder="information.placeholder"
 						:value="information.value"
 						class="primary--text font-weight-light body-2 input"
@@ -57,10 +57,10 @@ import ParametersList from '@/components/data-workflows/common/item/parameters/P
 import ProfileAccounts from './ProfileAccounts.vue';
 
 @Component({
-	components: { AvatarComponent, ParametersList }
+	components: { AvatarComponent, ParametersList },
 })
 export default class InformationTab extends Vue {
-	@State(state => Object.values(state.users.data)[0]) currentUser!: User;
+	@State((state) => Object.values(state.users.data)[0]) currentUser!: User;
 
 	@Getter('user/user') user!: User;
 
@@ -73,7 +73,7 @@ export default class InformationTab extends Vue {
 
 		this.$store.dispatch(`${users.moduleName}/patch`, {
 			id: this.user.uid,
-			[lowerCaseKey]: value
+			[lowerCaseKey]: value,
 		});
 	}
 
@@ -88,32 +88,32 @@ export default class InformationTab extends Vue {
 				icon: 'mdi-account',
 				label: 'Title',
 				placeholder: 'Enter a title',
-				value: this.currentUser ? this.currentUser.title : ''
+				value: this.currentUser ? this.currentUser.title : '',
 			},
 			{
 				icon: 'mdi-email-outline',
 				label: 'Email',
 				placeholder: 'Enter an email',
-				value: this.currentUser ? this.currentUser.email : ''
+				value: this.currentUser ? this.currentUser.email : '',
 			},
 			{
 				icon: 'mdi-phone',
 				label: 'Phone',
 				placeholder: 'Enter a phone number',
-				value: this.currentUser ? this.currentUser.phone : ''
+				value: this.currentUser ? this.currentUser.phone : '',
 			},
 			{
 				icon: 'mdi-map-marker',
 				label: 'Location',
 				placeholder: 'Enter a location',
-				value: this.currentUser ? this.currentUser.location : ''
+				value: this.currentUser ? this.currentUser.location : '',
 			},
 			{
 				icon: 'mdi-clock-outline',
 				label: 'Timezone',
 				placeholder: 'Enter a timezone',
-				value: this.currentUser ? this.currentUser.timezone : ''
-			}
+				value: this.currentUser ? this.currentUser.timezone : '',
+			},
 		];
 	}
 
@@ -121,7 +121,7 @@ export default class InformationTab extends Vue {
 		return [
 			{ id: 'email', label: 'Email', value: this.user.email },
 			{ id: 'emailVerified', label: 'Email Verified', value: this.user.emailVerified },
-			{ id: 'creationTime', label: 'Creation Time', value: this.user.metadata.creationTime }
+			{ id: 'creationTime', label: 'Creation Time', value: this.user.metadata.creationTime },
 		];
 	}
 
@@ -133,9 +133,9 @@ export default class InformationTab extends Vue {
 				label: 'User Accounts',
 				component: ProfileAccounts,
 				properties: {
-					accounts: this.user.accounts
-				}
-			}
+					accounts: this.user.accounts,
+				},
+			},
 		];
 	}
 }

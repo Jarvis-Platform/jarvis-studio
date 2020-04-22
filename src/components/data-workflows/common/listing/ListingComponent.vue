@@ -123,9 +123,9 @@ type Filter = [string, string, any];
 		...mapState({
 			firestoreItems(state: any) {
 				return state[this.moduleName].data;
-			}
-		})
-	}
+			},
+		}),
+	},
 })
 export default class ListingComponent extends Vue {
 	@Prop({ type: String, required: true }) type!: string; // TODO: Use RUNS or CONFIGURATIONS constants
@@ -182,7 +182,7 @@ export default class ListingComponent extends Vue {
 	// }
 
 	toggleExpand(item: AnyObject) {
-		const isAlreadyExpand = this.expanded.filter(expandedItem => expandedItem.id === item.id).length === 1;
+		const isAlreadyExpand = this.expanded.filter((expandedItem) => expandedItem.id === item.id).length === 1;
 
 		if (isAlreadyExpand) {
 			this.expanded = [];
@@ -221,15 +221,11 @@ export default class ListingComponent extends Vue {
 		let where: Filter[];
 
 		if (this.isOtherRunDisplay) {
-			const minDate = moment()
-				.utc()
-				.startOf('day')
-				.subtract(1, 'month')
-				.toISOString();
+			const minDate = moment().utc().startOf('day').subtract(1, 'month').toISOString();
 
 			where = [
 				['dag_execution_date', '>=', minDate],
-				['job_id', '==', this.jobId]
+				['job_id', '==', this.jobId],
 			];
 		} else {
 			switch (this.type) {
@@ -264,9 +260,9 @@ export default class ListingComponent extends Vue {
 
 	get formattedItems() {
 		const dataArray = Object.values(this.firestoreItems);
-		const formattedData = dataArray.map(function(data: any) {
+		const formattedData = dataArray.map(function (data: any) {
 			return {
-				activeConfColor: getActiveConfColor(data.activated, data.archived)
+				activeConfColor: getActiveConfColor(data.activated, data.archived),
 			};
 		});
 		return merge(dataArray, formattedData);

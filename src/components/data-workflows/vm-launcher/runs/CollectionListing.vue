@@ -27,11 +27,11 @@ import {
 	DAG_EXECUTION_DATE,
 	DAG_ID,
 	ENVIRONMENT,
-	STATUS
+	STATUS,
 } from '@/constants/data-workflows/listing/header-items';
 
 @Component({
-	components: { ListingComponent }
+	components: { ListingComponent },
 })
 export default class CollectionListing extends Mixins(RunCollectionMixin) {
 	get listingComponentProps(): ListingComponentProps {
@@ -41,7 +41,7 @@ export default class CollectionListing extends Mixins(RunCollectionMixin) {
 			headers: [ACCOUNT, ENVIRONMENT, DAG_ID, STATUS, DAG_EXECUTION_DATE, ACTIONS],
 			overriddenColumns: ['dag_id', 'dag_execution_date'],
 			isOtherRunDisplay: this.isOtherRunDisplay,
-			jobId: this.jobId
+			jobId: this.jobId,
 		};
 	}
 

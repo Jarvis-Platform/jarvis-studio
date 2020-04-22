@@ -13,7 +13,7 @@ import CollectionMixin from '@/mixins/data-workflows/collection/collection-mixin
 import { StorageToStorage } from '@/components/data-workflows/runs-collections';
 
 @Component({
-	components: { StorageToStorageCollectionListing: StorageToStorage.collectionListing }
+	components: { StorageToStorageCollectionListing: StorageToStorage.collectionListing },
 })
 export default class StorageToStorageRunsListingView extends Mixins(HeaderInfosMixin, CollectionMixin) {}
 </script>

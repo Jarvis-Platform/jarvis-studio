@@ -13,7 +13,7 @@ export default class ConfigurationDocMixin extends DocMixin {
 		// TODO: Add User info
 		return {
 			update_date: this.item.update_date || this.item.updated_date,
-			updated_by: this.item.updated_by
+			updated_by: this.item.updated_by,
 		};
 	}
 
@@ -26,7 +26,7 @@ export default class ConfigurationDocMixin extends DocMixin {
 			moduleName: this.moduleName,
 			tabsItems: this.itemTabsItems,
 			type: this.type!,
-			updateInformation: this.updateInformation
+			updateInformation: this.updateInformation,
 		};
 	}
 

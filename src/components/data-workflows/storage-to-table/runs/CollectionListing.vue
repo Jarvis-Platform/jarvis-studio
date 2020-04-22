@@ -28,11 +28,11 @@ import {
 	ENVIRONMENT,
 	GBQ_TABLE_REFRESHED,
 	GCS_TRIGGERING_FILE,
-	STATUS
+	STATUS,
 } from '@/constants/data-workflows/listing/header-items';
 
 @Component({
-	components: { ListingComponent }
+	components: { ListingComponent },
 })
 export default class CollectionListing extends Mixins(RunCollectionMixin) {
 	get listingComponentProps(): ListingComponentProps {
@@ -42,7 +42,7 @@ export default class CollectionListing extends Mixins(RunCollectionMixin) {
 			headers: [ACCOUNT, ENVIRONMENT, GBQ_TABLE_REFRESHED, GCS_TRIGGERING_FILE, STATUS, DAG_EXECUTION_DATE, ACTIONS],
 			overriddenColumns: ['gcs_triggering_file', 'dag_execution_date'],
 			isOtherRunDisplay: this.isOtherRunDisplay,
-			jobId: this.jobId
+			jobId: this.jobId,
 		};
 	}
 

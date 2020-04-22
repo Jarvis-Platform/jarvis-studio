@@ -73,7 +73,7 @@ import { Component, Vue } from 'vue-property-decorator';
 import VueJsonPretty from 'vue-json-pretty';
 
 @Component({
-	components: { VueJsonPretty }
+	components: { VueJsonPretty },
 })
 export default class AccountsContent extends Vue {
 	dialog: boolean = false;
@@ -84,26 +84,26 @@ export default class AccountsContent extends Vue {
 				text: 'Account Name',
 				align: 'left',
 				sortable: true,
-				value: 'account_name'
+				value: 'account_name',
 			},
 			{
 				text: 'Account ID',
 				align: 'left',
 				sortable: true,
-				value: 'id'
+				value: 'id',
 			},
 			{
 				text: 'Dlk Project ID',
 				align: 'left',
 				sortable: true,
-				value: 'dlk_gcp_id_project'
+				value: 'dlk_gcp_id_project',
 			},
 			{
 				text: 'Exchange Project ID',
 				align: 'left',
 				sortable: true,
-				value: 'exc_gcp_id_project'
-			}
+				value: 'exc_gcp_id_project',
+			},
 		];
 	}
 

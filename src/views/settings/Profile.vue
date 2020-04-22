@@ -14,7 +14,7 @@ import { Component, Vue } from 'vue-property-decorator';
 import ProfileContent from '@/components/settings/profile/ProfileContent.vue';
 
 @Component({
-	components: { ProfileContent }
+	components: { ProfileContent },
 })
 export default class Profile extends Vue {}
 </script>

@@ -28,8 +28,8 @@ export default class VmLauncherConfigurationsItemView extends Mixins(HeaderInfos
 					collection: this.moduleName,
 					activeHeader: true,
 					viewId: this.item.id,
-					viewType: 'conf'
-				}
+					viewType: 'conf',
+				},
 			},
 			{
 				component: 'parameters-list',
@@ -41,16 +41,16 @@ export default class VmLauncherConfigurationsItemView extends Mixins(HeaderInfos
 						{
 							id: 'account',
 							label: 'Account',
-							value: this.item.account
+							value: this.item.account,
 						},
 						{
 							id: 'environment',
 							label: 'Environment',
-							value: this.item.environment
-						}
-					]
-				}
-			}
+							value: this.item.environment,
+						},
+					],
+				},
+			},
 		];
 	}
 }

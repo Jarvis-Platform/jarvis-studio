@@ -13,7 +13,7 @@ import {
 	Blockquote,
 	HardBreak,
 	HorizontalRule,
-	History
+	History,
 } from 'tiptap-vuetify';
 
 export default [
@@ -30,13 +30,13 @@ export default [
 		Heading,
 		{
 			options: {
-				levels: [1, 2, 3]
-			}
-		}
+				levels: [1, 2, 3],
+			},
+		},
 	],
 	Bold,
 	Code,
 	HorizontalRule,
 	Paragraph,
-	HardBreak
+	HardBreak,
 ];

@@ -7,5 +7,5 @@ export const SETTINGS: PathsPrefix = 'settings';
 export default {
 	DATA_MODELS,
 	DATA_WORKFLOWS,
-	SETTINGS
+	SETTINGS,
 };

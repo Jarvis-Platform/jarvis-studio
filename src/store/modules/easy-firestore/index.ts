@@ -79,5 +79,5 @@ export default [
 	tablesToTablesRun,
 	tableToStorageConfs,
 	tableToStorageConfArchive,
-	tableToStorageRuns
+	tableToStorageRuns,
 ];

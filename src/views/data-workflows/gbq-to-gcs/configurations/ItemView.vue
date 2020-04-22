@@ -29,8 +29,8 @@ export default class GbqToGcsConfigurationsItemView extends Mixins(HeaderInfosMi
 					activeHeader: true,
 					viewId: this.item.id,
 					viewType: 'conf',
-					description: null
-				}
+					description: null,
+				},
 			},
 			{
 				component: 'parameters-list',
@@ -42,37 +42,37 @@ export default class GbqToGcsConfigurationsItemView extends Mixins(HeaderInfosMi
 						{
 							id: 'configuration_type',
 							label: 'Configuration Type',
-							value: 'table-to-storage'
+							value: 'table-to-storage',
 						},
 						{
 							id: 'configuration_id',
 							label: 'Configuration ID',
-							value: this.item.id
+							value: this.item.id,
 						},
 						{
 							id: 'account',
 							label: 'Account',
-							value: this.item.account
+							value: this.item.account,
 						},
 						{
 							id: 'environment',
 							label: 'Environment',
-							value: this.item.environment
+							value: this.item.environment,
 						},
 						{
 							id: 'activated',
 							label: 'Activated',
 							value: this.item.activated,
-							default: true
+							default: true,
 						},
 						{
 							id: 'archive',
 							label: 'Archive',
 							value: this.item.archived,
-							default: false
-						}
-					]
-				}
+							default: false,
+						},
+					],
+				},
 			},
 			{
 				component: 'parameters-table',
@@ -83,36 +83,36 @@ export default class GbqToGcsConfigurationsItemView extends Mixins(HeaderInfosMi
 						{
 							label: 'Type',
 							field: 'source_type',
-							width: '100px'
+							width: '100px',
 						},
 						{
 							label: 'Storage ID',
 							field: 'gcs_dest_bucket',
-							width: '200px'
+							width: '200px',
 						},
 						{
 							label: 'Destination Folder',
 							field: 'gcs_dest_prefix',
-							width: '200px'
+							width: '200px',
 						},
 						{
 							label: 'Output Filename',
 							field: 'output_filename',
-							width: '200px'
-						}
+							width: '200px',
+						},
 					],
 					rows: [
 						{
 							source_type: 'GCS',
 							gcs_dest_bucket: this.item.gcs_dest_bucket,
 							gcs_dest_prefix: this.item.gcs_dest_prefix,
-							output_filename: this.item.output_filename
-						}
+							output_filename: this.item.output_filename,
+						},
 					],
 					vflexLength: 'xs9',
 					lineNumbers: false,
-					searchOptionsEnabled: false
-				}
+					searchOptionsEnabled: false,
+				},
 			},
 			{
 				component: 'parameters-list',
@@ -125,22 +125,22 @@ export default class GbqToGcsConfigurationsItemView extends Mixins(HeaderInfosMi
 							id: 'compression',
 							label: 'Compressed',
 							value: this.item.compression,
-							default: 'None'
+							default: 'None',
 						},
 						{
 							id: 'field_delimiter',
 							label: 'Field Delimiter',
 							value: this.item.field_delimiter,
-							default: '|'
+							default: '|',
 						},
 						{
 							id: 'delete_dest_bucket_content',
 							label: 'Delete Destination Storage Content',
 							value: this.item.delete_dest_bucket_content,
-							default: false
-						}
-					]
-				}
+							default: false,
+						},
+					],
+				},
 			},
 			{
 				component: 'parameters-list',
@@ -152,7 +152,7 @@ export default class GbqToGcsConfigurationsItemView extends Mixins(HeaderInfosMi
 						{
 							id: 'gcp_project',
 							label: 'Bigquery Project ID',
-							value: this.item.gcp_project
+							value: this.item.gcp_project,
 						},
 						{
 							id: '',
@@ -160,17 +160,17 @@ export default class GbqToGcsConfigurationsItemView extends Mixins(HeaderInfosMi
 							component: 'sql-viewer',
 							properties: {
 								id: this.item.id,
-								sqlBinary: this.item.sql
-							}
+								sqlBinary: this.item.sql,
+							},
 						},
 						{
 							id: 'copy_table',
 							label: 'Keep Table',
 							value: this.item.copy_table,
-							default: false
-						}
-					]
-				}
+							default: false,
+						},
+					],
+				},
 			},
 			{
 				component: 'parameters-table',
@@ -182,24 +182,24 @@ export default class GbqToGcsConfigurationsItemView extends Mixins(HeaderInfosMi
 						{
 							label: 'Type',
 							field: 'source_type',
-							width: '150px'
+							width: '150px',
 						},
 						{
 							label: 'Project ID',
-							field: 'dest_gcp_project_id'
+							field: 'dest_gcp_project_id',
 						},
 						{
 							label: 'Dataset',
-							field: 'dest_gbq_dataset'
+							field: 'dest_gbq_dataset',
 						},
 						{
 							label: 'Table Name',
-							field: 'dest_gbq_table'
+							field: 'dest_gbq_table',
 						},
 						{
 							label: 'Table Suffix',
-							field: 'dest_gbq_table_suffix'
-						}
+							field: 'dest_gbq_table_suffix',
+						},
 					],
 					rows: [
 						{
@@ -207,13 +207,13 @@ export default class GbqToGcsConfigurationsItemView extends Mixins(HeaderInfosMi
 							dest_gcp_project_id: this.item.dest_gcp_project_id,
 							dest_gbq_dataset: this.item.dest_gbq_dataset,
 							dest_gbq_table: this.item.dest_gbq_table,
-							dest_gbq_table_suffix: this.item.dest_gbq_table_suffix
-						}
+							dest_gbq_table_suffix: this.item.dest_gbq_table_suffix,
+						},
 					],
 					vflexLength: 'xs9',
 					lineNumbers: false,
-					searchOptionsEnabled: false
-				}
+					searchOptionsEnabled: false,
+				},
 			},
 			{
 				component: 'parameters-table',
@@ -226,37 +226,37 @@ export default class GbqToGcsConfigurationsItemView extends Mixins(HeaderInfosMi
 							field: 'update_date',
 							type: 'date',
 							dateInputFormat: "yyyy-MM-dd'T'HH:mm:ss.SSSSSS", // expects 2018-03-16 yyyy-MM-dd'T'HH:mm:ss.SSSxxx
-							dateOutputFormat: 'yyyy-MM-dd HH:mm:ss' // outputs Mar 16th 2018
+							dateOutputFormat: 'yyyy-MM-dd HH:mm:ss', // outputs Mar 16th 2018
 						},
 						{
 							label: 'Updated By',
-							field: 'updated_by'
+							field: 'updated_by',
 						},
 						{
 							label: 'Creation Date',
 							field: 'creation_date',
 							type: 'date',
 							dateInputFormat: "yyyy-MM-dd'T'HH:mm:ss.SSSSSS", // expects 2018-03-16
-							dateOutputFormat: 'yyyy-MM-dd HH:mm:ss' // outputs Mar 16th 2018
+							dateOutputFormat: 'yyyy-MM-dd HH:mm:ss', // outputs Mar 16th 2018
 						},
 						{
 							label: 'Created By',
-							field: 'created_by'
-						}
+							field: 'created_by',
+						},
 					],
 					rows: [
 						{
 							update_date: this.item.update_date || this.item.updated_date,
 							updated_by: this.item.updated_by,
 							creation_date: this.item.creation_date,
-							created_by: this.item.created_by
-						}
+							created_by: this.item.created_by,
+						},
 					],
 					vflexLength: 'xs9',
 					lineNumbers: false,
-					searchOptionsEnabled: false
-				}
-			}
+					searchOptionsEnabled: false,
+				},
+			},
 		];
 	}
 }

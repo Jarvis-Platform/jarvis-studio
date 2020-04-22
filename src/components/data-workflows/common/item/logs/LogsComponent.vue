@@ -71,19 +71,19 @@ export default class LogsComponent extends Vue {
 			taskId: this.taskId,
 			dagRunId: this.dagRunId,
 			dagType: this.dagType,
-			dagExecutionDate: this.dagExecutionDate
+			dagExecutionDate: this.dagExecutionDate,
 		})
-			.then(res => {
+			.then((res) => {
 				const data = res.data;
 
-				Object.keys(data).forEach(key => {
+				Object.keys(data).forEach((key) => {
 					decodedLogFiles[key] = Base64.decode(data[key]);
 				});
 
 				this.logs = decodedLogFiles;
 				this.isLoading = false;
 			})
-			.catch(err => {
+			.catch((err) => {
 				this.hasError = true;
 				this.errorMsg = err;
 				this.isLoading = false;

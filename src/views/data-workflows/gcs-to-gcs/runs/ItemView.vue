@@ -22,7 +22,7 @@ export default class GcsToGcsRunsItemView extends Mixins(HeaderInfosMixin, RunDo
 			destinationStorageRows.push({
 				destination_type: 'GCS',
 				destination_storage_id: this.item.configuration_context.destination_bucket[i],
-				destination_input_folder: this.item.configuration_context.destination_gcs_prefix[i]
+				destination_input_folder: this.item.configuration_context.destination_gcs_prefix[i],
 			});
 		}
 
@@ -33,7 +33,7 @@ export default class GcsToGcsRunsItemView extends Mixins(HeaderInfosMixin, RunDo
 		return this.item.configuration_context.filename_templates.map((filename: string) => {
 			return {
 				filename_template: filename,
-				filename_description: 'No Description'
+				filename_description: 'No Description',
 			};
 		});
 	}
@@ -49,8 +49,8 @@ export default class GcsToGcsRunsItemView extends Mixins(HeaderInfosMixin, RunDo
 					viewId: this.item.gcs_triggering_file,
 					viewType: 'run',
 					description: null,
-					runStatus: this.item.status
-				}
+					runStatus: this.item.status,
+				},
 			},
 			{
 				component: 'parameters-list',
@@ -62,50 +62,50 @@ export default class GcsToGcsRunsItemView extends Mixins(HeaderInfosMixin, RunDo
 						{
 							id: 'account',
 							label: 'Account',
-							value: this.item.account
+							value: this.item.account,
 						},
 						{
 							id: 'environment',
 							label: 'Environment',
-							value: this.item.environment
+							value: this.item.environment,
 						},
 						{
 							id: 'matching_filename_template',
 							label: 'Filename Matched',
-							value: this.item.matching_filename_template
+							value: this.item.matching_filename_template,
 						},
 						{
 							id: 'gcs_triggering_file',
 							label: 'File Triggered',
-							value: this.item.gcs_triggering_file
+							value: this.item.gcs_triggering_file,
 						},
 						{
 							id: 'dag_id',
 							label: 'Dag Id',
-							value: this.item.dag_id
+							value: this.item.dag_id,
 						},
 						{
 							id: 'cloud_function_triggered',
 							label: 'Cloud Function Triggered',
-							value: this.item.cloud_function_triggered
+							value: this.item.cloud_function_triggered,
 						},
 						{
 							id: 'job_id',
 							label: 'Job Id',
-							value: this.item.job_id
+							value: this.item.job_id,
 						},
 						{
 							id: 'dag_execution_date',
 							label: 'Execution Date',
-							value: this.item.dag_execution_date
+							value: this.item.dag_execution_date,
 						},
 						{
 							id: 'dag_run_id',
 							label: 'Dag Run Id',
-							value: this.item.dag_run_id
-						}
-					]
-				}
+							value: this.item.dag_run_id,
+						},
+					],
+				},
 			},
 			{
 				component: 'parameters-table',
@@ -116,36 +116,36 @@ export default class GcsToGcsRunsItemView extends Mixins(HeaderInfosMixin, RunDo
 						{
 							label: 'Type',
 							field: 'source_type',
-							width: '100px'
+							width: '100px',
 						},
 						{
 							label: 'Storage ID',
 							field: 'source_storage_id',
-							width: '200px'
+							width: '200px',
 						},
 						{
 							label: 'Source Folder',
 							field: 'source_input_folder',
-							width: '200px'
+							width: '200px',
 						},
 						{
 							label: 'Archive Folder',
 							field: 'source_archive_folder',
-							width: '200px'
-						}
+							width: '200px',
+						},
 					],
 					rows: [
 						{
 							source_type: 'GCS',
 							source_storage_id: this.item.configuration_context.source_bucket,
 							source_input_folder: this.item.configuration_context.source_gcs_prefix,
-							source_archive_folder: this.item.configuration_context.source_archive_prefix
-						}
+							source_archive_folder: this.item.configuration_context.source_archive_prefix,
+						},
 					],
 					vflexLength: 'xs9',
 					lineNumbers: false,
-					searchOptionsEnabled: false
-				}
+					searchOptionsEnabled: false,
+				},
 			},
 			{
 				component: 'parameters-table',
@@ -156,25 +156,25 @@ export default class GcsToGcsRunsItemView extends Mixins(HeaderInfosMixin, RunDo
 						{
 							label: 'Type',
 							field: 'destination_type',
-							width: '100px'
+							width: '100px',
 						},
 						{
 							label: 'Storage ID',
 							field: 'destination_storage_id',
-							width: '200px'
+							width: '200px',
 						},
 						{
 							label: 'Destination Folder',
 							field: 'destination_input_folder',
-							width: '230px'
-						}
+							width: '230px',
+						},
 					],
 					rows: this.getDestinationStorageRows(),
 					vflexLength: 'xs7',
 					lineNumbers: false,
-					searchOptionsEnabled: false
-				}
-			}
+					searchOptionsEnabled: false,
+				},
+			},
 		];
 	}
 
@@ -187,8 +187,8 @@ export default class GcsToGcsRunsItemView extends Mixins(HeaderInfosMixin, RunDo
 					activeHeader: false,
 					viewId: this.item.cloud_function_triggered,
 					viewType: 'conf',
-					description: null
-				}
+					description: null,
+				},
 			},
 			{
 				component: 'parameters-list',
@@ -200,15 +200,15 @@ export default class GcsToGcsRunsItemView extends Mixins(HeaderInfosMixin, RunDo
 						{
 							id: 'account',
 							label: 'Account',
-							value: this.item.configuration_context.account
+							value: this.item.configuration_context.account,
 						},
 						{
 							id: 'environment',
 							label: 'Environment',
-							value: this.item.configuration_context.environment
-						}
-					]
-				}
+							value: this.item.configuration_context.environment,
+						},
+					],
+				},
 			},
 			{
 				component: 'parameters-table',
@@ -219,36 +219,36 @@ export default class GcsToGcsRunsItemView extends Mixins(HeaderInfosMixin, RunDo
 						{
 							label: 'Type',
 							field: 'source_type',
-							width: '100px'
+							width: '100px',
 						},
 						{
 							label: 'Storage ID',
 							field: 'source_storage_id',
-							width: '200px'
+							width: '200px',
 						},
 						{
 							label: 'Source Folder',
 							field: 'source_input_folder',
-							width: '200px'
+							width: '200px',
 						},
 						{
 							label: 'Archive Folder',
 							field: 'source_archive_folder',
-							width: '200px'
-						}
+							width: '200px',
+						},
 					],
 					rows: [
 						{
 							source_type: 'GCS',
 							source_storage_id: this.item.configuration_context.source_bucket,
 							source_input_folder: this.item.configuration_context.source_gcs_prefix,
-							source_archive_folder: this.item.configuration_context.source_archive_prefix
-						}
+							source_archive_folder: this.item.configuration_context.source_archive_prefix,
+						},
 					],
 					vflexLength: 'xs9',
 					lineNumbers: false,
-					searchOptionsEnabled: false
-				}
+					searchOptionsEnabled: false,
+				},
 			},
 			{
 				component: 'parameters-table',
@@ -259,24 +259,24 @@ export default class GcsToGcsRunsItemView extends Mixins(HeaderInfosMixin, RunDo
 						{
 							label: 'Type',
 							field: 'destination_type',
-							width: '100px'
+							width: '100px',
 						},
 						{
 							label: 'Storage ID',
 							field: 'destination_storage_id',
-							width: '200px'
+							width: '200px',
 						},
 						{
 							label: 'Destination Folder',
 							field: 'destination_input_folder',
-							width: '230px'
-						}
+							width: '230px',
+						},
 					],
 					rows: this.getDestinationStorageRows(),
 					vflexLength: 'xs7',
 					lineNumbers: false,
-					searchOptionsEnabled: false
-				}
+					searchOptionsEnabled: false,
+				},
 			},
 			{
 				component: 'parameters-table',
@@ -287,18 +287,18 @@ export default class GcsToGcsRunsItemView extends Mixins(HeaderInfosMixin, RunDo
 					columns: [
 						{
 							label: 'File Name Template',
-							field: 'filename_template'
+							field: 'filename_template',
 						},
 						{
 							label: 'File Name Description',
-							field: 'filename_description'
-						}
+							field: 'filename_description',
+						},
 					],
 					rows: this.getFileNameTemplateRows(),
 					vflexLength: 'xs9',
 					lineNumbers: false,
-					searchOptionsEnabled: false
-				}
+					searchOptionsEnabled: false,
+				},
 			},
 			{
 				component: 'parameters-list',
@@ -308,16 +308,16 @@ export default class GcsToGcsRunsItemView extends Mixins(HeaderInfosMixin, RunDo
 						{
 							id: 'updated_date',
 							label: 'Updated date',
-							value: this.item.configuration_context.update_date || this.item.configuration_context.updated_date
+							value: this.item.configuration_context.update_date || this.item.configuration_context.updated_date,
 						},
 						{
 							id: 'updated_by',
 							label: 'Updated by',
-							value: this.item.configuration_context.updated_by
-						}
-					]
-				}
-			}
+							value: this.item.configuration_context.updated_by,
+						},
+					],
+				},
+			},
 		];
 	}
 }

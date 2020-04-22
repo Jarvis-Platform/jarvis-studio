@@ -13,7 +13,7 @@ import CollectionMixin from '@/mixins/data-workflows/collection/collection-mixin
 import { GbqToGcs } from '@/components/data-workflows/runs-collections';
 
 @Component({
-	components: { GbqToGcsCollectionListing: GbqToGcs.collectionListing }
+	components: { GbqToGcsCollectionListing: GbqToGcs.collectionListing },
 })
 export default class GbqToGcsRunsListingView extends Mixins(HeaderInfosMixin, CollectionMixin) {}
 </script>

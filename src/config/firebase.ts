@@ -13,7 +13,7 @@ const options: FirebaseOptions = {
 		: process.env.VUE_APP_FIREBASE_DATABASE_URL,
 	projectId: process.env.VUE_APP_FIREBASE_PROJECT_ID,
 	storageBucket: process.env.VUE_APP_FIREBASE_STORAGE_BUCKET,
-	messagingSenderId: process.env.VUE_APP_FIREBASE_MESSAGING_SENDER_ID
+	messagingSenderId: process.env.VUE_APP_FIREBASE_MESSAGING_SENDER_ID,
 };
 
 function initFirebase() {
@@ -27,14 +27,14 @@ function initFirebase() {
 	firebase
 		.auth()
 		.setPersistence(firebase.auth.Auth.Persistence.SESSION)
-		.catch(error => console.error(error.message));
+		.catch((error) => console.error(error.message));
 
 	return new Promise((resolve, reject) => {
 		firebase
 			.firestore()
 			.enablePersistence()
 			.then(resolve)
-			.catch(err => {
+			.catch((err) => {
 				if (err.code === 'failed-precondition') {
 					// Multiple tabs open, persistence can only be enabled in one tab at a a time.
 					reject(err);

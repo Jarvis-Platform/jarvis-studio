@@ -6,5 +6,5 @@ export const storageToStorageConfsArchive: IEasyFirestoreModule = {
 	firestoreRefType: COLLECTION_REF,
 	moduleName: 'storageToStorageConfsArchive',
 	statePropName: 'data',
-	sync: SYNC
+	sync: SYNC,
 };

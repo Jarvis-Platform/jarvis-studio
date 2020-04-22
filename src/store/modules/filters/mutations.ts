@@ -17,13 +17,9 @@ export const mutations: MutationTree<FilterState> = {
 		state.confActivatedFilterSelected = confActivatedFilterSelected;
 	},
 	updateMinDateFilter(state, dateFilterSelected) {
-		state.minDateFilter = moment()
-			.utc()
-			.startOf('day')
-			.subtract(dateFilterSelected.value, 'days')
-			.toISOString();
+		state.minDateFilter = moment().utc().startOf('day').subtract(dateFilterSelected.value, 'days').toISOString();
 	},
 	updateAccountFilterSelected(state, accounts) {
 		state.filteredAccounts = accounts;
-	}
+	},
 };

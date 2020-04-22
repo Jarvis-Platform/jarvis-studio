@@ -8,7 +8,7 @@ import {
 	WORKFLOW_STATUS_LISTING,
 	WORKFLOW_STATUS_ITEM,
 	WORKFLOW_CONFIGURATIONS_LISTING,
-	WORKFLOW_CONFIGURATIONS_ITEM
+	WORKFLOW_CONFIGURATIONS_ITEM,
 } from '@/constants/router/routes-names';
 
 export const workflowRoutes: RouteConfig[] = [
@@ -22,7 +22,7 @@ export const workflowRoutes: RouteConfig[] = [
 		component: () =>
 			import(
 				/* webpackChunkName: "/data-workflows/workflow/status/listing" */ '@/views/data-workflows/workflow/status/ListingView.vue'
-			)
+			),
 	},
 	{
 		path: `/${DATA_WORKFLOWS}/${WORKFLOW.url}/${STATUS}/:id`,
@@ -31,7 +31,7 @@ export const workflowRoutes: RouteConfig[] = [
 		component: () =>
 			import(
 				/* webpackChunkName: "/data-workflows/workflow/status/listing" */ '@/views/data-workflows/workflow/status/ItemView.vue'
-			)
+			),
 	},
 
 	/**
@@ -44,7 +44,7 @@ export const workflowRoutes: RouteConfig[] = [
 		component: () =>
 			import(
 				/* webpackChunkName: "/data-workflows/workflow/configurations/listing" */ '@/views/data-workflows/workflow/configurations/ListingView.vue'
-			)
+			),
 	},
 	{
 		path: `/${DATA_WORKFLOWS}/${WORKFLOW.url}/${CONFIGURATIONS}/:id`,
@@ -53,6 +53,6 @@ export const workflowRoutes: RouteConfig[] = [
 		component: () =>
 			import(
 				/* webpackChunkName: "/data-workflows/workflow/configurations/listing" */ '@/views/data-workflows/workflow/configurations/ItemView.vue'
-			)
-	}
+			),
+	},
 ];

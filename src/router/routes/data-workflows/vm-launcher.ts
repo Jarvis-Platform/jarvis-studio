@@ -8,7 +8,7 @@ import {
 	VM_LAUNCHER_RUNS_LISTING,
 	VM_LAUNCHER_RUNS_ITEM,
 	VM_LAUNCHER_CONFIGURATIONS_LISTING,
-	VM_LAUNCHER_CONFIGURATIONS_ITEM
+	VM_LAUNCHER_CONFIGURATIONS_ITEM,
 } from '@/constants/router/routes-names';
 
 export const vmLauncherRoutes: RouteConfig[] = [
@@ -22,7 +22,7 @@ export const vmLauncherRoutes: RouteConfig[] = [
 		component: () =>
 			import(
 				/* webpackChunkName: "/data-workflows/vm-launcher/runs/listing" */ '@/views/data-workflows/vm-launcher/runs/ListingView.vue'
-			)
+			),
 	},
 	{
 		path: `/${DATA_WORKFLOWS}/${VM_LAUNCHER.url}/${RUNS}/:id`,
@@ -31,7 +31,7 @@ export const vmLauncherRoutes: RouteConfig[] = [
 		component: () =>
 			import(
 				/* webpackChunkName: "/data-workflows/vm-launcher/runs/listing" */ '@/views/data-workflows/vm-launcher/runs/ItemView.vue'
-			)
+			),
 	},
 
 	/**
@@ -44,7 +44,7 @@ export const vmLauncherRoutes: RouteConfig[] = [
 		component: () =>
 			import(
 				/* webpackChunkName: "/data-workflows/vm-launcher/configurations/listing" */ '@/views/data-workflows/vm-launcher/configurations/ListingView.vue'
-			)
+			),
 	},
 	{
 		path: `/${DATA_WORKFLOWS}/${VM_LAUNCHER.url}/${CONFIGURATIONS}/:id`,
@@ -53,6 +53,6 @@ export const vmLauncherRoutes: RouteConfig[] = [
 		component: () =>
 			import(
 				/* webpackChunkName: "/data-workflows/vm-launcher/configurations/listing" */ '@/views/data-workflows/vm-launcher/configurations/ItemView.vue'
-			)
-	}
+			),
+	},
 ];

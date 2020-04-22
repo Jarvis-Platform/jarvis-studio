@@ -11,7 +11,7 @@ import * as CollectionsListings from '@/components/data-workflows/runs-collectio
 import ParametersTable from '@/components/data-workflows/common/item/parameters/ParametersTable.vue';
 
 @Component({
-	components: { ParametersTable }
+	components: { ParametersTable },
 })
 export default class OtherRuns extends Vue {
 	@Prop({ type: Object, required: true }) private doc!: Doc;
@@ -19,7 +19,7 @@ export default class OtherRuns extends Vue {
 
 	get componentName(): string {
 		const collectionsListings: AnyObject = CollectionsListings;
-		return Object.values(collectionsListings).find(collection => collection.moduleName === this.moduleName)
+		return Object.values(collectionsListings).find((collection) => collection.moduleName === this.moduleName)
 			.collectionListing;
 	}
 }

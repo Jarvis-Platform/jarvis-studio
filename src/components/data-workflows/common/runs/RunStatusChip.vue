@@ -110,20 +110,20 @@ export default class RunStatusChip extends Vue {
 		const runStatusList: { icon: string; value: RunStatus }[] = [
 			{
 				icon: mdiCheckCircleOutline,
-				value: 'SUCCESS'
+				value: 'SUCCESS',
 			},
 			{
 				icon: mdiExclamationThick,
-				value: 'FAILED'
+				value: 'FAILED',
 			},
 			{
 				icon: mdiClockFast,
-				value: 'RUNNING'
+				value: 'RUNNING',
 			},
 			{
 				icon: mdiEyeCheckOutline,
-				value: 'CHECKED'
-			}
+				value: 'CHECKED',
+			},
 		];
 
 		return runStatusList;

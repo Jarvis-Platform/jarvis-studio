@@ -40,7 +40,7 @@ import importedComponents from './imported-components';
 import { CONFIGURATIONS } from '@/constants/data-workflows/status';
 
 @Component({
-	components: { ...importedComponents }
+	components: { ...importedComponents },
 })
 export default class ItemComponent extends Vue {
 	@Prop({ required: true, type: String }) type!: string;

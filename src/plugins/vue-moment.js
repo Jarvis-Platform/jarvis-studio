@@ -4,7 +4,7 @@ import VueMoment from 'vue-moment';
 import moment from 'moment-timezone';
 
 Vue.use(VueMoment, {
-	moment
+	moment,
 });
 
 export default new VueMoment();

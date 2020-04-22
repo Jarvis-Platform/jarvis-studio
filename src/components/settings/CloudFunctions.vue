@@ -24,7 +24,7 @@ import { Component, Vue } from 'vue-property-decorator';
 import VueJsonPretty from 'vue-json-pretty';
 
 @Component({
-	components: { VueJsonPretty }
+	components: { VueJsonPretty },
 })
 export default class CloudFunctions extends Vue {
 	mounted() {

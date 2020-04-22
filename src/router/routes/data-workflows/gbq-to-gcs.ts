@@ -8,7 +8,7 @@ import {
 	GBQ_TO_GCS_RUNS_LISTING,
 	GBQ_TO_GCS_RUNS_ITEM,
 	GBQ_TO_GCS_CONFIGURATIONS_LISTING,
-	GBQ_TO_GCS_CONFIGURATIONS_ITEM
+	GBQ_TO_GCS_CONFIGURATIONS_ITEM,
 } from '@/constants/router/routes-names';
 
 export const gbqToGcsRoutes: RouteConfig[] = [
@@ -22,7 +22,7 @@ export const gbqToGcsRoutes: RouteConfig[] = [
 		component: () =>
 			import(
 				/* webpackChunkName: "/data-workflows/gbq-to-gcs/runs/listing" */ '@/views/data-workflows/gbq-to-gcs/runs/ListingView.vue'
-			)
+			),
 	},
 	{
 		path: `/${DATA_WORKFLOWS}/${GBQ_TO_GCS.url}/${RUNS}/:id`,
@@ -31,7 +31,7 @@ export const gbqToGcsRoutes: RouteConfig[] = [
 		component: () =>
 			import(
 				/* webpackChunkName: "/data-workflows/gbq-to-gcs/runs/listing" */ '@/views/data-workflows/gbq-to-gcs/runs/ItemView.vue'
-			)
+			),
 	},
 
 	/**
@@ -44,7 +44,7 @@ export const gbqToGcsRoutes: RouteConfig[] = [
 		component: () =>
 			import(
 				/* webpackChunkName: "/data-workflows/gbq-to-gcs/configurations/listing" */ '@/views/data-workflows/gbq-to-gcs/configurations/ListingView.vue'
-			)
+			),
 	},
 	{
 		path: `/${DATA_WORKFLOWS}/${GBQ_TO_GCS.url}/${CONFIGURATIONS}/:id`,
@@ -53,6 +53,6 @@ export const gbqToGcsRoutes: RouteConfig[] = [
 		component: () =>
 			import(
 				/* webpackChunkName: "/data-workflows/gbq-to-gcs/configurations/item" */ '@/views/data-workflows/gbq-to-gcs/configurations/ItemView.vue'
-			)
-	}
+			),
+	},
 ];

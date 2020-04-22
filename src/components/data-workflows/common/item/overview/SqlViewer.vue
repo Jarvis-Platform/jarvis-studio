@@ -31,7 +31,7 @@ import Prism from 'vue-prismjs';
 import 'prismjs/themes/prism.css';
 
 @Component({
-	components: { Prism }
+	components: { Prism },
 })
 export default class SQLViewer extends Vue {
 	@Prop(Object) properties!: AnyObject;

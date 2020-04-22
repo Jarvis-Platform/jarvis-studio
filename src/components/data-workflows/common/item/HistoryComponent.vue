@@ -58,9 +58,9 @@ import store from '@/store';
 		...mapState({
 			archivedConfigurations(state: any) {
 				return state[this.archivedConfsModuleName].data;
-			}
-		})
-	}
+			},
+		}),
+	},
 })
 export default class HistoryComponent extends Vue {
 	@Prop({ required: true }) moduleName!: string;

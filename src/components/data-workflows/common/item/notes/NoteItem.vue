@@ -55,7 +55,7 @@ import AvatarComponent from '@/components/common/AvatarComponent.vue';
 import NoteEditor from './editor/NoteEditor.vue';
 
 @Component({
-	components: { AvatarComponent, NoteEditor }
+	components: { AvatarComponent, NoteEditor },
 })
 export default class NoteItem extends Vue {
 	@Prop({ type: Object, required: true }) note!: Note;
@@ -64,9 +64,9 @@ export default class NoteItem extends Vue {
 	@Prop(Boolean) isThreadNote?: boolean;
 	@Prop(Boolean) readOnly?: boolean;
 
-	@State(state => state.notes.parentNote) parentNote!: Note;
-	@State(state => state.notes.threadNotes) threadNotes!: Note[];
-	@State(state => state.notes.showThreadPanel) showThreadPanel!: boolean;
+	@State((state) => state.notes.parentNote) parentNote!: Note;
+	@State((state) => state.notes.threadNotes) threadNotes!: Note[];
+	@State((state) => state.notes.showThreadPanel) showThreadPanel!: boolean;
 
 	@Getter('user/user') user!: User;
 
@@ -88,13 +88,13 @@ export default class NoteItem extends Vue {
 		this.$store
 			.dispatch(`${notesModule.moduleName}/patch`, {
 				id: this.note.id,
-				text
+				text,
 			})
 			.then(() => {
 				this.isEditorLoading = false;
 				this.toggleIsEditing();
 			})
-			.catch(err => {
+			.catch((err) => {
 				console.error(err);
 				this.isEditorLoading = false;
 			});
@@ -111,7 +111,7 @@ export default class NoteItem extends Vue {
 			.then(() => {
 				this.isDeleting = false;
 			})
-			.catch(err => {
+			.catch((err) => {
 				console.log(err);
 			});
 	}

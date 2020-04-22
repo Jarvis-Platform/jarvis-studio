@@ -29,8 +29,8 @@ export default class WorkflowConfigurationsItemView extends Mixins(HeaderInfosMi
 					activeHeader: true,
 					viewId: this.item.id,
 					viewType: 'conf',
-					description: this.item.short_description
-				}
+					description: this.item.short_description,
+				},
 			},
 			{
 				component: 'parameters-list',
@@ -42,15 +42,15 @@ export default class WorkflowConfigurationsItemView extends Mixins(HeaderInfosMi
 						{
 							id: 'account',
 							label: 'Account',
-							value: this.item.account
+							value: this.item.account,
 						},
 						{
 							id: 'environment',
 							label: 'Environment',
-							value: this.item.environment
-						}
-					]
-				}
+							value: this.item.environment,
+						},
+					],
+				},
 			},
 			{
 				component: 'parameters-table',
@@ -60,13 +60,13 @@ export default class WorkflowConfigurationsItemView extends Mixins(HeaderInfosMi
 					columns: [
 						{
 							label: 'Job ID',
-							field: 'job_id'
-						}
+							field: 'job_id',
+						},
 					],
 					rows: [{ job_id: this.item.target_dag }],
 					lineNumbers: true,
-					searchOptionsEnabled: false
-				}
+					searchOptionsEnabled: false,
+				},
 			},
 			{
 				component: 'parameters-table',
@@ -76,16 +76,16 @@ export default class WorkflowConfigurationsItemView extends Mixins(HeaderInfosMi
 					columns: [
 						{
 							label: 'Job ID',
-							field: 'job_id'
-						}
+							field: 'job_id',
+						},
 					],
 					rows: this.item.authorized_job_ids.map((val: string) => {
 						return { job_id: val };
 					}),
 					lineNumbers: true,
-					searchOptionsEnabled: true
-				}
-			}
+					searchOptionsEnabled: true,
+				},
+			},
 		];
 	}
 }

@@ -9,24 +9,24 @@ export const settingsItems: Link[] = [
 	{
 		title: 'Profile',
 		icon: 'account_circle',
-		link: { name: PROFILE }
+		link: { name: PROFILE },
 	},
 	{
 		title: 'Users',
 		icon: 'supervised_user_circle',
 		link: { name: USERS },
-		displayRule: isSuperAdminRule
+		displayRule: isSuperAdminRule,
 	},
 	{
 		title: 'Accounts',
 		icon: 'business',
 		link: { name: ACCOUNTS },
-		displayRule: isSuperAdminRule
+		displayRule: isSuperAdminRule,
 	},
 	{
 		title: 'Cloud Function Configurations',
 		icon: 'settings_ethernet',
 		link: { name: CLOUD_FUNCTIONS },
-		displayRule: isSuperAdminRule
-	}
+		displayRule: isSuperAdminRule,
+	},
 ];

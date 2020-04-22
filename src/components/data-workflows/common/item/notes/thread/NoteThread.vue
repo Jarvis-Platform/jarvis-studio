@@ -48,8 +48,8 @@ import NotesMixin from '../notes-mixin';
 
 @Component
 export default class NoteThread extends Mixins(NotesMixin) {
-	@State(state => state.notes.parentNote) parentNote!: Note;
-	@State(state => state.notes.threadNotes) threadNotes!: Note[];
+	@State((state) => state.notes.parentNote) parentNote!: Note;
+	@State((state) => state.notes.threadNotes) threadNotes!: Note[];
 
 	closeThread() {
 		this.$store.commit('notes/CLOSE_THREAD_PANEL');
@@ -70,7 +70,7 @@ export default class NoteThread extends Mixins(NotesMixin) {
 			userId: this.user.uid,
 			userEmail: this.user.email,
 			userPhotoURL: this.user.photoURL,
-			userDisplayName: this.user.displayName
+			userDisplayName: this.user.displayName,
 		};
 	}
 }

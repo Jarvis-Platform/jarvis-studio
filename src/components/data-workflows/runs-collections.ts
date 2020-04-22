@@ -25,33 +25,33 @@ interface RunCollection {
 
 export const GbqToGcs: RunCollection = {
 	collectionListing: GbqToGcsCollectionListing,
-	moduleName: getGbqToGcsRuns.moduleName
+	moduleName: getGbqToGcsRuns.moduleName,
 };
 export const GcsToGcs: RunCollection = {
 	collectionListing: GcsToGcsCollectionListing,
-	moduleName: mirrorExcGcsToGcsRuns.moduleName
+	moduleName: mirrorExcGcsToGcsRuns.moduleName,
 };
 export const StorageToStorage: RunCollection = {
 	collectionListing: StorageToStorageCollectionListing,
-	moduleName: storageToStorageRuns.moduleName
+	moduleName: storageToStorageRuns.moduleName,
 };
 export const StorageToTable: RunCollection = {
 	collectionListing: StorageToTableCollectionListing,
-	moduleName: mirrorExcGcsToGbqRuns.moduleName
+	moduleName: mirrorExcGcsToGbqRuns.moduleName,
 };
 export const StorageToTables: RunCollection = {
 	collectionListing: StorageToTablesCollectionListing,
-	moduleName: storageToTablesRuns.moduleName
+	moduleName: storageToTablesRuns.moduleName,
 };
 export const TableToStorage: RunCollection = {
 	collectionListing: TableToStorageCollectionListing,
-	moduleName: tableToStorageRuns.moduleName
+	moduleName: tableToStorageRuns.moduleName,
 };
 export const TablesToTables: RunCollection = {
 	collectionListing: TablesToTablesCollectionListing,
-	moduleName: getGbqToGbqRuns.moduleName
+	moduleName: getGbqToGbqRuns.moduleName,
 };
 export const VmLauncher: RunCollection = {
 	collectionListing: VmLauncherCollectionListing,
-	moduleName: vmLauncherRuns.moduleName
+	moduleName: vmLauncherRuns.moduleName,
 };

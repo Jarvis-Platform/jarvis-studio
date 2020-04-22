@@ -29,5 +29,5 @@ export const routes: RouteConfig[] = [
 	...vmLauncherRoutes,
 	...workflowRoutes,
 	// END
-	...settingsRoutes
+	...settingsRoutes,
 ];

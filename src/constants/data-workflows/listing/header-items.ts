@@ -9,7 +9,7 @@ export const ACTIONS: HeaderItem = { text: 'Actions', sortable: false, value: 'a
 export const DESTINATION_BUCKET: HeaderItem = {
 	text: 'Destination Bucket',
 	sortable: true,
-	value: 'destination_bucket'
+	value: 'destination_bucket',
 };
 export const SOURCE_BUCKET: HeaderItem = { text: 'Source Bucket', sortable: true, value: 'source_bucket' };
 export const GCS_TRIGGERING_FILE: HeaderItem = { text: 'File', sortable: true, value: 'gcs_triggering_file' };
@@ -20,24 +20,24 @@ export const TRIGGERING_FILE: HeaderItem = { text: 'Triggering File', sortable: 
 export const NB_FILENAME_TEMPLATES: HeaderItem = {
 	text: 'Nb File Templates',
 	sortable: true,
-	value: 'filename_templates.length'
+	value: 'filename_templates.length',
 };
 export const GBQ_TABLE_REFRESHED: HeaderItem = {
 	text: 'Destination Table',
 	sortable: true,
-	value: 'gbq_table_refreshed'
+	value: 'gbq_table_refreshed',
 };
 export const FIRESTORE_CONF_DOC_ID: HeaderItem = {
 	text: 'Configuration Id',
 	sortable: true,
-	value: 'firestore_conf_doc_id'
+	value: 'firestore_conf_doc_id',
 };
 export const OUTPUT_FILENAME: HeaderItem = { text: 'Generated File', sortable: true, value: 'output_filename' };
 export const DAG_ID: HeaderItem = { text: 'Workflow Id Bucket', sortable: true, value: 'dag_id' };
 export const WORKFLOW_LENGTH: HeaderItem = {
 	text: 'Tasks',
 	sortable: true,
-	value: 'configuration_context.configuration.workflow.length'
+	value: 'configuration_context.configuration.workflow.length',
 };
 
 // CONFIGURATIONS
@@ -46,7 +46,7 @@ export const ACTIVATED: HeaderItem = { text: 'Status', sortable: true, value: 'a
 export const NB_DESTINATION_BUCKET: HeaderItem = {
 	text: 'Nb Destination Buckets',
 	sortable: true,
-	value: 'destination_bucket.length'
+	value: 'destination_bucket.length',
 };
 export const TABLE_NAME: HeaderItem = { text: 'Destination Table', sortable: true, value: 'table_name' };
 export const GCP_PROJECT: HeaderItem = { text: 'BQ Project ID', sortable: true, value: 'gcp_project' };
@@ -56,24 +56,24 @@ export const GCS_DEST_PREFIX: HeaderItem = { text: 'Destination Prefix', sortabl
 export const DEFAULT_BQ_DATASET: HeaderItem = {
 	text: 'BQ Default Dataset',
 	sortable: true,
-	value: 'configuration.default_bq_dataset'
+	value: 'configuration.default_bq_dataset',
 };
 export const CONF_WORKFLOW_LENGTH: HeaderItem = {
 	text: '# Tasks',
 	sortable: true,
-	value: 'configuration.workflow.length'
+	value: 'configuration.workflow.length',
 };
 export const GCS_FILE_EXCHANGE_BUCKET: HeaderItem = {
 	text: 'Bucket Exchange',
 	sortable: true,
-	value: 'gcs_file_exchange_bucket'
+	value: 'gcs_file_exchange_bucket',
 };
 export const WORKING_DIR: HeaderItem = { text: 'Working Directory', sortable: true, value: 'working_dir' };
 export const TARGET_DAG: HeaderItem = { text: 'Dag to fire', sortable: true, value: 'target_dag' };
 export const AUTHORIZED_JOB_IDS_LENGTH: HeaderItem = {
 	text: 'Nb triggering Jobs',
 	sortable: true,
-	value: 'authorized_job_ids.length'
+	value: 'authorized_job_ids.length',
 };
 
 // Status
@@ -82,12 +82,12 @@ export const TRIGGERED_JOBS: HeaderItem = { text: 'Triggered Jobs', sortable: tr
 export const LAST_UPDATE_FROM_NOW: HeaderItem = {
 	text: 'Last triggering date',
 	sortable: true,
-	value: 'last_update_date_from_now'
+	value: 'last_update_date_from_now',
 };
 export const LAST_FIRE_DATE_FROM_NOW: HeaderItem = {
 	text: 'Last fire Date',
 	sortable: true,
-	value: 'last_fire_date_from_now'
+	value: 'last_fire_date_from_now',
 };
 
 export default {
@@ -131,5 +131,5 @@ export default {
 	JOBS,
 	TRIGGERED_JOBS,
 	LAST_UPDATE_FROM_NOW,
-	LAST_FIRE_DATE_FROM_NOW
+	LAST_FIRE_DATE_FROM_NOW,
 };

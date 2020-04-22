@@ -8,5 +8,5 @@ export const vmLauncherConfs: IEasyFirestoreModule = {
 	moduleName: 'vmLauncherConfs',
 	statePropName: STATE_PROP_NAME,
 	sync: SYNC,
-	mutations: { UPDATE_DOCUMENT_LOCALLY }
+	mutations: { UPDATE_DOCUMENT_LOCALLY },
 };

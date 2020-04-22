@@ -27,8 +27,8 @@ import { Account, AccountId, User } from '@/types';
 
 @Component
 export default class AccountSelector extends Vue {
-	@State(state => state.accounts.data) accounts!: Account[];
-	@State(state => state.user.user) user!: User;
+	@State((state) => state.accounts.data) accounts!: Account[];
+	@State((state) => state.user.user) user!: User;
 
 	@Getter('user/accounts') userAccounts!: AccountId[];
 
@@ -43,7 +43,7 @@ export default class AccountSelector extends Vue {
 	getAccounts() {
 		let accounts: AccountId[] = [];
 
-		this.userAccounts.forEach(id => {
+		this.userAccounts.forEach((id) => {
 			const element = this.accounts[id];
 			if (element) accounts.push(element);
 		});

@@ -30,11 +30,11 @@ import {
 	DAG_EXECUTION_DATE,
 	ENVIRONMENT,
 	STATUS,
-	TRIGGERING_FILE
+	TRIGGERING_FILE,
 } from '@/constants/data-workflows/listing/header-items';
 
 @Component({
-	components: { ListingComponent }
+	components: { ListingComponent },
 })
 export default class CollectionListing extends Mixins(RunCollectionMixin) {
 	get listingComponentProps(): ListingComponentProps {
@@ -48,20 +48,20 @@ export default class CollectionListing extends Mixins(RunCollectionMixin) {
 				{
 					text: 'Source Storage',
 					sortable: true,
-					value: 'source_storage'
+					value: 'source_storage',
 				},
 				{
 					text: 'Destinations',
 					sortable: true,
-					value: 'configuration_context.destinations.length'
+					value: 'configuration_context.destinations.length',
 				},
 				STATUS,
 				DAG_EXECUTION_DATE,
-				ACTIONS
+				ACTIONS,
 			],
 			overriddenColumns: ['triggering_file', 'configuration_context.source', 'dag_execution_date'],
 			isOtherRunDisplay: this.isOtherRunDisplay,
-			jobId: this.jobId
+			jobId: this.jobId,
 		};
 	}
 

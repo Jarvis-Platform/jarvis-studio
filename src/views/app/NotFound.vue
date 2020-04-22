@@ -11,7 +11,7 @@ import DataOverviewHeader from '@/components/app/data-overview/DataOverviewHeade
 import DataOverviewContent from '@/components/app/data-overview/DataOverviewContent.vue';
 
 @Component({
-	components: { DataOverviewHeader, DataOverviewContent }
+	components: { DataOverviewHeader, DataOverviewContent },
 })
 export default class NotFound extends Vue {}
 </script>

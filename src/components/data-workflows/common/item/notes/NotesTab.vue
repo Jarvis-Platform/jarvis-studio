@@ -30,20 +30,20 @@ interface DefaultProps {
 }
 
 @Component({
-	components: { NotesRoot, NoteThread }
+	components: { NotesRoot, NoteThread },
 })
 export default class NotesTab extends Vue {
 	@Prop({ type: String, required: true }) account!: string;
 	@Prop({ type: String, required: true }) moduleName!: string;
 	@Prop({ type: String, required: true }) relatedDocId!: string;
 
-	@State(state => state.notes.showThreadPanel) showThreadPanel!: boolean;
+	@State((state) => state.notes.showThreadPanel) showThreadPanel!: boolean;
 
 	get defaultProps(): DefaultProps {
 		return {
 			moduleName: this.moduleName,
 			relatedDocId: this.relatedDocId,
-			account: this.account
+			account: this.account,
 		};
 	}
 }

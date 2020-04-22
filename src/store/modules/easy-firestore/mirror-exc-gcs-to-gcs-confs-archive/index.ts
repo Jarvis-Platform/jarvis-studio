@@ -6,5 +6,5 @@ export const mirrorExcGcsToGcsConfsArchive: IEasyFirestoreModule = {
 	firestoreRefType: COLLECTION_REF,
 	moduleName: 'mirrorExcGcsToGcsConfsArchive',
 	statePropName: STATE_PROP_NAME,
-	sync: SYNC
+	sync: SYNC,
 };

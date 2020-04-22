@@ -176,7 +176,7 @@ import { SNACKBAR } from '@/constants/ui/snackbar';
 // TODO: Refactor by removing headerActive prop to be based on viewType
 
 @Component({
-	components: { ConfigurationStatus, RunStatusChip }
+	components: { ConfigurationStatus, RunStatusChip },
 })
 export default class ViewHeader extends Vue {
 	@Prop({ required: true }) readonly activeHeader!: boolean;
@@ -198,7 +198,7 @@ export default class ViewHeader extends Vue {
 		color: '',
 		isVisible: false,
 		text: '',
-		timeout: SNACKBAR.TIMEOUT
+		timeout: SNACKBAR.TIMEOUT,
 	};
 	isArchiveDialogVisible: boolean = false;
 	showExecutionDateParams: boolean = false;
@@ -221,7 +221,7 @@ export default class ViewHeader extends Vue {
 
 		let data: AnyObject = {
 			dagId: this.item.id,
-			dagConf: this.dagConf ? this.dagConf : {}
+			dagConf: this.dagConf ? this.dagConf : {},
 		};
 
 		if (this.dagExecutionDay && this.dagExecutionTime)
@@ -236,7 +236,7 @@ export default class ViewHeader extends Vue {
 				this.launchSnackBar.color = 'success';
 				this.launchSnackBar.text = 'Dag will be launched in about 3min';
 			})
-			.catch(err => {
+			.catch((err) => {
 				this.isLoading = false;
 				this.launchSnackBar.isVisible = true;
 				this.dagLaunchErrorMsg = err;

@@ -22,5 +22,5 @@ export default {
 	GBQ_TO_GCS,
 	TABLE_TO_STORAGE,
 	VM_LAUNCHER,
-	WORKFLOW
+	WORKFLOW,
 };

@@ -26,7 +26,7 @@ export default class GcsToGcsConfigurationsItemView extends Mixins(HeaderInfosMi
 			destinationStorageRows.push({
 				destination_type: 'GCS',
 				destination_storage_id: this.item.destination_bucket[i],
-				destination_input_folder: this.item.destination_gcs_prefix[i]
+				destination_input_folder: this.item.destination_gcs_prefix[i],
 			});
 		}
 
@@ -37,7 +37,7 @@ export default class GcsToGcsConfigurationsItemView extends Mixins(HeaderInfosMi
 		return this.item.filename_templates.map((filename: string) => {
 			return {
 				filename_template: filename,
-				filename_description: 'No Description'
+				filename_description: 'No Description',
 			};
 		});
 	}
@@ -52,8 +52,8 @@ export default class GcsToGcsConfigurationsItemView extends Mixins(HeaderInfosMi
 					activeHeader: true,
 					viewId: this.item.id,
 					viewType: 'conf',
-					description: null
-				}
+					description: null,
+				},
 			},
 			{
 				component: 'parameters-list',
@@ -65,15 +65,15 @@ export default class GcsToGcsConfigurationsItemView extends Mixins(HeaderInfosMi
 						{
 							id: 'account',
 							label: 'Account',
-							value: this.item.account
+							value: this.item.account,
 						},
 						{
 							id: 'environment',
 							label: 'Environment',
-							value: this.item.environment
-						}
-					]
-				}
+							value: this.item.environment,
+						},
+					],
+				},
 			},
 			{
 				component: 'parameters-table',
@@ -84,36 +84,36 @@ export default class GcsToGcsConfigurationsItemView extends Mixins(HeaderInfosMi
 						{
 							label: 'Type',
 							field: 'source_type',
-							width: '100px'
+							width: '100px',
 						},
 						{
 							label: 'Storage ID',
 							field: 'source_storage_id',
-							width: '200px'
+							width: '200px',
 						},
 						{
 							label: 'Source Folder',
 							field: 'source_input_folder',
-							width: '200px'
+							width: '200px',
 						},
 						{
 							label: 'Archive Folder',
 							field: 'source_archive_folder',
-							width: '200px'
-						}
+							width: '200px',
+						},
 					],
 					rows: [
 						{
 							source_type: 'GCS',
 							source_storage_id: this.item.source_bucket,
 							source_input_folder: this.item.source_gcs_prefix,
-							source_archive_folder: this.item.source_archive_prefix
-						}
+							source_archive_folder: this.item.source_archive_prefix,
+						},
 					],
 					vflexLength: 'xs9',
 					lineNumbers: false,
-					searchOptionsEnabled: false
-				}
+					searchOptionsEnabled: false,
+				},
 			},
 			{
 				component: 'parameters-table',
@@ -124,24 +124,24 @@ export default class GcsToGcsConfigurationsItemView extends Mixins(HeaderInfosMi
 						{
 							label: 'Type',
 							field: 'destination_type',
-							width: '100px'
+							width: '100px',
 						},
 						{
 							label: 'Storage ID',
 							field: 'destination_storage_id',
-							width: '200px'
+							width: '200px',
 						},
 						{
 							label: 'Destination Folder',
 							field: 'destination_input_folder',
-							width: '230px'
-						}
+							width: '230px',
+						},
 					],
 					rows: this.getDestinationStorageRows(),
 					vflexLength: 'xs7',
 					lineNumbers: false,
-					searchOptionsEnabled: false
-				}
+					searchOptionsEnabled: false,
+				},
 			},
 			{
 				component: 'parameters-table',
@@ -152,19 +152,19 @@ export default class GcsToGcsConfigurationsItemView extends Mixins(HeaderInfosMi
 					columns: [
 						{
 							label: 'File Name Template',
-							field: 'filename_template'
+							field: 'filename_template',
 						},
 						{
 							label: 'File Name Description',
-							field: 'filename_description'
-						}
+							field: 'filename_description',
+						},
 					],
 					rows: this.getFileNameTemplateRows(),
 					vflexLength: 'xs9',
 					lineNumbers: false,
-					searchOptionsEnabled: false
-				}
-			}
+					searchOptionsEnabled: false,
+				},
+			},
 		];
 	}
 }

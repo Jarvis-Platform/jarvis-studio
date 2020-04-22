@@ -10,7 +10,7 @@ import { VueFlowy, FlowChart } from 'vue-flowy';
 import { PerfectScrollbar } from 'vue2-perfect-scrollbar';
 
 @Component({
-	components: { VueFlowy, PerfectScrollbar }
+	components: { VueFlowy, PerfectScrollbar },
 })
 export default class DagChart extends Vue {
 	@Prop({ type: String, default: 'jarvisDag' }) dagId!: string;
@@ -18,8 +18,8 @@ export default class DagChart extends Vue {
 		type: Array,
 		default: [
 			'sql_bda_ple_prp_products>>[sql_bda_ple_prp_sales, sql_bda_ple_prp_stocks, sql_bda_ple_prp_pdg]',
-			'sql_bda_ple_prp_stores>>sql_bda_ple_prp_web>>sql_bda_ple_prp_margin'
-		]
+			'sql_bda_ple_prp_stores>>sql_bda_ple_prp_web>>sql_bda_ple_prp_margin',
+		],
 	})
 	task_dependencies!: string;
 
@@ -37,10 +37,10 @@ export default class DagChart extends Vue {
 		this.chart.destroy();
 		this.chart = new FlowChart({ direction: 'LR' });
 		let start = this.chart.addElement(this.dagId.concat('-start'), {
-			label: 'Start'
+			label: 'Start',
 		});
 		let end = this.chart.addElement(this.dagId.concat('-end'), {
-			label: 'End'
+			label: 'End',
 		});
 		let i;
 		let j;
@@ -53,16 +53,13 @@ export default class DagChart extends Vue {
 			for (j = 0; j < tasksArray.length; j++) {
 				if (tasksArray[j].indexOf('[') == 0) {
 					let dagParall = [];
-					let taskParallArray = tasksArray[j]
-						.replace('[', '')
-						.replace(']', '')
-						.split(',');
+					let taskParallArray = tasksArray[j].replace('[', '').replace(']', '').split(',');
 					for (k = 0; k < taskParallArray.length; k++) {
 						dagParall.push(
 							this.chart.addElement(
 								k.toString().concat('-', j.toString(), '-', i.toString(), ':', taskParallArray[k]),
 								{
-									label: taskParallArray[k]
+									label: taskParallArray[k],
 								}
 							)
 						);
@@ -86,7 +83,7 @@ export default class DagChart extends Vue {
 				} else {
 					dagBranch.push(
 						this.chart.addElement(j.toString().concat('-', i.toString(), ':', tasksArray[j]), {
-							label: tasksArray[j]
+							label: tasksArray[j],
 						})
 					);
 					if (j > 0) {

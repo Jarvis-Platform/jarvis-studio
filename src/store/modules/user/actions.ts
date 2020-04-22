@@ -16,28 +16,28 @@ const dispatchUser = (user: User | null) => {
 		deleted: false,
 		displayName: user!.displayName,
 		photoURL: user!.photoURL,
-		email: user!.email
+		email: user!.email,
 	});
 
 	store.dispatch(`${connectionsHistory.moduleName}/insert`, {
 		userId: user!.uid,
-		date: firebase.firestore.Timestamp.now()
+		date: firebase.firestore.Timestamp.now(),
 	});
 };
 
 export const actions: ActionTree<UserState, RootState> = {
 	signIn({ commit }, { email, password }) {
-		return new Promise(function(resolve, reject) {
+		return new Promise(function (resolve, reject) {
 			firebase
 				.auth()
 				.signInWithEmailAndPassword(email, password)
-				.then(user => {
+				.then((user) => {
 					commit('setUser', user.user);
 					commit('setIsAuthenticated', true);
 					dispatchUser(user.user);
 					resolve(user.user);
 				})
-				.catch(e => {
+				.catch((e) => {
 					reject(e);
 				});
 		});
@@ -45,17 +45,17 @@ export const actions: ActionTree<UserState, RootState> = {
 	googleSignIn({ commit }) {
 		const provider = new firebase.auth.GoogleAuthProvider();
 
-		return new Promise(function(resolve, reject) {
+		return new Promise(function (resolve, reject) {
 			firebase
 				.auth()
 				.signInWithPopup(provider)
-				.then(user => {
+				.then((user) => {
 					commit('setUser', user.user);
 					commit('setIsAuthenticated', true);
 					dispatchUser(user.user);
 					resolve(user.user);
 				})
-				.catch(e => {
+				.catch((e) => {
 					reject(e);
 				});
 		});
@@ -64,7 +64,7 @@ export const actions: ActionTree<UserState, RootState> = {
 		firebase
 			.auth()
 			.createUserWithEmailAndPassword(email, password)
-			.then(user => {
+			.then((user) => {
 				commit('setUser', user.user);
 				commit('setIsAuthenticated', true);
 				dispatchUser(user.user);
@@ -85,5 +85,5 @@ export const actions: ActionTree<UserState, RootState> = {
 		commit('setIsAuthenticated', false);
 		router.push({ name: SIGN_IN });
 		firebase.auth().signOut();
-	}
+	},
 };

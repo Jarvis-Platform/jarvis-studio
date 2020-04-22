@@ -21,10 +21,10 @@
 				<v-progress-circular
 					:rotate="270"
 					:size="35"
-					:value="(Object.values(jobs).filter(job => (job.executed = true)).length / Object.keys(jobs).length) * 100"
+					:value="(Object.values(jobs).filter((job) => (job.executed = true)).length / Object.keys(jobs).length) * 100"
 					color="green"
 				>
-					{{ Object.values(jobs).filter(job => (job.executed = true)).length }}
+					{{ Object.values(jobs).filter((job) => (job.executed = true)).length }}
 				</v-progress-circular>
 			</template>
 
@@ -53,7 +53,7 @@ import {
 	JOBS,
 	LAST_FIRE_DATE_FROM_NOW,
 	LAST_UPDATE_FROM_NOW,
-	TRIGGERED_JOBS
+	TRIGGERED_JOBS,
 } from '@/constants/data-workflows/listing/header-items';
 
 @Component
@@ -64,7 +64,7 @@ export default class WorkflowStatusListingView extends Mixins(HeaderInfosMixin, 
 		'jobs',
 		'triggered_jobs',
 		'last_update_date_from_now',
-		'last_fire_date_from_now'
+		'last_fire_date_from_now',
 	];
 
 	get routeName() {

@@ -30,7 +30,7 @@ import { AnyObject } from '@/types';
 import SqlViewer from '@/components/data-workflows/common/item/overview/SqlViewer.vue';
 
 @Component({
-	components: { SqlViewer }
+	components: { SqlViewer },
 })
 export default class ParametersItem extends Vue {
 	@Prop({ type: Object, default: { id: 'account', label: 'Account', value: '000021' } }) paramItem!: AnyObject;

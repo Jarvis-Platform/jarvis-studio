@@ -24,7 +24,7 @@ import ParametersTable from '../parameters/ParametersTable.vue';
 import ViewHeader from './ViewHeader.vue';
 
 @Component({
-	components: { DagChart, ParametersList, ParametersTable, ViewHeader }
+	components: { DagChart, ParametersList, ParametersTable, ViewHeader },
 })
 export default class OverviewComponent extends Vue {
 	@Prop({ type: Array, required: true }) data!: DataItem[];

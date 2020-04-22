@@ -6,5 +6,5 @@ export const storageToTableConf: IEasyFirestoreModule = {
 	firestoreRefType: DOC_REF,
 	moduleName: 'storageToTableConf',
 	statePropName: STATE_PROP_NAME,
-	sync: SYNC
+	sync: SYNC,
 };
