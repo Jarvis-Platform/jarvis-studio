@@ -20,7 +20,7 @@
     "chart.js": "^2.8.0",
     "convert-units": "^2.3.4",
     "core-js": "^3.2.1",
-    "d3": "^4.13.0",
+    "d3": "^5.16.0",
     "firebase": "^6.6.2",
     "js-base64": "^2.5.1",
     "lodash.merge": "^4.6.2",
@@ -54,7 +54,7 @@
     "vuex-persist": "^2.2.0"
   },
   "devDependencies": {
-    "@mdi/js": "^4.7.95",
+    "@mdi/js": "^5.1.45",
     "@types/convert-units": "^2.3.0",
     "@types/js-base64": "^2.3.1",
     "@types/lodash.merge": "^4.6.6",
