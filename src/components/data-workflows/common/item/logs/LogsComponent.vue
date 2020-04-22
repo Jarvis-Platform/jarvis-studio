@@ -39,7 +39,7 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import { AnyObject } from '@/types';
-import { firebase } from '@/config/firebase';
+import { firebase } from '@/plugins/firebase';
 import { Base64 } from 'js-base64';
 
 @Component

@@ -163,7 +163,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import { firebase } from '@/config/firebase';
+import { firebase } from '@/plugins/firebase';
 import { Getter } from 'vuex-class';
 import { AnyObject, Snackbar } from '@/types';
 import ConfigurationStatus from '@/components/data-workflows/common/configuration/ConfigurationStatus.vue';

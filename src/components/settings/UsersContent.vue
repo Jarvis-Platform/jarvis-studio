@@ -231,8 +231,7 @@ export default class UsersContent extends Vue {
 	listAllUsers() {
 		this.isLoading = true;
 
-		const listAllUsers = firebase.functions().httpsCallable('listUsers');
-		listAllUsers({})
+		this.$httpsCallableFunction('listUsers', {})
 			.then((res) => {
 				const dataUsers = Object.values(res.data.users);
 
@@ -270,11 +269,10 @@ export default class UsersContent extends Vue {
 
 	createUser() {
 		const photoURL = 'https://raw.githubusercontent.com/mkfeuhrer/JarvisBot/master/images/JarvisBot.gif';
-		const createUser = firebase.functions().httpsCallable('createUser');
 		this.closeFormDialog();
 		this.isLoading = true;
 
-		createUser({
+		this.$httpsCallableFunction('createUser', {
 			email: this.currentUser.email,
 			displayName: this.currentUser.displayName,
 			emailVerified: this.currentUser.emailVerified,
@@ -326,8 +324,7 @@ export default class UsersContent extends Vue {
 		this.isLoading = true;
 		this.closeFormDialog();
 
-		const updateUser = firebase.functions().httpsCallable('updateUser');
-		updateUser({
+		this.$httpsCallableFunction('updateUser', {
 			accounts: this.selectedAccounts,
 			email: this.currentUser.email,
 			displayName: this.currentUser.displayName,
@@ -349,11 +346,10 @@ export default class UsersContent extends Vue {
 		this.isLoading = true;
 		this.currentUser = user;
 
-		const archiveUser = firebase.functions().httpsCallable('updateUser');
-		archiveUser({
+		this.$httpsCallableFunction('updateUser', {
 			email: user.email,
 			disabled: !user.disabled,
-		}).then((res) => {
+		}).then(() => {
 			const index = this.users.indexOf(user);
 			const disabledValue = !user.disabled;
 			this.users[index].disabled = disabledValue;
@@ -374,13 +370,12 @@ export default class UsersContent extends Vue {
 	}
 
 	deleteUser() {
-		const deleteUser = firebase.functions().httpsCallable('deleteUser');
 		const index = this.users.indexOf(this.currentUser);
 
 		this.isLoading = true;
 		this.showConfirmationDialog = false;
 
-		deleteUser({ email: this.currentUser.email }).then(() => {
+		this.$httpsCallableFunction('deleteUser', { email: this.currentUser.email }).then(() => {
 			this.users.splice(index, 1);
 			this.isLoading = false;
 			this.showSnackbar('User has been deleted', 'success');

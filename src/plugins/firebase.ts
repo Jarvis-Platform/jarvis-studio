@@ -1,6 +1,8 @@
+import Vue from 'vue';
 import * as firebase from 'firebase/app';
 import 'firebase/firestore';
 import { FirebaseOptions } from '@firebase/app-types';
+import { AnyObject } from '@/types';
 
 // const isLoacalHost = location.hostname === 'localhost';
 const isLoacalHost = false;
@@ -14,6 +16,16 @@ const options: FirebaseOptions = {
 	projectId: process.env.VUE_APP_FIREBASE_PROJECT_ID,
 	storageBucket: process.env.VUE_APP_FIREBASE_STORAGE_BUCKET,
 	messagingSenderId: process.env.VUE_APP_FIREBASE_MESSAGING_SENDER_ID,
+};
+
+Vue.prototype.$httpsCallableFunction = (name: string, data: AnyObject = {}) => {
+	return new Promise((resolve, reject) => {
+		const callableFunction = firebase.app().functions('europe-west1').httpsCallable(name);
+
+		callableFunction(data)
+			.then(resolve)
+			.catch((err) => reject(err));
+	});
 };
 
 function initFirebase() {
