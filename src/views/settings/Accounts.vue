@@ -13,7 +13,7 @@ import { Component, Vue } from 'vue-property-decorator';
 import AccountsContent from '@/components/settings/AccountsContent.vue';
 
 @Component({
-	components: { AccountsContent }
+	components: { AccountsContent },
 })
 export default class Accounts extends Vue {}
 </script>

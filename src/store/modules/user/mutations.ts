@@ -9,7 +9,7 @@ export const mutations: MutationTree<UserState> = {
 		firebase
 			.auth()
 			.currentUser!.getIdTokenResult()
-			.then(idTokenResult => {
+			.then((idTokenResult) => {
 				if (!state.user) return;
 
 				if (idTokenResult.claims == null || idTokenResult.claims.accounts == null) {
@@ -23,11 +23,11 @@ export const mutations: MutationTree<UserState> = {
 					state.user.studioRoles = idTokenResult.claims.studioRoles;
 				}
 			})
-			.catch(error => {
+			.catch((error) => {
 				console.error(error);
 			});
 	},
 	setIsAuthenticated(state, payload) {
 		state.isAuthenticated = payload;
-	}
+	},
 };

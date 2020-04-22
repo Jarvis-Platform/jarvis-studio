@@ -31,7 +31,7 @@ import {
 	ACTIVATED,
 	ENVIRONMENT,
 	ID,
-	NB_FILENAME_TEMPLATES
+	NB_FILENAME_TEMPLATES,
 } from '@/constants/data-workflows/listing/header-items';
 
 @Component

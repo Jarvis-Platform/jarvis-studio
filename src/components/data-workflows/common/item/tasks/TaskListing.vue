@@ -22,7 +22,7 @@ import { Base64 } from 'js-base64';
 import TaskItem from '@/components/data-workflows/common/item/tasks/TaskItem.vue';
 
 @Component({
-	components: { TaskItem }
+	components: { TaskItem },
 })
 export default class TaskListing extends Vue {
 	@Prop({ type: String, required: true }) type!: string;

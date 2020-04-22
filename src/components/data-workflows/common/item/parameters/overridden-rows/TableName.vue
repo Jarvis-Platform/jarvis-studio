@@ -61,8 +61,8 @@ import ParametersList from '@/components/data-workflows/common/item/parameters/P
 		ParametersList,
 		ViewJson,
 		'vue-good-table': require('vue-good-table').VueGoodTable,
-		VueMarkdown
-	}
+		VueMarkdown,
+	},
 })
 export default class TableName extends Vue {
 	@Prop({ required: true }) item!: AnyObject;
@@ -81,16 +81,16 @@ export default class TableName extends Vue {
 		return [
 			{
 				label: 'schema',
-				href: 'schema'
+				href: 'schema',
 			},
 			{
 				label: 'parameters',
-				href: 'parameters'
+				href: 'parameters',
 			},
 			{
 				label: 'documentation',
-				href: 'documentation'
-			}
+				href: 'documentation',
+			},
 		];
 	}
 
@@ -103,18 +103,18 @@ export default class TableName extends Vue {
 			{
 				label: 'name',
 				field: 'name',
-				type: 'string'
+				type: 'string',
 			},
 			{
 				label: 'type',
 				field: 'type',
-				type: 'string'
+				type: 'string',
 			},
 			{
 				label: 'description',
 				field: 'description',
-				type: 'string'
-			}
+				type: 'string',
+			},
 		];
 	}
 
@@ -134,28 +134,28 @@ export default class TableName extends Vue {
 			{
 				id: 'bq_load_job_ignore_unknown_values',
 				label: 'bq_load_job_ignore_unknown_values',
-				value: this.destinations.bq_load_job_ignore_unknown_values
+				value: this.destinations.bq_load_job_ignore_unknown_values,
 			},
 			{
 				id: 'bq_load_job_max_bad_records',
 				label: 'bq_load_job_max_bad_records',
-				value: this.destinations.bq_load_job_max_bad_records
+				value: this.destinations.bq_load_job_max_bad_records,
 			},
 			{
 				id: 'bq_load_job_schema_update_options',
 				label: 'bq_load_job_schema_update_options',
-				value: this.destinations.bq_load_job_schema_update_options
+				value: this.destinations.bq_load_job_schema_update_options,
 			},
 			{
 				id: 'bq_load_job_allow_quoted_newlines',
 				label: 'bq_load_job_allow_quoted_newlines',
-				value: this.destinations.bq_load_job_allow_quoted_newlines
+				value: this.destinations.bq_load_job_allow_quoted_newlines,
 			},
 			{
 				id: 'bq_load_job_allow_jagged_rows',
 				label: 'bq_load_job_allow_jagged_rows',
-				value: this.destinations.bq_load_job_allow_jagged_rows
-			}
+				value: this.destinations.bq_load_job_allow_jagged_rows,
+			},
 		];
 
 		let indexesToSplice: number[] = [];

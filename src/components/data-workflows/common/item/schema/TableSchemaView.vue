@@ -27,7 +27,7 @@ type Row = {
 };
 
 @Component({
-	components: { ParametersTable }
+	components: { ParametersTable },
 })
 export default class TableSchemaView extends Vue {
 	@Prop(Array) schemaRows?: Row[];
@@ -36,7 +36,7 @@ export default class TableSchemaView extends Vue {
 		{ label: 'Name', field: 'name' },
 		{ label: 'Type', field: 'type' },
 		{ label: 'Mode', field: 'mode' },
-		{ label: 'Description', field: 'description' }
+		{ label: 'Description', field: 'description' },
 	];
 }
 </script>

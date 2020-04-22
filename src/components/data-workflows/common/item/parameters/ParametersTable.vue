@@ -32,7 +32,7 @@
 						v-bind="{
 							...overriddenRow(props.column.field).props,
 							index: props.index,
-							displayValue: props.formattedRow[props.column.field]
+							displayValue: props.formattedRow[props.column.field],
 						}"
 					/>
 					<span v-else>{{ props.formattedRow[props.column.field] }}</span>
@@ -51,7 +51,7 @@ import TableName from './overridden-rows/TableName.vue';
 import 'vue-good-table/dist/vue-good-table.css';
 
 @Component({
-	components: { TableName, VueGoodTable }
+	components: { TableName, VueGoodTable },
 })
 export default class ParametersTable extends Vue {
 	@Prop({ type: String, required: true }) tableTitle!: string;
@@ -65,13 +65,13 @@ export default class ParametersTable extends Vue {
 	@Prop(Array) overriddenRows?: AnyObject[];
 
 	overriddenRow(rowName: string) {
-		return this.overriddenRows ? this.overriddenRows.find(row => row.name === rowName) : null;
+		return this.overriddenRows ? this.overriddenRows.find((row) => row.name === rowName) : null;
 	}
 
 	get searchOptions() {
 		return {
 			enabled: this.searchOptionsEnabled,
-			placeholder: 'Search for parameters'
+			placeholder: 'Search for parameters',
 		};
 	}
 }

@@ -7,5 +7,5 @@ export const dagRunAirflowUrl = (dag_id: string, run_id: string, execution_date:
 };
 
 export default {
-	dagRunAirflowUrl
+	dagRunAirflowUrl,
 };

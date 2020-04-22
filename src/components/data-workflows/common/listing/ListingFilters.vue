@@ -37,20 +37,20 @@ import { CONFIGURATIONS, RUNS, STATUS } from '@/constants/data-workflows/status'
 export default class DataManagementFilters extends Vue {
 	@Prop({ required: true }) type!: any;
 
-	@State(state => state.filters.envFilterSelected) envFilterSelected!: EnvFilter;
-	@State(state => state.filters.envFilters) envFilters!: EnvFilter[];
-	@State(state => state.filters.runStatusFilterSelected) runStatusFilterSelected!: RunStatusFilter;
-	@State(state => state.filters.runStatusFilters) runStatusFilters!: RunStatusFilter[];
-	@State(state => state.filters.confActivatedFilterSelected) confActivatedFilterSelected!: ConfActivatedFilter;
-	@State(state => state.filters.confActivatedFilters) confActivatedFilters!: ConfActivatedFilter[];
-	@State(state => state.filters.dateFilterSelected) dateFilterSelected!: DateFilter;
-	@State(state => state.filters.dateFilters) dateFilters!: DateFilter[];
+	@State((state) => state.filters.envFilterSelected) envFilterSelected!: EnvFilter;
+	@State((state) => state.filters.envFilters) envFilters!: EnvFilter[];
+	@State((state) => state.filters.runStatusFilterSelected) runStatusFilterSelected!: RunStatusFilter;
+	@State((state) => state.filters.runStatusFilters) runStatusFilters!: RunStatusFilter[];
+	@State((state) => state.filters.confActivatedFilterSelected) confActivatedFilterSelected!: ConfActivatedFilter;
+	@State((state) => state.filters.confActivatedFilters) confActivatedFilters!: ConfActivatedFilter[];
+	@State((state) => state.filters.dateFilterSelected) dateFilterSelected!: DateFilter;
+	@State((state) => state.filters.dateFilters) dateFilters!: DateFilter[];
 
 	@Getter('user/isSuperAdmin') isSuperAdmin!: number;
 
 	// TODO: Refactoring
 	mounted() {
-		const hasArchivedOption = this.confActivatedFilters.find(element => String(element.label) === 'Archived');
+		const hasArchivedOption = this.confActivatedFilters.find((element) => String(element.label) === 'Archived');
 
 		if (this.isSuperAdmin && !hasArchivedOption) {
 			this.confActivatedFilters.push({ label: 'Archived', value: true });
@@ -82,29 +82,29 @@ export default class DataManagementFilters extends Vue {
 			{
 				values: this.envFilters,
 				selectedValue: this.envFilterSelected,
-				clickAction: this.applyEnvFilter
-			}
+				clickAction: this.applyEnvFilter,
+			},
 		];
 
 		if (this.type === RUNS)
 			filters.push({
 				values: this.runStatusFilters,
 				selectedValue: this.runStatusFilterSelected,
-				clickAction: this.applyRunStatusFilter
+				clickAction: this.applyRunStatusFilter,
 			});
 
 		if (this.type === CONFIGURATIONS)
 			filters.push({
 				values: this.confActivatedFilters,
 				selectedValue: this.confActivatedFilterSelected,
-				clickAction: this.applyConfActivatedFilter
+				clickAction: this.applyConfActivatedFilter,
 			});
 
 		if (this.type === RUNS || this.type === STATUS)
 			filters.push({
 				values: this.dateFilters,
 				selectedValue: this.dateFilterSelected,
-				clickAction: this.applyDateFilter
+				clickAction: this.applyDateFilter,
 			});
 
 		return filters;

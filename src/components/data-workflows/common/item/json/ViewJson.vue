@@ -25,7 +25,7 @@ import { AnyObject } from '@/types';
 import VueJsonPretty from 'vue-json-pretty';
 
 @Component({
-	components: { VueJsonPretty }
+	components: { VueJsonPretty },
 })
 export default class ViewJSON extends Vue {
 	@Prop({ type: Object, required: true }) json!: AnyObject;

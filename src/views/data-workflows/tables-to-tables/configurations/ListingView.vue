@@ -40,12 +40,12 @@ import {
 	CONF_WORKFLOW_LENGTH,
 	DEFAULT_BQ_DATASET,
 	ENVIRONMENT,
-	ID
+	ID,
 } from '@/constants/data-workflows/listing/header-items';
 import ConfigurationCollectionMixin from '@/mixins/data-workflows/collection/configuration-collection-mixin';
 
 @Component({
-	components: { ConfigurationStatus }
+	components: { ConfigurationStatus },
 })
 export default class TablesToTablesConfigurationsListingView extends Mixins(
 	HeaderInfosMixin,

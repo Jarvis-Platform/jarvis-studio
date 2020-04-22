@@ -7,5 +7,5 @@ export const STATUS: DataWorkflowsType = 'status';
 export default {
 	RUNS,
 	CONFIGURATIONS,
-	STATUS
+	STATUS,
 };

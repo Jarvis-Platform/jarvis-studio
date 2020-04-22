@@ -29,11 +29,11 @@ import {
 	ENVIRONMENT,
 	FIRESTORE_CONF_DOC_ID,
 	OUTPUT_FILENAME,
-	STATUS
+	STATUS,
 } from '@/constants/data-workflows/listing/header-items';
 
 @Component({
-	components: { ListingComponent }
+	components: { ListingComponent },
 })
 export default class CollectionListing extends Mixins(RunCollectionMixin) {
 	get listingComponentProps(): ListingComponentProps {
@@ -48,12 +48,12 @@ export default class CollectionListing extends Mixins(RunCollectionMixin) {
 				OUTPUT_FILENAME,
 				STATUS,
 				DAG_EXECUTION_DATE,
-				ACTIONS
+				ACTIONS,
 			],
 			overriddenColumns: ['firestore_conf_doc_id', 'dag_execution_date'],
 			isOtherRunDisplay: this.isOtherRunDisplay,
 			jobId: this.jobId,
-			showAirflowAction: true
+			showAirflowAction: true,
 		};
 	}
 

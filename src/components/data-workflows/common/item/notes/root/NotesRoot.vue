@@ -58,11 +58,11 @@ import NotesMixin from '../notes-mixin';
 import AvatarComponent from '@/components/common/AvatarComponent.vue';
 
 @Component({
-	components: { AvatarComponent }
+	components: { AvatarComponent },
 })
 export default class NotesRoot extends Mixins(NotesMixin) {
-	@State(state => state.notes.data) notes!: Note[];
-	@State(state => state.notes.parentNote) parentNote!: Note;
+	@State((state) => state.notes.data) notes!: Note[];
+	@State((state) => state.notes.parentNote) parentNote!: Note;
 
 	isLoading: boolean = true;
 
@@ -98,7 +98,7 @@ export default class NotesRoot extends Mixins(NotesMixin) {
 		const users = this.getThreadNotes(parentNote.id);
 
 		return users.filter((obj, pos, arr) => {
-			return arr.map(mapObj => mapObj.userId).indexOf(obj.userId) === pos;
+			return arr.map((mapObj) => mapObj.userId).indexOf(obj.userId) === pos;
 		});
 	}
 
@@ -114,7 +114,7 @@ export default class NotesRoot extends Mixins(NotesMixin) {
 	get where() {
 		return [
 			['moduleName', '==', this.moduleName],
-			['relatedDocId', '==', this.relatedDocId]
+			['relatedDocId', '==', this.relatedDocId],
 		];
 	}
 
@@ -132,7 +132,7 @@ export default class NotesRoot extends Mixins(NotesMixin) {
 			userId: this.user.uid,
 			userEmail: this.user.email,
 			userPhotoURL: this.user.photoURL,
-			userDisplayName: this.user.displayName
+			userDisplayName: this.user.displayName,
 		};
 	}
 }

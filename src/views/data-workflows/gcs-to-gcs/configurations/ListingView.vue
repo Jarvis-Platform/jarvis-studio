@@ -33,7 +33,7 @@ import {
 	ID,
 	NB_DESTINATION_BUCKET,
 	NB_FILENAME_TEMPLATES,
-	SOURCE_BUCKET
+	SOURCE_BUCKET,
 } from '@/constants/data-workflows/listing/header-items';
 
 @Component

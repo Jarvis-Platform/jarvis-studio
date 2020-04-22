@@ -11,8 +11,6 @@ export const getFormattedNumRows = (value: number) => {
 };
 
 export const getFormattedNumBytes = (value: number) => {
-	const numBytesConverted = convert(Number(value))
-		.from('b')
-		.toBest({ cutOffNumber: 1 });
+	const numBytesConverted = convert(Number(value)).from('b').toBest({ cutOffNumber: 1 });
 	return `${numeral(numBytesConverted.val).format('10,000.00')} ${numBytesConverted.unit}`;
 };

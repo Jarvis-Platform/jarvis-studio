@@ -6,5 +6,5 @@ export const storageToStorageRuns: IEasyFirestoreModule = {
 	firestoreRefType: COLLECTION_REF,
 	moduleName: 'storageToStorageRuns',
 	statePropName: STATE_PROP_NAME,
-	sync: SYNC
+	sync: SYNC,
 };

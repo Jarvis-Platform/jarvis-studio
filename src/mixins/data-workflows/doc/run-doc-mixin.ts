@@ -16,7 +16,7 @@ export default class RunDocMixin extends DocMixin {
 			type: this.type!,
 			tabsItems: this.itemTabsItems,
 			isLoading: this.isLoading,
-			isNotFound: this.isNotFound
+			isNotFound: this.isNotFound,
 		};
 	}
 
@@ -32,9 +32,9 @@ export default class RunDocMixin extends DocMixin {
 			component: {
 				name: 'overview-component',
 				props: {
-					data: this.runDetailsData
-				}
-			}
+					data: this.runDetailsData,
+				},
+			},
 		};
 	}
 
@@ -48,9 +48,9 @@ export default class RunDocMixin extends DocMixin {
 					dagId: this.item.dag_id,
 					dagRunId: this.item.dag_run_id,
 					dagType: this.item.dag_type,
-					dagExecutionDate: this.item.dag_execution_date
-				}
-			}
+					dagExecutionDate: this.item.dag_execution_date,
+				},
+			},
 		};
 	}
 
@@ -62,9 +62,9 @@ export default class RunDocMixin extends DocMixin {
 				name: 'other-runs',
 				props: {
 					doc: this.item,
-					moduleName: this.moduleName
-				}
-			}
+					moduleName: this.moduleName,
+				},
+			},
 		};
 	}
 }

@@ -29,23 +29,23 @@ export default class StorageToStorageConfigurationsItemView extends Mixins(Heade
 					{
 						label: 'Type',
 						field: 'type',
-						width: '100px'
+						width: '100px',
 					},
 					{
 						label: 'Source Bucket',
 						field: 'gcs_source_bucket',
-						width: '200px'
+						width: '200px',
 					},
 					{
 						label: 'Source Folder',
 						field: 'gcs_source_prefix',
-						width: '200px'
+						width: '200px',
 					},
 					{
 						label: 'Archive Folder',
 						field: 'gcs_archive_prefix',
-						width: '200px'
-					}
+						width: '200px',
+					},
 				];
 				break;
 			case 's3':
@@ -109,7 +109,7 @@ export default class StorageToStorageConfigurationsItemView extends Mixins(Heade
 						type: this.item.destinations[i].type,
 						gcs_destination_bucket: this.item.destinations[i].gcs_destination_bucket,
 						gcs_destination_prefix: this.item.destinations[i].gcs_destination_prefix,
-						gcp_credentials_secret: this.item.destinations[i].gcp_credentials_secret
+						gcp_credentials_secret: this.item.destinations[i].gcp_credentials_secret,
 					});
 					break;
 				case 's3':
@@ -118,7 +118,7 @@ export default class StorageToStorageConfigurationsItemView extends Mixins(Heade
 						s3_bucket: this.item.destinations[i].s3_bucket,
 						s3_destination_prefix: this.item.destinations[i].s3_destination_prefix,
 						aws_access_key: this.item.destinations[i].aws_access_key,
-						aws_access_key_secret: this.item.destinations[i].aws_access_key_secret
+						aws_access_key_secret: this.item.destinations[i].aws_access_key_secret,
 					});
 					break;
 				case 'sftp':
@@ -129,7 +129,7 @@ export default class StorageToStorageConfigurationsItemView extends Mixins(Heade
 						sftp_destination_dir: this.item.destinations[i].sftp_destination_dir,
 						sftp_destination_dir_create: this.item.destinations[i].sftp_destination_dir_create,
 						generate_top_file: this.item.destinations[i].generate_top_file,
-						sftp_password_secret: this.item.destinations[i].sftp_password_secret
+						sftp_password_secret: this.item.destinations[i].sftp_password_secret,
 					});
 					break;
 			}
@@ -150,8 +150,8 @@ export default class StorageToStorageConfigurationsItemView extends Mixins(Heade
 					collection: this.moduleName,
 					activeHeader: true,
 					viewId: this.item.id,
-					viewType: 'conf'
-				}
+					viewType: 'conf',
+				},
 			},
 			{
 				component: 'parameters-list',
@@ -163,15 +163,15 @@ export default class StorageToStorageConfigurationsItemView extends Mixins(Heade
 						{
 							id: 'account',
 							label: 'Account',
-							value: this.item.account
+							value: this.item.account,
 						},
 						{
 							id: 'environment',
 							label: 'Environment',
-							value: this.item.environment
-						}
-					]
-				}
+							value: this.item.environment,
+						},
+					],
+				},
 			},
 			{
 				component: 'parameters-table',
@@ -182,8 +182,8 @@ export default class StorageToStorageConfigurationsItemView extends Mixins(Heade
 					rows: this.getSourceStorageRows(),
 					vflexLength: 'xs9',
 					lineNumbers: false,
-					searchOptionsEnabled: false
-				}
+					searchOptionsEnabled: false,
+				},
 			},
 			{
 				component: 'parameters-table',
@@ -195,24 +195,24 @@ export default class StorageToStorageConfigurationsItemView extends Mixins(Heade
 						{
 							label: 'Type',
 							field: 'type',
-							width: '100px'
+							width: '100px',
 						},
 						{
 							label: 'Destination Bucket',
 							field: 'gcs_destination_bucket',
-							width: '200px'
+							width: '200px',
 						},
 						{
 							label: 'Destination Folder',
 							field: 'gcs_destination_prefix',
-							width: '200px'
-						}
+							width: '200px',
+						},
 					],
 					rows: this.getDestinationStorageRows().gcs,
 					vflexLength: 'xs10',
 					lineNumbers: false,
-					searchOptionsEnabled: false
-				}
+					searchOptionsEnabled: false,
+				},
 			},
 			{
 				component: 'parameters-table',
@@ -224,29 +224,29 @@ export default class StorageToStorageConfigurationsItemView extends Mixins(Heade
 						{
 							label: 'Type',
 							field: 'type',
-							width: '100px'
+							width: '100px',
 						},
 						{
 							label: 'Destination S3 bucket',
 							field: 's3_bucket',
-							width: '200px'
+							width: '200px',
 						},
 						{
 							label: 'Destination Folder',
 							field: 's3_destination_prefix',
-							width: '200px'
+							width: '200px',
 						},
 						{
 							label: 'AWS Access Key',
 							field: 'aws_access_key',
-							width: '200px'
-						}
+							width: '200px',
+						},
 					],
 					rows: this.getDestinationStorageRows().s3,
 					vflexLength: 'xs10',
 					lineNumbers: false,
-					searchOptionsEnabled: false
-				}
+					searchOptionsEnabled: false,
+				},
 			},
 			{
 				component: 'parameters-table',
@@ -258,44 +258,44 @@ export default class StorageToStorageConfigurationsItemView extends Mixins(Heade
 						{
 							label: 'Type',
 							field: 'type',
-							width: '50px'
+							width: '50px',
 						},
 						{
 							label: 'Host',
 							field: 'sftp_host',
-							width: '100px'
+							width: '100px',
 						},
 						{
 							label: 'Port',
 							field: 'sftp_port',
-							width: '50px'
+							width: '50px',
 						},
 						{
 							label: 'User',
 							field: 'sftp_userid',
-							width: '100px'
+							width: '100px',
 						},
 						{
 							label: ' Directory',
 							field: 'sftp_destination_dir',
-							width: '100px'
+							width: '100px',
 						},
 						{
 							label: 'Top File Name',
 							field: 'generate_top_file',
-							width: '100px'
+							width: '100px',
 						},
 						{
 							label: 'Create Dir',
 							field: 'sftp_destination_dir_create',
-							width: '100px'
-						}
+							width: '100px',
+						},
 					],
 					rows: this.getDestinationStorageRows().sftp,
 					vflexLength: 'xs12',
 					lineNumbers: false,
-					searchOptionsEnabled: false
-				}
+					searchOptionsEnabled: false,
+				},
 			},
 			{
 				component: 'parameters-table',
@@ -306,19 +306,19 @@ export default class StorageToStorageConfigurationsItemView extends Mixins(Heade
 					columns: [
 						{
 							label: 'File Name Template',
-							field: 'filename_template'
+							field: 'filename_template',
 						},
 						{
 							label: 'File Name Description',
-							field: 'file_description'
-						}
+							field: 'file_description',
+						},
 					],
 					rows: this.item.filename_templates,
 					vflexLength: 'xs12',
 					lineNumbers: false,
-					searchOptionsEnabled: false
-				}
-			}
+					searchOptionsEnabled: false,
+				},
+			},
 		];
 	}
 }

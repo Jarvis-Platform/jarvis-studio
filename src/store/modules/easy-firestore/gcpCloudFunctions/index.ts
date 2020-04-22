@@ -5,5 +5,5 @@ export const gcpCloudFunctions: IEasyFirestoreModule = {
 	firestorePath: 'gcp-cloud-functions',
 	firestoreRefType: COLLECTION_REF,
 	moduleName: 'gcpCloudFunctions',
-	statePropName: STATE_PROP_NAME
+	statePropName: STATE_PROP_NAME,
 };

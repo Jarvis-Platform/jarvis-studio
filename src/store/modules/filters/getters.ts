@@ -36,11 +36,11 @@ export const getters: GetterTree<FilterState, RootState> = {
 	},
 	whereStatusFilter(state, getters, rootState) {
 		const { filteredAccounts, minDateFilter, envFilterSelected } = state;
-		const formattedFilteredAccounts = filteredAccounts.map(account => account.id);
+		const formattedFilteredAccounts = filteredAccounts.map((account) => account.id);
 
 		let filters = [
 			getAccountsFilter(filteredAccounts, formattedFilteredAccounts, rootState),
-			getMinDateFilter(minDateFilter, STATUS)
+			getMinDateFilter(minDateFilter, STATUS),
 		];
 
 		if (envFilterSelected.value !== 'ALL') filters.push(getEnvFilterSelected(envFilterSelected));
@@ -49,11 +49,11 @@ export const getters: GetterTree<FilterState, RootState> = {
 	},
 	whereRunsFilter(state, getters, rootState) {
 		const { filteredAccounts, minDateFilter, envFilterSelected, runStatusFilterSelected } = state;
-		const formattedFilteredAccounts = filteredAccounts.map(account => account.id);
+		const formattedFilteredAccounts = filteredAccounts.map((account) => account.id);
 
 		let filters = [
 			getAccountsFilter(filteredAccounts, formattedFilteredAccounts, rootState),
-			getMinDateFilter(minDateFilter, RUNS)
+			getMinDateFilter(minDateFilter, RUNS),
 		];
 
 		if (envFilterSelected.value !== 'ALL') filters.push(getEnvFilterSelected(envFilterSelected));
@@ -63,7 +63,7 @@ export const getters: GetterTree<FilterState, RootState> = {
 	},
 	whereConfFilter(state, getters, rootState) {
 		const { filteredAccounts, envFilterSelected, confActivatedFilterSelected } = state;
-		const formattedFilteredAccounts = filteredAccounts.map(account => account.id);
+		const formattedFilteredAccounts = filteredAccounts.map((account) => account.id);
 
 		let filters = [getAccountsFilter(filteredAccounts, formattedFilteredAccounts, rootState)];
 
@@ -84,5 +84,5 @@ export const getters: GetterTree<FilterState, RootState> = {
 		}
 
 		return filters;
-	}
+	},
 };

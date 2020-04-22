@@ -7,7 +7,7 @@
 			:class="{
 				'text-uppercase': isLabel,
 				'text-capitalize': !isLabel,
-				'no-opacity': this.item.archived
+				'no-opacity': this.item.archived,
 			}"
 			:label="isLabel"
 			:disabled="item.archived"
@@ -45,7 +45,7 @@ export default class ConfigurationStatus extends Vue {
 		isVisible: false,
 		text: '',
 		timeout: SNACKBAR.TIMEOUT,
-		color: ''
+		color: '',
 	};
 
 	changeActivatedStatus(item: AnyObject, collection: string) {
@@ -54,7 +54,7 @@ export default class ConfigurationStatus extends Vue {
 				isVisible: true,
 				text: 'The Activated attribute is not well set in the source configuration. Please update and deploy it again',
 				timeout: SNACKBAR.TIMEOUT,
-				color: 'error'
+				color: 'error',
 			});
 
 			return;
@@ -65,7 +65,7 @@ export default class ConfigurationStatus extends Vue {
 			isVisible: false,
 			text: '',
 			timeout: SNACKBAR.TIMEOUT,
-			color: ''
+			color: '',
 		};
 		const id = item.id;
 		const collectionPath = `${collection}/patch`;
@@ -87,7 +87,7 @@ export default class ConfigurationStatus extends Vue {
 				isVisible: true,
 				text,
 				timeout: SNACKBAR.TIMEOUT,
-				color: getActiveConfColor(activated, item.archived)
+				color: getActiveConfColor(activated, item.archived),
 			});
 		});
 	}

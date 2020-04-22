@@ -17,9 +17,9 @@ import { mapState } from 'vuex';
 		...mapState({
 			firestoreItem(state: any) {
 				return state[this.moduleName].data;
-			}
-		})
-	}
+			},
+		}),
+	},
 })
 export default class DocMixin extends Vue {
 	private firestoreItem: any;
@@ -73,9 +73,9 @@ export default class DocMixin extends Vue {
 			component: {
 				name: 'overview-component',
 				props: {
-					data: this.configurationData
-				}
-			}
+					data: this.configurationData,
+				},
+			},
 		};
 	}
 
@@ -87,9 +87,9 @@ export default class DocMixin extends Vue {
 				name: 'view-json',
 				props: {
 					json: this.item,
-					jsonId: this.itemId
-				}
-			}
+					jsonId: this.itemId,
+				},
+			},
 		};
 	}
 
@@ -102,9 +102,9 @@ export default class DocMixin extends Vue {
 				props: {
 					account: this.item.account,
 					moduleName: this.moduleName,
-					relatedDocId: this.item.id
-				}
-			}
+					relatedDocId: this.item.id,
+				},
+			},
 		};
 	}
 }

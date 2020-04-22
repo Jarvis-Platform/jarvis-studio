@@ -25,23 +25,23 @@ export default class StorageToStorageRunsItemView extends Mixins(HeaderInfosMixi
 					{
 						label: 'Type',
 						field: 'type',
-						width: '100px'
+						width: '100px',
 					},
 					{
 						label: 'Source Bucket',
 						field: 'gcs_source_bucket',
-						width: '200px'
+						width: '200px',
 					},
 					{
 						label: 'Source Folder',
 						field: 'gcs_source_prefix',
-						width: '200px'
+						width: '200px',
 					},
 					{
 						label: 'Archive Folder',
 						field: 'gcs_archive_prefix',
-						width: '200px'
-					}
+						width: '200px',
+					},
 				];
 				break;
 			case 's3':
@@ -49,13 +49,13 @@ export default class StorageToStorageRunsItemView extends Mixins(HeaderInfosMixi
 					{
 						label: 'Type',
 						field: 'type',
-						width: '100px'
+						width: '100px',
 					},
 					{
 						label: 'AWS Access Key',
 						field: 'aws_access_key',
-						width: '200px'
-					}
+						width: '200px',
+					},
 				];
 				break;
 			case 'sftp':
@@ -63,33 +63,33 @@ export default class StorageToStorageRunsItemView extends Mixins(HeaderInfosMixi
 					{
 						label: 'Type',
 						field: 'type',
-						width: '100px'
+						width: '100px',
 					},
 					{
 						label: 'SFTP Host',
 						field: 'sftp_host',
-						width: '200px'
+						width: '200px',
 					},
 					{
 						label: 'SFTP Port',
 						field: 'sftp_port',
-						width: '50px'
+						width: '50px',
 					},
 					{
 						label: 'SFTP User',
 						field: 'sftp_userid',
-						width: '200px'
+						width: '200px',
 					},
 					{
 						label: 'Source Directory',
 						field: 'sftp_source_directory',
-						width: '200px'
+						width: '200px',
 					},
 					{
 						label: 'Source Filename',
 						field: 'sftp_source_filename',
-						width: '200px'
-					}
+						width: '200px',
+					},
 				];
 				break;
 		}
@@ -145,7 +145,7 @@ export default class StorageToStorageRunsItemView extends Mixins(HeaderInfosMixi
 						type: this.item.configuration_context.destinations[i].type,
 						gcs_destination_bucket: this.item.configuration_context.destinations[i].gcs_destination_bucket,
 						gcs_destination_prefix: this.item.configuration_context.destinations[i].gcs_destination_prefix,
-						gcp_credentials_secret: this.item.configuration_context.destinations[i].gcp_credentials_secret
+						gcp_credentials_secret: this.item.configuration_context.destinations[i].gcp_credentials_secret,
 					});
 					break;
 				case 's3':
@@ -154,7 +154,7 @@ export default class StorageToStorageRunsItemView extends Mixins(HeaderInfosMixi
 						s3_bucket: this.item.configuration_context.destinations[i].s3_bucket,
 						s3_destination_prefix: this.item.configuration_context.destinations[i].s3_destination_prefix,
 						aws_access_key: this.item.configuration_context.destinations[i].aws_access_key,
-						aws_access_key_secret: this.item.configuration_context.destinations[i].aws_access_key_secret
+						aws_access_key_secret: this.item.configuration_context.destinations[i].aws_access_key_secret,
 					});
 					break;
 				case 'sftp':
@@ -165,7 +165,7 @@ export default class StorageToStorageRunsItemView extends Mixins(HeaderInfosMixi
 						sftp_destination_dir: this.item.configuration_context.destinations[i].sftp_destination_dir,
 						sftp_destination_dir_create: this.item.configuration_context.destinations[i].sftp_destination_dir_create,
 						generate_top_file: this.item.configuration_context.destinations[i].generate_top_file,
-						sftp_password_secret: this.item.configuration_context.destinations[i].sftp_password_secret
+						sftp_password_secret: this.item.configuration_context.destinations[i].sftp_password_secret,
 					});
 					break;
 			}
@@ -184,7 +184,7 @@ export default class StorageToStorageRunsItemView extends Mixins(HeaderInfosMixi
 			this.configurationTab,
 			this.fullJSONTab,
 			this.otherRunsTab,
-			this.notesTab
+			this.notesTab,
 		];
 	}
 
@@ -198,8 +198,8 @@ export default class StorageToStorageRunsItemView extends Mixins(HeaderInfosMixi
 					activeHeader: true,
 					viewId: this.item.id,
 					viewType: 'run',
-					runStatus: this.item.status
-				}
+					runStatus: this.item.status,
+				},
 			},
 			{
 				component: 'parameters-list',
@@ -211,56 +211,56 @@ export default class StorageToStorageRunsItemView extends Mixins(HeaderInfosMixi
 						{
 							id: 'account',
 							label: 'Account',
-							value: this.item.account
+							value: this.item.account,
 						},
 						{
 							id: 'environment',
 							label: 'Environnement',
-							value: this.item.environment
+							value: this.item.environment,
 						},
 						{
 							id: 'matching_filename_template',
 							label: 'Filename Matched',
-							value: this.item.matching_filename_template
+							value: this.item.matching_filename_template,
 						},
 						{
 							id: 'triggering_file',
 							label: 'File Triggered',
-							value: this.item.triggering_file
+							value: this.item.triggering_file,
 						},
 						{
 							id: 'dag_id',
 							label: 'Configuration Type',
-							value: this.item.dag_id
+							value: this.item.dag_id,
 						},
 						{
 							id: 'source_storage',
 							label: 'Source Storage',
-							value: this.item.source_storage
+							value: this.item.source_storage,
 						},
 						{
 							id: 'job_id',
 							label: 'Job Id',
-							value: this.item.job_id
+							value: this.item.job_id,
 						},
 						{
 							id: 'dag_execution_date',
 							label: 'Execution Date',
-							value: this.item.dag_execution_date
+							value: this.item.dag_execution_date,
 						},
 						{
 							id: 'duration',
 							label: 'Duration',
-							value: this.item.duration.split('.')[0]
+							value: this.item.duration.split('.')[0],
 						},
 						{
 							id: 'dag_run_id',
 							label: 'Dag Run Id',
-							value: this.item.dag_run_id
-						}
-					]
-				}
-			}
+							value: this.item.dag_run_id,
+						},
+					],
+				},
+			},
 		];
 	}
 
@@ -273,8 +273,8 @@ export default class StorageToStorageRunsItemView extends Mixins(HeaderInfosMixi
 					collection: this.moduleName,
 					activeHeader: false,
 					viewId: this.item.configuration_id,
-					viewType: 'conf'
-				}
+					viewType: 'conf',
+				},
 			},
 			{
 				component: 'parameters-list',
@@ -286,15 +286,15 @@ export default class StorageToStorageRunsItemView extends Mixins(HeaderInfosMixi
 						{
 							id: 'account',
 							label: 'Account',
-							value: this.item.account
+							value: this.item.account,
 						},
 						{
 							id: 'environment',
 							label: 'Environment',
-							value: this.item.environment
-						}
-					]
-				}
+							value: this.item.environment,
+						},
+					],
+				},
 			},
 			{
 				component: 'parameters-table',
@@ -305,8 +305,8 @@ export default class StorageToStorageRunsItemView extends Mixins(HeaderInfosMixi
 					rows: this.getSourceStorageRows(),
 					vflexLength: 'xs10',
 					lineNumbers: false,
-					searchOptionsEnabled: false
-				}
+					searchOptionsEnabled: false,
+				},
 			},
 			{
 				component: 'parameters-table',
@@ -317,24 +317,24 @@ export default class StorageToStorageRunsItemView extends Mixins(HeaderInfosMixi
 						{
 							label: 'Type',
 							field: 'type',
-							width: '100px'
+							width: '100px',
 						},
 						{
 							label: 'Destination Bucket',
 							field: 'gcs_destination_bucket',
-							width: '200px'
+							width: '200px',
 						},
 						{
 							label: 'Destination Folder',
 							field: 'gcs_destination_prefix',
-							width: '200px'
-						}
+							width: '200px',
+						},
 					],
 					rows: this.getDestinationStorageRows().gcs,
 					vflexLength: 'xs10',
 					lineNumbers: false,
-					searchOptionsEnabled: false
-				}
+					searchOptionsEnabled: false,
+				},
 			},
 			{
 				component: 'parameters-table',
@@ -345,18 +345,18 @@ export default class StorageToStorageRunsItemView extends Mixins(HeaderInfosMixi
 					columns: [
 						{
 							label: 'File Name Template',
-							field: 'filename_template'
+							field: 'filename_template',
 						},
 						{
 							label: 'File Name Description',
-							field: 'file_description'
-						}
+							field: 'file_description',
+						},
 					],
 					rows: this.item.configuration_context.filename_templates,
 					vflexLength: 'xs12',
 					lineNumbers: false,
-					searchOptionsEnabled: false
-				}
+					searchOptionsEnabled: false,
+				},
 			},
 			{
 				component: 'parameters-list',
@@ -366,16 +366,16 @@ export default class StorageToStorageRunsItemView extends Mixins(HeaderInfosMixi
 						{
 							id: 'updated_date',
 							label: 'Updated date',
-							value: this.item.configuration_context.update_date || this.item.configuration_context.updated_date
+							value: this.item.configuration_context.update_date || this.item.configuration_context.updated_date,
 						},
 						{
 							id: 'updated_by',
 							label: 'Updated by',
-							value: this.item.configuration_context.updated_by
-						}
-					]
-				}
-			}
+							value: this.item.configuration_context.updated_by,
+						},
+					],
+				},
+			},
 		];
 	}
 }

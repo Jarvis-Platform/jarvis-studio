@@ -13,13 +13,13 @@ module.exports = (data, context) => {
 	return admin
 		.auth()
 		.getUserByEmail(data.email)
-		.then(user => admin.auth().deleteUser(user.uid))
+		.then((user) => admin.auth().deleteUser(user.uid))
 		.then(() => {
 			return {
-				message: `${data.email} has been deleted`
+				message: `${data.email} has been deleted`,
 			};
 		})
-		.catch(err => {
+		.catch((err) => {
 			return err;
 		});
 };

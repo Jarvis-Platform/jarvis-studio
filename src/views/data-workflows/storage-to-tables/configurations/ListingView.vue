@@ -47,19 +47,19 @@ export default class StorageToTablesConfigurationsListingView extends Mixins(
 				text: 'Account ID',
 				align: 'left',
 				sortable: true,
-				value: 'account'
+				value: 'account',
 			},
 			{
 				text: 'Environment',
 				align: 'left',
 				sortable: true,
-				value: 'environment'
+				value: 'environment',
 			},
 			{
 				text: 'Configuration id',
 				align: 'left',
 				sortable: true,
-				value: 'id'
+				value: 'id',
 			},
 			{ text: 'Source Type', align: 'left', sortable: true, value: 'source.type' },
 			{ text: 'Source Name', align: 'left', sortable: true, value: 'source' },
@@ -67,26 +67,26 @@ export default class StorageToTablesConfigurationsListingView extends Mixins(
 				text: 'Destinations',
 				align: 'left',
 				sortable: true,
-				value: 'destinations.length'
+				value: 'destinations.length',
 			},
 			{
 				text: 'Tables',
 				align: 'left',
 				sortable: true,
-				value: 'destinations[0].tables.length'
+				value: 'destinations[0].tables.length',
 			},
 			{
 				text: 'Status',
 				align: 'left',
 				sortable: true,
-				value: 'activated'
+				value: 'activated',
 			},
 			{
 				text: 'Actions',
 				align: 'center',
 				sortable: false,
-				value: 'actions'
-			}
+				value: 'actions',
+			},
 		];
 	}
 }

@@ -8,5 +8,5 @@ export const accounts: IEasyFirestoreModule = {
 	moduleName: 'accounts',
 	statePropName: STATE_PROP_NAME,
 	sync: SYNC,
-	getters
+	getters,
 };

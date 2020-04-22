@@ -17,5 +17,5 @@ export default {
 	TableSchemaView,
 	TaskListing,
 	ViewJson,
-	NotesTab
+	NotesTab,
 };

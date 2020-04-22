@@ -37,11 +37,11 @@ export default class StorageToTablesConfigurationsItemView extends Mixins(Header
 							id: 'gcp_project_id',
 							label: 'Project ID',
 							value: this.item.destinations[0].gcp_project_id,
-							default: 'None'
+							default: 'None',
 						},
-						{ id: 'gbq_dataset', label: 'Dataset', value: this.item.destinations[0].gbq_dataset, default: 'None' }
-					]
-				}
+						{ id: 'gbq_dataset', label: 'Dataset', value: this.item.destinations[0].gbq_dataset, default: 'None' },
+					],
+				},
 			},
 			{
 				component: 'parameters-table',
@@ -51,16 +51,16 @@ export default class StorageToTablesConfigurationsItemView extends Mixins(Header
 					columns: [
 						{
 							label: 'Table Name',
-							field: 'table_name'
+							field: 'table_name',
 						},
 						{
 							label: 'Filename Template',
-							field: 'filename_template'
+							field: 'filename_template',
 						},
 						{
 							label: 'Description',
-							field: 'short_description'
-						}
+							field: 'short_description',
+						},
 					],
 					rows: this.getDestinationTables(),
 					overriddenRows: [
@@ -69,14 +69,14 @@ export default class StorageToTablesConfigurationsItemView extends Mixins(Header
 							component: 'TableName',
 							props: {
 								item: this.item,
-								destinations: this.item.destinations[0]
-							}
-						}
+								destinations: this.item.destinations[0],
+							},
+						},
 					],
 					vflexLength: 'xs9',
 					lineNumbers: false,
-					searchOptionsEnabled: true
-				}
+					searchOptionsEnabled: true,
+				},
 			},
 			{
 				component: 'parameters-list',
@@ -90,77 +90,77 @@ export default class StorageToTablesConfigurationsItemView extends Mixins(Header
 							label: 'Source Format',
 							value: this.item.destinations[0].source_format,
 							default: 'CSV',
-							description: 'Default source format for input files. Only "CSV" or "JSON" are supported. Default : "CSV"'
+							description: 'Default source format for input files. Only "CSV" or "JSON" are supported. Default : "CSV"',
 						},
 						{
 							id: 'create_disposition',
 							label: 'Creation Disposition',
 							value: this.item.destinations[0].create_disposition,
-							default: 'CREATE_IF_NEEDED'
+							default: 'CREATE_IF_NEEDED',
 						},
 						{
 							id: 'write_disposition',
 							label: 'Write Disposition',
 							value: this.item.destinations[0].write_disposition,
-							default: 'WRITE_TRUNCATE'
+							default: 'WRITE_TRUNCATE',
 						},
 						{
 							id: 'skip_leading_rows',
 							label: 'Skip Leading Rows',
 							value: this.item.destinations[0].skip_leading_rows,
-							default: '1'
+							default: '1',
 						},
 						{
 							id: 'field_delimiter',
 							label: 'Field Delimiter',
 							value: this.item.destinations[0].field_delimiter,
-							default: '|'
+							default: '|',
 						},
 						{
 							id: 'quote_character',
 							label: 'Quote Character',
 							value: this.item.destinations[0].quote_character,
-							default: ''
+							default: '',
 						},
 						{
 							id: 'null_marker',
 							label: 'Null Marker',
 							value: this.item.destinations[0].null_marker,
-							default: ''
+							default: '',
 						},
 						{
 							id: 'bq_load_job_ignore_unknown_values',
 							label: 'Ignore Unknown Values',
 							value: this.item.destinations[0].bq_load_job_ignore_unknown_values,
-							default: false
+							default: false,
 						},
 						{
 							id: 'bq_load_job_max_bad_records',
 							label: 'Max Bad Records',
 							value: this.item.destinations[0].bq_load_job_max_bad_records,
-							default: '0'
+							default: '0',
 						},
 						{
 							id: 'bq_load_job_schema_update_options',
 							label: 'Schema Update Options',
 							value: this.item.destinations[0].bq_load_job_schema_update_options,
-							default: '[]'
+							default: '[]',
 						},
 						{
 							id: 'bq_load_job_allow_quoted_newlines',
 							label: 'Allow Quoted New Lines',
 							value: this.item.destinations[0].bq_load_job_allow_quoted_newlines,
-							default: false
+							default: false,
 						},
 						{
 							id: 'bq_load_job_allow_jagged_rows',
 							label: 'Allow Jagged Rows',
 							value: this.item.destinations[0].bq_load_job_allow_jagged_rows,
-							default: false
-						}
-					]
-				}
-			}
+							default: false,
+						},
+					],
+				},
+			},
 		];
 	}
 
@@ -174,8 +174,8 @@ export default class StorageToTablesConfigurationsItemView extends Mixins(Header
 					activeHeader: true,
 					viewId: this.item.id,
 					viewType: 'conf',
-					description: null
-				}
+					description: null,
+				},
 			},
 			{
 				component: 'parameters-list',
@@ -187,20 +187,20 @@ export default class StorageToTablesConfigurationsItemView extends Mixins(Header
 						{
 							id: 'configuration_type',
 							label: 'Configuration Type',
-							value: this.item.configuration_type
+							value: this.item.configuration_type,
 						},
 						{
 							id: 'account',
 							label: 'Account',
-							value: this.item.account
+							value: this.item.account,
 						},
 						{
 							id: 'environment',
 							label: 'Environment',
-							value: this.item.environment
-						}
-					]
-				}
+							value: this.item.environment,
+						},
+					],
+				},
 			},
 			{
 				component: 'parameters-table',
@@ -211,28 +211,28 @@ export default class StorageToTablesConfigurationsItemView extends Mixins(Header
 						{
 							label: 'Type',
 							field: 'source_type',
-							width: '100px'
+							width: '100px',
 						},
 						{
 							label: 'Project ID',
 							field: 'gcp_project_id',
-							width: '200px'
+							width: '200px',
 						},
 						{
 							label: 'Storage ID',
 							field: 'gcs_source_bucket',
-							width: '200px'
+							width: '200px',
 						},
 						{
 							label: 'Source Folder',
 							field: 'gcs_source_prefix',
-							width: '200px'
+							width: '200px',
 						},
 						{
 							label: 'Archive Folder',
 							field: 'gcs_archive_prefix',
-							width: '200px'
-						}
+							width: '200px',
+						},
 					],
 					rows: [
 						{
@@ -240,15 +240,15 @@ export default class StorageToTablesConfigurationsItemView extends Mixins(Header
 							gcp_project_id: this.item.source.gcp_project_id,
 							gcs_source_bucket: this.item.source.gcs_source_bucket,
 							gcs_source_prefix: this.item.source.gcs_source_prefix,
-							gcs_archive_prefix: this.item.source.gcs_archive_prefix
-						}
+							gcs_archive_prefix: this.item.source.gcs_archive_prefix,
+						},
 					],
 					vflexLength: 'xs9',
 					lineNumbers: false,
-					searchOptionsEnabled: false
-				}
+					searchOptionsEnabled: false,
+				},
 			},
-			...this.getDestinations()
+			...this.getDestinations(),
 		];
 	}
 }

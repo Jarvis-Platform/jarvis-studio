@@ -25,9 +25,9 @@ export default class WorkflowStatusItemView extends Mixins(HeaderInfosMixin, Sta
 				component: {
 					name: 'overview-component',
 					props: {
-						data: this.statusData
-					}
-				}
+						data: this.statusData,
+					},
+				},
 			},
 			{
 				label: 'Full Json',
@@ -36,18 +36,18 @@ export default class WorkflowStatusItemView extends Mixins(HeaderInfosMixin, Sta
 					name: 'view-json',
 					props: {
 						json: this.item,
-						jsonId: this.itemId
-					}
-				}
+						jsonId: this.itemId,
+					},
+				},
 			},
 			{
 				label: 'Conversation',
 				href: 'conversation',
 				component: {
 					name: 'notes-tab',
-					props: {}
-				}
-			}
+					props: {},
+				},
+			},
 		];
 	}
 
@@ -60,8 +60,8 @@ export default class WorkflowStatusItemView extends Mixins(HeaderInfosMixin, Sta
 					collection: this.moduleName,
 					activeHeader: false,
 					viewId: this.item.id,
-					viewType: 'status'
-				}
+					viewType: 'status',
+				},
 			},
 			{
 				component: 'parameters-list',
@@ -73,26 +73,26 @@ export default class WorkflowStatusItemView extends Mixins(HeaderInfosMixin, Sta
 						{
 							id: 'jobs',
 							label: 'Jobs',
-							value: Object.keys(this.item.jobs).length
+							value: Object.keys(this.item.jobs).length,
 						},
 						{
 							id: 'last_modified',
 							label: 'Las modified',
-							value: this.item.last_modified
+							value: this.item.last_modified,
 						},
 						{
 							id: 'target_dag',
 							label: 'Target Dag',
-							value: this.item.target_dag
+							value: this.item.target_dag,
 						},
 						{
 							id: 'target_dag_last_executed',
 							label: 'Target Dag last executed',
-							value: this.item.target_dag_last_executed
-						}
-					]
-				}
-			}
+							value: this.item.target_dag_last_executed,
+						},
+					],
+				},
+			},
 		];
 	}
 }

@@ -26,8 +26,8 @@ exports.replicateUser = functions.firestore.document('users/{userId}').onUpdate(
 		.where('userId', '==', context.params.userId)
 		.get()
 		// eslint-disable-next-line promise/always-return
-		.then(detailDocs => {
-			detailDocs.forEach(detailDoc => {
+		.then((detailDocs) => {
+			detailDocs.forEach((detailDoc) => {
 				console.log(util.inspect(detailDoc));
 			});
 		});
@@ -38,14 +38,14 @@ exports.replicateUser = functions.firestore.document('users/{userId}').onUpdate(
 exports.deleteThreadNotes = integrify({
 	rule: 'DELETE_REFERENCES',
 	source: {
-		collection: 'notes'
+		collection: 'notes',
 	},
 	targets: [
 		{
 			collection: 'notes',
-			foreignKey: 'parentNoteId'
-		}
-	]
+			foreignKey: 'parentNoteId',
+		},
+	],
 });
 
 // module.exports.replicateMasterToDetail = integrify({
@@ -76,7 +76,7 @@ exports.deleteThreadNotes = integrify({
 exports.replicateUserAttributes = integrify({
 	rule: 'REPLICATE_ATTRIBUTES',
 	source: {
-		collection: 'users'
+		collection: 'users',
 	},
 	targets: [
 		{
@@ -85,8 +85,8 @@ exports.replicateUserAttributes = integrify({
 			attributeMapping: {
 				email: 'userEmail',
 				photoURL: 'userPhotoURL',
-				displayName: 'userDisplayName'
-			}
-		}
-	]
+				displayName: 'userDisplayName',
+			},
+		},
+	],
 });

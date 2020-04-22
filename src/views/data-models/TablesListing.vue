@@ -29,13 +29,13 @@
 				</template>
 
 				<template v-slot:item.numRows="{ item }">
-					<v-progress-linear :value="getPropertyPercent('numRows', item.numRows)" height="25" style="width: 100px">
+					<v-progress-linear :value="getPropertyPercent('numRows', item.numRows)" height="25" style="width: 100px;">
 						<strong>{{ getNumRowsFormatted(item.numRows) }}</strong>
 					</v-progress-linear>
 				</template>
 
 				<template v-slot:item.numBytes="{ item }">
-					<v-progress-linear :value="getPropertyPercent('numBytes', item.numBytes)" height="25" style="width: 100px">
+					<v-progress-linear :value="getPropertyPercent('numBytes', item.numBytes)" height="25" style="width: 100px;">
 						<strong>{{ getNumBytesFormatted(item.numBytes) }}</strong>
 					</v-progress-linear>
 				</template>
@@ -74,14 +74,14 @@ import { DATA_TABLE_DETAILS, TABLES_LISTING } from '@/constants/router/routes-na
 import { getBigQueryURL, getFormattedNumBytes, getFormattedNumRows } from '@/util/data-models';
 
 @Component({
-	components: { DataModelHeader }
+	components: { DataModelHeader },
 })
 export default class TablesListing extends Vue {
 	isLoading: boolean = false;
 	search: string = '';
 	filterOnTimePartitioning: boolean = false;
 
-	@State(state => state.dataTables.data) tables!: Object;
+	@State((state) => state.dataTables.data) tables!: Object;
 
 	activated() {
 		this.fetchTables();
@@ -95,7 +95,7 @@ export default class TablesListing extends Vue {
 			.dispatch('dataTables/fetchAndAdd', {
 				projectId: this.projectId,
 				datasetId: this.datasetId,
-				limit: 0
+				limit: 0,
 			})
 			.then(() => {
 				this.isLoading = false;
@@ -105,7 +105,7 @@ export default class TablesListing extends Vue {
 	getTableViewLink(tableId: string) {
 		return {
 			name: DATA_TABLE_DETAILS,
-			params: { projectId: this.projectId, datasetId: this.datasetId, tableId }
+			params: { projectId: this.projectId, datasetId: this.datasetId, tableId },
 		};
 	}
 
@@ -138,7 +138,7 @@ export default class TablesListing extends Vue {
 	getPropertyPercent(key: string, value: number) {
 		const maxPropertyValue = Math.max.apply(
 			Math,
-			Object.values(this.tables).map(table => (table[key] ? table[key] : '0'))
+			Object.values(this.tables).map((table) => (table[key] ? table[key] : '0'))
 		);
 		const percent = (Number(value) * 100) / maxPropertyValue;
 
@@ -163,22 +163,22 @@ export default class TablesListing extends Vue {
 			{ text: 'Location', value: 'location' },
 			{ text: 'Time Partitioned', value: 'time_partitioned' },
 			{ text: 'Last Update', value: 'refreshed_timestamp' },
-			{ text: 'Query', value: 'query' }
+			{ text: 'Query', value: 'query' },
 		];
 	}
 
 	get tableItems() {
 		return [
 			{
-				text: this.projectId
+				text: this.projectId,
 			},
 			{
 				text: this.datasetId,
 				to: {
 					name: TABLES_LISTING,
-					params: { projectId: this.projectId, datasetId: this.datasetId }
-				}
-			}
+					params: { projectId: this.projectId, datasetId: this.datasetId },
+				},
+			},
 		];
 	}
 
@@ -187,7 +187,7 @@ export default class TablesListing extends Vue {
 	}
 
 	get timePartitioningTables() {
-		return Object.values(this.tables).filter(table => table.timePartitioning);
+		return Object.values(this.tables).filter((table) => table.timePartitioning);
 	}
 
 	get datasetId() {

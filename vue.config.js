@@ -1,22 +1,22 @@
 module.exports = {
 	configureWebpack: {
-		devtool: 'source-map'
+		devtool: 'source-map',
 	},
 	lintOnSave: 'error',
 	devServer: {
 		overlay: {
 			warnings: true,
-			errors: true
+			errors: true,
 		},
 		watchOptions: {
-			poll: true
-		}
+			poll: true,
+		},
 	},
 	css: {
 		loaderOptions: {
 			scss: {
-				prependData: `@import "@/scss/global/global.scss";`
-			}
-		}
-	}
+				prependData: `@import "@/scss/global/global.scss";`,
+			},
+		},
+	},
 };

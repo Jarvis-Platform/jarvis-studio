@@ -25,8 +25,8 @@ export default class VmLauncherRunsItemView extends Mixins(HeaderInfosMixin, Run
 					activeHeader: true,
 					viewId: this.item.id,
 					viewType: 'run',
-					runStatus: this.item.status
-				}
+					runStatus: this.item.status,
+				},
 			},
 			{
 				component: 'parameters-list',
@@ -38,36 +38,36 @@ export default class VmLauncherRunsItemView extends Mixins(HeaderInfosMixin, Run
 						{
 							id: 'account',
 							label: 'Account',
-							value: this.item.account
+							value: this.item.account,
 						},
 						{
 							id: 'environment',
 							label: 'Environnement',
-							value: this.item.environment
+							value: this.item.environment,
 						},
 						{
 							id: 'dag_id',
 							label: 'Configuration Type',
-							value: this.item.dag_id
+							value: this.item.dag_id,
 						},
 						{
 							id: 'job_id',
 							label: 'Job Id',
-							value: this.item.job_id
+							value: this.item.job_id,
 						},
 						{
 							id: 'dag_execution_date',
 							label: 'Execution Date',
-							value: this.item.dag_execution_date
+							value: this.item.dag_execution_date,
 						},
 						{
 							id: 'dag_run_id',
 							label: 'Dag Run Id',
-							value: this.item.dag_run_id
-						}
-					]
-				}
-			}
+							value: this.item.dag_run_id,
+						},
+					],
+				},
+			},
 		];
 	}
 
@@ -80,8 +80,8 @@ export default class VmLauncherRunsItemView extends Mixins(HeaderInfosMixin, Run
 					collection: this.moduleName,
 					activeHeader: false,
 					viewId: this.item.dag_id,
-					viewType: 'conf'
-				}
+					viewType: 'conf',
+				},
 			},
 			{
 				component: 'parameters-list',
@@ -93,16 +93,16 @@ export default class VmLauncherRunsItemView extends Mixins(HeaderInfosMixin, Run
 						{
 							id: 'account',
 							label: 'Account',
-							value: this.item.account
+							value: this.item.account,
 						},
 						{
 							id: 'environment',
 							label: 'Environment',
-							value: this.item.environment
-						}
-					]
-				}
-			}
+							value: this.item.environment,
+						},
+					],
+				},
+			},
 		];
 	}
 }

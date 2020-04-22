@@ -6,5 +6,5 @@ export const tablesToTablesRun: IEasyFirestoreModule = {
 	firestoreRefType: DOC_REF,
 	moduleName: 'tablesToTablesRun',
 	statePropName: STATE_PROP_NAME,
-	sync: SYNC
+	sync: SYNC,
 };

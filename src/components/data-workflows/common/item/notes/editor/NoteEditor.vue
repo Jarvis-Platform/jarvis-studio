@@ -23,7 +23,7 @@ import { mdiPencil, mdiSend } from '@mdi/js';
 import extenstions from './extenstions';
 
 @Component({
-	components: { TiptapVuetify }
+	components: { TiptapVuetify },
 })
 export default class NoteEditor extends Vue {
 	@Prop(String) defaultText?: string;

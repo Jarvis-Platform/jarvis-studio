@@ -6,7 +6,7 @@ import { mutations } from './mutations';
 
 export const state: UserState = {
 	user: null,
-	isAuthenticated: false
+	isAuthenticated: false,
 };
 
 const namespaced: boolean = true;
@@ -16,5 +16,5 @@ export const userModule: Module<UserState, RootState> = {
 	state,
 	getters,
 	actions,
-	mutations
+	mutations,
 };

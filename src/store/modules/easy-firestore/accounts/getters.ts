@@ -5,5 +5,5 @@ import { RootState } from '@/types';
 export const getters: GetterTree<IPluginState, RootState> = {
 	getAccounts(state) {
 		return state.data;
-	}
+	},
 };

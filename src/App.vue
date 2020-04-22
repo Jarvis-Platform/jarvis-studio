@@ -62,7 +62,7 @@ interface Drawer {
 }
 
 @Component({
-	components: { AppBar, FooterContent, NavigationContent, NotificationContent }
+	components: { AppBar, FooterContent, NavigationContent, NotificationContent },
 })
 export default class App extends Vue {
 	navigationDrawer: Drawer = { permanent: true, mini: false };
@@ -71,7 +71,7 @@ export default class App extends Vue {
 	analyticsItems: Link[] = analyticsItems;
 	settingsItems: Link[] = settingsItems;
 
-	@State(state => state.user.isAuthenticated) isAuthenticated!: boolean;
+	@State((state) => state.user.isAuthenticated) isAuthenticated!: boolean;
 	@Getter('user/accounts') accounts!: string[];
 
 	mounted() {

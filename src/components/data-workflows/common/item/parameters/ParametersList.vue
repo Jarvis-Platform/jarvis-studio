@@ -27,7 +27,7 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 import ParametersItem from './ParametersItem.vue';
 
 @Component({
-	components: { ParametersItem }
+	components: { ParametersItem },
 })
 export default class ParametersList extends Vue {
 	@Prop({ type: String, required: true }) groupTitle!: string;
@@ -37,8 +37,8 @@ export default class ParametersList extends Vue {
 		type: Array,
 		default: [
 			{ id: 'account', label: 'Account', value: '000020' },
-			{ id: 'environment', label: 'Environment', value: 'PROD' }
-		]
+			{ id: 'environment', label: 'Environment', value: 'PROD' },
+		],
 	})
 	paramItems!: object;
 }

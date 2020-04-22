@@ -107,18 +107,21 @@ type Model = {
 
 @Component({
 	props: {
-		source: String
-	}
+		source: String,
+	},
 })
 export default class SignIn extends Vue {
 	valid: boolean = false;
 	userNotAuthorized: boolean = false;
 	loading: boolean = false;
 	model: Model = { email: '', password: '' };
-	emailRules: InputValidationRules = [v => !!v || 'E-mail is required', v => /.+@.+/.test(v) || 'E-mail must be valid'];
+	emailRules: InputValidationRules = [
+		(v) => !!v || 'E-mail is required',
+		(v) => /.+@.+/.test(v) || 'E-mail must be valid',
+	];
 	passwordRules: InputValidationRules = [
-		v => !!v || 'Password is required',
-		v => v.length >= 6 || 'Password must be greater than 6 characters'
+		(v) => !!v || 'Password is required',
+		(v) => v.length >= 6 || 'Password must be greater than 6 characters',
 	];
 
 	get background(): File {

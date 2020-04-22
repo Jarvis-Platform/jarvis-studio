@@ -8,7 +8,7 @@ import {
 	GCS_TO_GCS_RUNS_LISTING,
 	GCS_TO_GCS_RUNS_ITEM,
 	GCS_TO_GCS_CONFIGURATIONS_LISTING,
-	GCS_TO_GCS_CONFIGURATIONS_ITEM
+	GCS_TO_GCS_CONFIGURATIONS_ITEM,
 } from '@/constants/router/routes-names';
 
 export const gcsToGcsRoutes: RouteConfig[] = [
@@ -22,7 +22,7 @@ export const gcsToGcsRoutes: RouteConfig[] = [
 		component: () =>
 			import(
 				/* webpackChunkName: "/data-workflows/gcs-to-gcs/runs/listing" */ '@/views/data-workflows/gcs-to-gcs/runs/ListingView.vue'
-			)
+			),
 	},
 	{
 		path: `/${DATA_WORKFLOWS}/${GCS_TO_GCS.url}/${RUNS}/:id`,
@@ -31,7 +31,7 @@ export const gcsToGcsRoutes: RouteConfig[] = [
 		component: () =>
 			import(
 				/* webpackChunkName: "/data-workflows/gcs-to-gcs/runs/item" */ '@/views/data-workflows/gcs-to-gcs/runs/ItemView.vue'
-			)
+			),
 	},
 
 	/**
@@ -44,7 +44,7 @@ export const gcsToGcsRoutes: RouteConfig[] = [
 		component: () =>
 			import(
 				/* webpackChunkName: "/data-workflows/gcs-to-gcs/configurations/listing" */ '@/views/data-workflows/gcs-to-gcs/configurations/ListingView.vue'
-			)
+			),
 	},
 	{
 		path: `/${DATA_WORKFLOWS}/${GCS_TO_GCS.url}/${CONFIGURATIONS}/:id`,
@@ -53,6 +53,6 @@ export const gcsToGcsRoutes: RouteConfig[] = [
 		component: () =>
 			import(
 				/* webpackChunkName: "/data-workflows/gcs-to-gcs/configurations/item" */ '@/views/data-workflows/gcs-to-gcs/configurations/ItemView.vue'
-			)
-	}
+			),
+	},
 ];

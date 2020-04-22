@@ -33,7 +33,7 @@ import {
 	GCP_PROJECT,
 	GCS_DEST_BUCKET,
 	GCS_DEST_PREFIX,
-	ID
+	ID,
 } from '@/constants/data-workflows/listing/header-items';
 
 @Component

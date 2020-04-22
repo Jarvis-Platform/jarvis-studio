@@ -8,7 +8,7 @@ import {
 	STORAGE_TO_TABLES_RUNS_LISTING,
 	STORAGE_TO_TABLES_RUNS_ITEM,
 	STORAGE_TO_TABLES_CONFIGURATIONS_LISTING,
-	STORAGE_TO_TABLES_CONFIGURATIONS_ITEM
+	STORAGE_TO_TABLES_CONFIGURATIONS_ITEM,
 } from '@/constants/router/routes-names';
 
 export const storageToTablesRoutes: RouteConfig[] = [
@@ -22,7 +22,7 @@ export const storageToTablesRoutes: RouteConfig[] = [
 		component: () =>
 			import(
 				/* webpackChunkName: "/data-workflows/storage-to-table/runs/listing" */ '@/views/data-workflows/storage-to-tables/runs/ListingView.vue'
-			)
+			),
 	},
 	{
 		path: `/${DATA_WORKFLOWS}/${STORAGE_TO_TABLES.url}/${RUNS}/:id`,
@@ -31,7 +31,7 @@ export const storageToTablesRoutes: RouteConfig[] = [
 		component: () =>
 			import(
 				/* webpackChunkName: "/data-workflows/storage-to-table/runs/item" */ '@/views/data-workflows/storage-to-tables/runs/ItemView.vue'
-			)
+			),
 	},
 
 	/**
@@ -44,7 +44,7 @@ export const storageToTablesRoutes: RouteConfig[] = [
 		component: () =>
 			import(
 				/* webpackChunkName: "/data-workflows/storage-to-table/configurations/listing" */ '@/views/data-workflows/storage-to-tables/configurations/ListingView.vue'
-			)
+			),
 	},
 	{
 		path: `/${DATA_WORKFLOWS}/${STORAGE_TO_TABLES.url}/${CONFIGURATIONS}/:id`,
@@ -53,6 +53,6 @@ export const storageToTablesRoutes: RouteConfig[] = [
 		component: () =>
 			import(
 				/* webpackChunkName: "/data-workflows/storage-to-table/configurations/item" */ '@/views/data-workflows/storage-to-tables/configurations/ItemView.vue'
-			)
-	}
+			),
+	},
 ];

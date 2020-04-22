@@ -13,7 +13,7 @@ import vueDebounce, { PluginConfig } from 'vue-debounce';
 Sentry.init({
 	dsn: process.env.VUE_APP_SENTRY_DSN,
 	environment: process.env.NODE_ENV,
-	integrations: [new VueIntegration({ Vue, attachProps: true })]
+	integrations: [new VueIntegration({ Vue, attachProps: true })],
 });
 
 Vue.config.productionTip = false;
@@ -21,7 +21,7 @@ Vue.config.productionTip = false;
 Vue.use(vueMoment);
 Vue.use(TiptapVuetifyPlugin, {
 	vuetify,
-	iconsGroup: 'mdi'
+	iconsGroup: 'mdi',
 });
 Vue.use<PluginConfig>(vueDebounce, { lock: true, defaultTime: '400ms', listenTo: 'keyup' });
 
@@ -33,12 +33,12 @@ const createApp = () => {
 			store,
 			router,
 			vuetify,
-			render: h => h(App)
+			render: (h) => h(App),
 		}).$mount('#app');
 	}
 };
 
-firebase.auth().onAuthStateChanged(user => {
+firebase.auth().onAuthStateChanged((user) => {
 	if (user) {
 		store.dispatch('user/alreadySignedIn', user).then(() => createApp());
 		store.dispatch('accounts/fetchAndAdd');

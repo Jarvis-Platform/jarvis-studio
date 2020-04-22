@@ -65,11 +65,11 @@ import SearchMenu from './sub-components/SearchMenu.vue';
 import { UserSetting, userSettings } from '@/navigation/user-settings-items';
 
 @Component({
-	components: { AccountSelector, SearchMenu }
+	components: { AccountSelector, SearchMenu },
 })
 export default class AppBar extends Vue {
-	@State(state => state.user.isAuthenticated) isAuthenticated!: boolean;
-	@State(state => state.user.user) user!: User;
+	@State((state) => state.user.isAuthenticated) isAuthenticated!: boolean;
+	@State((state) => state.user.user) user!: User;
 
 	userSettingsItems: UserSetting[] = userSettings;
 

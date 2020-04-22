@@ -35,9 +35,9 @@ interface TreeItem {
 @Component({
 	computed: {
 		...mapState({
-			dataModels: (state: any) => state.dataModels.data
-		})
-	}
+			dataModels: (state: any) => state.dataModels.data,
+		}),
+	},
 })
 export default class TreeView extends Vue {
 	private dataModels: any;
@@ -60,9 +60,9 @@ export default class TreeView extends Vue {
 		this.$router
 			.push({
 				name: TABLES_LISTING,
-				params: { projectId: id.split('/')[0], datasetId: id.split('/')[1] }
+				params: { projectId: id.split('/')[0], datasetId: id.split('/')[1] },
 			})
-			.catch(err => {});
+			.catch((err) => {});
 	}
 
 	mounted() {

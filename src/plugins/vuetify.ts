@@ -16,7 +16,7 @@ export default new Vuetify({
 				error: '#b71c1c',
 				menu: '#012738',
 				background: '#012F45',
-				contrast: '#001A26'
+				contrast: '#001A26',
 			},
 			// TODO: Create dark mode
 			dark: {
@@ -26,8 +26,8 @@ export default new Vuetify({
 				error: '#b71c1c',
 				menu: '#012738',
 				background: '#012F45',
-				contrast: '#001A26'
-			}
-		}
-	}
+				contrast: '#001A26',
+			},
+		},
+	},
 });

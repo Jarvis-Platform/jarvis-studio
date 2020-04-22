@@ -26,8 +26,8 @@ export default class TableToStorageRunsItemView extends Mixins(HeaderInfosMixin,
 					viewId: this.item.firestore_conf_doc_id,
 					viewType: 'run',
 					description: null,
-					runStatus: this.item.status
-				}
+					runStatus: this.item.status,
+				},
 			},
 			{
 				component: 'parameters-list',
@@ -39,15 +39,15 @@ export default class TableToStorageRunsItemView extends Mixins(HeaderInfosMixin,
 						{
 							id: 'account',
 							label: 'Account',
-							value: this.item.account
+							value: this.item.account,
 						},
 						{
 							id: 'environment',
 							label: 'Environment',
-							value: this.item.environment
-						}
-					]
-				}
+							value: this.item.environment,
+						},
+					],
+				},
 			},
 			{
 				component: 'parameters-list',
@@ -59,20 +59,20 @@ export default class TableToStorageRunsItemView extends Mixins(HeaderInfosMixin,
 						{
 							id: 'firestore_conf_doc_id',
 							label: 'Configuration Id',
-							value: this.item.firestore_conf_doc_id
+							value: this.item.firestore_conf_doc_id,
 						},
 						{
 							id: 'destination_bucket',
 							label: 'Destination Bucket',
-							value: this.item.destination_bucket
+							value: this.item.destination_bucket,
 						},
 						{
 							id: 'output_filename',
 							label: 'Output Finame',
-							value: this.item.output_filename
-						}
-					]
-				}
+							value: this.item.output_filename,
+						},
+					],
+				},
 			},
 			{
 				component: 'parameters-list',
@@ -84,31 +84,31 @@ export default class TableToStorageRunsItemView extends Mixins(HeaderInfosMixin,
 						{
 							id: 'dag_type',
 							label: 'Dag Type',
-							value: this.item.dag_type
+							value: this.item.dag_type,
 						},
 						{
 							id: 'job_id',
 							label: 'Job Id',
-							value: this.item.job_id
+							value: this.item.job_id,
 						},
 						{
 							id: 'dag_execution_date',
 							label: 'Execution Date',
-							value: this.item.dag_execution_date
+							value: this.item.dag_execution_date,
 						},
 						{
 							id: 'dag_run_id',
 							label: 'Dag Run Id',
-							value: this.item.dag_run_id
+							value: this.item.dag_run_id,
 						},
 						{
 							id: 'dag_generator_version',
 							label: 'Dag Generator Version',
-							value: this.item.dag_generator_version
-						}
-					]
-				}
-			}
+							value: this.item.dag_generator_version,
+						},
+					],
+				},
+			},
 		];
 	}
 
@@ -122,8 +122,8 @@ export default class TableToStorageRunsItemView extends Mixins(HeaderInfosMixin,
 					viewId: this.item.firestore_conf_doc_id,
 					viewType: 'conf',
 					description: null,
-					runStatus: this.item.status
-				}
+					runStatus: this.item.status,
+				},
 			},
 			{
 				component: 'parameters-list',
@@ -135,15 +135,15 @@ export default class TableToStorageRunsItemView extends Mixins(HeaderInfosMixin,
 						{
 							id: 'account',
 							label: 'Account',
-							value: this.item.account
+							value: this.item.account,
 						},
 						{
 							id: 'environment',
 							label: 'Environment',
-							value: this.item.environment
-						}
-					]
-				}
+							value: this.item.environment,
+						},
+					],
+				},
 			},
 			{
 				component: 'parameters-table',
@@ -154,36 +154,36 @@ export default class TableToStorageRunsItemView extends Mixins(HeaderInfosMixin,
 						{
 							label: 'Type',
 							field: 'source_type',
-							width: '100px'
+							width: '100px',
 						},
 						{
 							label: 'Storage ID',
 							field: 'gcs_dest_bucket',
-							width: '200px'
+							width: '200px',
 						},
 						{
 							label: 'Destination Folder',
 							field: 'gcs_dest_prefix',
-							width: '200px'
+							width: '200px',
 						},
 						{
 							label: 'Output Filename',
 							field: 'output_filename',
-							width: '200px'
-						}
+							width: '200px',
+						},
 					],
 					rows: [
 						{
 							source_type: 'GCS',
 							gcs_dest_bucket: this.item.configuration_context.gcs_dest_bucket,
 							gcs_dest_prefix: this.item.configuration_context.gcs_dest_prefix,
-							output_filename: this.item.configuration_context.output_filename
-						}
+							output_filename: this.item.configuration_context.output_filename,
+						},
 					],
 					vflexLength: 'xs9',
 					lineNumbers: false,
-					searchOptionsEnabled: false
-				}
+					searchOptionsEnabled: false,
+				},
 			},
 			{
 				component: 'parameters-list',
@@ -196,22 +196,22 @@ export default class TableToStorageRunsItemView extends Mixins(HeaderInfosMixin,
 							id: 'compression',
 							label: 'Compressed',
 							value: this.item.configuration_context.compression,
-							default: 'None'
+							default: 'None',
 						},
 						{
 							id: 'field_delimiter',
 							label: 'Field Delimiter',
 							value: this.item.configuration_context.field_delimiter,
-							default: '|'
+							default: '|',
 						},
 						{
 							id: 'delete_dest_bucket_content',
 							label: 'Delete Destination Storage Content',
 							value: this.item.configuration_context.delete_dest_bucket_content,
-							default: false
-						}
-					]
-				}
+							default: false,
+						},
+					],
+				},
 			},
 			{
 				component: 'parameters-list',
@@ -223,7 +223,7 @@ export default class TableToStorageRunsItemView extends Mixins(HeaderInfosMixin,
 						{
 							id: 'gcp_project',
 							label: 'Bigquery Project ID',
-							value: this.item.configuration_context.gcp_project
+							value: this.item.configuration_context.gcp_project,
 						},
 						{
 							id: '',
@@ -231,17 +231,17 @@ export default class TableToStorageRunsItemView extends Mixins(HeaderInfosMixin,
 							component: 'sql-viewer',
 							properties: {
 								id: this.item.configuration_context.id,
-								sql: this.item.sql_query
-							}
+								sql: this.item.sql_query,
+							},
 						},
 						{
 							id: 'copy_table',
 							label: 'Keep Table',
 							value: this.item.configuration_context.copy_table,
-							default: false
-						}
-					]
-				}
+							default: false,
+						},
+					],
+				},
 			},
 			{
 				component: 'parameters-table',
@@ -253,24 +253,24 @@ export default class TableToStorageRunsItemView extends Mixins(HeaderInfosMixin,
 						{
 							label: 'Type',
 							field: 'source_type',
-							width: '150px'
+							width: '150px',
 						},
 						{
 							label: 'Project ID',
-							field: 'dest_gcp_project_id'
+							field: 'dest_gcp_project_id',
 						},
 						{
 							label: 'Dataset',
-							field: 'dest_gbq_dataset'
+							field: 'dest_gbq_dataset',
 						},
 						{
 							label: 'Table Name',
-							field: 'dest_gbq_table'
+							field: 'dest_gbq_table',
 						},
 						{
 							label: 'Table Suffix',
-							field: 'dest_gbq_table_suffix'
-						}
+							field: 'dest_gbq_table_suffix',
+						},
 					],
 					rows: [
 						{
@@ -278,13 +278,13 @@ export default class TableToStorageRunsItemView extends Mixins(HeaderInfosMixin,
 							dest_gcp_project_id: this.item.configuration_context.dest_gcp_project_id,
 							dest_gbq_dataset: this.item.configuration_context.dest_gbq_dataset,
 							dest_gbq_table: this.item.configuration_context.dest_gbq_table,
-							dest_gbq_table_suffix: this.item.configuration_context.dest_gbq_table_suffix
-						}
+							dest_gbq_table_suffix: this.item.configuration_context.dest_gbq_table_suffix,
+						},
 					],
 					vflexLength: 'xs9',
 					lineNumbers: false,
-					searchOptionsEnabled: false
-				}
+					searchOptionsEnabled: false,
+				},
 			},
 			{
 				component: 'parameters-list',
@@ -294,16 +294,16 @@ export default class TableToStorageRunsItemView extends Mixins(HeaderInfosMixin,
 						{
 							id: 'updated_date',
 							label: 'Updated date',
-							value: this.item.configuration_context.update_date || this.item.configuration_context.updated_date
+							value: this.item.configuration_context.update_date || this.item.configuration_context.updated_date,
 						},
 						{
 							id: 'updated_by',
 							label: 'Updated by',
-							value: this.item.configuration_context.updated_by
-						}
-					]
-				}
-			}
+							value: this.item.configuration_context.updated_by,
+						},
+					],
+				},
+			},
 		];
 	}
 }

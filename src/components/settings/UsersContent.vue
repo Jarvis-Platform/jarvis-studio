@@ -188,8 +188,8 @@ import { mdiPackageDown, mdiPackageUp } from '@mdi/js';
 @Component({
 	computed: {
 		...mapState({ accounts: (state: any) => state.accounts.data }),
-		...mapGetters(['periodFiltered', 'filters/whereConfFilter'])
-	}
+		...mapGetters(['periodFiltered', 'filters/whereConfFilter']),
+	},
 })
 export default class UsersContent extends Vue {
 	mdiPackageDown: string = mdiPackageDown;
@@ -204,7 +204,7 @@ export default class UsersContent extends Vue {
 		emailVerified: false,
 		disabled: false,
 		creationTime: Date.now(),
-		password: ''
+		password: '',
 	};
 	selectedStudioRoles: number = 0;
 	studioRoles: Role[] = [MEMBER, VIEWER, USER, WRITER, ADMIN, SUPER_ADMIN];
@@ -233,10 +233,10 @@ export default class UsersContent extends Vue {
 
 		const listAllUsers = firebase.functions().httpsCallable('listUsers');
 		listAllUsers({})
-			.then(res => {
+			.then((res) => {
 				const dataUsers = Object.values(res.data.users);
 
-				let usersFormatted = res.data.users.map(function(user: User) {
+				let usersFormatted = res.data.users.map(function (user: User) {
 					let nb_accounts = 0;
 					try {
 						nb_accounts = user.customClaims.accounts.length;
@@ -251,7 +251,7 @@ export default class UsersContent extends Vue {
 					}
 					return {
 						nb_accounts: nb_accounts,
-						studioRolesIndex: studioRolesIndex
+						studioRolesIndex: studioRolesIndex,
 					};
 				});
 
@@ -282,8 +282,8 @@ export default class UsersContent extends Vue {
 			password: this.currentUser.password,
 			disabled: this.currentUser.disabled,
 			accounts: this.selectedAccounts,
-			studioRoles: this.selectedStudioRoles
-		}).then(res => {
+			studioRoles: this.selectedStudioRoles,
+		}).then((res) => {
 			this.listAllUsers();
 			this.showSnackbar('User has been created.', 'success');
 
@@ -293,7 +293,7 @@ export default class UsersContent extends Vue {
 				deleted: false,
 				displayName: this.currentUser.displayName,
 				email: this.currentUser.email,
-				photoURL
+				photoURL,
 			});
 		});
 	}
@@ -332,7 +332,7 @@ export default class UsersContent extends Vue {
 			email: this.currentUser.email,
 			displayName: this.currentUser.displayName,
 			photoURL: this.currentUser.photoURL,
-			studioRoles: this.selectedStudioRoles
+			studioRoles: this.selectedStudioRoles,
 		}).then(() => {
 			this.isLoading = false;
 			this.showSnackbar('User has been updated.', 'success');
@@ -340,7 +340,7 @@ export default class UsersContent extends Vue {
 			this.dispatchUser('patch', {
 				id: this.currentUser.uid,
 				displayName: this.currentUser.displayName,
-				email: this.currentUser.email
+				email: this.currentUser.email,
 			});
 		});
 	}
@@ -352,8 +352,8 @@ export default class UsersContent extends Vue {
 		const archiveUser = firebase.functions().httpsCallable('updateUser');
 		archiveUser({
 			email: user.email,
-			disabled: !user.disabled
-		}).then(res => {
+			disabled: !user.disabled,
+		}).then((res) => {
 			const index = this.users.indexOf(user);
 			const disabledValue = !user.disabled;
 			this.users[index].disabled = disabledValue;
@@ -363,7 +363,7 @@ export default class UsersContent extends Vue {
 
 			this.dispatchUser('patch', {
 				id: this.currentUser.uid,
-				disabled: disabledValue
+				disabled: disabledValue,
 			});
 		});
 	}
@@ -388,7 +388,7 @@ export default class UsersContent extends Vue {
 			this.dispatchUser('patch', {
 				id: this.currentUser.uid,
 				disabled: true,
-				deleted: true
+				deleted: true,
 			});
 		});
 	}
@@ -411,7 +411,7 @@ export default class UsersContent extends Vue {
 			{ text: 'Disabled', value: 'disabled' },
 			{ text: 'Nb Accounts', value: 'nb_accounts' },
 			{ text: 'Roles', value: 'studioRolesIndex' },
-			{ text: 'Actions', value: 'action', sortable: false }
+			{ text: 'Actions', value: 'action', sortable: false },
 		];
 	}
 

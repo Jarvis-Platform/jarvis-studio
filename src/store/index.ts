@@ -10,7 +10,7 @@ import easyFirestoreModules from './modules/easy-firestore';
 import { firebase, initFirebase } from '../config/firebase';
 import { KEY } from '@/constants/store/vuex-persist';
 
-initFirebase().catch(error => {
+initFirebase().catch((error) => {
 	console.error(error);
 });
 
@@ -19,20 +19,20 @@ Vue.use(Vuex);
 const easyFirestore = VuexEasyFirestore(easyFirestoreModules, {
 	logging: process.env.NODE_ENV === 'development',
 	FirebaseDependency: firebase,
-	preventInitialDocInsertion: true
+	preventInitialDocInsertion: true,
 });
 
 const vuexPersist = new VuexPersist({
 	key: KEY,
 	storage: window.localStorage,
 	reducer: (state: any) => ({
-		filters: state.filters
-	})
+		filters: state.filters,
+	}),
 });
 
 const storeOptions: StoreOptions<RootState> = {
 	modules: { user: userModule, filters: filtersModule },
-	plugins: [easyFirestore, vuexPersist.plugin]
+	plugins: [easyFirestore, vuexPersist.plugin],
 };
 
 export default new Vuex.Store<RootState>(storeOptions);

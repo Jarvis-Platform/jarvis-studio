@@ -14,7 +14,7 @@ export default class StatusDocMixin extends DocMixin {
 			type: this.type!,
 			tabsItems: this.itemTabsItems,
 			isLoading: this.isLoading,
-			isNotFound: this.isNotFound
+			isNotFound: this.isNotFound,
 		};
 	}
 }

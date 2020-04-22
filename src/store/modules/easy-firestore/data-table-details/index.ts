@@ -6,5 +6,5 @@ export const dataTableDetails: IEasyFirestoreModule = {
 	firestoreRefType: DOC_REF,
 	moduleName: 'dataTableDetails',
 	statePropName: STATE_PROP_NAME,
-	sync: SYNC
+	sync: SYNC,
 };

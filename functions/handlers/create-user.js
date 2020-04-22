@@ -17,10 +17,10 @@ module.exports = (data, context) => {
 			password: data.password,
 			displayName: data.displayName,
 			photoURL: data.photoURL,
-			disabled: false
+			disabled: false,
 		})
-		.then(user => {
+		.then((user) => {
 			return { data: user };
 		})
-		.catch(error => error);
+		.catch((error) => error);
 };

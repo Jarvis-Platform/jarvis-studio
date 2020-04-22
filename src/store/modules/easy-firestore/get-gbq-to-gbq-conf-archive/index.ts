@@ -6,5 +6,5 @@ export const getGbqToGbqConfArchive: IEasyFirestoreModule = {
 	firestoreRefType: COLLECTION_REF,
 	moduleName: 'getGbqToGbqConfArchive',
 	statePropName: STATE_PROP_NAME,
-	sync: SYNC
+	sync: SYNC,
 };

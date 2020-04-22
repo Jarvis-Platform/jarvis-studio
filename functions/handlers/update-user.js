@@ -21,24 +21,24 @@ module.exports = (data, context) => {
 	admin
 		.auth()
 		.getUserByEmail(data.email)
-		.then(user => {
+		.then((user) => {
 			admin.auth().updateUser(user.uid, {
 				email: applyValue('email', data, user),
 				disabled: applyValue('disabled', data, user),
 				displayName: applyValue('displayName', data, user),
-				photoURL: applyValue('photoURL', data, user)
+				photoURL: applyValue('photoURL', data, user),
 			});
 
 			admin.auth().setCustomUserClaims(user.uid, {
 				studioRoles: data.studioRoles,
-				accounts: data.accounts
+				accounts: data.accounts,
 			});
 
 			return {
-				message: `Success! Accounts and roles have been  added to ${data.email}.`
+				message: `Success! Accounts and roles have been  added to ${data.email}.`,
 			};
 		})
-		.catch(err => {
+		.catch((err) => {
 			return err;
 		});
 };

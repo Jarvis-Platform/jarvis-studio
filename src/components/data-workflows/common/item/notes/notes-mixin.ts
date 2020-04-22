@@ -9,7 +9,7 @@ import NoteEditor from './editor/NoteEditor.vue';
 import NoteItem from './NoteItem.vue';
 
 @Component({
-	components: { NoteEditor, NoteItem }
+	components: { NoteEditor, NoteItem },
 })
 export default class NotesMixin extends Vue {
 	@Prop({ type: String, required: true }) moduleName!: string;
@@ -41,9 +41,6 @@ export default class NotesMixin extends Vue {
 	}
 
 	get userRef() {
-		return firebase
-			.firestore()
-			.collection(users.firestorePath)
-			.doc(this.user.uid);
+		return firebase.firestore().collection(users.firestorePath).doc(this.user.uid);
 	}
 }

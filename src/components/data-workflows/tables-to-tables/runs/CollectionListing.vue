@@ -28,11 +28,11 @@ import {
 	DAG_ID,
 	ENVIRONMENT,
 	STATUS,
-	WORKFLOW_LENGTH
+	WORKFLOW_LENGTH,
 } from '@/constants/data-workflows/listing/header-items';
 
 @Component({
-	components: { ListingComponent }
+	components: { ListingComponent },
 })
 export default class CollectionListing extends Mixins(RunCollectionMixin) {
 	get listingComponentProps(): ListingComponentProps {
@@ -43,7 +43,7 @@ export default class CollectionListing extends Mixins(RunCollectionMixin) {
 			overriddenColumns: ['dag_id', 'dag_execution_date'],
 			isOtherRunDisplay: this.isOtherRunDisplay,
 			jobId: this.jobId,
-			showAirflowAction: true
+			showAirflowAction: true,
 		};
 	}
 

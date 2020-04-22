@@ -19,5 +19,5 @@ export const actions: ActionTree<FilterState, RootState> = {
 	},
 	applyConfActivatedFilterSelected({ commit }, confActivatedFilterSelected) {
 		commit('updateConfActivatedFilterSelected', confActivatedFilterSelected);
-	}
+	},
 };

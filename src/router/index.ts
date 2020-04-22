@@ -10,7 +10,7 @@ Vue.use(Router);
 const router = new Router({
 	mode: 'history',
 	linkActiveClass: 'active',
-	routes: routes
+	routes: routes,
 });
 
 router.beforeEach((to, from, next) => {

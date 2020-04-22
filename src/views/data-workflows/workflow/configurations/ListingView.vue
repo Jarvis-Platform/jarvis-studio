@@ -31,7 +31,7 @@ import {
 	AUTHORIZED_JOB_IDS_LENGTH,
 	ENVIRONMENT,
 	ID,
-	TARGET_DAG
+	TARGET_DAG,
 } from '@/constants/data-workflows/listing/header-items';
 
 @Component

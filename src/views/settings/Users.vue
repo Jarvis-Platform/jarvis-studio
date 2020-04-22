@@ -13,7 +13,7 @@ import { Component, Vue } from 'vue-property-decorator';
 import UsersContent from '@/components/settings/UsersContent.vue';
 
 @Component({
-	components: { UsersContent }
+	components: { UsersContent },
 })
 export default class Users extends Vue {}
 </script>

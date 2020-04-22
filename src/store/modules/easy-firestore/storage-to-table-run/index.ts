@@ -6,5 +6,5 @@ export const storageToTableRun: IEasyFirestoreModule = {
 	firestoreRefType: DOC_REF,
 	moduleName: 'storageToTableRun',
 	statePropName: STATE_PROP_NAME,
-	sync: SYNC
+	sync: SYNC,
 };

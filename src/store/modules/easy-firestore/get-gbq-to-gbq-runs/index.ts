@@ -6,5 +6,5 @@ export const getGbqToGbqRuns: IEasyFirestoreModule = {
 	firestoreRefType: COLLECTION_REF,
 	moduleName: 'getGbqToGbqRuns',
 	statePropName: STATE_PROP_NAME,
-	sync: SYNC
+	sync: SYNC,
 };

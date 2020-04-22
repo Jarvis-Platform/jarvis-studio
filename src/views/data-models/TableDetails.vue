@@ -264,14 +264,14 @@ interface Column {
 		DataModelHeader,
 		'vue-good-table': require('vue-good-table').VueGoodTable,
 		VueMarkdown,
-		NotesTab
+		NotesTab,
 	},
 	computed: {
 		...mapState({
 			dataTableDetails: (state: any) => state.dataTableDetails.data,
-			schemas: (state: any) => state.schemas.data
-		})
-	}
+			schemas: (state: any) => state.schemas.data,
+		}),
+	},
 })
 export default class DataTableDetails extends Vue {
 	private dataTableDetails: any; // TODO: Type
@@ -312,13 +312,13 @@ export default class DataTableDetails extends Vue {
 
 	async getFirestoreData() {
 		await store.dispatch('dataTableDetails/closeDBChannel', {
-			clearModule: true
+			clearModule: true,
 		});
 		await store.dispatch('dataTableDetails/fetchAndAdd', {
 			projectId: this.projectId,
 			datasetId: this.datasetId,
 			tableId: this.tableId,
-			limit: 0
+			limit: 0,
 		});
 	}
 
@@ -355,7 +355,7 @@ export default class DataTableDetails extends Vue {
 		const dateFromNow = moment(this.dataTableDetails.refreshed_timestamp).fromNow();
 		return {
 			dateFormatted: dateFormatted,
-			dateFromNow: dateFromNow
+			dateFromNow: dateFromNow,
 		};
 	}
 
@@ -366,22 +366,22 @@ export default class DataTableDetails extends Vue {
 	get tableItems() {
 		return [
 			{
-				text: this.projectId
+				text: this.projectId,
 			},
 			{
 				text: this.datasetId,
 				to: {
 					name: TABLES_LISTING,
-					params: { projectId: this.projectId, datasetId: this.datasetId }
-				}
+					params: { projectId: this.projectId, datasetId: this.datasetId },
+				},
 			},
 			{
 				text: this.tableId,
 				to: {
 					name: DATA_TABLE_DETAILS,
-					params: { projectId: this.projectId, datasetId: this.datasetId }
-				}
-			}
+					params: { projectId: this.projectId, datasetId: this.datasetId },
+				},
+			},
 		];
 	}
 }

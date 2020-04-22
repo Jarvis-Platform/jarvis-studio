@@ -39,5 +39,5 @@ export const getActiveConfLabel = (activated: ConfActivated) => {
 
 export default {
 	getActiveConfColor,
-	getActiveConfLabel
+	getActiveConfLabel,
 };
