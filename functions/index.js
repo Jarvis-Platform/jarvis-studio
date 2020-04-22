@@ -8,32 +8,37 @@ const createUserHandler = require('./handlers/create-user');
 const updateUserHandler = require('./handlers/update-user');
 const deleteUserHandler = require('./handlers/delete-user');
 
+const REGION = 'europe-west1';
+
 admin.initializeApp();
 integrify({ config: { functions, db: admin.firestore() } });
 
-exports.listUsers = functions.https.onCall((data, context) => listUsersHandler(data, context));
-exports.createUser = functions.https.onCall((data, context) => createUserHandler(data, context));
-exports.updateUser = functions.https.onCall((data, context) => updateUserHandler(data, context));
-exports.deleteUser = functions.https.onCall((data, context) => deleteUserHandler(data, context));
+exports.listUsers = functions.region(REGION).https.onCall((data, context) => listUsersHandler(data, context));
+exports.createUser = functions.region(REGION).https.onCall((data, context) => createUserHandler(data, context));
+exports.updateUser = functions.region(REGION).https.onCall((data, context) => updateUserHandler(data, context));
+exports.deleteUser = functions.region(REGION).https.onCall((data, context) => deleteUserHandler(data, context));
 
-exports.replicateUser = functions.firestore.document('users/{userId}').onUpdate((change, context) => {
-	const user = change.after.data();
-	// const previousValue = change.before.data();
+exports.replicateUser = functions
+	.region(REGION)
+	.firestore.document('users/{userId}')
+	.onUpdate((change, context) => {
+		const user = change.after.data();
+		// const previousValue = change.before.data();
 
-	const matchedNotes = admin
-		.firestore()
-		.collection('notes')
-		.where('userId', '==', context.params.userId)
-		.get()
-		// eslint-disable-next-line promise/always-return
-		.then((detailDocs) => {
-			detailDocs.forEach((detailDoc) => {
-				console.log(util.inspect(detailDoc));
+		const matchedNotes = admin
+			.firestore()
+			.collection('notes')
+			.where('userId', '==', context.params.userId)
+			.get()
+			// eslint-disable-next-line promise/always-return
+			.then((detailDocs) => {
+				detailDocs.forEach((detailDoc) => {
+					console.log(util.inspect(detailDoc));
+				});
 			});
-		});
 
-	console.log(matchedNotes);
-});
+		console.log(matchedNotes);
+	});
 
 exports.deleteThreadNotes = integrify({
 	rule: 'DELETE_REFERENCES',
