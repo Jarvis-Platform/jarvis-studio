@@ -174,7 +174,6 @@
 import { Component, Vue } from 'vue-property-decorator';
 import { AnyObject, FirestoreAccount, Role, Snackbar, User } from '@/types';
 import { DataTableHeader } from 'vuetify';
-import firebase from 'firebase';
 import { mapState } from 'vuex';
 import { mapGetters } from 'vuex';
 import merge from 'lodash.merge';
