@@ -7,12 +7,8 @@ import { RootState } from '@/types';
 import { userModule } from './modules/user';
 import { filtersModule } from './modules/filters';
 import easyFirestoreModules from './modules/easy-firestore';
-import { firebase, initFirebase } from '../config/firebase';
+import { firebase } from '../plugins/firebase';
 import { KEY } from '@/constants/store/vuex-persist';
-
-initFirebase().catch((error) => {
-	console.error(error);
-});
 
 Vue.use(Vuex);
 

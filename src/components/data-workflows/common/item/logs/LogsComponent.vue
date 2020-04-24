@@ -39,7 +39,6 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import { AnyObject } from '@/types';
-import { firebase } from '@/config/firebase';
 import { Base64 } from 'js-base64';
 
 @Component
@@ -62,11 +61,10 @@ export default class LogsComponent extends Vue {
 
 	getLogs(): void {
 		let decodedLogFiles: AnyObject = [];
-		const getAirflowLogs = firebase.functions().httpsCallable('fd-io-api-airflow-logs-manager');
 
 		this.isLoading = true;
 
-		getAirflowLogs({
+		this.$httpsCallableFunction('fd-io-api-airflow-logs-manager', {
 			dagId: this.dagId,
 			taskId: this.taskId,
 			dagRunId: this.dagRunId,

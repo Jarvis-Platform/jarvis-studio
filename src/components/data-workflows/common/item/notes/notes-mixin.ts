@@ -1,7 +1,7 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import { AnyObject, User } from '@/types';
 import { Getter } from 'vuex-class';
-import { firebase } from '@/config/firebase';
+import { firebase } from '@/plugins/firebase';
 import { notes as notesModule } from '@/store/modules/easy-firestore/notes';
 import { users } from '@/store/modules/easy-firestore/users';
 

@@ -6,7 +6,7 @@ import App from './App.vue';
 import router from '@/router';
 import store from '@/store';
 import vuetify from '@/plugins/vuetify';
-import { firebase } from '@/config/firebase';
+import { firebase, initFirebase } from '@/plugins/firebase';
 import { TiptapVuetifyPlugin } from 'tiptap-vuetify';
 import vueDebounce, { PluginConfig } from 'vue-debounce';
 
@@ -14,6 +14,10 @@ Sentry.init({
 	dsn: process.env.VUE_APP_SENTRY_DSN,
 	environment: process.env.NODE_ENV,
 	integrations: [new VueIntegration({ Vue, attachProps: true })],
+});
+
+initFirebase().catch((error) => {
+	console.error(error);
 });
 
 Vue.config.productionTip = false;

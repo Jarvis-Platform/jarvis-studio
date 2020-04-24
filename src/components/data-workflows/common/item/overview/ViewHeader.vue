@@ -163,7 +163,6 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import { firebase } from '@/config/firebase';
 import { Getter } from 'vuex-class';
 import { AnyObject, Snackbar } from '@/types';
 import ConfigurationStatus from '@/components/data-workflows/common/configuration/ConfigurationStatus.vue';
@@ -227,8 +226,7 @@ export default class ViewHeader extends Vue {
 		if (this.dagExecutionDay && this.dagExecutionTime)
 			data.dagExecutionDate = new Date(`${this.dagExecutionDay}:${this.dagExecutionTime}`).toISOString();
 
-		const manualDagTrigger = firebase.functions().httpsCallable('fd-io-api-composer-dag-trigger');
-		manualDagTrigger(data)
+		this.$httpsCallableFunction('fd-io-api-composer-dag-trigger', data)
 			.then(() => {
 				this.isLoading = false;
 				this.toggleDagLaunchDialog();
