@@ -9,5 +9,6 @@ declare module '*.vue' {
 declare module 'vue/types/vue' {
 	interface Vue {
 		$httpsCallableFunction: (name: string, data: AnyObject) => Promise<HttpsCallableResult>;
+		$perf: any;
 	}
 }
