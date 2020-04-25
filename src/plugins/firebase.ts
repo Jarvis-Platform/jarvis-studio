@@ -34,6 +34,9 @@ function initFirebase() {
 	if (isLoacalHost) {
 		firebase.functions().useFunctionsEmulator('http://localhost:5001');
 		firebase.firestore().settings({ host: 'localhost:8081', ssl: false });
+	} else {
+		firebase.analytics();
+		firebase.performance();
 	}
 
 	firebase
