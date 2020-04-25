@@ -38,7 +38,10 @@ function initFirebase() {
 		firebase.firestore().settings({ host: 'localhost:8081', ssl: false });
 	} else {
 		firebase.analytics();
-		firebase.performance();
+
+		Vue.prototype.$perf = () => {
+			return firebase.performance();
+		};
 	}
 
 	firebase
