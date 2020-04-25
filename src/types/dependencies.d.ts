@@ -4,3 +4,4 @@ declare module 'tiptap-vuetify';
 declare module 'vue-flowy';
 declare module 'vue-prismjs';
 declare module 'vue-good-table';
+declare module 'vue-gtm';
