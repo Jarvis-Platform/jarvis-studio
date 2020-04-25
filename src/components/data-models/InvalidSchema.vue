@@ -73,7 +73,7 @@ import VueJsonPretty from 'vue-json-pretty';
 })
 export default class InvalidSchema extends Vue {
 	@Prop({ type: Object, required: true }) private jsonObject!: Object;
-	@Prop({ type: Object, required: true }) private jsonObjectErrors!: [];
+	@Prop({ type: Array, required: true }) private jsonObjectErrors!: [];
 
 	activeTab: number | null = null;
 }
