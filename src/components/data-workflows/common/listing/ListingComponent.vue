@@ -243,6 +243,11 @@ export default class ListingComponent extends Vue {
 			}
 		}
 
+		const trace = this.$perf.trace('listing-trace');
+		trace.putAttribute('moduleName', this.moduleName);
+		trace.putAttribute('where', JSON.stringify(where));
+		trace.start();
+
 		this.isLoading = true;
 
 		if (this.customDataFetching) {
@@ -256,6 +261,8 @@ export default class ListingComponent extends Vue {
 
 			this.isLoading = false;
 		}
+
+		trace.stop();
 	}
 
 	get formattedItems() {
