@@ -9,6 +9,7 @@ import vuetify from '@/plugins/vuetify';
 import { firebase, initFirebase } from '@/plugins/firebase';
 import { TiptapVuetifyPlugin } from 'tiptap-vuetify';
 import vueDebounce, { PluginConfig } from 'vue-debounce';
+import '@/plugins/vue-gtm';
 
 Sentry.init({
 	dsn: process.env.VUE_APP_SENTRY_DSN,
