@@ -219,6 +219,7 @@ export default class ListingComponent extends Vue {
 
 	async getFirestoreData() {
 		let where: Filter[];
+		let wherePerfAttribute: string = '';
 
 		if (this.isOtherRunDisplay) {
 			const minDate = moment().utc().startOf('day').subtract(1, 'month').toISOString();
@@ -227,25 +228,29 @@ export default class ListingComponent extends Vue {
 				['dag_execution_date', '>=', minDate],
 				['job_id', '==', this.jobId],
 			];
+			wherePerfAttribute = 'otherRunDisplay';
 		} else {
 			switch (this.type) {
 				case RUNS:
 					where = this.whereRunsFilter;
+					wherePerfAttribute = 'whereRunsFilter';
 					break;
 				case CONFIGURATIONS:
 					where = this.whereConfFilter;
+					wherePerfAttribute = 'whereConfFilter';
 					break;
 				case STATUS:
 					where = this.whereStatusFilter;
+					wherePerfAttribute = 'whereStatusFilter';
 					break;
 				default:
 					where = [];
 			}
 		}
 
-		const trace = this.$perf.trace('listing-trace');
+		const trace = this.$perf().trace('listing-trace');
 		trace.putAttribute('moduleName', this.moduleName);
-		trace.putAttribute('where', JSON.stringify(where));
+		trace.putAttribute('where', wherePerfAttribute);
 		trace.start();
 
 		this.isLoading = true;
