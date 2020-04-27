@@ -52,7 +52,7 @@ function initFirebase() {
 	return new Promise((resolve, reject) => {
 		firebase
 			.firestore()
-			.enablePersistence()
+			.enablePersistence({ synchronizeTabs: true })
 			.then(resolve)
 			.catch((err) => {
 				if (err.code === 'failed-precondition') {
