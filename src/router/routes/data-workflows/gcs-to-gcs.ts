@@ -1,6 +1,6 @@
 import { RouteConfig } from 'vue-router';
 
-import { auth, hasAccount } from '@/router/middleware';
+import { auth, hasAccount, superAdmin } from '@/router/middleware';
 import { DATA_WORKFLOWS } from '@/constants/router/paths-prefixes';
 import { GCS_TO_GCS } from '@/constants/data-workflows/names';
 import { RUNS, CONFIGURATIONS } from '@/constants/data-workflows/status';
@@ -18,7 +18,7 @@ export const gcsToGcsRoutes: RouteConfig[] = [
 	{
 		path: `/${DATA_WORKFLOWS}/${GCS_TO_GCS.url}/${RUNS}`,
 		name: GCS_TO_GCS_RUNS_LISTING,
-		meta: { middleware: [auth, hasAccount] },
+		meta: { middleware: [auth, superAdmin, hasAccount] },
 		component: () =>
 			import(
 				/* webpackChunkName: "/data-workflows/gcs-to-gcs/runs/listing" */ '@/views/data-workflows/gcs-to-gcs/runs/ListingView.vue'
@@ -27,7 +27,7 @@ export const gcsToGcsRoutes: RouteConfig[] = [
 	{
 		path: `/${DATA_WORKFLOWS}/${GCS_TO_GCS.url}/${RUNS}/:id`,
 		name: GCS_TO_GCS_RUNS_ITEM,
-		meta: { middleware: [auth, hasAccount] },
+		meta: { middleware: [auth, superAdmin, hasAccount] },
 		component: () =>
 			import(
 				/* webpackChunkName: "/data-workflows/gcs-to-gcs/runs/item" */ '@/views/data-workflows/gcs-to-gcs/runs/ItemView.vue'
@@ -40,7 +40,7 @@ export const gcsToGcsRoutes: RouteConfig[] = [
 	{
 		path: `/${DATA_WORKFLOWS}/${GCS_TO_GCS.url}/${CONFIGURATIONS}`,
 		name: GCS_TO_GCS_CONFIGURATIONS_LISTING,
-		meta: { middleware: [auth, hasAccount] },
+		meta: { middleware: [auth, superAdmin, hasAccount] },
 		component: () =>
 			import(
 				/* webpackChunkName: "/data-workflows/gcs-to-gcs/configurations/listing" */ '@/views/data-workflows/gcs-to-gcs/configurations/ListingView.vue'
@@ -49,7 +49,7 @@ export const gcsToGcsRoutes: RouteConfig[] = [
 	{
 		path: `/${DATA_WORKFLOWS}/${GCS_TO_GCS.url}/${CONFIGURATIONS}/:id`,
 		name: GCS_TO_GCS_CONFIGURATIONS_ITEM,
-		meta: { middleware: [auth, hasAccount] },
+		meta: { middleware: [auth, superAdmin, hasAccount] },
 		component: () =>
 			import(
 				/* webpackChunkName: "/data-workflows/gcs-to-gcs/configurations/item" */ '@/views/data-workflows/gcs-to-gcs/configurations/ItemView.vue'
