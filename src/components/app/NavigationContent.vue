@@ -51,7 +51,12 @@
 				:disabled="!drawer.mini"
 				right
 			>
-				<v-list-item :to="item.link" exact slot="activator">
+				<v-list-item
+					v-if="!item.hasOwnProperty('displayRule') || item.displayRule()"
+					:to="item.link"
+					exact
+					slot="activator"
+				>
 					<v-list-item-action>
 						<v-icon v-html="item.icon" />
 					</v-list-item-action>
