@@ -25,6 +25,8 @@
 import { Component, Vue, Watch } from 'vue-property-decorator';
 import { TABLES_LISTING } from '@/constants/router/routes-names';
 import { mapState } from 'vuex';
+import { Getter, State } from 'vuex-class';
+import { Account, AccountId } from '@/types';
 
 interface TreeItem {
 	id: string;
@@ -40,6 +42,9 @@ interface TreeItem {
 	},
 })
 export default class TreeView extends Vue {
+	@State((state) => state.accounts.data) accounts!: Account[];
+	@Getter('user/accounts') userAccounts!: AccountId[];
+
 	private dataModels: any;
 
 	active: string[] = [];
@@ -71,7 +76,10 @@ export default class TreeView extends Vue {
 
 	getDataModel() {
 		this.$store.dispatch('dataModels/fetchAndAdd', { limit: 0 }).then(() => {
-			const dataModels = Object.values(this.dataModels);
+			const dataModels = Object.values(this.dataModels).filter(
+				(dataModel: any) => this.formattedUserAccounts[dataModel.id]
+			);
+
 			this.models = dataModels.map(
 				(data: any): TreeItem => {
 					let children: TreeItem[] = [];
@@ -86,6 +94,17 @@ export default class TreeView extends Vue {
 
 			this.isLoading = false;
 		});
+	}
+
+	get formattedUserAccounts() {
+		let accounts: object = {};
+
+		this.userAccounts.forEach((id) => {
+			const element = this.accounts[id];
+			if (element) accounts[element.dlk_gcp_id_project] = element;
+		});
+
+		return accounts;
 	}
 }
 </script>
