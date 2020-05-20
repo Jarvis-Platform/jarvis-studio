@@ -185,11 +185,11 @@ export default class AccountsContent extends Vue {
 
 	checkId() {
 		const errors: string[] = [];
-		if (!this.$v.account.id.$dirty) return errors;
-		!this.$v.account.id.required && errors.push('ID is required.');
-		!this.$v.account.id.minLength && errors.push('ID must be 6 digits long');
-		!this.$v.account.id.maxLength && errors.push('ID must be 6 digits long');
-		!this.$v.account.id.numeric && errors.push('ID must be only numerical');
+		if (!this.$v.account.id?.$dirty) return errors;
+		!this.$v.account.id?.required && errors.push('ID is required.');
+		!this.$v.account.id?.minLength && errors.push('ID must be 6 digits long');
+		!this.$v.account.id?.maxLength && errors.push('ID must be 6 digits long');
+		!this.$v.account.id?.numeric && errors.push('ID must be only numerical');
 
 		if (this.accounts.filter((account) => account.id === this.account.id).length > 0)
 			errors.push('ID is already taken');
@@ -198,8 +198,8 @@ export default class AccountsContent extends Vue {
 
 	getError(key: string) {
 		const errors: string[] = [];
-		if (!this.$v.account[key].$dirty) return errors;
-		!this.$v.account[key].required && errors.push(`${key} is required.`);
+		if (!this.$v.account[key]?.$dirty) return errors;
+		!this.$v.account[key]?.required && errors.push(`${key} is required.`);
 		return errors;
 	}
 
