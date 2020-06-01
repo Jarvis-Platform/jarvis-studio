@@ -44,6 +44,7 @@ interface TreeItem {
 export default class TreeView extends Vue {
 	@State((state) => state.accounts.data) accounts!: Account[];
 	@Getter('user/accounts') userAccounts!: AccountId[];
+	@Getter('filters/filteredAccounts') filteredAccounts!: Account[];
 
 	private dataModels: any;
 
@@ -70,39 +71,46 @@ export default class TreeView extends Vue {
 			.catch((err) => {});
 	}
 
-	mounted() {
+	@Watch('filteredAccounts')
+	onFilteredAccountsChange() {
 		this.getDataModel();
 	}
 
+	mounted() {
+		this.$store.dispatch('dataModels/fetchAndAdd', { limit: 0 }).then(() => this.getDataModel());
+	}
+
 	getDataModel() {
-		this.$store.dispatch('dataModels/fetchAndAdd', { limit: 0 }).then(() => {
-			const dataModels = Object.values(this.dataModels).filter(
-				(dataModel: any) => this.formattedUserAccounts[dataModel.id]
-			);
+		const dataModels = Object.values(this.dataModels).filter(
+			(dataModel: any) => this.formattedUserAccounts[dataModel.id]
+		);
 
-			this.models = dataModels.map(
-				(data: any): TreeItem => {
-					let children: TreeItem[] = [];
+		this.models = dataModels.map(
+			(data: any): TreeItem => {
+				let children: TreeItem[] = [];
 
-					data.sub_collections.forEach((dataset: string) =>
-						children.push({ id: `${data.id}/${dataset}`, name: dataset })
-					);
+				data.sub_collections.forEach((dataset: string) =>
+					children.push({ id: `${data.id}/${dataset}`, name: dataset })
+				);
 
-					return { id: data.id, name: data.id, children };
-				}
-			);
+				return { id: data.id, name: data.id, children };
+			}
+		);
 
-			this.isLoading = false;
-		});
+		this.isLoading = false;
 	}
 
 	get formattedUserAccounts() {
 		let accounts: object = {};
 
-		this.userAccounts.forEach((id) => {
+		const callback = (id: string) => {
 			const element = this.accounts[id];
 			if (element) accounts[element.dlk_gcp_id_project] = element;
-		});
+		};
+
+		this.filteredAccounts.length > 0
+			? this.filteredAccounts.forEach(({ id }: Account) => callback(id))
+			: this.userAccounts.forEach((id) => callback(id));
 
 		return accounts;
 	}

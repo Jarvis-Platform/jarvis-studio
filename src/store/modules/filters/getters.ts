@@ -19,6 +19,9 @@ const getMinDateFilter = (minDateFilter: string, type: DataWorkflowsType) => {
 };
 
 export const getters: GetterTree<FilterState, RootState> = {
+	filteredAccounts(state) {
+		return state.filteredAccounts;
+	},
 	periodFiltered(state) {
 		//Compute the date array from minDateFilter to Now to build chart
 		let periodFiltered = [];
