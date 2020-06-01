@@ -52,6 +52,7 @@ export default class DocMixin extends Vue {
 		if (!this.item) this.isNotFound = true;
 		this.isLoading = false;
 	}
+
 	async getFirestoreData() {
 		await store.dispatch(`${this.moduleName}/closeDBChannel`, { clearModule: true });
 		await store.dispatch(`${this.moduleName}/fetchById`, this.itemId);
