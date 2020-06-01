@@ -222,7 +222,7 @@ export default class AccountsContent extends Vue {
 	submit() {
 		this.$v.$touch();
 		if (this.$v.$invalid) return;
-		this.$store.dispatch(`${accounts.moduleName}/set`, { id: this.account.id, ...this.account }).then(() => {
+		this.$store.dispatch(`${accounts.moduleName}/set`, this.account).then(() => {
 			this.hideMainDialog();
 		});
 	}
