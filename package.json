@@ -22,7 +22,7 @@
     "convert-units": "^2.3.4",
     "core-js": "^3.2.1",
     "d3": "^5.16.0",
-    "firebase": "^7.14.2",
+    "firebase": "^7.14.6",
     "js-base64": "^2.5.1",
     "lodash.merge": "^4.6.2",
     "material-design-icons-iconfont": "^5.0.1",
@@ -53,7 +53,7 @@
     "vuetify": "^2.1.10",
     "vuex": "^3.1.1",
     "vuex-class": "^0.3.2",
-    "vuex-easy-firestore": "^1.35.9",
+    "vuex-easy-firestore": "^1.35.13",
     "vuex-persist": "^2.2.0"
   },
   "devDependencies": {
