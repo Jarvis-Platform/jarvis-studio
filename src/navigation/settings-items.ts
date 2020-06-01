@@ -1,9 +1,6 @@
-import { PROFILE, USERS, ACCOUNTS, CLOUD_FUNCTIONS } from '@/constants/router/routes-names';
-import { SUPER_ADMIN } from '@/constants/user/roles';
-import store from '@/store';
 import { Link } from '@/types';
-
-const isSuperAdminRule = () => store.getters['user/user'].studioRoles === SUPER_ADMIN.roleCode;
+import { isSuperAdminRule } from '@/navigation/rules';
+import { PROFILE, USERS, ACCOUNTS, CLOUD_FUNCTIONS } from '@/constants/router/routes-names';
 
 export const settingsItems: Link[] = [
 	{
