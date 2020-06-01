@@ -47,7 +47,7 @@ export default class TaskListing extends Vue {
 				console.error(error);
 			}
 		} else {
-			sql = sqlFile;
+			sql = typeof sqlFile === 'string' ? sqlFile : Base64.decode(Base64.decode(sqlFile.toBase64()));
 		}
 
 		return sql;
@@ -71,12 +71,10 @@ export default class TaskListing extends Vue {
 				case 'copy_gbq_table':
 					break;
 				case 'sql':
-					//extract the SQL filename to find the binary SQL present in the tasksSql Object
 					tasksFull[i].sql = this.prepareSQL(this.tasksSQL[tasksFull[i].id]);
 					break;
 				default:
 					tasksFull[i].task_type = 'sql';
-					//extract the binary SQL present in the tasksSql Object
 					tasksFull[i].sql = this.prepareSQL(this.tasksSQL[tasksFull[i].id]);
 			}
 		}
