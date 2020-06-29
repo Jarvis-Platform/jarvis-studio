@@ -6,7 +6,7 @@ import { RUNS, STATUS } from '@/constants/data-workflows/status';
 const getAccountsFilter = (filteredAccounts: Account[], formattedFilteredAccounts: string[], rootState: RootState) => {
 	return filteredAccounts.length > 0
 		? ['account', 'in', formattedFilteredAccounts]
-		: ['account', 'in', rootState.user.user!.accounts];
+		: ['account', 'in', rootState.user.user?.accounts];
 };
 
 const getEnvFilterSelected = (envFilterSelected: EnvFilter) => {
