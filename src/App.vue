@@ -1,39 +1,51 @@
 <template>
 	<v-app>
 		<template v-if="showLayout">
-			<app-bar
-				class="elevate-content"
-				@toggleNavigation="toggleNavigation"
-				@toggleNotifications="toggleNotifications"
-			/>
+			<account-selector v-if="$store.getters['filters/filteredAccounts'].length === 0" />
 
-			<v-navigation-drawer
-				v-model="showNavigation"
-				:permanent="navigationDrawer.permanent"
-				:mini-variant="navigationDrawer.mini"
-				fixed
-				app
-				dark
-				class="menu"
-				width="300"
-			>
-				<navigation-content
-					:drawer="navigationDrawer"
-					:analytics-items="analyticsItems"
-					:settings-items="settingsItems"
+			<template v-else>
+				<app-bar
+					class="elevate-content"
+					@toggleNavigation="toggleNavigation"
+					@toggleNotifications="toggleNotifications"
 				/>
-			</v-navigation-drawer>
 
-			<v-navigation-drawer v-model="showNotifications" fixed app temporary right>
-				<notification-content @closeNotifications="toggleNotifications" />
-			</v-navigation-drawer>
+				<v-navigation-drawer
+					v-model="showNavigation"
+					:permanent="navigationDrawer.permanent"
+					:mini-variant="navigationDrawer.mini"
+					fixed
+					app
+					dark
+					class="menu"
+					width="300"
+				>
+					<navigation-content
+						:drawer="navigationDrawer"
+						:analytics-items="analyticsItems"
+						:settings-items="settingsItems"
+					/>
+				</v-navigation-drawer>
 
-			<v-footer class="elevate-content menu" app dark>
-				<footer-content />
-			</v-footer>
+				<v-navigation-drawer v-model="showNotifications" fixed app temporary right>
+					<notification-content @closeNotifications="toggleNotifications" />
+				</v-navigation-drawer>
+
+				<v-content>
+					<transition name="fade" mode="out-in">
+						<keep-alive>
+							<router-view :key="$route.fullPath" />
+						</keep-alive>
+					</transition>
+				</v-content>
+
+				<v-footer class="elevate-content menu" app dark>
+					<footer-content />
+				</v-footer>
+			</template>
 		</template>
 
-		<v-content>
+		<v-content v-else>
 			<transition name="fade" mode="out-in">
 				<keep-alive>
 					<router-view :key="$route.fullPath" />
@@ -45,6 +57,7 @@
 
 <script lang="ts">
 import { Component, Watch, Vue } from 'vue-property-decorator';
+import AccountSelector from '@/components/app/AccountsSelector.vue';
 import AppBar from '@/components/app/app-bar/AppBar.vue';
 import NavigationContent from '@/components/app/NavigationContent.vue';
 import NotificationContent from '@/components/app/NotificationContent.vue';
@@ -62,7 +75,7 @@ interface Drawer {
 }
 
 @Component({
-	components: { AppBar, FooterContent, NavigationContent, NotificationContent },
+	components: { AccountSelector, AppBar, FooterContent, NavigationContent, NotificationContent },
 })
 export default class App extends Vue {
 	navigationDrawer: Drawer = { permanent: true, mini: false };

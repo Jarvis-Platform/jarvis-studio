@@ -2,7 +2,9 @@
 	<v-app-bar app dark color="primary" elevate-on-scroll>
 		<v-app-bar-nav-icon v-if="!$vuetify.breakpoint.lgAndUp" @click="$emit('toggleNavigation')" />
 
-		<account-selector />
+		<span class="cursor--pointer" @click="removeFilteredAccount">
+			{{ $store.getters['filters/filteredAccounts'][0].account_name }}
+		</span>
 
 		<v-spacer />
 
@@ -59,19 +61,22 @@ import { Component, Vue } from 'vue-property-decorator';
 import { State } from 'vuex-class';
 import { User } from '@/types';
 
-import AccountSelector from './sub-components/AccountsSelector.vue';
 import SearchMenu from './sub-components/SearchMenu.vue';
 
 import { UserSetting, userSettings } from '@/navigation/user-settings-items';
 
 @Component({
-	components: { AccountSelector, SearchMenu },
+	components: { SearchMenu },
 })
 export default class AppBar extends Vue {
 	@State((state) => state.user.isAuthenticated) isAuthenticated!: boolean;
 	@State((state) => state.user.user) user!: User;
 
 	userSettingsItems: UserSetting[] = userSettings;
+
+	removeFilteredAccount() {
+		this.$store.dispatch('filters/updateFilteredAccounts', []);
+	}
 
 	toggleFullScreen() {
 		const doc = window.document as Document & {
