@@ -11,7 +11,7 @@
 				<v-toolbar flat color="transparent">
 					<v-spacer />
 
-					<v-dialog v-model="dialogSql" max-width="1000" fullscreen v-if="task.task_type === 'sql' && task.sql">
+					<v-dialog v-if="task.task_type === 'sql' && task.sql" v-model="dialogSql" max-width="80%">
 						<template v-slot:activator="{ on }">
 							<v-chip color="orange" text-color="white" v-on="on" class="mr-2">VIEW SQL</v-chip>
 						</template>
@@ -33,7 +33,7 @@
 						</v-card>
 					</v-dialog>
 
-					<v-dialog v-model="dialogSchema" max-width="1000" fullscreen v-if="task.task_type === 'create_gbq_table'">
+					<v-dialog v-if="task.task_type === 'create_gbq_table'" v-model="dialogSchema" max-width="80%">
 						<template v-slot:activator="{ on }">
 							<v-chip color="green" text-color="white" v-on="on" class="mr-2">VIEW SCHEMA</v-chip>
 						</template>
