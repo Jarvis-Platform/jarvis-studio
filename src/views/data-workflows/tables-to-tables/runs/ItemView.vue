@@ -41,6 +41,7 @@ export default class TablesToTablesRunsItemView extends Mixins(HeaderInfosMixin,
 					name: 'task-listing',
 					props: {
 						type: RUNS,
+						docId: this.item.id,
 						dagId: this.item.dag_id,
 						dagRunId: this.item.dag_run_id,
 						dagType: this.item.dag_type,

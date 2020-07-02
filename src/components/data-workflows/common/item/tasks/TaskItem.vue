@@ -7,6 +7,36 @@
 			vflexLength="xs10"
 			vflexOffset="offset-xs1"
 		>
+			<template v-slot:header>
+				<v-chip :color="statusChipColor" text-color="white" class="mr-3">{{ task.status }}</v-chip>
+
+				<v-dialog v-if="showLogs" v-model="logsDialog" width="1000">
+					<template v-slot:activator="{ on }">
+						<v-chip color="grey" text-color="white" v-on="on">Logs</v-chip>
+					</template>
+
+					<v-card>
+						<v-card-title class="headline grey lighten-2" primary-title>Task logs: {{ task.id }}</v-card-title>
+
+						<v-card-text>
+							<logs-component
+								:dag-id="getLogsProps.dagId"
+								:task-id="getLogsProps.taskId"
+								:dag-run-id="getLogsProps.dagRunId"
+								:dag-type="getLogsProps.dagType"
+								:dag-execution-date="getLogsProps.dagExecutionDate"
+								class="px-0"
+							/>
+						</v-card-text>
+
+						<v-card-actions>
+							<v-spacer />
+							<v-btn color="primary" text @click="logsDialog = false">Close</v-btn>
+						</v-card-actions>
+					</v-card>
+				</v-dialog>
+			</template>
+
 			<template v-slot:footer>
 				<v-toolbar flat color="transparent">
 					<v-spacer />
@@ -71,32 +101,6 @@
 							<v-card-actions>
 								<v-spacer />
 								<v-btn color="primary" text @click="dialogLongDescription = false">Close</v-btn>
-							</v-card-actions>
-						</v-card>
-					</v-dialog>
-
-					<v-dialog v-if="showLogs" v-model="logsDialog" width="1000">
-						<template v-slot:activator="{ on }">
-							<v-chip color="complementary" text-color="white" v-on="on">Logs</v-chip>
-						</template>
-
-						<v-card>
-							<v-card-title class="headline grey lighten-2" primary-title>Task logs: {{ task.id }}</v-card-title>
-
-							<v-card-text>
-								<logs-component
-									:dag-id="getLogsProps.dagId"
-									:task-id="getLogsProps.taskId"
-									:dag-run-id="getLogsProps.dagRunId"
-									:dag-type="getLogsProps.dagType"
-									:dag-execution-date="getLogsProps.dagExecutionDate"
-									class="px-0"
-								/>
-							</v-card-text>
-
-							<v-card-actions>
-								<v-spacer />
-								<v-btn color="primary" text @click="logsDialog = false">Close</v-btn>
 							</v-card-actions>
 						</v-card>
 					</v-dialog>
@@ -244,6 +248,21 @@ export default class TaskItem extends Vue {
 
 	get showLogs() {
 		return this.type === RUNS;
+	}
+
+	get statusChipColor(): string {
+		let color;
+
+		switch (this.task.status) {
+			case 'success':
+				color = 'success';
+				break;
+			default:
+				color = 'primary';
+				break;
+		}
+
+		return color;
 	}
 
 	get getLogsProps() {

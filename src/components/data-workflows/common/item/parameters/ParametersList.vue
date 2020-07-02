@@ -2,7 +2,13 @@
 	<v-container fluid>
 		<v-col>
 			<h2 class="black--text pb-3">
-				{{ groupTitle }}
+				<div class="d-flex justify-space-between align-center">
+					{{ groupTitle }}
+
+					<div>
+						<slot name="header" />
+					</div>
+				</div>
 
 				<v-tooltip right v-if="tooltip">
 					<template v-slot:activator="{ on }">
