@@ -8,14 +8,14 @@
 
 		<v-spacer />
 
-		<search-menu v-if="$vuetify.breakpoint.smAndUp" />
+		<!-- <search-menu v-if="$vuetify.breakpoint.smAndUp" /> -->
 
-		<v-btn icon @click="$emit('toggleNotifications')">
+		<!-- <v-btn icon @click="$emit('toggleNotifications')">
 			<v-badge color="red" overlap>
 				<span slot="badge">2</span>
 				<v-icon>notifications</v-icon>
 			</v-badge>
-		</v-btn>
+		</v-btn> -->
 
 		<v-menu offset-y origin="center center" :nudge-bottom="10" transition="scale-transition">
 			<template v-slot:activator="{ on }">

@@ -27,9 +27,9 @@
 					/>
 				</v-navigation-drawer>
 
-				<v-navigation-drawer v-model="showNotifications" fixed app temporary right>
+				<!-- 				<v-navigation-drawer v-model="showNotifications" fixed app temporary right>
 					<notification-content @closeNotifications="toggleNotifications" />
-				</v-navigation-drawer>
+				</v-navigation-drawer> -->
 
 				<v-content>
 					<transition name="fade" mode="out-in">
