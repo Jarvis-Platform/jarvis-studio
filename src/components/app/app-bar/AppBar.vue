@@ -2,18 +2,30 @@
 	<v-app-bar app dark color="primary" elevate-on-scroll>
 		<v-app-bar-nav-icon v-if="!$vuetify.breakpoint.lgAndUp" @click="$emit('toggleNavigation')" />
 
-		<account-selector />
+		<span class="cursor--pointer" @click="removeFilteredAccount">
+			{{ $store.getters['filters/filteredAccounts'][0].account_name }}
+		</span>
 
 		<v-spacer />
 
-		<search-menu v-if="$vuetify.breakpoint.smAndUp" />
+		<!-- <search-menu v-if="$vuetify.breakpoint.smAndUp" /> -->
 
-		<v-btn icon @click="$emit('toggleNotifications')">
+		<!-- <v-btn icon @click="$emit('toggleNotifications')">
 			<v-badge color="red" overlap>
 				<span slot="badge">2</span>
 				<v-icon>notifications</v-icon>
 			</v-badge>
-		</v-btn>
+		</v-btn> -->
+
+		<v-chip outlined>
+			<v-icon left>mdi-fire</v-icon>
+			<a href="#" class="ak-trigger">
+				<span class="white--text">
+					What's new &nbsp;
+				</span>
+				<AnnounceKit catchClick=".ak-trigger" widget="https://announcekit.app/widgets/v2/Ydr0Y" />
+			</a>
+		</v-chip>
 
 		<v-menu offset-y origin="center center" :nudge-bottom="10" transition="scale-transition">
 			<template v-slot:activator="{ on }">
@@ -59,19 +71,23 @@ import { Component, Vue } from 'vue-property-decorator';
 import { State } from 'vuex-class';
 import { User } from '@/types';
 
-import AccountSelector from './sub-components/AccountsSelector.vue';
 import SearchMenu from './sub-components/SearchMenu.vue';
 
 import { UserSetting, userSettings } from '@/navigation/user-settings-items';
+import AnnounceKit from 'announcekit-vue';
 
 @Component({
-	components: { AccountSelector, SearchMenu },
+	components: { SearchMenu, AnnounceKit },
 })
 export default class AppBar extends Vue {
 	@State((state) => state.user.isAuthenticated) isAuthenticated!: boolean;
 	@State((state) => state.user.user) user!: User;
 
 	userSettingsItems: UserSetting[] = userSettings;
+
+	removeFilteredAccount() {
+		this.$store.dispatch('filters/updateFilteredAccounts', []);
+	}
 
 	toggleFullScreen() {
 		const doc = window.document as Document & {

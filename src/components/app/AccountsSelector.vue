@@ -1,22 +1,15 @@
 <template>
-	<div class="accounts-selector-wrapper">
-		<v-autocomplete
+	<div class="accounts-selector d-flex justify-center align-center">
+		<v-select
 			v-model="selectedAccounts"
 			:items="getAccounts()"
 			item-text="account_name"
-			return-object
-			:label="selectedAccounts.length === 0 ? 'All Accounts' : 'Accounts'"
+			label="Select an account"
 			no-data-text="No accounts available"
+			return-object
 			hide-details
-			small-chips
-			multiple
-			chips
-		>
-			<template v-slot:selection="{ index, item }">
-				<span v-if="index === 0">{{ item.account_name }}</span>
-				<span v-if="index === 1" class="other-accounts caption">(+{{ selectedAccounts.length - 1 }} others)</span>
-			</template>
-		</v-autocomplete>
+			class="selector"
+		/>
 	</div>
 </template>
 
@@ -34,7 +27,7 @@ export default class AccountSelector extends Vue {
 
 	@Watch('selectedAccounts')
 	onSelectedAccountChange(accounts: Account) {
-		this.$store.dispatch('filters/updateFilteredAccounts', accounts);
+		this.$store.dispatch('filters/updateFilteredAccounts', [accounts]);
 	}
 
 	isLoading: boolean = true;
@@ -54,8 +47,13 @@ export default class AccountSelector extends Vue {
 </script>
 
 <style lang="scss">
-.accounts-selector-wrapper {
-	max-width: 260px;
+.accounts-selector {
+	width: 100vw;
+	height: 100vh;
+
+	.selector {
+		max-width: 260px;
+	}
 
 	.other-accounts {
 		margin-left: 0.5em;
