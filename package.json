@@ -17,6 +17,7 @@
     "@typescript-eslint/eslint-plugin": "^2.29.0",
     "@typescript-eslint/parser": "^2.29.0",
     "ajv": "^6.10.2",
+    "announcekit-vue": "^2.0.3",
     "babel-runtime": "^6.26.0",
     "chart.js": "^2.8.0",
     "convert-units": "^2.3.4",

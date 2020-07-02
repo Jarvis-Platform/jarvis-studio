@@ -5,3 +5,4 @@ declare module 'vue-flowy';
 declare module 'vue-prismjs';
 declare module 'vue-good-table';
 declare module 'vue-gtm';
+declare module 'announcekit-vue';

@@ -17,6 +17,16 @@
 			</v-badge>
 		</v-btn> -->
 
+		<v-chip outlined>
+			<v-icon left>mdi-fire</v-icon>
+			<a href="#" class="ak-trigger">
+				<span class="white--text">
+					What's new &nbsp;
+				</span>
+				<AnnounceKit catchClick=".ak-trigger" widget="https://announcekit.app/widgets/v2/Ydr0Y" />
+			</a>
+		</v-chip>
+
 		<v-menu offset-y origin="center center" :nudge-bottom="10" transition="scale-transition">
 			<template v-slot:activator="{ on }">
 				<v-btn icon large v-on="on">
@@ -64,9 +74,10 @@ import { User } from '@/types';
 import SearchMenu from './sub-components/SearchMenu.vue';
 
 import { UserSetting, userSettings } from '@/navigation/user-settings-items';
+import AnnounceKit from 'announcekit-vue';
 
 @Component({
-	components: { SearchMenu },
+	components: { SearchMenu, AnnounceKit },
 })
 export default class AppBar extends Vue {
 	@State((state) => state.user.isAuthenticated) isAuthenticated!: boolean;
