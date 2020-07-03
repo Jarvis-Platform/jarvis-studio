@@ -100,7 +100,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
-import { AnyObject } from '@/types';
+import { AnyObject, RoleCode } from '@/types';
 import { Getter } from 'vuex-class';
 import merge from 'lodash.merge';
 import moment from 'moment';
@@ -110,6 +110,7 @@ import ListingFilters from './ListingFilters.vue';
 import VueJsonPretty from 'vue-json-pretty';
 import RunStatusChip from '@/components/data-workflows/common/runs/RunStatusChip.vue';
 
+import { SUPER_ADMIN } from '@/constants/user/roles';
 import { CONFIGURATIONS, RUNS, STATUS } from '@/constants/data-workflows/status';
 import { getActiveConfColor } from '@/util/data-workflows/configuration';
 import { dagRunAirflowUrl } from '@/util/data-workflows/run';
@@ -134,13 +135,13 @@ export default class ListingComponent extends Vue {
 	@Prop({ type: String, default: 'dag_execution_date' }) sortBy?: string[];
 	@Prop({ type: Boolean, default: true }) sortDesc?: boolean;
 	@Prop({ type: Number, default: 10 }) itemsPerPage?: number;
-	@Prop({ type: Boolean, default: false }) showAirflowAction?: boolean;
 	@Prop({ type: Boolean, default: false }) showDeleteAction?: boolean;
 	@Prop(Function) customDataFetching?: () => Promise<any>;
 	@Prop(Boolean) isOtherRunDisplay?: boolean;
 	@Prop(String) jobId?: string;
 	@Prop(Array) overriddenColumns?: string[];
 
+	@Getter('user/role') userRole!: RoleCode;
 	@Getter('filters/periodFiltered') periodFiltered!: string[];
 	@Getter('filters/whereStatusFilter') whereStatusFilter!: Filter[];
 	@Getter('filters/whereRunsFilter') whereRunsFilter!: Filter[];
@@ -278,6 +279,10 @@ export default class ListingComponent extends Vue {
 			};
 		});
 		return merge(dataArray, formattedData);
+	}
+
+	get showAirflowAction() {
+		return this.userRole === SUPER_ADMIN.roleCode;
 	}
 }
 </script>

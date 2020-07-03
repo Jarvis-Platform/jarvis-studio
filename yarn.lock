@@ -2240,6 +2240,13 @@ alphanum-sort@^1.0.0:
   resolved "https://registry.yarnpkg.com/alphanum-sort/-/alphanum-sort-1.0.2.tgz#97a1119649b211ad33691d9f9f486a8ec9fbe0a3"
   integrity sha1-l6ERlkmyEa0zaR2fn0hqjsn74KM=
 
+announcekit-vue@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/announcekit-vue/-/announcekit-vue-2.0.3.tgz#82c188a58d2a917e6639216984377a69d7aad9ae"
+  integrity sha512-2/zYCJ4SdgXAc9wY1r0YqsWGoP+MnxOWL9aRjPXTcb18Ml4t80mioW8d4i2uImlKlVuWJfqBctyGyVZ5xDLLkw==
+  dependencies:
+    vue-runtime-helpers "^1.1.2"
+
 ansi-colors@^3.0.0:
   version "3.2.4"
   resolved "https://registry.yarnpkg.com/ansi-colors/-/ansi-colors-3.2.4.tgz#e3a3da4bfbae6c86a9c285625de124a234026fbf"
@@ -12061,7 +12068,7 @@ vue-router@^3.1.3:
   resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-3.3.4.tgz#4e38abc34a11c41b6c3d8244449a2e363ba6250b"
   integrity sha512-SdKRBeoXUjaZ9R/8AyxsdTqkOfMcI5tWxPZOUX5Ie1BTL5rPSZ0O++pbiZCeYeythiZIdLEfkDiQPKIaWk5hDg==
 
-vue-runtime-helpers@^1.0.2:
+vue-runtime-helpers@^1.0.2, vue-runtime-helpers@^1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/vue-runtime-helpers/-/vue-runtime-helpers-1.1.2.tgz#446b7b820888ab0c5264d2c3a32468e72e4100f3"
   integrity sha512-pZfGp+PW/IXEOyETE09xQHR1CKkR9HfHZdnMD/FVLUNI+HxYTa82evx5WrF6Kz4s82qtqHvMZ8MZpbk2zT2E1Q==

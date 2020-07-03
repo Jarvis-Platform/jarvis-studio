@@ -43,7 +43,6 @@ export default class CollectionListing extends Mixins(RunCollectionMixin) {
 			overriddenColumns: ['dag_id', 'dag_execution_date'],
 			isOtherRunDisplay: this.isOtherRunDisplay,
 			jobId: this.jobId,
-			showAirflowAction: true,
 		};
 	}
 
