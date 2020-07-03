@@ -44,11 +44,14 @@ export default class TaskListing extends Vue {
 
 	@State((state) => state.gbqToGbqTasksStatus.data) gbqToGbqTasksStatus!: Object;
 
-	isLoading: boolean = true;
+	isLoading: boolean = false;
 
 	async mounted() {
-		await this.$store.dispatch(`${gbqToGbqTasksStatus.moduleName}/fetchById`, this.docId);
-		this.isLoading = false;
+		if (this.docId) {
+			this.isLoading = true;
+			await this.$store.dispatch(`${gbqToGbqTasksStatus.moduleName}/fetchById`, this.docId);
+			this.isLoading = false;
+		}
 	}
 
 	prepareSQL(sqlFile: AnyObject) {
@@ -82,7 +85,7 @@ export default class TaskListing extends Vue {
 		let i;
 		let tasksFull = this.tasksConf;
 		for (i = 0; i < tasksFull.length; i++) {
-			tasksFull[i].status = this.gbqToGbqTasksStatus[this.docId][this.tasksConf[i].id];
+			if (this.docId) tasksFull[i].status = this.gbqToGbqTasksStatus[this.docId][tasksFull[i].id];
 
 			switch (tasksFull[i].task_type) {
 				case 'create_gbq_table':

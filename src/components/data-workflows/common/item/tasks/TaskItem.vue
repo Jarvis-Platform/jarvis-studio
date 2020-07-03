@@ -8,7 +8,7 @@
 			vflexOffset="offset-xs1"
 		>
 			<template v-slot:header>
-				<v-chip :color="statusChipColor" text-color="white" class="mr-3">{{ task.status }}</v-chip>
+				<v-chip v-if="task.status" :color="statusChipColor" text-color="white" class="mr-3">{{ task.status }}</v-chip>
 
 				<v-dialog v-if="showLogs" v-model="logsDialog" width="1000">
 					<template v-slot:activator="{ on }">

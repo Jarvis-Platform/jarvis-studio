@@ -44,6 +44,11 @@ export default class TablesToTablesConfigurationsItemView extends Mixins(HeaderI
 					name: 'task-listing',
 					props: {
 						type: CONFIGURATIONS,
+						docId: '',
+						dagId: '',
+						dagRunId: '',
+						dagType: '',
+						dagExecutionDate: '',
 						tasksConf: this.item.configuration.workflow,
 						tasksSQL: this.item.sql,
 						dagConf: this.item.configuration,

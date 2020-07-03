@@ -300,11 +300,11 @@ export interface TaskListingTab extends Tab {
 		name: string;
 		props: {
 			type: DataWorkflowsType;
-			docId?: string;
-			dagId?: string;
-			dagRunId?: string;
-			dagType?: string;
-			dagExecutionDate?: string;
+			docId: string;
+			dagId: string;
+			dagRunId: string;
+			dagType: string;
+			dagExecutionDate: string;
 			tasksConf: AnyObject[];
 			tasksSQL: AnyObject;
 			dagConf: AnyObject;
