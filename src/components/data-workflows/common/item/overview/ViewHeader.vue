@@ -219,6 +219,7 @@ export default class ViewHeader extends Vue {
 		this.isLoading = true;
 
 		let data: AnyObject = {
+			configurationType: this.item.configuration_type,
 			dagId: this.item.id,
 			dagConf: this.dagConf ? this.dagConf : {},
 		};
