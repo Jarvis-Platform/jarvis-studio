@@ -29,7 +29,7 @@
     "material-design-icons-iconfont": "^5.0.1",
     "moment": "^2.24.0",
     "numeral": "^2.0.6",
-    "prismjs": "^1.17.1",
+    "prismjs": "^1.21.0",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.0",
     "tiptap-vuetify": "^2.13.2",
