@@ -3,7 +3,7 @@
 		<div class="d-flex flex-column text-right body-2">
 			<span class="text--secondary">{{ email ? email : 'No email' }}</span>
 
-			<v-menu v-model="showMenu" transition="slide-y-transition" offset-y>
+			<v-menu v-model="showMenu" transition="slide-y-transition" offset-y z-index="10">
 				<template v-slot:activator="{ on }">
 					<span
 						v-on="on"
