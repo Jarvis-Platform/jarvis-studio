@@ -45,15 +45,14 @@ export const state: FilterState = {
 		{ label: 'Disabled', value: false },
 	],
 	dateFilterSelected: {
-		label: 'Last 2 Days',
-		value: 1,
+		label: 'Today',
+		value: 0,
 	},
 	dateFilters: [
 		{ label: 'Today', value: 0 },
 		{ label: 'Last 2 Days', value: 1 },
 		{ label: 'Last 7 Days', value: 7 },
 		{ label: 'Last 30 Days', value: 31 },
-		{ label: 'Last 90 Days', value: 90 },
 	],
 	minDateFilter: moment().utc().startOf('day').subtract(1, 'days').toISOString(),
 };
