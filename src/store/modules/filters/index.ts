@@ -54,7 +54,7 @@ export const state: FilterState = {
 		{ label: 'Last 7 Days', value: 7 },
 		{ label: 'Last 30 Days', value: 31 },
 	],
-	minDateFilter: moment().utc().startOf('day').subtract(1, 'days').toISOString(),
+	minDateFilter: moment().utc().startOf('day').toISOString(),
 };
 
 const namespaced: boolean = true;
