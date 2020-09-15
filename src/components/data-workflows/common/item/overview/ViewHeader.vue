@@ -224,8 +224,10 @@ export default class ViewHeader extends Vue {
 			dagConf: this.dagConf ? this.dagConf : {},
 		};
 
-		if (this.dagExecutionDay && this.dagExecutionTime)
-			data.dagExecutionDate = new Date(`${this.dagExecutionDay}:${this.dagExecutionTime}`).toISOString();
+		if (this.dagExecutionDay && this.dagExecutionTime) {
+			const date = new Date(`${this.dagExecutionDay}:${this.dagExecutionTime}`);
+			data.dagExecutionDate = this.$moment(date).format();
+		}
 
 		this.$httpsCallableFunction('fd-io-api-composer-dag-trigger', data)
 			.then(() => {
