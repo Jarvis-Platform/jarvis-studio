@@ -162,6 +162,11 @@ export default class ListingComponent extends Vue {
 		this.getFirestoreData();
 	}
 
+	@Watch('$route.name')
+	async onRouteNameChanged() {
+		await this.$store.dispatch(`${this.moduleName}/closeDBChannel`);
+	}
+
 	private firestoreItems: any;
 	isLoading: boolean = false;
 	search: string = '';
