@@ -116,7 +116,7 @@ export default class TablesToTablesRunsItemView extends Mixins(HeaderInfosMixin,
 						{
 							id: 'dag_execution_date',
 							label: 'Execution Date',
-							value: this.$moment(this.item.dag_execution_date).format('YYYY/MM/DD - HH:mm'),
+							value: this.$moment(this.item.dag_execution_date).format('YYYY/MM/DD - HH:mm:ss'),
 						},
 						{
 							id: 'dag_run_id',
