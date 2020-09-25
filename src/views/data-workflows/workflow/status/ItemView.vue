@@ -80,7 +80,7 @@ export default class WorkflowStatusItemView extends Mixins(HeaderInfosMixin, Sta
 						{
 							id: 'last_modified',
 							label: 'Las modified',
-							value: this.item.last_modified,
+							value: this.$moment(this.item.last_modified).format('YYYY/MM/DD - HH:mm:ss'),
 						},
 						{
 							id: 'target_dag',
@@ -90,7 +90,7 @@ export default class WorkflowStatusItemView extends Mixins(HeaderInfosMixin, Sta
 						{
 							id: 'target_dag_last_executed',
 							label: 'Target Dag last executed',
-							value: this.item.target_dag_last_executed,
+							value: this.$moment(this.item.target_dag_last_executed).format('YYYY/MM/DD - HH:mm:ss'),
 						},
 					],
 				},
