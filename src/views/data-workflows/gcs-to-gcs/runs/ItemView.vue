@@ -97,7 +97,7 @@ export default class GcsToGcsRunsItemView extends Mixins(HeaderInfosMixin, RunDo
 						{
 							id: 'dag_execution_date',
 							label: 'Execution Date',
-							value: this.item.dag_execution_date,
+							value: this.$moment(this.item.dag_execution_date).format('YYYY/MM/DD - HH:mm'),
 						},
 						{
 							id: 'dag_run_id',
