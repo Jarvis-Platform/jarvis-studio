@@ -18,14 +18,7 @@
 			</template>
 
 			<template v-slot:triggered_jobs="{ item: { jobs } }">
-				<v-progress-circular
-					:rotate="270"
-					:size="35"
-					:value="(Object.values(jobs).filter((job) => (job.executed = true)).length / Object.keys(jobs).length) * 100"
-					color="green"
-				>
-					{{ Object.values(jobs).filter((job) => (job.executed = true)).length }}
-				</v-progress-circular>
+				<jobs-ratio :jobs="jobs" />
 			</template>
 
 			<template v-slot:last_update_date_from_now="{ item: { last_modified } }">
@@ -42,6 +35,8 @@
 <script lang="ts">
 import { Component, Mixins } from 'vue-property-decorator';
 
+import JobsRatio from '@/components/data-workflows/common/status/jobs-ratio.vue';
+
 import HeaderInfosMixin from '../header-infos';
 import StatusCollectionMixin from '@/mixins/data-workflows/collection/status-collection-mixin';
 
@@ -56,7 +51,9 @@ import {
 	TRIGGERED_JOBS,
 } from '@/constants/data-workflows/listing/header-items';
 
-@Component
+@Component({
+	components: { JobsRatio },
+})
 export default class WorkflowStatusListingView extends Mixins(HeaderInfosMixin, StatusCollectionMixin) {
 	moduleName: string = workflowStatus.moduleName;
 	overriddenColumns: string[] = [

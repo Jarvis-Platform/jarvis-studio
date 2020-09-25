@@ -58,7 +58,7 @@ export default class VmLauncherRunsItemView extends Mixins(HeaderInfosMixin, Run
 						{
 							id: 'dag_execution_date',
 							label: 'Execution Date',
-							value: this.item.dag_execution_date,
+							value: this.$moment(this.item.dag_execution_date).format('YYYY/MM/DD - HH:mm'),
 						},
 						{
 							id: 'dag_run_id',
