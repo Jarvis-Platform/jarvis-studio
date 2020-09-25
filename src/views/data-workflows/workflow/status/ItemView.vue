@@ -52,6 +52,8 @@ export default class WorkflowStatusItemView extends Mixins(HeaderInfosMixin, Sta
 	}
 
 	get statusData() {
+		const jobsLength = Object.keys(this.item.jobs).length;
+
 		return [
 			{
 				component: 'view-header',
@@ -73,7 +75,7 @@ export default class WorkflowStatusItemView extends Mixins(HeaderInfosMixin, Sta
 						{
 							id: 'jobs',
 							label: 'Jobs',
-							value: Object.keys(this.item.jobs).length,
+							value: jobsLength ? jobsLength : '0',
 						},
 						{
 							id: 'last_modified',
@@ -91,6 +93,56 @@ export default class WorkflowStatusItemView extends Mixins(HeaderInfosMixin, Sta
 							value: this.item.target_dag_last_executed,
 						},
 					],
+				},
+			},
+			{
+				component: 'parameters-table',
+				props: {
+					tableTitle: 'Target Job',
+					description: 'Job to target',
+					columns: [
+						{
+							label: 'Job ID',
+							field: 'job_id',
+						},
+						{
+							label: 'Execution date',
+							field: 'target_dag_last_executed',
+						},
+					],
+					rows: [{ job_id: this.item.target_dag, target_dag_last_executed: this.item.target_dag_last_executed }],
+					lineNumbers: true,
+					searchOptionsEnabled: false,
+				},
+			},
+			{
+				component: 'parameters-table',
+				props: {
+					tableTitle: 'Triggering Jobs',
+					description: 'Jobs trigerring the workflow',
+					columns: [
+						{
+							label: 'Job ID',
+							field: 'job_id',
+						},
+						{
+							label: 'Execution date',
+							field: 'execution_date',
+						},
+						{
+							label: 'Triggered',
+							field: 'triggered',
+						},
+					],
+					rows: Object.values(this.item.jobs).map((job, index) => {
+						return {
+							job_id: Object.keys(this.item.jobs)[index],
+							execution_date: job.execution_date,
+							triggered: job.executed,
+						};
+					}),
+					lineNumbers: true,
+					searchOptionsEnabled: true,
 				},
 			},
 		];
