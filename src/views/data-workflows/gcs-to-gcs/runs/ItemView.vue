@@ -308,7 +308,9 @@ export default class GcsToGcsRunsItemView extends Mixins(HeaderInfosMixin, RunDo
 						{
 							id: 'updated_date',
 							label: 'Updated date',
-							value: this.item.configuration_context.update_date || this.item.configuration_context.updated_date,
+							value: this.$moment(
+								this.item.configuration_context.update_date || this.item.configuration_context.updated_date
+							).format('YYYY/MM/DD - HH:mm:ss'),
 						},
 						{
 							id: 'updated_by',

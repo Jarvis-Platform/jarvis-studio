@@ -109,7 +109,7 @@ export default class TablesToTablesConfigurationsItemView extends Mixins(HeaderI
 						{
 							id: 'start_date',
 							label: 'Start Date',
-							value: this.item.configuration.start_date,
+							value: this.$moment(this.item.configuration.start_date).format('YYYY/MM/DD - HH:mm:ss'),
 							description: `Start date of the DAG. The format must be : "yyyy, MM, dd" Where : YYYY >= 1970 MM = [1, 12] DD = [1, 31]`,
 						},
 						{
