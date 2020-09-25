@@ -20,16 +20,23 @@
 					:custom-key="customKey"
 				/>
 
+				<v-chip
+					v-if="showDagLaunch"
+					color="menu"
+					text-color="white"
+					label
+					class="mr-3 text-uppercase"
+					@click="toggleDagLaunchDialog"
+				>
+					Launch
+				</v-chip>
+
 				<v-menu offset-y v-if="!item.archived || isSuperAdmin">
 					<template v-slot:activator="{ on }">
 						<v-icon v-on="on">more_vert</v-icon>
 					</template>
 
 					<v-list>
-						<v-list-item v-if="showDagLaunch" @click="toggleDagLaunchDialog">
-							<v-list-item-title>Launch</v-list-item-title>
-						</v-list-item>
-
 						<v-list-item @click="item.archived ? toggleArchiveConf() : showArchiveDialog()">
 							<v-list-item-title>{{ archiveLabel }}</v-list-item-title>
 						</v-list-item>
@@ -149,6 +156,11 @@
 			<span class="headline font-weight-bold">{{ viewId }}</span>
 			<v-spacer />
 			<v-btn text v-if="link" @click="redirectToConfiguration" class="text--secondary">View current</v-btn>
+
+			<template v-if="viewType === 'status'">
+				<v-btn color="complementary" class="mr-3" @click="resetWorkflowStatus">Reset</v-btn>
+				<jobs-ratio :jobs="item.jobs" />
+			</template>
 		</v-row>
 
 		<v-row v-if="description" class="pl-5 pr-5 pt-3 pb-3">
@@ -166,16 +178,18 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 import { Getter } from 'vuex-class';
 import { AnyObject, Snackbar } from '@/types';
 import ConfigurationStatus from '@/components/data-workflows/common/configuration/ConfigurationStatus.vue';
+import JobsRatio from '@/components/data-workflows/common/status/jobs-ratio.vue';
 import RunStatusChip from '@/components/data-workflows/common/runs/RunStatusChip.vue';
 import { CONFIGURATIONS } from '@/constants/data-workflows/status';
 import { DATA_WORKFLOWS } from '@/constants/router/paths-prefixes';
 import { SNACKBAR } from '@/constants/ui/snackbar';
+import { workflowStatus } from '@/store/modules/easy-firestore/workflow-status';
 
 // TODO: Refactor viewType possible values with constants
 // TODO: Refactor by removing headerActive prop to be based on viewType
 
 @Component({
-	components: { ConfigurationStatus, RunStatusChip },
+	components: { ConfigurationStatus, JobsRatio, RunStatusChip },
 })
 export default class ViewHeader extends Vue {
 	@Prop({ required: true }) readonly activeHeader!: boolean;
@@ -267,6 +281,10 @@ export default class ViewHeader extends Vue {
 
 	redirectToConfiguration() {
 		this.$router.push(this.link);
+	}
+
+	resetWorkflowStatus() {
+		this.$store.dispatch(`${workflowStatus.moduleName}/patch`, { id: this.item.id, jobs: {} });
 	}
 
 	get archiveLabel(): string {
