@@ -246,7 +246,7 @@ export default class StorageToStorageRunsItemView extends Mixins(HeaderInfosMixi
 						{
 							id: 'dag_execution_date',
 							label: 'Execution Date',
-							value: this.$moment(this.item.dag_execution_date).format('YYYY/MM/DD - HH:mm:ss'),
+							value: this.$moment(this.item.dag_execution_date, '').format('YYYY/MM/DD - HH:mm:ss'),
 						},
 						{
 							id: 'duration',
@@ -367,7 +367,8 @@ export default class StorageToStorageRunsItemView extends Mixins(HeaderInfosMixi
 							id: 'updated_date',
 							label: 'Updated date',
 							value: this.$moment(
-								this.item.configuration_context.update_date || this.item.configuration_context.updated_date
+								this.item.configuration_context.update_date || this.item.configuration_context.updated_date,
+								''
 							).format('YYYY/MM/DD - HH:mm:ss'),
 						},
 						{

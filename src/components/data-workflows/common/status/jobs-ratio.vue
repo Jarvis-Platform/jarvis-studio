@@ -11,17 +11,18 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
+import { StatusJob } from '@/types/status';
 
 @Component
 export default class JobsRatio extends Vue {
-	@Prop({ type: Object, required: true }) jobs!: any; // TODO: Type
+	@Prop({ type: Object, required: true }) jobs!: StatusJob[]; // TODO: Type
 
 	get jobsLength() {
 		return Object.values(this.jobs).length;
 	}
 
 	get executedJobs() {
-		return Object.values(this.jobs).filter((job) => job.executed === true);
+		return Object.values(this.jobs).filter((job: StatusJob) => job.executed);
 	}
 }
 </script>

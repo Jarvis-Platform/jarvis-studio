@@ -7,8 +7,11 @@
 
 <script lang="ts">
 import { Component, Mixins } from 'vue-property-decorator';
+import { StatusJob } from '@/types/status';
+
 import HeaderInfosMixin from '../header-infos';
 import StatusDocMixin from '@/mixins/data-workflows/doc/status-doc-mixin';
+
 import { workflowStatus } from '@/store/modules/easy-firestore/workflow-status';
 
 @Component
@@ -80,7 +83,7 @@ export default class WorkflowStatusItemView extends Mixins(HeaderInfosMixin, Sta
 						{
 							id: 'last_modified',
 							label: 'Las modified',
-							value: this.$moment(this.item.last_modified).format('YYYY/MM/DD - HH:mm:ss'),
+							value: this.$moment(this.item.last_modified, '').format('YYYY/MM/DD - HH:mm:ss'),
 						},
 						{
 							id: 'target_dag',
@@ -90,7 +93,7 @@ export default class WorkflowStatusItemView extends Mixins(HeaderInfosMixin, Sta
 						{
 							id: 'target_dag_last_executed',
 							label: 'Target Dag last executed',
-							value: this.$moment(this.item.target_dag_last_executed).format('YYYY/MM/DD - HH:mm:ss'),
+							value: this.$moment(this.item.target_dag_last_executed, '').format('YYYY/MM/DD - HH:mm:ss'),
 						},
 					],
 				},
@@ -134,7 +137,7 @@ export default class WorkflowStatusItemView extends Mixins(HeaderInfosMixin, Sta
 							field: 'triggered',
 						},
 					],
-					rows: Object.values(this.item.jobs).map((job, index) => {
+					rows: Object.values(this.item.jobs as StatusJob[]).map((job, index: number) => {
 						return {
 							job_id: Object.keys(this.item.jobs)[index],
 							execution_date: job.execution_date,
