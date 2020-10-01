@@ -19,7 +19,7 @@
 			:sort-by.sync="sortBy"
 			:sort-desc.sync="sortDesc"
 			item-key="id"
-			class="elevation-1"
+			class="elevation-1 mb-16"
 			:items-per-page="itemsPerPage"
 		>
 			<v-progress-linear v-slot:progress color="blue" indeterminate />
