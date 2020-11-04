@@ -1,4 +1,4 @@
-# jarvis-studio
+# Tailer Studio
 
 ## Project setup
 ```

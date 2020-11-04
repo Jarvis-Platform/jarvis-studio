@@ -9,7 +9,7 @@ module.exports = (data, context) => {
 	//   return { error: "only super admin can add roles and accounts to user!" };
 	// }
 
-	// get user and add Jarvis roles and accounts in custom claim
+	// get user and add Tailer roles and accounts in custom claim
 	return admin
 		.auth()
 		.getUserByEmail(data.email)
