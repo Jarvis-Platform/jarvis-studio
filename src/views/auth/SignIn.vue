@@ -5,10 +5,10 @@
 				<v-row class="fill-height" no-gutters>
 					<v-col
 						v-if="$vuetify.breakpoint.mdAndUp"
-						class="infos-panel d-flex flex-column justify-space-between"
+						class="infos-panel"
 						:style="{ backgroundImage: `url('${background}')` }"
 					>
-						<img src="@/assets/img/app/logo.png" alt="Tailer Logo" class="logo mt-8 ml-8" />
+						<img src="@/assets/img/app/logo.png" alt="Tailer Logo" class="logo mt-8 mr-8 float-right" />
 					</v-col>
 
 					<v-col class="form-panel">
