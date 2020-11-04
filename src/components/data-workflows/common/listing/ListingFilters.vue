@@ -45,8 +45,18 @@ export default class DataManagementFilters extends Vue {
 	@State((state) => state.filters.confActivatedFilters) confActivatedFilters!: ConfActivatedFilter[];
 	@State((state) => state.filters.dateFilterSelected) dateFilterSelected!: DateFilter;
 	@State((state) => state.filters.dateFilters) dateFilters!: DateFilter[];
+	@State((state) => state.filters.minDateFilter) minDateFilter!: string;
 
 	@Getter('user/isSuperAdmin') isSuperAdmin!: number;
+
+	created() {
+		if (
+			this.dateFilterSelected.value === 0 &&
+			!this.$moment(new Date()).isSame(this.$moment(this.minDateFilter), 'day')
+		) {
+			this.$store.commit('filters/updateMinDateFilter', this.dateFilterSelected);
+		}
+	}
 
 	// TODO: Refactoring
 	mounted() {

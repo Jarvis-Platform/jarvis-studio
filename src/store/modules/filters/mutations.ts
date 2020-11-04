@@ -13,7 +13,6 @@ export const mutations: MutationTree<FilterState> = {
 		state.runStatusFilterSelected = runStatusFilterSelected;
 	},
 	updateConfActivatedFilterSelected(state, confActivatedFilterSelected) {
-		console.log(confActivatedFilterSelected);
 		state.confActivatedFilterSelected = confActivatedFilterSelected;
 	},
 	updateMinDateFilter(state, dateFilterSelected) {
