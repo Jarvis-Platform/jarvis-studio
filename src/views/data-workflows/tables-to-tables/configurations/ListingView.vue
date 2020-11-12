@@ -12,15 +12,6 @@
 					<span class="font-weight-medium">{{ id }}</span>
 				</router-link>
 			</template>
-
-			<template v-slot:activated="{ item }">
-				<configuration-status
-					:item="item"
-					:collection="moduleName"
-					:is-activated="item.configuration.activated"
-					custom-key="configuration"
-				/>
-			</template>
 		</listing-component>
 	</div>
 </template>
@@ -52,7 +43,7 @@ export default class TablesToTablesConfigurationsListingView extends Mixins(
 	ConfigurationCollectionMixin
 ) {
 	moduleName: string = getGbqToGbqConfs.moduleName;
-	overriddenColumns: string[] = ['id', 'activated'];
+	overriddenColumns: string[] = ['id'];
 
 	get routeName() {
 		return TABLES_TO_TABLES_CONFIGURATIONS_ITEM;

@@ -14,10 +14,9 @@
 					class="mr-3"
 					:item="item"
 					:collection="collection"
-					:is-activated="customKey ? item[customKey].activated : item.activated"
+					:is-activated="item.activated"
 					:is-small="false"
 					:is-label="true"
-					:custom-key="customKey"
 				/>
 
 				<v-chip
@@ -201,7 +200,6 @@ export default class ViewHeader extends Vue {
 	@Prop(String) readonly collection: string | undefined;
 	@Prop(String) readonly runStatus: string | undefined;
 	@Prop(String) readonly description: string | undefined;
-	@Prop({ default: null }) readonly customKey: string | undefined;
 
 	@Getter('user/isSuperAdmin') isSuperAdmin!: number;
 
