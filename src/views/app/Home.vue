@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<data-overview-header title="Welcome to Jarvis Studio" sub-title="Keep Calm and Ask for the Retail Data Butler" />
+		<data-overview-header title="Welcome to Tailer Studio" sub-title="Keep Calm and Ask for the Retail Data Tailor" />
 		<data-overview-content />
 	</div>
 </template>

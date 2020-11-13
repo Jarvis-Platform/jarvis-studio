@@ -33,7 +33,7 @@ export default class DataOverviewContent extends Vue {
 			{
 				id: '1',
 				title: 'Data Models',
-				description: 'Get fast and detailed overview on all datasets and tables managed by Jarvis',
+				description: 'Get fast and detailed overview on all datasets and tables managed by Tailer',
 				color: 'orange',
 			},
 			{
@@ -51,7 +51,7 @@ export default class DataOverviewContent extends Vue {
 			{
 				id: '4',
 				title: 'Data Visualization',
-				description: 'Access to Data Visualizations and Dashboards built on the top of the Data available in Jarvis',
+				description: 'Access to Data Visualizations and Dashboards built on the top of the Data available in Tailer',
 				color: 'purple',
 			},
 		];

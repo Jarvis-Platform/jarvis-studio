@@ -94,7 +94,7 @@ export default class GbqToGcsRunsItemView extends Mixins(HeaderInfosMixin, RunDo
 						{
 							id: 'dag_execution_date',
 							label: 'Execution Date',
-							value: this.$moment(this.item.dag_execution_date).format('YYYY/MM/DD - HH:mm:ss'),
+							value: this.$moment(this.item.dag_execution_date, '').format('YYYY/MM/DD - HH:mm:ss'),
 						},
 						{
 							id: 'dag_run_id',
@@ -296,7 +296,8 @@ export default class GbqToGcsRunsItemView extends Mixins(HeaderInfosMixin, RunDo
 							id: 'updated_date',
 							label: 'Updated date',
 							value: this.$moment(
-								this.item.configuration_context.update_date || this.item.configuration_context.updated_date
+								this.item.configuration_context.update_date || this.item.configuration_context.updated_date,
+								''
 							).format('YYYY/MM/DD - HH:mm:ss'),
 						},
 						{
