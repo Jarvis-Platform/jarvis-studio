@@ -7,18 +7,7 @@
 
 <script lang="ts">
 import { Component, Mixins } from 'vue-property-decorator';
-import {
-	AnyObject,
-	ConfigurationTab,
-	DataItem,
-	DataWorkflowsType,
-	FullJSONTab,
-	NotesTab,
-	OtherRunTab,
-	RunDetailsTab,
-	Tab,
-	TaskListingTab,
-} from '@/types';
+import { ConfigurationTab, FullJSONTab, NotesTab, OtherRunTab, RunDetailsTab, TaskListingTab } from '@/types';
 import HeaderInfosMixin from '../header-infos';
 import RunDocMixin from '@/mixins/data-workflows/doc/run-doc-mixin';
 import { RUNS } from '@/constants/data-workflows/status';
@@ -141,7 +130,6 @@ export default class TablesToTablesRunsItemView extends Mixins(HeaderInfosMixin,
 				props: {
 					item: this.item,
 					collection: this.moduleName,
-					customKey: 'configuration_context.configuration',
 					activeHeader: false,
 					viewId: this.item.dag_id,
 					viewType: 'conf',

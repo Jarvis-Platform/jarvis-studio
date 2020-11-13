@@ -38,7 +38,6 @@ export default class ConfigurationStatus extends Vue {
 	@Prop({ type: Boolean, default: undefined }) isActivated: boolean | undefined;
 	@Prop({ type: Boolean, default: true }) isSmall!: boolean;
 	@Prop({ type: Boolean, default: false }) isLabel!: boolean;
-	@Prop({ type: String, default: null }) customKey!: string;
 
 	isLoading: boolean = false;
 	snackbarParam: Snackbar = {
@@ -80,9 +79,7 @@ export default class ConfigurationStatus extends Vue {
 			text = 'Configuration activated';
 		}
 
-		const payload = this.customKey ? { id, [this.customKey]: { activated } } : { id, activated };
-
-		this.$store.dispatch(collectionPath, payload).then(() => {
+		this.$store.dispatch(collectionPath, { id, activated }).then(() => {
 			this.statusUpdateCallback({
 				isVisible: true,
 				text,
