@@ -32,6 +32,7 @@ import { ConfActivatedFilter, DateFilter, EnvFilter, RunStatusFilter } from '@/t
 import { Getter, State } from 'vuex-class';
 import store from '@/store';
 import { CONFIGURATIONS, RUNS, STATUS } from '@/constants/data-workflows/status';
+import moment from 'moment';
 
 @Component
 export default class DataManagementFilters extends Vue {
@@ -45,8 +46,21 @@ export default class DataManagementFilters extends Vue {
 	@State((state) => state.filters.confActivatedFilters) confActivatedFilters!: ConfActivatedFilter[];
 	@State((state) => state.filters.dateFilterSelected) dateFilterSelected!: DateFilter;
 	@State((state) => state.filters.dateFilters) dateFilters!: DateFilter[];
+	@State((state) => state.filters.minDateFilter) minDateFilter!: string;
 
 	@Getter('user/isSuperAdmin') isSuperAdmin!: number;
+
+	created() {
+		if (
+			!this.$moment()
+				.utc()
+				.startOf('day')
+				.subtract(this.dateFilterSelected.value, 'day')
+				.isSame(this.$moment(this.minDateFilter))
+		) {
+			this.$store.commit('filters/updateMinDateFilter', this.dateFilterSelected);
+		}
+	}
 
 	// TODO: Refactoring
 	mounted() {
