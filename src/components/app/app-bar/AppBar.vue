@@ -27,6 +27,8 @@
 			</a>
 		</v-chip>
 
+		<div id="notifications-inbox" class="mx-2" />
+
 		<v-menu offset-y origin="center center" :nudge-bottom="10" transition="scale-transition">
 			<template v-slot:activator="{ on }">
 				<v-btn icon large v-on="on">

@@ -6,3 +6,4 @@ declare module 'vue-prismjs';
 declare module 'vue-good-table';
 declare module 'vue-gtm';
 declare module 'announcekit-vue';
+declare module '@/dependencies/magic-bell';
