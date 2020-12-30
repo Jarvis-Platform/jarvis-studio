@@ -255,7 +255,7 @@ export default class StorageToTablesRunsItemView extends Mixins(HeaderInfosMixin
 					paramItems: [
 						{
 							id: 'dag_type',
-							label: 'Dag Type',
+							label: 'Configuration Type',
 							value: this.item.dag_type,
 						},
 						{
@@ -275,7 +275,7 @@ export default class StorageToTablesRunsItemView extends Mixins(HeaderInfosMixin
 						},
 						{
 							id: 'dag_run_id',
-							label: 'Dag Run Id',
+							label: 'Run Id',
 							value: this.item.dag_run_id,
 						},
 						{

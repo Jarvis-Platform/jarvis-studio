@@ -89,12 +89,12 @@ export default class TablesToTablesRunsItemView extends Mixins(HeaderInfosMixin,
 					paramItems: [
 						{
 							id: 'dag_id',
-							label: 'Dag Id',
+							label: 'Configuration Id',
 							value: this.item.dag_id,
 						},
 						{
 							id: 'dag_type',
-							label: 'Dag Type',
+							label: 'Configuration Type',
 							value: this.item.dag_type,
 						},
 						{
@@ -108,13 +108,18 @@ export default class TablesToTablesRunsItemView extends Mixins(HeaderInfosMixin,
 							value: this.$moment(this.item.dag_execution_date, '').format('YYYY/MM/DD - HH:mm:ss'),
 						},
 						{
+							id: 'duration',
+							label: 'Duration',
+							value: this.item.duration,
+						},
+						{
 							id: 'dag_run_id',
-							label: 'Dag Run Id',
+							label: 'Run Id',
 							value: this.item.dag_run_id,
 						},
 						{
 							id: 'dag_generator_version',
-							label: 'Dag Generator Version',
+							label: 'Generator Version',
 							value: this.item.dag_generator_version,
 						},
 					],

@@ -83,7 +83,7 @@ export default class GbqToGcsRunsItemView extends Mixins(HeaderInfosMixin, RunDo
 					paramItems: [
 						{
 							id: 'dag_type',
-							label: 'Dag Type',
+							label: 'Configuration Type',
 							value: this.item.dag_type,
 						},
 						{
@@ -98,12 +98,12 @@ export default class GbqToGcsRunsItemView extends Mixins(HeaderInfosMixin, RunDo
 						},
 						{
 							id: 'dag_run_id',
-							label: 'Dag Run Id',
+							label: 'Run Id',
 							value: this.item.dag_run_id,
 						},
 						{
 							id: 'dag_generator_version',
-							label: 'Dag Generator Version',
+							label: 'Generator Version',
 							value: this.item.dag_generator_version,
 						},
 					],

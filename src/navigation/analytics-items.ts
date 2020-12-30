@@ -17,7 +17,7 @@ export const analyticsItems: Link[] = [
 		icon: 'swap_horiz',
 		title: 'GCS to GCS',
 		link: { name: GCS_TO_GCS_RUNS_LISTING },
-		displayRule: isSuperAdminRule,
+		// displayRule: isSuperAdminRule,
 	},
 	{
 		icon: 'flare',
@@ -28,7 +28,7 @@ export const analyticsItems: Link[] = [
 		icon: 'vertical_split',
 		title: 'Storage to Table',
 		link: { name: STORAGE_TO_TABLE_RUNS_LISTING },
-		displayRule: isSuperAdminRule,
+		// displayRule: isSuperAdminRule,
 	},
 	{
 		icon: 'post_add',
@@ -44,7 +44,7 @@ export const analyticsItems: Link[] = [
 		icon: 'file_copy',
 		title: 'GBQ to GCS',
 		link: { name: GBQ_TO_GCS_RUNS_LISTING },
-		displayRule: isSuperAdminRule,
+		// displayRule: isSuperAdminRule,
 	},
 	{
 		icon: 'share',

@@ -255,7 +255,7 @@ export default class StorageToStorageRunsItemView extends Mixins(HeaderInfosMixi
 						},
 						{
 							id: 'dag_run_id',
-							label: 'Dag Run Id',
+							label: 'Run Id',
 							value: this.item.dag_run_id,
 						},
 					],

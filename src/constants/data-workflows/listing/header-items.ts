@@ -33,7 +33,7 @@ export const FIRESTORE_CONF_DOC_ID: HeaderItem = {
 	value: 'firestore_conf_doc_id',
 };
 export const OUTPUT_FILENAME: HeaderItem = { text: 'Generated File', sortable: true, value: 'output_filename' };
-export const DAG_ID: HeaderItem = { text: 'Workflow Id Bucket', sortable: true, value: 'dag_id' };
+export const DAG_ID: HeaderItem = { text: 'Configuration Id', sortable: true, value: 'dag_id' };
 export const WORKFLOW_LENGTH: HeaderItem = {
 	text: 'Tasks',
 	sortable: true,
@@ -69,7 +69,7 @@ export const GCS_FILE_EXCHANGE_BUCKET: HeaderItem = {
 	value: 'gcs_file_exchange_bucket',
 };
 export const WORKING_DIR: HeaderItem = { text: 'Working Directory', sortable: true, value: 'working_dir' };
-export const TARGET_DAG: HeaderItem = { text: 'Dag to fire', sortable: true, value: 'target_dag' };
+export const TARGET_DAG: HeaderItem = { text: 'Job to fire', sortable: true, value: 'target_dag' };
 export const AUTHORIZED_JOB_IDS_LENGTH: HeaderItem = {
 	text: 'Nb triggering Jobs',
 	sortable: true,

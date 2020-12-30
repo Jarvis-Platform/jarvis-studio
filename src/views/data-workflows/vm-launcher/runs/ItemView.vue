@@ -62,7 +62,7 @@ export default class VmLauncherRunsItemView extends Mixins(HeaderInfosMixin, Run
 						},
 						{
 							id: 'dag_run_id',
-							label: 'Dag Run Id',
+							label: 'Run Id',
 							value: this.item.dag_run_id,
 						},
 					],
