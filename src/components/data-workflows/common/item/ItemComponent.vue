@@ -1,5 +1,5 @@
 <template>
-	<v-container>
+	<v-container fluid>
 		<v-row v-if="isLoading">
 			<v-progress-linear :indeterminate="true" />
 		</v-row>
@@ -13,7 +13,7 @@
 
 		<v-row v-else>
 			<v-col cols="12" offset="0">
-				<v-tabs v-model="activeTab" color="black" background-color="#E0E0E0" slider-color="primary" class="elevation-1">
+				<v-tabs v-model="activeTab" color="black" background-color="submenu" slider-color="black" class="elevation-0">
 					<v-tab v-for="tab in tabsItems" :key="tab.label" :href="`#${tab.href}`" v-text="tab.label" ripple />
 					<v-spacer />
 					<history-component

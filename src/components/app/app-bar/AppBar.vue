@@ -1,5 +1,5 @@
 <template>
-	<v-app-bar app dark color="primary" elevate-on-scroll>
+	<v-app-bar app white color="white" elevate-on-scroll>
 		<v-app-bar-nav-icon v-if="!$vuetify.breakpoint.lgAndUp" @click="$emit('toggleNavigation')" />
 
 		<span class="cursor--pointer" @click="removeFilteredAccount">
@@ -20,7 +20,7 @@
 		<v-chip outlined>
 			<v-icon left>mdi-fire</v-icon>
 			<a href="#" class="ak-trigger">
-				<span class="white--text">
+				<span>
 					What's new &nbsp;
 				</span>
 				<AnnounceKit catchClick=".ak-trigger" widget="https://announcekit.app/widgets/v2/Ydr0Y" />
@@ -35,7 +35,7 @@
 					</v-avatar>
 
 					<v-avatar v-else size="32px">
-						<v-icon dark>account_circle</v-icon>
+						<v-icon>account_circle</v-icon>
 					</v-avatar>
 				</v-btn>
 			</template>

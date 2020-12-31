@@ -2,7 +2,7 @@
 	<div>
 		<data-model-header :tableItems="tableItems" />
 
-		<v-container class="grey lighten-5">
+		<v-container class="grey lighten-5" fluid>
 			<v-progress-linear v-if="isLoading" :indeterminate="true" />
 
 			<template v-else>
@@ -83,13 +83,7 @@
 					</v-col>
 
 					<v-col cols="12">
-						<v-tabs
-							v-model="activeTab"
-							color="black"
-							background-color="#E0E0E0"
-							slider-color="primary"
-							class="elevation-1"
-						>
+						<v-tabs v-model="activeTab" color="black" background-color="#E0E0E0" slider-color="primary">
 							<v-tab ripple href="#dataoverview">Data Overview</v-tab>
 							<v-tab ripple href="#schema">Schema</v-tab>
 							<v-tab ripple href="#workflow">Workflow</v-tab>

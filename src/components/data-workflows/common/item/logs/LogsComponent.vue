@@ -1,5 +1,5 @@
 <template>
-	<v-container class="py-6">
+	<v-container class="py-6" fluid>
 		<div v-if="isLoading" class="text-center">
 			<v-progress-circular indeterminate size="42" color="primary" />
 		</div>

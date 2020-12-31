@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<v-toolbar dense tabs color="primary" class="white--text">
+		<v-toolbar dense tabs color="white" class="black--text">
 			<v-toolbar-title class="pl-2 display-1">Profile</v-toolbar-title>
 		</v-toolbar>
 

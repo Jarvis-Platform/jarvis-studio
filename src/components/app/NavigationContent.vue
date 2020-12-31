@@ -20,7 +20,7 @@
 
 		<v-divider v-if="!drawer.mini" />
 
-		<v-list class="pa-0">
+		<v-list class="pa-0" color="background">
 			<v-list-item to="/" exact>
 				<v-list-item-action>
 					<v-icon>home</v-icon>

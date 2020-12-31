@@ -1,5 +1,6 @@
 <template>
 	<v-container
+		fluid
 		class="note-item transition-ease-in-out"
 		:class="{ 'grey lighten-3': isFocused || isParentNote }"
 		@mouseenter="isHovering = true"

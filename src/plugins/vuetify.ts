@@ -10,12 +10,14 @@ export default new Vuetify({
 	theme: {
 		themes: {
 			light: {
-				primary: '#03A9F4',
-				secondary: '#0287C4',
-				complementary: '#F58702',
+				primary: '#8377B4',
+				secondary: '#009BB9',
+				complementary: '#8377B4',
 				error: '#b71c1c',
-				menu: '#012738',
-				background: '#012F45',
+				menu: '#555578',
+				submenu: '#F7F7F7',
+				activemenu: '#74C4AA',
+				background: '#4A4A67',
 				contrast: '#001A26',
 			},
 			// TODO: Create dark mode
@@ -24,7 +26,9 @@ export default new Vuetify({
 				secondary: '#0287C4',
 				complementary: '#F58702',
 				error: '#b71c1c',
-				menu: '#012738',
+				menu: '#555578',
+				submenu: '#F7F7F7',
+				activemenu: '#74C4AA',
 				background: '#012F45',
 				contrast: '#001A26',
 			},

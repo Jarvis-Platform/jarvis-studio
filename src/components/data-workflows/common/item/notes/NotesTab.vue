@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<v-container class="ma-0 pt-0">
+		<v-container class="ma-0 pt-0" fluid>
 			<v-row>
 				<v-col :cols="showThreadPanel ? 7 : 12" class="pa-0" :class="{ 'bordered-col': showThreadPanel }">
 					<notes-root v-bind="defaultProps" />

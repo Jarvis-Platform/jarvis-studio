@@ -1,5 +1,5 @@
 <template>
-	<v-container>
+	<v-container fluid>
 		<v-row>
 			<v-col cols="12" offset="0">
 				<template v-for="(item, index) in data">

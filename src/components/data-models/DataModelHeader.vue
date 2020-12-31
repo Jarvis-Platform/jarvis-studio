@@ -1,5 +1,5 @@
 <template>
-	<v-toolbar dense tabs color="primary" dark>
+	<v-toolbar dense tabs color="white">
 		<v-toolbar-title class="pl-2 display-1">{{ title }}</v-toolbar-title>
 
 		<template v-slot:extension>

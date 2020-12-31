@@ -1,5 +1,5 @@
 <template>
-	<v-container @keydown="handleCmdEnter($event)">
+	<v-container @keydown="handleCmdEnter($event)" fluid>
 		<tiptap-vuetify v-model="text" :extensions="extensions" class="editor my-4" />
 		<v-btn
 			:loading="isLoading"

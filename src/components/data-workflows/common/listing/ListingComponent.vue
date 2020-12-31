@@ -1,6 +1,6 @@
 <template>
 	<v-container fluid>
-		<v-toolbar class="elevation-O" color="transparent">
+		<v-toolbar class="elevation-O" color="transparent" flat>
 			<v-text-field v-model="search" append-icon="search" label="Search" single-line hide-details />
 
 			<v-spacer />
@@ -19,7 +19,7 @@
 			:sort-by.sync="sortBy"
 			:sort-desc.sync="sortDesc"
 			item-key="id"
-			class="elevation-1 mb-16"
+			class="mb-16"
 			:items-per-page="itemsPerPage"
 		>
 			<v-progress-linear v-slot:progress color="blue" indeterminate />
@@ -33,7 +33,6 @@
 			</template>
 
 			<template v-slot:item.actions="{ item }">
-				<v-icon small @click="toggleExpand(item)">remove_red_eye</v-icon>
 				<v-icon v-if="showAirflowAction" class="ml-2" small @click="openAirflowDagRunUrl(item)">open_in_new</v-icon>
 				<v-icon v-if="showDeleteAction" class="ml-2" small @click="openDeleteDialog(item)">delete_forever</v-icon>
 			</template>
@@ -41,24 +40,6 @@
 			<!-- Loop placed after default templates to override them if needed -->
 			<template v-for="overriddenColumn in overriddenColumns" v-slot:[`item.${overriddenColumn}`]="{ item }">
 				<slot :name="overriddenColumn" v-bind="{ item }" />
-			</template>
-
-			<template v-slot:expanded-item="{ headers }">
-				<td ref="expandedItem" :colspan="headers.length" class="pa-0">
-					<div class="expanded-item pa-4">
-						<v-btn class="close-btn" color="warning" fab small dark outlined>
-							<v-icon @click="toggleExpand(viewedItem)">close</v-icon>
-						</v-btn>
-
-						<vue-json-pretty
-							:data="viewedItem"
-							:deep="5"
-							:show-double-quotes="true"
-							:show-length="true"
-							:show-line="false"
-						/>
-					</div>
-				</td>
 			</template>
 
 			<v-alert v-slot:no-results :value="true" color="error" icon="warning">

@@ -280,7 +280,7 @@ export default class StorageToTablesRunsItemView extends Mixins(HeaderInfosMixin
 						},
 						{
 							id: 'dag_generator_version',
-							label: 'Dag Generator Version',
+							label: 'Generator Version',
 							value: this.item.dag_generator_version,
 						},
 					],
