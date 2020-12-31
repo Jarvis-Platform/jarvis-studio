@@ -11,9 +11,7 @@
 			</div>
 
 			<div v-else-if="Object.keys(logs).length === 1">
-				<v-btn color="primary" class="mb-4" @click="downloadLogFile(Object.keys(logs)[0])">
-					Download log file
-				</v-btn>
+				<v-btn color="primary" class="mb-4" @click="downloadLogFile(Object.keys(logs)[0])"> Download log file </v-btn>
 				<pre class="log pb-4">{{ Object.values(logs)[0] }}</pre>
 			</div>
 

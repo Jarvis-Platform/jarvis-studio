@@ -43,15 +43,11 @@
 								</v-text-field>
 							</v-form>
 
-							<v-alert v-if="userNotAuthorized" type="error" class="my-5">
-								Sorry, cannot authorize user
-							</v-alert>
+							<v-alert v-if="userNotAuthorized" type="error" class="my-5"> Sorry, cannot authorize user </v-alert>
 
 							<div class="d-flex justify-space-between align-center mt-5">
 								<router-link to="#" class="ma-0">Forgot password?</router-link>
-								<v-btn :disabled="!valid" :loading="loading" @click="signIn" color="primary">
-									Sign in
-								</v-btn>
+								<v-btn :disabled="!valid" :loading="loading" @click="signIn" color="primary"> Sign in </v-btn>
 							</div>
 						</div>
 

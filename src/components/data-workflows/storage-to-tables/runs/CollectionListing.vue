@@ -5,7 +5,13 @@
 				<span class="font-weight-medium">{{ triggering_file }}</span>
 			</router-link>
 		</template>
-		<template v-slot:configuration_context.source="{ item: { configuration_context: { source } } }">
+		<template
+			v-slot:configuration_context.source="{
+				item: {
+					configuration_context: { source },
+				},
+			}"
+		>
 			{{ source ? (source.type === 'gcs' ? source.gcs_source_bucket : source.sftp_host) : 'waiting...' }}
 		</template>
 

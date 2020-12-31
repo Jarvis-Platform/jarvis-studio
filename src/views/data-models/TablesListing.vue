@@ -29,13 +29,13 @@
 				</template>
 
 				<template v-slot:item.numRows="{ item }">
-					<v-progress-linear :value="getPropertyPercent('numRows', item.numRows)" height="25" style="width: 100px;">
+					<v-progress-linear :value="getPropertyPercent('numRows', item.numRows)" height="25" style="width: 100px">
 						<strong>{{ getNumRowsFormatted(item.numRows) }}</strong>
 					</v-progress-linear>
 				</template>
 
 				<template v-slot:item.numBytes="{ item }">
-					<v-progress-linear :value="getPropertyPercent('numBytes', item.numBytes)" height="25" style="width: 100px;">
+					<v-progress-linear :value="getPropertyPercent('numBytes', item.numBytes)" height="25" style="width: 100px">
 						<strong>{{ getNumBytesFormatted(item.numBytes) }}</strong>
 					</v-progress-linear>
 				</template>

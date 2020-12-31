@@ -20,9 +20,7 @@
 		<v-chip outlined>
 			<v-icon left>mdi-fire</v-icon>
 			<a href="#" class="ak-trigger">
-				<span>
-					What's new &nbsp;
-				</span>
+				<span> What's new &nbsp; </span>
 				<AnnounceKit catchClick=".ak-trigger" widget="https://announcekit.app/widgets/v2/Ydr0Y" />
 			</a>
 		</v-chip>
