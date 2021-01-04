@@ -1,10 +1,12 @@
 <template>
-	<v-toolbar dense color="primary" dark extended extension-height="300" text>
-		<v-toolbar-title class="mx-auto text-center" slot="extension">
-			<h2>{{ title }}</h2>
-			<span>{{ subTitle }}</span>
-		</v-toolbar-title>
-	</v-toolbar>
+	<v-container fluid>
+		<v-toolbar dense color="primary" dark extended extension-height="300" text>
+			<v-toolbar-title class="mx-auto text-center" slot="extension">
+				<h2>{{ title }}</h2>
+				<span>{{ subTitle }}</span>
+			</v-toolbar-title>
+		</v-toolbar>
+	</v-container>
 </template>
 
 <script lang="ts">

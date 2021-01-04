@@ -1,5 +1,5 @@
 <template>
-	<v-container>
+	<v-container fluid>
 		<v-row class="pl-5 pt-4 pr-5">
 			<v-col cols="12" offset="0">
 				<span v-if="jsonId" class="headline font-weight-bold">{{ jsonId }}</span>
