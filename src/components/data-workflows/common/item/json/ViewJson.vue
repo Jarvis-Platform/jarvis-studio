@@ -1,5 +1,5 @@
 <template>
-	<v-container fluid>
+	<v-container>
 		<v-row class="pl-5 pt-4 pr-5">
 			<v-col cols="12" offset="0">
 				<span v-if="jsonId" class="headline font-weight-bold">{{ jsonId }}</span>
@@ -23,6 +23,7 @@
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import { AnyObject } from '@/types';
 import VueJsonPretty from 'vue-json-pretty';
+import 'vue-json-pretty/lib/styles.css';
 
 @Component({
 	components: { VueJsonPretty },

@@ -31,13 +31,13 @@
 					<notification-content @closeNotifications="toggleNotifications" />
 				</v-navigation-drawer> -->
 
-				<v-content>
+				<v-main>
 					<transition name="fade" mode="out-in">
 						<keep-alive>
 							<router-view :key="$route.fullPath" />
 						</keep-alive>
 					</transition>
-				</v-content>
+				</v-main>
 
 				<v-footer class="elevate-content menu" app dark>
 					<footer-content />
@@ -45,13 +45,13 @@
 			</template>
 		</template>
 
-		<v-content v-else>
+		<v-main v-else>
 			<transition name="fade" mode="out-in">
 				<keep-alive>
 					<router-view :key="$route.fullPath" />
 				</keep-alive>
 			</transition>
-		</v-content>
+		</v-main>
 	</v-app>
 </template>
 

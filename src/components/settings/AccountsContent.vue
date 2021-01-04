@@ -141,6 +141,7 @@
 import { Component, Vue } from 'vue-property-decorator';
 import { State } from 'vuex-class';
 import VueJsonPretty from 'vue-json-pretty';
+import 'vue-json-pretty/lib/styles.css';
 import { validationMixin } from 'vuelidate';
 import { required, maxLength, minLength, numeric } from 'vuelidate/lib/validators';
 import { accounts } from '@/store/modules/easy-firestore/accounts';

@@ -1,8 +1,8 @@
 <template>
-	<v-container>
+	<v-container fluid>
 		<v-row>
 			<v-col cols="12" offset="0">
-				<v-card>
+				<v-card elevation="0">
 					<v-card-text>
 						<vue-json-pretty
 							:data="moduleJson"
@@ -22,6 +22,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import VueJsonPretty from 'vue-json-pretty';
+import 'vue-json-pretty/lib/styles.css';
 
 @Component({
 	components: { VueJsonPretty },

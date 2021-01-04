@@ -89,6 +89,7 @@ import moment from 'moment';
 import ConfigurationStatus from '../configuration/ConfigurationStatus.vue';
 import ListingFilters from './ListingFilters.vue';
 import VueJsonPretty from 'vue-json-pretty';
+import 'vue-json-pretty/lib/styles.css';
 import RunStatusChip from '@/components/data-workflows/common/runs/RunStatusChip.vue';
 
 import { SUPER_ADMIN } from '@/constants/user/roles';

@@ -24,7 +24,7 @@
 									</v-tooltip>
 
 									<v-btn @click="getDataTableDetails">Refresh</v-btn>
-									<v-btn @click="queryInBigQuery" color="primary">Query</v-btn>
+									<v-btn @click="queryInBigQuery" color="secondary">Query</v-btn>
 								</div>
 							</v-card-title>
 
