@@ -29,6 +29,6 @@ export default class DataModelHeader extends Vue {
 <style lang="scss">
 // TODO: Remove
 .item a {
-	color: white;
+	color: primary;
 }
 </style>

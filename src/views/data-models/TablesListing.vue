@@ -3,7 +3,7 @@
 		<data-model-header title="Tables Listing" :table-items="tableItems" />
 
 		<v-container fluid>
-			<v-toolbar class="elevation-O" color="transparent">
+			<v-toolbar color="transparent" elevation="0">
 				<v-text-field v-model="search" append-icon="search" label="Search" single-line hide-details />
 
 				<v-spacer />

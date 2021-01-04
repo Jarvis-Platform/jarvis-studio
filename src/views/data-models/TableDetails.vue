@@ -2,16 +2,16 @@
 	<div>
 		<data-model-header :tableItems="tableItems" />
 
-		<v-container class="grey lighten-5" fluid>
+		<v-container fluid>
 			<v-progress-linear v-if="isLoading" :indeterminate="true" />
 
 			<template v-else>
 				<v-row v-if="isJsonValid">
 					<v-col cols="12" offset="0">
-						<v-card>
+						<v-card elevation="0">
 							<v-card-title>
 								<v-icon color="blue-grey lighten-3" large class="mr-3">table_chart</v-icon>
-								<span class="display-1 font-weight-bold">{{ this.dataTableDetails.id }}</span>
+								<span class="display-1 font-weight-bold primary--text">{{ this.dataTableDetails.id }}</span>
 
 								<v-spacer />
 
@@ -24,7 +24,7 @@
 									</v-tooltip>
 
 									<v-btn @click="getDataTableDetails">Refresh</v-btn>
-									<v-btn @click="queryInBigQuery" color="secondary">Query</v-btn>
+									<v-btn @click="queryInBigQuery" color="primary">Query</v-btn>
 								</div>
 							</v-card-title>
 
