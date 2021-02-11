@@ -101,7 +101,9 @@ export default class LogsComponent extends Vue {
 	}
 
 	get path(): string {
-		return `logs/${this.dagId}/${this.taskId}/${this.dagExecutionDate}`;
+		return this.taskId
+			? `logs/${this.dagId}/${this.taskId}/${this.dagExecutionDate}`
+			: `logs/${this.dagId}/${this.dagExecutionDate}`;
 	}
 }
 </script>

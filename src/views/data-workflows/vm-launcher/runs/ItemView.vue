@@ -15,6 +15,18 @@ import { vmLauncherRuns } from '@/store/modules/easy-firestore/vm-launcher-runs'
 export default class VmLauncherRunsItemView extends Mixins(HeaderInfosMixin, RunDocMixin) {
 	moduleName: string = vmLauncherRuns.moduleName;
 
+	get itemTabsItems(): any {
+		if (Object.keys(this.item).length === 0) return [];
+		return [
+			this.runDetailsTab,
+			this.runLogsTab,
+			this.configurationTab,
+			this.fullJSONTab,
+			this.otherRunsTab,
+			this.notesTab,
+		];
+	}
+
 	get runDetailsData() {
 		return [
 			{
