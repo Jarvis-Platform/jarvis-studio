@@ -84,7 +84,6 @@
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-vue": "^6.0.1",
     "eslint-plugin-vuetify": "^1.0.0-beta.5",
-    "husky": "^4.2.5",
     "prettier": "^2.0.5",
     "typescript": "^3.9.5",
     "vue-cli-plugin-vuetify": "^2.0.6",
@@ -101,11 +100,6 @@
     "last 2 versions",
     "not ie <= 8"
   ],
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run format && npm run lint"
-    }
-  },
   "resolutions": {
     "prosemirror-model": "1.8.2"
   }
