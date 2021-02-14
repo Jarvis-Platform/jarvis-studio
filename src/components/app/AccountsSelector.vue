@@ -1,7 +1,7 @@
 <template>
 	<div class="accounts-selector d-flex justify-center align-center">
 		<v-select
-			v-model="selectedAccounts"
+			v-model="selectedAccount"
 			:items="getAccounts()"
 			item-text="account_name"
 			label="Select an account"
@@ -25,13 +25,15 @@ export default class AccountSelector extends Vue {
 
 	@Getter('user/accounts') userAccounts!: AccountId[];
 
-	@Watch('selectedAccounts')
-	onSelectedAccountChange(accounts: Account) {
-		this.$store.dispatch('filters/updateFilteredAccounts', [accounts]);
+	@Watch('selectedAccount')
+	onSelectedAccountChange(selectedAccount: Account) {
+		this.$store.dispatch('filters/updateFilteredAccounts', [selectedAccount]).then(() => {
+			this.$router.push('/');
+		});
 	}
 
 	isLoading: boolean = true;
-	selectedAccounts: string = JSON.parse(localStorage.vuex).filters.filteredAccounts;
+	selectedAccount: string = JSON.parse(localStorage.vuex).filters.filteredAccounts;
 
 	getAccounts() {
 		let accounts: AccountId[] = [];

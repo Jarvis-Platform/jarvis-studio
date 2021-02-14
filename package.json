@@ -55,7 +55,7 @@
     "vuetify": "^2.3.2",
     "vuex": "^3.5.1",
     "vuex-class": "^0.3.2",
-    "vuex-easy-firestore": "^1.35.15",
+    "vuex-easy-firestore": "^1.36.0",
     "vuex-persist": "^2.2.0"
   },
   "devDependencies": {

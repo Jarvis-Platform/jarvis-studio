@@ -27,14 +27,14 @@
 					/>
 				</v-navigation-drawer>
 
-				<!-- 				<v-navigation-drawer v-model="showNotifications" fixed app temporary right>
+				<!-- <v-navigation-drawer v-model="showNotifications" fixed app temporary right>
 					<notification-content @closeNotifications="toggleNotifications" />
 				</v-navigation-drawer> -->
 
 				<v-main>
 					<transition name="fade" mode="out-in">
 						<keep-alive>
-							<router-view :key="$route.fullPath" />
+							<router-view :key="routeKey" />
 						</keep-alive>
 					</transition>
 				</v-main>
@@ -48,7 +48,7 @@
 		<v-main v-else>
 			<transition name="fade" mode="out-in">
 				<keep-alive>
-					<router-view :key="$route.fullPath" />
+					<router-view :key="routeKey" />
 				</keep-alive>
 			</transition>
 		</v-main>
@@ -105,6 +105,10 @@ export default class App extends Vue {
 
 	get showLayout() {
 		return this.isAuthenticated && this.accounts.length > 0;
+	}
+
+	get routeKey() {
+		return `${this.$store.getters['filters/filteredAccounts'][0].id}-${this.$route.fullPath}`;
 	}
 
 	@Watch('myProperty')
