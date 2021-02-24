@@ -108,7 +108,10 @@ export default class App extends Vue {
 	}
 
 	get routeKey() {
-		return `${this.$store.getters['filters/filteredAccounts'][0].id}-${this.$route.fullPath}`;
+		const currentAccount = this.$store.getters['filters/filteredAccounts'][0];
+		return currentAccount
+			? `${this.$store.getters['filters/filteredAccounts'][0].id}${this.$route.fullPath}`
+			: this.$route.fullPath;
 	}
 
 	@Watch('myProperty')
