@@ -12616,7 +12616,7 @@ vuex-easy-access@^3.1.8:
     is-what "^3.3.1"
     merge-anything "^2.4.2"
 
-vuex-easy-firestore@^1.35.15:
+vuex-easy-firestore@^1.36.0:
   version "1.36.0"
   resolved "https://registry.yarnpkg.com/vuex-easy-firestore/-/vuex-easy-firestore-1.36.0.tgz#3dba27bc2a74635cc92525c90c736aa1454e2c4b"
   integrity sha512-YiFN5aopVES5RGTxHRq8kb+o+mtkj6USEWKlpBJMP98JxLvlDaZKicqpD7jtyKEB2CykHmLcAn9+H2G6yQSKkA==
