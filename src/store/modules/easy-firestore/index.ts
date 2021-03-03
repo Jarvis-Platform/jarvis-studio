@@ -32,6 +32,8 @@ import { tableToStorageConfs } from '@/store/modules/easy-firestore/table-to-sto
 import { tableToStorageConfArchive } from '@/store/modules/easy-firestore/table-to-storage-conf-archive';
 import { tableToStorageRuns } from '@/store/modules/easy-firestore/table-to-storage-runs';
 import { tablesToTablesRun } from '@/store/modules/easy-firestore/tables-to-tables-run';
+import { tailerContextConfs } from '@/store/modules/easy-firestore/tailer-context-conf';
+import { tailerContextConfsArchive } from '@/store/modules/easy-firestore/tailer-context-conf-archive';
 import { users } from '@/store/modules/easy-firestore/users';
 import { vmLauncherConfs } from '@/store/modules/easy-firestore/vm-launcher-confs';
 import { vmLauncherConfArchive } from '@/store/modules/easy-firestore/vm-launcher-conf-archive';
@@ -82,4 +84,6 @@ export default [
 	tableToStorageConfs,
 	tableToStorageConfArchive,
 	tableToStorageRuns,
+	tailerContextConfs,
+	tailerContextConfsArchive,
 ];
