@@ -63,6 +63,7 @@ export const WORKFLOW_CONFIGURATIONS_ITEM: RouteName = 'workflow-confs-item';
 export const PROFILE: RouteName = 'user-profile';
 export const USERS: RouteName = 'users';
 export const ACCOUNTS: RouteName = 'accounts';
+export const DASHBOARDS: RouteName = 'dashboards';
 export const CLOUD_FUNCTIONS: RouteName = 'gcp-cloud-functions';
 
 export default {

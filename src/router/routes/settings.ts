@@ -2,7 +2,7 @@ import { RouteConfig } from 'vue-router';
 
 import { auth, hasAccount, superAdmin } from '@/router/middleware';
 import { SETTINGS } from '@/constants/router/paths-prefixes';
-import { PROFILE, USERS, ACCOUNTS, CLOUD_FUNCTIONS } from '@/constants/router/routes-names';
+import { PROFILE, USERS, ACCOUNTS, CLOUD_FUNCTIONS, DASHBOARDS } from '@/constants/router/routes-names';
 
 export const settingsRoutes: RouteConfig[] = [
 	{
@@ -22,6 +22,12 @@ export const settingsRoutes: RouteConfig[] = [
 		name: ACCOUNTS,
 		meta: { middleware: [auth, superAdmin] },
 		component: () => import(/* webpackChunkName: "settings/accounts" */ '@/views/settings/Accounts.vue'),
+	},
+	{
+		path: `/${SETTINGS}/dashboards`,
+		name: DASHBOARDS,
+		meta: { middleware: [auth, superAdmin] },
+		component: () => import(/* webpackChunkName: "settings/dashboards" */ '@/views/settings/Dashboards.vue'),
 	},
 	{
 		path: `/${SETTINGS}/cloud-functions`,
