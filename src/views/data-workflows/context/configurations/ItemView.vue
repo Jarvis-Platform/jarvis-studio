@@ -7,7 +7,7 @@
 
 <script lang="ts">
 import { Component, Mixins } from 'vue-property-decorator';
-import { ConfigurationTab, FullJSONTab, NotesTab, TaskListingTab } from '@/types';
+import { ConfigurationTab, FullJSONTab, NotesTab } from '@/types';
 
 import HeaderInfosMixin from '../header-infos';
 import ConfigurationDocMixin from '@/mixins/data-workflows/doc/configuration-doc-mixin';
@@ -20,7 +20,7 @@ export default class TailerContextConfItemView extends Mixins(HeaderInfosMixin, 
 	moduleName: string = tailerContextConfs.moduleName;
 	archivedConfsModuleName: string = tailerContextConfsArchive.moduleName;
 
-	get itemTabsItems(): [ConfigurationTab, TaskListingTab, FullJSONTab, NotesTab] | [] {
+	get itemTabsItems(): [ConfigurationTab, FullJSONTab, NotesTab] | [] {
 		if (Object.keys(this.item).length === 0) return [];
 
 		return [this.configurationTab, this.fullJSONTab, this.notesTab];
