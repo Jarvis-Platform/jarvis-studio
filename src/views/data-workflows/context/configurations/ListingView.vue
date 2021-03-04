@@ -12,6 +12,10 @@
 					<span class="font-weight-medium">{{ id }}</span>
 				</router-link>
 			</template>
+
+			<template v-slot:parameters="{ item: { parameters } }">
+				<p>{{ Object.keys(parameters).length }}</p>
+			</template>
 		</listing-component>
 	</div>
 </template>
@@ -24,15 +28,7 @@ import HeaderInfosMixin from '../header-infos';
 
 import { tailerContextConfs } from '@/store/modules/easy-firestore/tailer-context-conf';
 import { CONTEXT_CONFIGURATIONS_ITEM } from '@/constants/router/routes-names';
-import {
-	ACCOUNT,
-	ACTIONS,
-	ACTIVATED,
-	CONF_WORKFLOW_LENGTH,
-	DEFAULT_BQ_DATASET,
-	ENVIRONMENT,
-	ID,
-} from '@/constants/data-workflows/listing/header-items';
+import { ACCOUNT, ACTIVATED, ENVIRONMENT, ID, PARAMETERS } from '@/constants/data-workflows/listing/header-items';
 import ConfigurationCollectionMixin from '@/mixins/data-workflows/collection/configuration-collection-mixin';
 
 @Component({
@@ -40,14 +36,14 @@ import ConfigurationCollectionMixin from '@/mixins/data-workflows/collection/con
 })
 export default class TailerContextConfListingView extends Mixins(HeaderInfosMixin, ConfigurationCollectionMixin) {
 	moduleName: string = tailerContextConfs.moduleName;
-	overriddenColumns: string[] = ['id'];
+	overriddenColumns: string[] = ['id', 'parameters'];
 
 	get routeName() {
 		return CONTEXT_CONFIGURATIONS_ITEM;
 	}
 
 	get headers() {
-		return [ACCOUNT, ENVIRONMENT, ID, DEFAULT_BQ_DATASET, CONF_WORKFLOW_LENGTH, ACTIVATED, ACTIONS];
+		return [ACCOUNT, ENVIRONMENT, ID, PARAMETERS, ACTIVATED];
 	}
 }
 </script>
