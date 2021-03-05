@@ -20,6 +20,13 @@ export default class TailerContextConfItemView extends Mixins(HeaderInfosMixin, 
 	moduleName: string = tailerContextConfs.moduleName;
 	archivedConfsModuleName: string = tailerContextConfsArchive.moduleName;
 
+	getParametersTableRows() {
+		return Object.values(this.item.parameters as { [name: string]: object }).map((parameter, index) => ({
+			name: Object.keys(this.item.parameters)[index],
+			...parameter,
+		}));
+	}
+
 	get itemTabsItems(): [ConfigurationTab, FullJSONTab, NotesTab] | [] {
 		if (Object.keys(this.item).length === 0) return [];
 
@@ -37,6 +44,78 @@ export default class TailerContextConfItemView extends Mixins(HeaderInfosMixin, 
 					showDagLaunch: true,
 					viewId: this.item.configuration_id,
 					viewType: 'conf',
+				},
+			},
+			{
+				component: 'parameters-list',
+				props: {
+					groupTitle: 'Context',
+					tooltip: true,
+					description: 'Context of the Storage to Storage configuration',
+					paramItems: [
+						{
+							id: 'configuration_type',
+							label: 'Configuration Type',
+							value: 'context',
+						},
+						{
+							id: 'configuration_id',
+							label: 'Configuration ID',
+							value: this.item.id,
+						},
+						{
+							id: 'account',
+							label: 'Account',
+							value: this.item.account,
+						},
+						{
+							id: 'environment',
+							label: 'Environment',
+							value: this.item.environment,
+						},
+						{
+							id: 'activated',
+							label: 'Activated',
+							value: this.item.activated,
+							default: true,
+						},
+						{
+							id: 'archive',
+							label: 'Archive',
+							value: this.item.archived,
+							default: false,
+						},
+					],
+				},
+			},
+			{
+				component: 'parameters-table',
+				props: {
+					tableTitle: 'Tables',
+					description: 'Tables List to be loaded from files',
+					columns: [
+						{
+							label: 'Name',
+							field: 'name',
+						},
+						{
+							label: 'Value',
+							field: 'value',
+						},
+						{
+							label: 'Type',
+							field: 'type',
+						},
+						{
+							label: 'Resource',
+							field: 'resource',
+						},
+						{
+							label: 'Description',
+							field: 'description',
+						},
+					],
+					rows: this.getParametersTableRows(),
 				},
 			},
 		];
