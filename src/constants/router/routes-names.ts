@@ -14,20 +14,10 @@ export const TABLES_LISTING: RouteName = 'tables-listing';
 export const DATA_TABLE_DETAILS: RouteName = 'table-details.vue';
 
 /* DATA WORKFLOWS */
-export const GCS_TO_GCS_RUNS_LISTING: RouteName = 'gcs-to-gcs-runs-listing';
-export const GCS_TO_GCS_RUNS_ITEM: RouteName = 'gcs-to-gcs-runs-item';
-export const GCS_TO_GCS_CONFIGURATIONS_LISTING: RouteName = 'gcs-to-gcs-confs-listing';
-export const GCS_TO_GCS_CONFIGURATIONS_ITEM: RouteName = 'gcs-to-gcs-confs-item';
-
 export const STORAGE_TO_STORAGE_RUNS_LISTING: RouteName = 'storage-to-storage-runs-listing';
 export const STORAGE_TO_STORAGE_RUNS_ITEM: RouteName = 'storage-to-storage-runs-item';
 export const STORAGE_TO_STORAGE_CONFIGURATIONS_LISTING: RouteName = 'storage-to-storage-confs-listing';
 export const STORAGE_TO_STORAGE_CONFIGURATIONS_ITEM: RouteName = 'storage-to-storage-conf-item';
-
-export const STORAGE_TO_TABLE_RUNS_LISTING: RouteName = 'storage-to-table-runs-listing';
-export const STORAGE_TO_TABLE_RUNS_ITEM: RouteName = 'storage-to-table-runs-item';
-export const STORAGE_TO_TABLE_CONFIGURATIONS_LISTING: RouteName = 'storage-to-table-confs-listing';
-export const STORAGE_TO_TABLE_CONFIGURATIONS_ITEM: RouteName = 'storage-to-table-confs-item';
 
 export const STORAGE_TO_TABLES_RUNS_LISTING: RouteName = 'storage-to-tables-runs-listing';
 export const STORAGE_TO_TABLES_RUNS_ITEM: RouteName = 'storage-to-tables-runs-item';
@@ -38,11 +28,6 @@ export const TABLES_TO_TABLES_RUNS_LISTING: RouteName = 'tables-to-tables-runs-l
 export const TABLES_TO_TABLES_RUNS_ITEM: RouteName = 'tables-to-tables-runs-item';
 export const TABLES_TO_TABLES_CONFIGURATIONS_LISTING: RouteName = 'tables-to-tables-confs-listing';
 export const TABLES_TO_TABLES_CONFIGURATIONS_ITEM: RouteName = 'tables-to-tables-conf-item';
-
-export const GBQ_TO_GCS_RUNS_LISTING: RouteName = 'gbq-to-gcs-runs-listing';
-export const GBQ_TO_GCS_RUNS_ITEM: RouteName = 'gbq-to-gcs-runs-item';
-export const GBQ_TO_GCS_CONFIGURATIONS_LISTING: RouteName = 'gbq-to-gcs-confs-listing';
-export const GBQ_TO_GCS_CONFIGURATIONS_ITEM: RouteName = 'gbq-to-gcs-confs-item';
 
 export const TABLE_TO_STORAGE_RUNS_LISTING: RouteName = 'table-to-storage-runs-listing';
 export const TABLE_TO_STORAGE_RUNS_ITEM: RouteName = 'table-to-storage-runs-item';
@@ -70,18 +55,10 @@ export default {
 	HOME,
 	SIGN_IN,
 	DATA_TABLE_DETAILS,
-	GCS_TO_GCS_RUNS_LISTING,
-	GCS_TO_GCS_RUNS_ITEM,
-	GCS_TO_GCS_CONFIGURATIONS_LISTING,
-	GCS_TO_GCS_CONFIGURATIONS_ITEM,
 	STORAGE_TO_STORAGE_RUNS_LISTING,
 	STORAGE_TO_STORAGE_RUNS_ITEM,
 	STORAGE_TO_STORAGE_CONFIGURATIONS_LISTING,
 	STORAGE_TO_STORAGE_CONFIGURATIONS_ITEM,
-	STORAGE_TO_TABLE_RUNS_LISTING,
-	STORAGE_TO_TABLE_RUNS_ITEM,
-	STORAGE_TO_TABLE_CONFIGURATIONS_LISTING,
-	STORAGE_TO_TABLE_CONFIGURATIONS_ITEM,
 	STORAGE_TO_TABLES_RUNS_LISTING,
 	STORAGE_TO_TABLES_RUNS_ITEM,
 	STORAGE_TO_TABLES_CONFIGURATIONS_LISTING,
@@ -90,10 +67,6 @@ export default {
 	TABLES_TO_TABLES_RUNS_ITEM,
 	TABLES_TO_TABLES_CONFIGURATIONS_LISTING,
 	TABLES_TO_TABLES_CONFIGURATIONS_ITEM,
-	GBQ_TO_GCS_RUNS_LISTING,
-	GBQ_TO_GCS_RUNS_ITEM,
-	GBQ_TO_GCS_CONFIGURATIONS_LISTING,
-	GBQ_TO_GCS_CONFIGURATIONS_ITEM,
 	TABLE_TO_STORAGE_RUNS_LISTING,
 	TABLE_TO_STORAGE_RUNS_ITEM,
 	TABLE_TO_STORAGE_CONFIGURATIONS_LISTING,
