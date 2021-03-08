@@ -12,20 +12,10 @@ export const TABLES_LISTING = 'tables-listing';
 export const DATA_TABLE_DETAILS = 'table-details.vue';
 
 /* DATA WORKFLOWS */
-export const GCS_TO_GCS_RUNS_LISTING = 'gcs-to-gcs-runs-listing';
-export const GCS_TO_GCS_RUNS_ITEM = 'gcs-to-gcs-runs-item';
-export const GCS_TO_GCS_CONFIGURATIONS_LISTING = 'gcs-to-gcs-confs-listing';
-export const GCS_TO_GCS_CONFIGURATIONS_ITEM = 'gcs-to-gcs-confs-item';
-
 export const STORAGE_TO_STORAGE_RUNS_LISTING = 'storage-to-storage-runs-listing';
 export const STORAGE_TO_STORAGE_RUNS_ITEM = 'storage-to-storage-runs-item';
 export const STORAGE_TO_STORAGE_CONFIGURATIONS_LISTING = 'storage-to-storage-confs-listing';
 export const STORAGE_TO_STORAGE_CONFIGURATIONS_ITEM = 'storage-to-storage-conf-item';
-
-export const STORAGE_TO_TABLE_RUNS_LISTING = 'storage-to-table-runs-listing';
-export const STORAGE_TO_TABLE_RUNS_ITEM = 'storage-to-table-runs-item';
-export const STORAGE_TO_TABLE_CONFIGURATIONS_LISTING = 'storage-to-table-confs-listing';
-export const STORAGE_TO_TABLE_CONFIGURATIONS_ITEM = 'storage-to-table-confs-item';
 
 export const STORAGE_TO_TABLES_RUNS_LISTING = 'storage-to-tables-runs-listing';
 export const STORAGE_TO_TABLES_RUNS_ITEM = 'storage-to-tables-runs-item';
@@ -36,11 +26,6 @@ export const TABLES_TO_TABLES_RUNS_LISTING = 'tables-to-tables-runs-listing';
 export const TABLES_TO_TABLES_RUNS_ITEM = 'tables-to-tables-runs-item';
 export const TABLES_TO_TABLES_CONFIGURATIONS_LISTING = 'tables-to-tables-confs-listing';
 export const TABLES_TO_TABLES_CONFIGURATIONS_ITEM = 'tables-to-tables-conf-item';
-
-export const GBQ_TO_GCS_RUNS_LISTING = 'gbq-to-gcs-runs-listing';
-export const GBQ_TO_GCS_RUNS_ITEM = 'gbq-to-gcs-runs-item';
-export const GBQ_TO_GCS_CONFIGURATIONS_LISTING = 'gbq-to-gcs-confs-listing';
-export const GBQ_TO_GCS_CONFIGURATIONS_ITEM = 'gbq-to-gcs-confs-item';
 
 export const TABLE_TO_STORAGE_RUNS_LISTING = 'table-to-storage-runs-listing';
 export const TABLE_TO_STORAGE_RUNS_ITEM = 'table-to-storage-runs-item';
@@ -71,18 +56,10 @@ export default {
 	HOME,
 	SIGN_IN,
 	DATA_TABLE_DETAILS,
-	GCS_TO_GCS_RUNS_LISTING,
-	GCS_TO_GCS_RUNS_ITEM,
-	GCS_TO_GCS_CONFIGURATIONS_LISTING,
-	GCS_TO_GCS_CONFIGURATIONS_ITEM,
 	STORAGE_TO_STORAGE_RUNS_LISTING,
 	STORAGE_TO_STORAGE_RUNS_ITEM,
 	STORAGE_TO_STORAGE_CONFIGURATIONS_LISTING,
 	STORAGE_TO_STORAGE_CONFIGURATIONS_ITEM,
-	STORAGE_TO_TABLE_RUNS_LISTING,
-	STORAGE_TO_TABLE_RUNS_ITEM,
-	STORAGE_TO_TABLE_CONFIGURATIONS_LISTING,
-	STORAGE_TO_TABLE_CONFIGURATIONS_ITEM,
 	STORAGE_TO_TABLES_RUNS_LISTING,
 	STORAGE_TO_TABLES_RUNS_ITEM,
 	STORAGE_TO_TABLES_CONFIGURATIONS_LISTING,
@@ -91,10 +68,6 @@ export default {
 	TABLES_TO_TABLES_RUNS_ITEM,
 	TABLES_TO_TABLES_CONFIGURATIONS_LISTING,
 	TABLES_TO_TABLES_CONFIGURATIONS_ITEM,
-	GBQ_TO_GCS_RUNS_LISTING,
-	GBQ_TO_GCS_RUNS_ITEM,
-	GBQ_TO_GCS_CONFIGURATIONS_LISTING,
-	GBQ_TO_GCS_CONFIGURATIONS_ITEM,
 	TABLE_TO_STORAGE_RUNS_LISTING,
 	TABLE_TO_STORAGE_RUNS_ITEM,
 	TABLE_TO_STORAGE_CONFIGURATIONS_LISTING,
