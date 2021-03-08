@@ -20,13 +20,6 @@ export default class TailerContextConfItemView extends Mixins(HeaderInfosMixin, 
 	moduleName: string = tailerContextConfs.moduleName;
 	archivedConfsModuleName: string = tailerContextConfsArchive.moduleName;
 
-	getParametersTableRows() {
-		return Object.values(this.item.parameters as { [name: string]: object }).map((parameter, index) => ({
-			name: Object.keys(this.item.parameters)[index],
-			...parameter,
-		}));
-	}
-
 	get itemTabsItems(): [ConfigurationTab, FullJSONTab, NotesTab] | [] {
 		if (Object.keys(this.item).length === 0) return [];
 
@@ -34,6 +27,13 @@ export default class TailerContextConfItemView extends Mixins(HeaderInfosMixin, 
 	}
 
 	get configurationData() {
+		const formattedParameters = Object.values(this.item.parameters as { [name: string]: object }).map(
+			(parameter, index) => ({
+				name: Object.keys(this.item.parameters)[index],
+				...parameter,
+			})
+		);
+
 		return [
 			{
 				component: 'view-header',
@@ -115,7 +115,16 @@ export default class TailerContextConfItemView extends Mixins(HeaderInfosMixin, 
 							field: 'description',
 						},
 					],
-					rows: this.getParametersTableRows(),
+					rows: formattedParameters,
+					overriddenRows: [
+						{
+							name: 'value',
+							component: 'TruncatedDisplayValue',
+							props: {
+								parameters: formattedParameters,
+							},
+						},
+					],
 				},
 			},
 		];

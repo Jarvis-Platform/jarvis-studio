@@ -47,11 +47,12 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 import { AnyObject } from '@/types';
 import { VueGoodTable } from 'vue-good-table';
 import TableName from './overridden-rows/TableName.vue';
+import TruncatedDisplayValue from './overridden-rows/TruncatedDisplayValue.vue';
 
 import 'vue-good-table/dist/vue-good-table.css';
 
 @Component({
-	components: { TableName, VueGoodTable },
+	components: { TableName, TruncatedDisplayValue, VueGoodTable },
 })
 export default class ParametersTable extends Vue {
 	@Prop({ type: String, required: true }) tableTitle!: string;
