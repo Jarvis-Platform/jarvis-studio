@@ -55,7 +55,7 @@ export default class WorkflowStatusItemView extends Mixins(HeaderInfosMixin, Sta
 	}
 
 	get statusData() {
-		const jobsLength = Object.keys(this.item.jobs).length;
+		const formattedJobs: StatusJob[] = this.item.jobs ? Object.values(this.item.jobs) : [];
 
 		return [
 			{
@@ -78,7 +78,7 @@ export default class WorkflowStatusItemView extends Mixins(HeaderInfosMixin, Sta
 						{
 							id: 'jobs',
 							label: 'Jobs',
-							value: jobsLength ? jobsLength : '0',
+							value: formattedJobs.length,
 						},
 						{
 							id: 'last_modified',
@@ -137,7 +137,7 @@ export default class WorkflowStatusItemView extends Mixins(HeaderInfosMixin, Sta
 							field: 'triggered',
 						},
 					],
-					rows: Object.values(this.item.jobs as StatusJob[]).map((job, index: number) => {
+					rows: formattedJobs.map((job, index: number) => {
 						return {
 							job_id: Object.keys(this.item.jobs)[index],
 							execution_date: job.execution_date,
