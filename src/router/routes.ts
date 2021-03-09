@@ -9,6 +9,7 @@ import { tablesToTablesRoutes } from './routes/data-workflows/tables-to-tables';
 import { tableToStorageRoutes } from './routes/data-workflows/table-to-storage';
 import { vmLauncherRoutes } from './routes/data-workflows/vm-launcher';
 import { workflowRoutes } from './routes/data-workflows/workflow';
+import { contextRoutes } from './routes/data-workflows/context';
 import { settingsRoutes } from './routes/settings';
 
 export const routes: RouteConfig[] = [
@@ -22,6 +23,7 @@ export const routes: RouteConfig[] = [
 	...tableToStorageRoutes,
 	...vmLauncherRoutes,
 	...workflowRoutes,
+	...contextRoutes,
 	// END
 	...settingsRoutes,
 ];

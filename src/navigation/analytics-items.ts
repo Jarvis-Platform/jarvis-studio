@@ -6,6 +6,7 @@ import {
 	TABLE_TO_STORAGE_RUNS_LISTING,
 	VM_LAUNCHER_RUNS_LISTING,
 	WORKFLOW_STATUS_LISTING,
+	CONTEXT_CONFIGURATIONS_LISTING,
 } from '@/constants/router/routes-names';
 
 export const analyticsItems: Link[] = [
@@ -38,5 +39,10 @@ export const analyticsItems: Link[] = [
 		icon: 'power',
 		title: 'Workflow',
 		link: { name: WORKFLOW_STATUS_LISTING },
+	},
+	{
+		icon: 'inventory',
+		title: 'Context',
+		link: { name: CONTEXT_CONFIGURATIONS_LISTING },
 	},
 ];
