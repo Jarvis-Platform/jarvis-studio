@@ -12,6 +12,7 @@ export const GBQ_TO_GCS: Name = { url: 'gbq-to-gcs', displayName: 'GBQ to GCS' }
 export const TABLE_TO_STORAGE: Name = { url: 'table-to-storage', displayName: 'Table to Storage' };
 export const VM_LAUNCHER: Name = { url: 'vm-launcher', displayName: 'VM Launcher' };
 export const WORKFLOW: Name = { url: 'workflow', displayName: 'Workflow' };
+export const CONTEXT: Name = { url: 'context', displayName: 'Context' };
 
 export default {
 	GCS_TO_GCS,

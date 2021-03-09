@@ -42,6 +42,7 @@ export const WORKFLOW_LENGTH: HeaderItem = {
 
 // CONFIGURATIONS
 export const ID: HeaderItem = { text: 'Configuration id', sortable: true, value: 'id' };
+export const PARAMETERS: HeaderItem = { text: 'Parameters', sortable: true, value: 'parameters' };
 export const ACTIVATED: HeaderItem = { text: 'Status', sortable: true, value: 'activated' };
 export const NB_DESTINATION_BUCKET: HeaderItem = {
 	text: 'Nb Destination Buckets',
