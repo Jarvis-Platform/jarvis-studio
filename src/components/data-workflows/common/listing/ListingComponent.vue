@@ -260,7 +260,11 @@ export default class ListingComponent extends Vue {
 	}
 
 	showAirflowAction(item: AnyObject) {
-		return this.userRole === SUPER_ADMIN.roleCode && !item.configuration_context.configuration.direct_execution;
+		return (
+			this.userRole === SUPER_ADMIN.roleCode &&
+			item.configuration_context &&
+			!item.configuration_context.configuration.direct_execution
+		);
 	}
 
 	get formattedItems() {
