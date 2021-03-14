@@ -33,7 +33,8 @@
 			</template>
 
 			<template v-slot:item.actions="{ item }">
-				<v-icon v-if="showAirflowAction" class="ml-2" small @click="openAirflowDagRunUrl(item)">open_in_new</v-icon>
+				<v-icon v-if="showAirflowAction(item)" small @click="openAirflowDagRunUrl(item)">open_in_new</v-icon>
+				<v-icon v-else color="success">mdi-rocket</v-icon>
 				<v-icon v-if="showDeleteAction" class="ml-2" small @click="openDeleteDialog(item)">delete_forever</v-icon>
 			</template>
 
@@ -258,6 +259,10 @@ export default class ListingComponent extends Vue {
 		trace.stop();
 	}
 
+	showAirflowAction(item: AnyObject) {
+		return this.userRole === SUPER_ADMIN.roleCode && !item.configuration_context.configuration.direct_execution;
+	}
+
 	get formattedItems() {
 		const dataArray = Object.values(this.firestoreItems);
 		const formattedData = dataArray.map(function (data: any) {
@@ -266,10 +271,6 @@ export default class ListingComponent extends Vue {
 			};
 		});
 		return merge(dataArray, formattedData);
-	}
-
-	get showAirflowAction() {
-		return this.userRole === SUPER_ADMIN.roleCode;
 	}
 }
 </script>
