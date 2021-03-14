@@ -65,9 +65,10 @@ import FooterContent from '@/components/app/FooterContent.vue';
 
 import { State, Getter } from 'vuex-class';
 
-import { Link } from '@/types';
+import { Link, User } from '@/types';
 import { analyticsItems } from './navigation/analytics-items';
 import { settingsItems } from './navigation/settings-items';
+import { magicBell } from '@/dependencies/magic-bell';
 
 interface Drawer {
 	permanent: boolean;
@@ -86,8 +87,10 @@ export default class App extends Vue {
 
 	@State((state) => state.user.isAuthenticated) isAuthenticated!: boolean;
 	@Getter('user/accounts') accounts!: string[];
+	@Getter('user/user') user!: User;
 
 	mounted() {
+		magicBell(this.user.email);
 		this.makeNavigationResponsive(false);
 	}
 
