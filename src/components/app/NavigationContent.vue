@@ -95,7 +95,8 @@
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
 import { Getter } from 'vuex-class';
-import { Account, Link, User } from '@/types';
+import { Location } from 'vue-router';
+import { Account, User } from '@/types';
 import {
 	STORAGE_TO_STORAGE_RUNS_LISTING,
 	STORAGE_TO_TABLES_RUNS_LISTING,
@@ -110,9 +111,17 @@ import {
 	CLOUD_FUNCTIONS,
 } from '@/constants/router/routes-names';
 import { SUPER_ADMIN } from '@/constants/user/roles';
+import { userCanAccessContexts } from '@/remote-config/rules';
 
 import TreeView from '../data-models/TreeView.vue';
 import packageJson from '../../../package.json';
+
+interface Link {
+	icon: string;
+	title: string;
+	link: Location;
+	displayRule?: boolean;
+}
 
 @Component({
 	components: { TreeView },
@@ -120,13 +129,8 @@ import packageJson from '../../../package.json';
 export default class NavigationContent extends Vue {
 	@Prop({ type: Object, required: true }) drawer!: object;
 
-	@Getter('filters/filteredAccounts') filteredAccounts: Account[];
-	@Getter('user/user') user: User;
-
-	mounted() {
-		console.log(JSON.parse(this.$remoteConfig.getValue('showContexts')._value));
-		console.log(JSON.parse(this.$remoteConfig.getValue('showContexts')._value)[this.filteredAccounts[0].id]);
-	}
+	@Getter('filters/filteredAccounts') filteredAccounts!: Account[];
+	@Getter('user/user') user!: User;
 
 	get appName() {
 		return packageJson.name.replace('-', ' ');
@@ -168,7 +172,7 @@ export default class NavigationContent extends Vue {
 				icon: 'inventory',
 				title: 'Context',
 				link: { name: CONTEXT_CONFIGURATIONS_LISTING },
-				displayRule: () => true,
+				displayRule: userCanAccessContexts(this.filteredAccounts[0].id),
 			},
 		];
 	}
