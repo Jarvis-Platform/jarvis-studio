@@ -168,13 +168,6 @@ export interface Doc {
 	[key: string]: any;
 }
 
-export interface Link {
-	icon: string;
-	title: string;
-	link: Location;
-	displayRule?(): boolean;
-}
-
 export interface Note {
 	account: AccountId;
 	created_at: string;
