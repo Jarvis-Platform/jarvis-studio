@@ -20,11 +20,7 @@
 					class="menu"
 					width="300"
 				>
-					<navigation-content
-						:drawer="navigationDrawer"
-						:analytics-items="analyticsItems"
-						:settings-items="settingsItems"
-					/>
+					<navigation-content :drawer="navigationDrawer" />
 				</v-navigation-drawer>
 
 				<!-- <v-navigation-drawer v-model="showNotifications" fixed app temporary right>
@@ -65,10 +61,6 @@ import FooterContent from '@/components/app/FooterContent.vue';
 
 import { State, Getter } from 'vuex-class';
 
-import { Link } from '@/types';
-import { analyticsItems } from './navigation/analytics-items';
-import { settingsItems } from './navigation/settings-items';
-
 interface Drawer {
 	permanent: boolean;
 	mini: boolean;
@@ -81,8 +73,6 @@ export default class App extends Vue {
 	navigationDrawer: Drawer = { permanent: true, mini: false };
 	showNavigation: boolean = true;
 	showNotifications: boolean = false;
-	analyticsItems: Link[] = analyticsItems;
-	settingsItems: Link[] = settingsItems;
 
 	@State((state) => state.user.isAuthenticated) isAuthenticated!: boolean;
 	@Getter('user/accounts') accounts!: string[];
