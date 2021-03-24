@@ -66,13 +66,12 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
+import AnnounceKit from 'announcekit-vue';
 import { State } from 'vuex-class';
 import { User } from '@/types';
+import { LOGOUT, PROFILE } from '@/constants/router/routes-names';
 
 import SearchMenu from './sub-components/SearchMenu.vue';
-
-import { UserSetting, userSettings } from '@/navigation/user-settings-items';
-import AnnounceKit from 'announcekit-vue';
 
 @Component({
 	components: { SearchMenu, AnnounceKit },
@@ -80,8 +79,6 @@ import AnnounceKit from 'announcekit-vue';
 export default class AppBar extends Vue {
 	@State((state) => state.user.isAuthenticated) isAuthenticated!: boolean;
 	@State((state) => state.user.user) user!: User;
-
-	userSettingsItems: UserSetting[] = userSettings;
 
 	removeFilteredAccount() {
 		this.$store.dispatch('filters/updateFilteredAccounts', []);
@@ -121,6 +118,21 @@ export default class AppBar extends Vue {
 		} else {
 			cancelFullScreen.call(doc);
 		}
+	}
+
+	get userSettingsItems() {
+		return [
+			{
+				title: 'Profile',
+				link: { name: PROFILE },
+				icon: 'account_circle',
+			},
+			{
+				title: 'Logout',
+				link: { name: LOGOUT },
+				icon: 'exit_to_app',
+			},
+		];
 	}
 }
 </script>
