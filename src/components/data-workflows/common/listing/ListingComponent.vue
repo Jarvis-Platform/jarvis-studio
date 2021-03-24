@@ -147,7 +147,8 @@ export default class ListingComponent extends Vue {
 
 	@Watch('$route.name')
 	async onRouteNameChanged() {
-		await this.$store.dispatch(`${this.moduleName}/closeDBChannel`);
+		// _identifier is not existing to properly close channel (Discussed with Luca)
+		await this.$store.dispatch(`${this.moduleName}/closeDBChannel`, { _identifier: 'none' });
 	}
 
 	private firestoreItems: any;
