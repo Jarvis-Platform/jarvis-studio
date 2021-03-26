@@ -10,7 +10,7 @@
 			</v-card-title>
 
 			<v-card-text>
-				<prism :code="rawSQL" :plugins="['line-numbers']" language="sql" />
+				<prism :code="code" :plugins="['line-numbers']" language="sql" />
 			</v-card-text>
 
 			<v-card-actions>
@@ -42,16 +42,8 @@ export default class SQLViewer extends Vue {
 		this.showDialog = false;
 	}
 
-	get rawSQL() {
-		let sql = '';
-		if (this.properties.sqlBinary !== undefined) {
-			sql = Base64.decode(this.properties.sqlBinary._binaryString);
-		} else if (this.properties.sql !== undefined) {
-			sql = this.properties.sql;
-		} else {
-			sql = 'No SQL Data';
-		}
-		return sql;
+	get code() {
+		return this.properties.sql ?? 'No SQL Data';
 	}
 }
 </script>
