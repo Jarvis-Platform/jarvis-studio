@@ -6,6 +6,7 @@
 </template>
 
 <script lang="ts">
+import { Base64 } from 'js-base64';
 import { Component, Mixins } from 'vue-property-decorator';
 
 import HeaderInfosMixin from '../header-infos';
@@ -142,7 +143,7 @@ export default class TableToStorageConfigurationsItemView extends Mixins(HeaderI
 							component: 'sql-viewer',
 							properties: {
 								id: this.item.id,
-								sqlBinary: this.item.sql,
+								sql: Base64.decode(Base64.decode(this.item.sql.toBase64())),
 							},
 						},
 						{
