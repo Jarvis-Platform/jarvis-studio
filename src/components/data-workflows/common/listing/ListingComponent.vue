@@ -264,7 +264,7 @@ export default class ListingComponent extends Vue {
 		return (
 			this.userRole === SUPER_ADMIN.roleCode &&
 			item.configuration_context &&
-			!item.configuration_context.configuration.direct_execution
+			!item.configuration_context.configuration?.direct_execution
 		);
 	}
 
