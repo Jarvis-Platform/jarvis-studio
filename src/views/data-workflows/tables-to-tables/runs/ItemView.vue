@@ -9,6 +9,7 @@
 import { Component, Mixins } from 'vue-property-decorator';
 import { ConfigurationTab, FullJSONTab, NotesTab, OtherRunTab, RunDetailsTab, TaskListingTab } from '@/types';
 import HeaderInfosMixin from '../header-infos';
+import DirectExecutionIcon from '@/components/data-workflows/common/item/parameters/custom-parameters-item/DirectExecutionIcon.vue';
 import RunDocMixin from '@/mixins/data-workflows/doc/run-doc-mixin';
 import { RUNS } from '@/constants/data-workflows/status';
 import { getGbqToGbqRuns } from '@/store/modules/easy-firestore/get-gbq-to-gbq-runs';
@@ -76,6 +77,14 @@ export default class TablesToTablesRunsItemView extends Mixins(HeaderInfosMixin,
 							id: 'environment',
 							label: 'Environnement',
 							value: this.item.environment,
+						},
+						{
+							id: 'direct_execution',
+							label: 'Direct Execution',
+							component: DirectExecutionIcon,
+							properties: {
+								directExecution: this.item.configuration_context.configuration.direct_execution,
+							},
 						},
 					],
 				},

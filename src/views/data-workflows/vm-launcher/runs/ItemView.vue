@@ -8,6 +8,7 @@
 <script lang="ts">
 import { Component, Mixins } from 'vue-property-decorator';
 import HeaderInfosMixin from '../header-infos';
+import DirectExecutionIcon from '@/components/data-workflows/common/item/parameters/custom-parameters-item/DirectExecutionIcon.vue';
 import RunDocMixin from '@/mixins/data-workflows/doc/run-doc-mixin';
 import { vmLauncherRuns } from '@/store/modules/easy-firestore/vm-launcher-runs';
 
@@ -56,6 +57,14 @@ export default class VmLauncherRunsItemView extends Mixins(HeaderInfosMixin, Run
 							id: 'environment',
 							label: 'Environnement',
 							value: this.item.environment,
+						},
+						{
+							id: 'direct_execution',
+							label: 'Direct Execution',
+							component: DirectExecutionIcon,
+							properties: {
+								directExecution: this.item.configuration_context.configuration?.direct_execution,
+							},
 						},
 						{
 							id: 'dag_id',
