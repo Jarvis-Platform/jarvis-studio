@@ -142,6 +142,7 @@ export interface ListingComponentProps {
 	isOtherRunDisplay?: boolean;
 	jobId?: string;
 	showDeleteAction?: boolean;
+	directExecutionPath?: string;
 }
 
 export interface ConfigurationProps {
