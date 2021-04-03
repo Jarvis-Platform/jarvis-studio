@@ -13,7 +13,8 @@
 
 		<v-col cols="9">
 			<template v-if="paramItem.component">
-				<component :is="paramItem.component" :properties="paramItem.properties" />
+				<!-- TODO: Check & remove properties -->
+				<component :is="paramItem.component" v-bind="paramItem.properties" :properties="paramItem.properties" />
 			</template>
 
 			<template v-else>

@@ -53,6 +53,7 @@ export default class CollectionListing extends Mixins(RunCollectionMixin) {
 			overriddenColumns: ['firestore_conf_doc_id', 'dag_execution_date'],
 			isOtherRunDisplay: this.isOtherRunDisplay,
 			jobId: this.jobId,
+			directExecutionPath: 'configuration_context.direct_execution',
 		};
 	}
 
