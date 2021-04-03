@@ -9,6 +9,7 @@
 			sort-by="id"
 			sort-desc
 			show-delete-action
+			direct-execution-path="direct_execution"
 		>
 			<template v-slot:id="{ item: { id } }">
 				<router-link :to="{ name: routeName, params: { id } }">

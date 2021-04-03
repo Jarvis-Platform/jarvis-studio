@@ -6,6 +6,7 @@
 			:module-name="moduleName"
 			:headers="headers"
 			:overridden-columns="overriddenColumns"
+			:direct-execution-path="directExecutionPath"
 		>
 			<template v-slot:id="{ item: { id } }">
 				<router-link :to="{ name: routeName, params: { id } }">
@@ -51,6 +52,10 @@ export default class TablesToTablesConfigurationsListingView extends Mixins(
 
 	get headers() {
 		return [ACCOUNT, ENVIRONMENT, ID, DEFAULT_BQ_DATASET, CONF_WORKFLOW_LENGTH, ACTIVATED, ACTIONS];
+	}
+
+	get directExecutionPath() {
+		return 'configuration.direct_execution';
 	}
 }
 </script>

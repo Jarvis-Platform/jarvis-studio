@@ -9,6 +9,7 @@
 import { Component, Mixins } from 'vue-property-decorator';
 
 import HeaderInfosMixin from '../header-infos';
+import DirectExecutionIcon from '@/components/data-workflows/common/item/parameters/custom-parameters-item/DirectExecutionIcon.vue';
 import ConfigurationDocMixin from '@/mixins/data-workflows/doc/configuration-doc-mixin';
 
 import { vmLauncherConfs } from '@/store/modules/easy-firestore/vm-launcher-confs';
@@ -47,6 +48,14 @@ export default class VmLauncherConfigurationsItemView extends Mixins(HeaderInfos
 							id: 'environment',
 							label: 'Environment',
 							value: this.item.environment,
+						},
+						{
+							id: 'direct_execution',
+							label: 'Direct Execution',
+							component: DirectExecutionIcon,
+							properties: {
+								directExecution: this.item.direct_execution,
+							},
 						},
 					],
 				},

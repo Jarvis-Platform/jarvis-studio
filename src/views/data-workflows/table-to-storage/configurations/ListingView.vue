@@ -7,6 +7,7 @@
 			:headers="headers"
 			:overridden-columns="overriddenColumns"
 			sort-by="id"
+			direct-execution-path="direct_execution"
 		>
 			<template v-slot:id="{ item: { id } }">
 				<router-link :to="{ name: routeName, params: { id } }">

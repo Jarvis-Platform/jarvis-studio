@@ -11,12 +11,13 @@ import { TiptapVuetifyPlugin } from 'tiptap-vuetify';
 import vueDebounce, { PluginConfig } from 'vue-debounce';
 import '@/plugins/vue-gtm';
 
-// TODO: Remove when localhost
-Sentry.init({
-	dsn: process.env.VUE_APP_SENTRY_DSN,
-	environment: process.env.NODE_ENV,
-	integrations: [new VueIntegration({ Vue, attachProps: true })],
-});
+if (process.env.NODE_ENV !== 'development') {
+	Sentry.init({
+		dsn: process.env.VUE_APP_SENTRY_DSN,
+		environment: process.env.NODE_ENV,
+		integrations: [new VueIntegration({ Vue, attachProps: true })],
+	});
+}
 
 initFirebase().catch((error) => {
 	console.error(error);
