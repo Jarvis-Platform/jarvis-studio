@@ -82,13 +82,15 @@ export default class App extends Vue {
 	mounted() {
 		this.makeNavigationResponsive(false);
 
-		window.onload = () =>
-			window.LOU.identify(this.user.email, {
-				plan: 'standard',
-				company: JSON.parse(localStorage.vuex).filters.filteredAccounts[0],
-				name: this.user.displayName,
-				role: this.user.studioRoles,
-			});
+		if (process.env.NODE_ENV === 'production') {
+			window.onload = () =>
+				window.LOU.identify(this.user.email, {
+					plan: 'standard',
+					company: JSON.parse(localStorage.vuex).filters.filteredAccounts[0],
+					name: this.user.displayName,
+					role: this.user.studioRoles,
+				});
+		}
 	}
 
 	toggleNavigation(): void {
