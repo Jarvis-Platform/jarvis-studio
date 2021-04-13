@@ -53,6 +53,7 @@
 
 <script lang="ts">
 import { Component, Watch, Vue } from 'vue-property-decorator';
+import { User } from '@/types';
 import AccountSelector from '@/components/app/AccountsSelector.vue';
 import AppBar from '@/components/app/app-bar/AppBar.vue';
 import NavigationContent from '@/components/app/NavigationContent.vue';
@@ -76,9 +77,18 @@ export default class App extends Vue {
 
 	@State((state) => state.user.isAuthenticated) isAuthenticated!: boolean;
 	@Getter('user/accounts') accounts!: string[];
+	@Getter('user/user') user!: User;
 
 	mounted() {
 		this.makeNavigationResponsive(false);
+
+		window.onload = () =>
+			window.LOU.identify(this.user.email, {
+				plan: 'standard',
+				company: JSON.parse(localStorage.vuex).filters.filteredAccounts[0],
+				name: this.user.displayName,
+				role: this.user.studioRoles,
+			});
 	}
 
 	toggleNavigation(): void {
