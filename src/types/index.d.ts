@@ -1,5 +1,5 @@
-import { Location, NavigationGuard, Route } from 'vue-router';
-import { User as FirebaseUser } from 'firebase';
+import { NavigationGuard, Route } from 'vue-router';
+import { User as FirebaseUser } from 'firebase/app';
 import { IPluginState } from 'vuex-easy-firestore/types/declarations';
 
 // Router
