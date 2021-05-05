@@ -45,6 +45,9 @@ export const WORKFLOW_CONFIGURATIONS_ITEM = 'workflow-confs-item';
 export const CONTEXT_CONFIGURATIONS_LISTING = 'context-confs-listing';
 export const CONTEXT_CONFIGURATIONS_ITEM = 'context-conf-item';
 
+export const XML_CONVERSION_CONFIGURATIONS_LISTING = 'xml-conversion-confs-listing';
+export const XML_CONVERSION_CONFIGURATIONS_ITEM = 'xml-conversion-conf-item';
+
 /* SETTINGS */
 export const PROFILE = 'user-profile';
 export const USERS = 'users';
