@@ -6,15 +6,12 @@
 			:module-name="moduleName"
 			:headers="headers"
 			:overridden-columns="overriddenColumns"
+			direct-execution-path="direct_execution"
 		>
 			<template v-slot:id="{ item: { id } }">
 				<router-link :to="{ name: routeName, params: { id } }">
 					<span class="font-weight-medium">{{ id }}</span>
 				</router-link>
-			</template>
-
-			<template v-slot:parameters="{ item: { parameters } }">
-				<p>{{ Object.keys(parameters).length }}</p>
 			</template>
 		</listing-component>
 	</div>
@@ -26,24 +23,32 @@ import ConfigurationStatus from '@/components/data-workflows/common/configuratio
 
 import HeaderInfosMixin from '../header-infos';
 
-import { tailerContextConfs } from '@/store/modules/easy-firestore/tailer-context-conf';
-import { CONTEXT_CONFIGURATIONS_ITEM } from '@/constants/router/routes-names';
-import { ACCOUNT, ACTIVATED, ENVIRONMENT, ID, PARAMETERS } from '@/constants/data-workflows/listing/header-items';
+import { xmlConversionConf } from '@/store/modules/easy-firestore/xml-conversion-conf';
+import { XML_CONVERSION_CONFIGURATIONS_ITEM } from '@/constants/router/routes-names';
+import {
+	ACCOUNT,
+	ACTIONS,
+	ENVIRONMENT,
+	GCP_PROJECT_ID,
+	GCS_BUCKET,
+	GCS_WORKING_DIRECTORY,
+	ID,
+} from '@/constants/data-workflows/listing/header-items';
 import ConfigurationCollectionMixin from '@/mixins/data-workflows/collection/configuration-collection-mixin';
 
 @Component({
 	components: { ConfigurationStatus },
 })
 export default class TailerContextConfListingView extends Mixins(HeaderInfosMixin, ConfigurationCollectionMixin) {
-	moduleName: string = tailerContextConfs.moduleName;
-	overriddenColumns: string[] = ['id', 'parameters'];
+	moduleName: string = xmlConversionConf.moduleName;
+	overriddenColumns: string[] = ['id'];
 
 	get routeName() {
-		return CONTEXT_CONFIGURATIONS_ITEM;
+		return XML_CONVERSION_CONFIGURATIONS_ITEM;
 	}
 
 	get headers() {
-		return [ACCOUNT, ENVIRONMENT, ID, PARAMETERS, ACTIVATED];
+		return [ACCOUNT, ENVIRONMENT, ID, GCP_PROJECT_ID, GCS_BUCKET, GCS_WORKING_DIRECTORY, ACTIONS];
 	}
 }
 </script>
