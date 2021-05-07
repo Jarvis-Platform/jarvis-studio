@@ -1,11 +1,11 @@
 import { Component, Vue } from 'vue-property-decorator';
-import { CONTEXT } from '@/constants/data-workflows/names';
+import { XML_CONVERSION } from '@/constants/data-workflows/names';
 import { XML_CONVERSION_CONFIGURATIONS_LISTING } from '@/constants/router/routes-names';
 
 @Component
 export default class HeaderInfos extends Vue {
 	get workflowName() {
-		return CONTEXT.displayName;
+		return XML_CONVERSION.displayName;
 	}
 
 	get tabsItems() {
