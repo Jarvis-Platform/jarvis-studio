@@ -12,28 +12,21 @@ import { ConfigurationTab, FullJSONTab, NotesTab } from '@/types';
 import HeaderInfosMixin from '../header-infos';
 import ConfigurationDocMixin from '@/mixins/data-workflows/doc/configuration-doc-mixin';
 
-import { tailerContextConfs } from '@/store/modules/easy-firestore/tailer-context-conf';
-import { tailerContextConfsArchive } from '@/store/modules/easy-firestore/tailer-context-conf-archive';
+import { xmlConversionConf } from '@/store/modules/easy-firestore/xml-conversion-conf';
+import { xmlConversionConfArchive } from '@/store/modules/easy-firestore/xml-conversion-conf-archive';
+import DirectExecutionIcon from '@/components/data-workflows/common/item/parameters/custom-parameters-item/DirectExecutionIcon.vue';
 
 @Component
 export default class TailerContextConfItemView extends Mixins(HeaderInfosMixin, ConfigurationDocMixin) {
-	moduleName: string = tailerContextConfs.moduleName;
-	archivedConfsModuleName: string = tailerContextConfsArchive.moduleName;
+	moduleName: string = xmlConversionConf.moduleName;
+	archivedConfsModuleName: string = xmlConversionConfArchive.moduleName;
 
-	get itemTabsItems(): [ConfigurationTab, FullJSONTab, NotesTab] | [] {
+	get itemTabsItems() {
 		if (Object.keys(this.item).length === 0) return [];
-
 		return [this.configurationTab, this.fullJSONTab, this.notesTab];
 	}
 
 	get configurationData() {
-		const formattedParameters = Object.values(this.item.parameters as { [name: string]: object }).map(
-			(parameter, index) => ({
-				name: Object.keys(this.item.parameters)[index],
-				...parameter,
-			})
-		);
-
 		return [
 			{
 				component: 'view-header',
@@ -53,16 +46,6 @@ export default class TailerContextConfItemView extends Mixins(HeaderInfosMixin, 
 					description: 'Context of the Storage to Storage configuration',
 					paramItems: [
 						{
-							id: 'configuration_type',
-							label: 'Configuration Type',
-							value: 'context',
-						},
-						{
-							id: 'configuration_id',
-							label: 'Configuration ID',
-							value: this.item.id,
-						},
-						{
 							id: 'account',
 							label: 'Account',
 							value: this.item.account,
@@ -73,16 +56,12 @@ export default class TailerContextConfItemView extends Mixins(HeaderInfosMixin, 
 							value: this.item.environment,
 						},
 						{
-							id: 'activated',
-							label: 'Activated',
-							value: this.item.activated,
-							default: true,
-						},
-						{
-							id: 'archive',
-							label: 'Archive',
-							value: this.item.archived,
-							default: false,
+							id: 'direct_execution',
+							label: 'Direct Execution',
+							component: DirectExecutionIcon,
+							properties: {
+								directExecution: this.item.direct_execution,
+							},
 						},
 					],
 				},
@@ -90,40 +69,65 @@ export default class TailerContextConfItemView extends Mixins(HeaderInfosMixin, 
 			{
 				component: 'parameters-table',
 				props: {
-					tableTitle: 'Tables',
-					description: 'Tables List to be loaded from files',
+					tableTitle: 'XML Storage',
+					description: 'Storage where the XML files are located',
 					columns: [
-						{
-							label: 'Name',
-							field: 'name',
-						},
-						{
-							label: 'Value',
-							field: 'value',
-						},
 						{
 							label: 'Type',
 							field: 'type',
 						},
 						{
-							label: 'Resource',
-							field: 'resource',
+							label: 'Project ID',
+							field: 'gcp_project_id',
 						},
 						{
-							label: 'Description',
-							field: 'description',
+							label: 'Storage ID',
+							field: 'gcs_bucket',
 						},
-					],
-					rows: formattedParameters,
-					overriddenRows: [
 						{
-							name: 'value',
-							component: 'TruncatedDisplayValue',
-							props: {
-								parameters: formattedParameters,
-							},
+							label: 'Working Directory',
+							field: 'gcs_working_directory',
 						},
 					],
+					rows: [
+						{
+							type: 'GCS',
+							gcp_project_id: this.item.gcp_project_id,
+							gcs_bucket: this.item.gcs_bucket,
+							gcs_working_directory: this.item.gcs_working_directory,
+						},
+					],
+				},
+			},
+			{
+				component: 'parameters-table',
+				props: {
+					tableTitle: 'XML Files',
+					description: 'XML Files to convert',
+					columns: [
+						{
+							label: 'XML Template',
+							field: 'filename_template',
+						},
+						{
+							label: 'XML Description',
+							field: 'file_description',
+						},
+						{
+							label: 'XSD Schema File',
+							field: 'xsd_schema_file',
+						},
+						{
+							label: 'Filters',
+							field: 'output_suffix_filters',
+						},
+					],
+					rows: this.item.filename_templates.map((filenameTemplate) => ({
+						filename_template: filenameTemplate.filename_template,
+						file_description: filenameTemplate.file_description,
+						xsd_schema_file: filenameTemplate.xsd_schema_file,
+						output_suffix_filters: filenameTemplate.output_suffix_filters.length,
+					})),
 					searchOptionsEnabled: true,
 				},
 			},
