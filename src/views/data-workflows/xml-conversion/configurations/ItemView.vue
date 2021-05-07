@@ -122,12 +122,43 @@ export default class TailerContextConfItemView extends Mixins(HeaderInfosMixin, 
 							field: 'output_suffix_filters',
 						},
 					],
-					rows: this.item.filename_templates.map((filenameTemplate) => ({
-						filename_template: filenameTemplate.filename_template,
-						file_description: filenameTemplate.file_description,
-						xsd_schema_file: filenameTemplate.xsd_schema_file,
-						output_suffix_filters: filenameTemplate.output_suffix_filters.length,
-					})),
+					rows: this.item.filename_templates.map(
+						(filenameTemplate: {
+							filename_template: string;
+							file_description: string;
+							xsd_schema_file: string;
+							output_suffix_filters: string[];
+						}) => ({
+							filename_template: filenameTemplate.filename_template,
+							file_description: filenameTemplate.file_description,
+							xsd_schema_file: filenameTemplate.xsd_schema_file,
+							output_suffix_filters: filenameTemplate.output_suffix_filters.length,
+						})
+					),
+					overriddenRows: [
+						{
+							name: 'output_suffix_filters',
+							component: 'ListDialog',
+							props: {
+								buttonLabel: this.item.filename_templates.map(
+									(filenameTemplate: {
+										filename_template: string;
+										file_description: string;
+										xsd_schema_file: string;
+										output_suffix_filters: string[];
+									}) => filenameTemplate.output_suffix_filters.length
+								),
+								list: this.item.filename_templates.map(
+									(filenameTemplate: {
+										filename_template: string;
+										file_description: string;
+										xsd_schema_file: string;
+										output_suffix_filters: string[];
+									}) => filenameTemplate.output_suffix_filters
+								),
+							},
+						},
+					],
 					searchOptionsEnabled: true,
 				},
 			},
