@@ -1,7 +1,7 @@
 <template>
 	<v-dialog v-model="isListDialogVisible" width="420">
 		<template v-slot:activator="{ on, attrs }">
-			<v-btn v-on="on" v-bind="attrs" text>{{ buttonLabel[index] }}</v-btn>
+			<p v-on="on" v-bind="attrs" class="text-decoration-underline">{{ buttonLabel[index] }}</p>
 		</template>
 
 		<v-card class="mx-auto" tile>
