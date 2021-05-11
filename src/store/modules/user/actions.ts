@@ -1,6 +1,6 @@
 import { ActionTree } from 'vuex';
 import { RootState, UserState } from '@/types';
-import firebase, { User } from 'firebase';
+import firebase, { User } from 'firebase/app';
 import store from '@/store';
 import router from '@/router';
 import { HOME, SIGN_IN } from '@/constants/router/routes-names';

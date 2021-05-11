@@ -30,6 +30,8 @@ import { vmLauncherRuns } from '@/store/modules/easy-firestore/vm-launcher-runs'
 import { workflowConfs } from '@/store/modules/easy-firestore/workflow-confs';
 import { workflowConfArchive } from '@/store/modules/easy-firestore/workflow-conf-archive';
 import { workflowStatus } from '@/store/modules/easy-firestore/workflow-status';
+import { xmlConversionConf } from '@/store/modules/easy-firestore/xml-conversion-conf';
+import { xmlConversionConfArchive } from '@/store/modules/easy-firestore/xml-conversion-conf-archive';
 
 export default [
 	gcpCloudFunctions,
@@ -64,4 +66,6 @@ export default [
 	tableToStorageRuns,
 	tailerContextConfs,
 	tailerContextConfsArchive,
+	xmlConversionConf,
+	xmlConversionConfArchive,
 ];

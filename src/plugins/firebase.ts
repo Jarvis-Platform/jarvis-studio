@@ -1,6 +1,11 @@
 import Vue from 'vue';
-import * as firebase from 'firebase/app';
+import firebase from 'firebase/app';
 import 'firebase/firestore';
+import 'firebase/functions';
+import 'firebase/analytics';
+import 'firebase/database';
+import 'firebase/performance';
+import 'firebase/remote-config';
 import { FirebaseOptions } from '@firebase/app-types';
 import { AnyObject } from '@/types';
 import { defaultConfig } from '@/remote-config/default-config';

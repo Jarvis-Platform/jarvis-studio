@@ -36,6 +36,10 @@ let app: Vue;
 
 const createApp = () => {
 	if (!app) {
+		const louAssistScript = document.createElement('script');
+		louAssistScript.setAttribute('src', '//run.louassist.com/v2.5.0-m?id=611739999719');
+		document.head.appendChild(louAssistScript);
+
 		app = new Vue({
 			store,
 			router,
