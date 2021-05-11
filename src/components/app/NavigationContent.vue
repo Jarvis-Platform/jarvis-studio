@@ -109,9 +109,10 @@ import {
 	USERS,
 	ACCOUNTS,
 	CLOUD_FUNCTIONS,
+	XML_CONVERSION_CONFIGURATIONS_LISTING,
 } from '@/constants/router/routes-names';
 import { SUPER_ADMIN } from '@/constants/user/roles';
-import { userCanAccessContexts } from '@/remote-config/rules';
+import { userCanAccessContexts, userCanAccessXMLConversion } from '@/remote-config/rules';
 
 import TreeView from '../data-models/TreeView.vue';
 import packageJson from '../../../package.json';
@@ -173,6 +174,12 @@ export default class NavigationContent extends Vue {
 				title: 'Context',
 				link: { name: CONTEXT_CONFIGURATIONS_LISTING },
 				displayRule: userCanAccessContexts(this.filteredAccounts[0].id),
+			},
+			{
+				icon: 'mdi-cloud-tags',
+				title: 'XML Conversion',
+				link: { name: XML_CONVERSION_CONFIGURATIONS_LISTING },
+				displayRule: userCanAccessXMLConversion(this.filteredAccounts[0].id),
 			},
 		];
 	}
