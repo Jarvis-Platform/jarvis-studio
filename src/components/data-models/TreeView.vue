@@ -77,13 +77,20 @@ export default class TreeView extends Vue {
 	}
 
 	mounted() {
-		this.$store.dispatch('dataModels/fetchAndAdd', { limit: 0 }).then(() => this.getDataModel());
+		this.$store
+			.dispatch('dataModels/fetchAndAdd', {
+				where: [['account', '==', JSON.parse(localStorage.vuex).filters.filteredAccounts[0].id]],
+				limit: 0,
+			})
+			.then(() => this.getDataModel());
+	}
+
+	beforeDestroy() {
+		this.$store.dispatch('dataModels/closeDBChannel', { clearModule: true });
 	}
 
 	getDataModel() {
-		const dataModels = Object.values(this.dataModels).filter(
-			(dataModel: any) => this.formattedUserAccounts[dataModel.id]
-		);
+		const dataModels = Object.values(this.dataModels);
 
 		this.models = dataModels.map(
 			(data: any): TreeItem => {
