@@ -1,6 +1,6 @@
 <template>
 	<v-app id="signin" dark>
-		<v-content>
+		<v-main>
 			<v-container class="fill-height pa-0" fluid>
 				<v-row class="fill-height" no-gutters>
 					<v-col
@@ -26,8 +26,6 @@
 								/>
 							</v-form>
 
-							<v-alert v-if="userNotAuthorized" type="error" class="my-5">Sorry, cannot authorize user</v-alert>
-
 							<div class="d-flex justify-space-between align-center mt-5">
 								<router-link :to="loginLink" class="ma-0">Return to login page</router-link>
 								<v-btn :disabled="!valid" :loading="loading" @click="sendEmail" color="primary">Send mail</v-btn>
@@ -38,43 +36,39 @@
 					</v-col>
 				</v-row>
 			</v-container>
-		</v-content>
+		</v-main>
+
+		<v-snackbar v-model="showSnackbar" color="success" :timeout="7000">
+			An email has been sent to {{ model.email }}
+		</v-snackbar>
 	</v-app>
 </template>
 
 <script lang="ts">
+import firebase from 'firebase';
 import { Component, Vue } from 'vue-property-decorator';
 import { InputValidationRules } from 'vuetify';
-import { HOME, SIGN_IN } from '@/constants/router/routes-names';
+import { SIGN_IN } from '@/constants/router/routes-names';
 
 import background from '@/assets/img/sign-in/background.jpg';
 
 @Component
 export default class SignIn extends Vue {
 	valid: boolean = false;
-	userNotAuthorized: boolean = false;
 	loading: boolean = false;
-	model = { email: '', password: '' };
+	model = { email: '' };
 	emailRules: InputValidationRules = [
 		(v) => !!v || 'E-mail is required',
 		(v) => /.+@.+/.test(v) || 'E-mail must be valid',
 	];
+	showSnackbar = false;
 
 	sendEmail() {
-		this.userNotAuthorized = false;
 		this.loading = true;
-
 		if ((this.$refs.form as Vue & { validate: () => boolean }).validate()) {
-			this.$store
-				.dispatch('user/signIn', { email: this.model.email, password: this.model.password })
-				.then(() => {
-					this.loading = false;
-					this.$router.push(this.$route.query.redirect.toString() || { name: HOME });
-				})
-				.catch(() => {
-					this.loading = false;
-					this.userNotAuthorized = true;
-				});
+			firebase.auth().sendPasswordResetEmail(this.model.email);
+			this.showSnackbar = true;
+			this.loading = false;
 		}
 	}
 
