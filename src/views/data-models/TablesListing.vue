@@ -28,6 +28,10 @@
 					</router-link>
 				</template>
 
+				<template v-slot:item.temporary_table="{ item }">
+					<v-icon v-if="item.temporary_table" color="success">mdi-recycle</v-icon>
+				</template>
+
 				<template v-slot:item.numRows="{ item }">
 					<v-progress-linear :value="getPropertyPercent('numRows', item.numRows)" height="25" style="width: 100px">
 						<strong>{{ getNumRowsFormatted(item.numRows) }}</strong>
@@ -158,6 +162,7 @@ export default class TablesListing extends Vue {
 			{ text: 'Account', value: 'account' },
 			{ text: 'Table Name', value: 'table_id' },
 			{ text: 'Table Type', value: 'type' },
+			{ text: 'Temporary', value: 'temporary_table' },
 			{ text: 'Row Number', value: 'numRows' },
 			{ text: 'Table Size', value: 'numBytes' },
 			{ text: 'Location', value: 'location' },
