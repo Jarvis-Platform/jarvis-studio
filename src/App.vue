@@ -82,6 +82,8 @@ export default class App extends Vue {
 	mounted() {
 		this.makeNavigationResponsive(false);
 
+		console.log('test');
+
 		if (process.env.NODE_ENV === 'production') {
 			window.onload = () =>
 				window.LOU.identify(this.user.email, {
