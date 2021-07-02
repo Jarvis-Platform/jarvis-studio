@@ -52,7 +52,7 @@
 				right
 			>
 				<v-list-item
-					v-if="!item.hasOwnProperty('displayRule') || item.displayRule()"
+					v-if="!item.hasOwnProperty('displayRule') || item.displayRule"
 					:to="item.link"
 					exact
 					slot="activator"
@@ -75,7 +75,7 @@
 
 			<template v-for="setting in settingsItems">
 				<v-list-item
-					v-if="!setting.hasOwnProperty('displayRule') || setting.displayRule()"
+					v-if="!setting.hasOwnProperty('displayRule') || setting.displayRule"
 					:key="setting.title"
 					:to="setting.link"
 				>
@@ -94,20 +94,123 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from 'vue-property-decorator';
-import TreeView from '../data-models/TreeView.vue';
+import { Getter } from 'vuex-class';
+import { Location } from 'vue-router';
+import { Account, User } from '@/types';
+import {
+	STORAGE_TO_STORAGE_RUNS_LISTING,
+	STORAGE_TO_TABLES_RUNS_LISTING,
+	TABLES_TO_TABLES_RUNS_LISTING,
+	TABLE_TO_STORAGE_RUNS_LISTING,
+	VM_LAUNCHER_RUNS_LISTING,
+	WORKFLOW_STATUS_LISTING,
+	CONTEXT_CONFIGURATIONS_LISTING,
+	PROFILE,
+	USERS,
+	ACCOUNTS,
+	CLOUD_FUNCTIONS,
+	XML_CONVERSION_CONFIGURATIONS_LISTING,
+} from '@/constants/router/routes-names';
+import { SUPER_ADMIN } from '@/constants/user/roles';
+import { userCanAccessContexts, userCanAccessXMLConversion } from '@/remote-config/rules';
 
+import TreeView from '../data-models/TreeView.vue';
 import packageJson from '../../../package.json';
+
+interface Link {
+	icon: string;
+	title: string;
+	link: Location;
+	displayRule?: boolean;
+}
 
 @Component({
 	components: { TreeView },
 })
 export default class NavigationContent extends Vue {
 	@Prop({ type: Object, required: true }) drawer!: object;
-	@Prop({ type: Array, required: true }) analyticsItems!: object;
-	@Prop({ type: Array, required: true }) settingsItems!: object;
+
+	@Getter('filters/filteredAccounts') filteredAccounts!: Account[];
+	@Getter('user/user') user!: User;
 
 	get appName() {
 		return packageJson.name.replace('-', ' ');
+	}
+
+	get analyticsItems(): Link[] {
+		return [
+			{
+				icon: 'flare',
+				title: 'Storage to Storage',
+				link: { name: STORAGE_TO_STORAGE_RUNS_LISTING },
+			},
+			{
+				icon: 'post_add',
+				title: 'Storage to Tables',
+				link: { name: STORAGE_TO_TABLES_RUNS_LISTING },
+			},
+			{
+				icon: 'account_tree',
+				title: 'Tables to Tables',
+				link: { name: TABLES_TO_TABLES_RUNS_LISTING },
+			},
+			{
+				icon: 'share',
+				title: 'Table to Storage',
+				link: { name: TABLE_TO_STORAGE_RUNS_LISTING },
+			},
+			{
+				icon: 'dns',
+				title: 'VM Launcher',
+				link: { name: VM_LAUNCHER_RUNS_LISTING },
+			},
+			{
+				icon: 'power',
+				title: 'Workflow',
+				link: { name: WORKFLOW_STATUS_LISTING },
+			},
+			{
+				icon: 'inventory',
+				title: 'Context',
+				link: { name: CONTEXT_CONFIGURATIONS_LISTING },
+				displayRule: userCanAccessContexts(this.filteredAccounts[0].id),
+			},
+			{
+				icon: 'mdi-cloud-tags',
+				title: 'XML Conversion',
+				link: { name: XML_CONVERSION_CONFIGURATIONS_LISTING },
+				displayRule: userCanAccessXMLConversion(this.filteredAccounts[0].id),
+			},
+		];
+	}
+
+	get settingsItems(): Link[] {
+		const isSuperAdminRule = this.user.studioRoles === SUPER_ADMIN.roleCode;
+		return [
+			{
+				title: 'Profile',
+				icon: 'account_circle',
+				link: { name: PROFILE },
+			},
+			{
+				title: 'Users',
+				icon: 'supervised_user_circle',
+				link: { name: USERS },
+				displayRule: isSuperAdminRule,
+			},
+			{
+				title: 'Accounts',
+				icon: 'business',
+				link: { name: ACCOUNTS },
+				displayRule: isSuperAdminRule,
+			},
+			{
+				title: 'Cloud Function Configurations',
+				icon: 'settings_ethernet',
+				link: { name: CLOUD_FUNCTIONS },
+				displayRule: isSuperAdminRule,
+			},
+		];
 	}
 }
 </script>

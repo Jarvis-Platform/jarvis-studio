@@ -14,11 +14,11 @@
 			</template>
 
 			<template v-slot:jobs="{ item: { jobs } }">
-				{{ Object.keys(jobs).length }}
+				<span v-if="jobs">{{ Object.keys(jobs).length }}</span>
 			</template>
 
 			<template v-slot:triggered_jobs="{ item: { jobs } }">
-				<jobs-ratio :jobs="jobs" />
+				<jobs-ratio v-if="jobs" :jobs="jobs" />
 			</template>
 
 			<template v-slot:last_update_date_from_now="{ item: { last_modified } }">

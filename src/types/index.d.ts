@@ -1,5 +1,5 @@
-import { Location, NavigationGuard, Route } from 'vue-router';
-import { User as FirebaseUser } from 'firebase';
+import { NavigationGuard, Route } from 'vue-router';
+import { User as FirebaseUser } from 'firebase/app';
 import { IPluginState } from 'vuex-easy-firestore/types/declarations';
 
 // Router
@@ -142,6 +142,7 @@ export interface ListingComponentProps {
 	isOtherRunDisplay?: boolean;
 	jobId?: string;
 	showDeleteAction?: boolean;
+	directExecutionPath?: string;
 }
 
 export interface ConfigurationProps {
@@ -166,13 +167,6 @@ export interface StatusProps extends RunProps {}
 
 export interface Doc {
 	[key: string]: any;
-}
-
-export interface Link {
-	icon: string;
-	title: string;
-	link: Location;
-	displayRule?(): boolean;
 }
 
 export interface Note {

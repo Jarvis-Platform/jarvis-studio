@@ -11,11 +11,13 @@ import { TiptapVuetifyPlugin } from 'tiptap-vuetify';
 import vueDebounce, { PluginConfig } from 'vue-debounce';
 import '@/plugins/vue-gtm';
 
-Sentry.init({
-	dsn: process.env.VUE_APP_SENTRY_DSN,
-	environment: process.env.NODE_ENV,
-	integrations: [new VueIntegration({ Vue, attachProps: true })],
-});
+if (process.env.NODE_ENV !== 'development') {
+	Sentry.init({
+		dsn: process.env.VUE_APP_SENTRY_DSN,
+		environment: process.env.NODE_ENV,
+		integrations: [new VueIntegration({ Vue, attachProps: true })],
+	});
+}
 
 initFirebase().catch((error) => {
 	console.error(error);
@@ -34,6 +36,10 @@ let app: Vue;
 
 const createApp = () => {
 	if (!app) {
+		const louAssistScript = document.createElement('script');
+		louAssistScript.setAttribute('src', '//run.louassist.com/v2.5.0-m?id=611739999719');
+		document.head.appendChild(louAssistScript);
+
 		app = new Vue({
 			store,
 			router,

@@ -46,7 +46,7 @@
 							<v-alert v-if="userNotAuthorized" type="error" class="my-5"> Sorry, cannot authorize user </v-alert>
 
 							<div class="d-flex justify-space-between align-center mt-5">
-								<router-link to="#" class="ma-0">Forgot password?</router-link>
+								<router-link :to="resetPasswordLink" class="ma-0">Forgot password?</router-link>
 								<v-btn :disabled="!valid" :loading="loading" @click="signIn" color="primary"> Sign in </v-btn>
 							</div>
 						</div>
@@ -78,8 +78,6 @@
 								</span>
 								<span class="google-button__text">Sign in with Google</span>
 							</button>
-
-							<p class="ma-0">Still without account? <router-link to="#">Create one</router-link></p>
 						</div>
 					</v-col>
 				</v-row>
@@ -91,7 +89,7 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
 import { InputValidationRules } from 'vuetify';
-import { HOME } from '@/constants/router/routes-names';
+import { HOME, RESET_PASSWORD } from '@/constants/router/routes-names';
 import { KEY } from '@/constants/store/vuex-persist';
 
 import background from '@/assets/img/sign-in/background.jpg';
@@ -158,6 +156,10 @@ export default class SignIn extends Vue {
 	errorCallback() {
 		this.loading = false;
 		this.userNotAuthorized = true;
+	}
+
+	get resetPasswordLink() {
+		return { name: RESET_PASSWORD };
 	}
 }
 </script>

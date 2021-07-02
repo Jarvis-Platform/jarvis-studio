@@ -39,6 +39,7 @@ export default class ParametersList extends Vue {
 	@Prop({ type: String, required: true }) groupTitle!: string;
 	@Prop(String) description?: string;
 	@Prop({ type: Boolean, default: false }) tooltip!: boolean;
+	// TODO: Check & remove this prop
 	@Prop({
 		type: Array,
 		default: [

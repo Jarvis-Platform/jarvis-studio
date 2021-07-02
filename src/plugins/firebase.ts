@@ -1,17 +1,23 @@
 import Vue from 'vue';
-import * as firebase from 'firebase/app';
+import firebase from 'firebase/app';
 import 'firebase/firestore';
+import 'firebase/functions';
+import 'firebase/analytics';
+import 'firebase/database';
+import 'firebase/performance';
+import 'firebase/remote-config';
 import { FirebaseOptions } from '@firebase/app-types';
 import { AnyObject } from '@/types';
+import { defaultConfig } from '@/remote-config/default-config';
 
-// const isLoacalHost = location.hostname === 'localhost';
-const isLoacalHost = false;
+// const isLocalHost = location.hostname === 'localhost';
+const isLocalHost = false;
 
 const options: FirebaseOptions = {
 	apiKey: process.env.VUE_APP_FIREBASE_API_KEY,
 	appId: process.env.VUE_APP_FIREBASE_APP_ID,
 	authDomain: process.env.VUE_APP_FIREBASE_AUTH_DOMAIN,
-	databaseURL: isLoacalHost
+	databaseURL: isLocalHost
 		? `http://localhost:9000?ns=${process.env.VUE_APP_FIREBASE_PROJECT_ID}`
 		: process.env.VUE_APP_FIREBASE_DATABASE_URL,
 	measurementId: process.env.VUE_APP_FIREBASE_MEASUREMENT_ID,
@@ -30,10 +36,15 @@ Vue.prototype.$httpsCallableFunction = (name: string, data: AnyObject = {}) => {
 	});
 };
 
-function initFirebase() {
+async function initFirebase() {
 	firebase.initializeApp(options);
 
-	if (isLoacalHost) {
+	const remoteConfig = firebase.remoteConfig();
+	remoteConfig.defaultConfig = defaultConfig;
+	await remoteConfig.fetchAndActivate();
+	Vue.prototype.$remoteConfig = remoteConfig;
+
+	if (isLocalHost) {
 		firebase.functions().useFunctionsEmulator('http://localhost:5001');
 		firebase.firestore().settings({ host: 'localhost:8081', ssl: false });
 	} else {

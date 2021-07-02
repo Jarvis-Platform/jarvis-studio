@@ -20,21 +20,17 @@
 					class="menu"
 					width="300"
 				>
-					<navigation-content
-						:drawer="navigationDrawer"
-						:analytics-items="analyticsItems"
-						:settings-items="settingsItems"
-					/>
+					<navigation-content :drawer="navigationDrawer" />
 				</v-navigation-drawer>
 
-				<!-- 				<v-navigation-drawer v-model="showNotifications" fixed app temporary right>
+				<!-- <v-navigation-drawer v-model="showNotifications" fixed app temporary right>
 					<notification-content @closeNotifications="toggleNotifications" />
 				</v-navigation-drawer> -->
 
 				<v-main>
 					<transition name="fade" mode="out-in">
 						<keep-alive>
-							<router-view :key="$route.fullPath" />
+							<router-view :key="routeKey" />
 						</keep-alive>
 					</transition>
 				</v-main>
@@ -48,7 +44,7 @@
 		<v-main v-else>
 			<transition name="fade" mode="out-in">
 				<keep-alive>
-					<router-view :key="$route.fullPath" />
+					<router-view :key="routeKey" />
 				</keep-alive>
 			</transition>
 		</v-main>
@@ -57,6 +53,7 @@
 
 <script lang="ts">
 import { Component, Watch, Vue } from 'vue-property-decorator';
+import { User } from '@/types';
 import AccountSelector from '@/components/app/AccountsSelector.vue';
 import AppBar from '@/components/app/app-bar/AppBar.vue';
 import NavigationContent from '@/components/app/NavigationContent.vue';
@@ -64,10 +61,6 @@ import NotificationContent from '@/components/app/NotificationContent.vue';
 import FooterContent from '@/components/app/FooterContent.vue';
 
 import { State, Getter } from 'vuex-class';
-
-import { Link } from '@/types';
-import { analyticsItems } from './navigation/analytics-items';
-import { settingsItems } from './navigation/settings-items';
 
 interface Drawer {
 	permanent: boolean;
@@ -81,14 +74,23 @@ export default class App extends Vue {
 	navigationDrawer: Drawer = { permanent: true, mini: false };
 	showNavigation: boolean = true;
 	showNotifications: boolean = false;
-	analyticsItems: Link[] = analyticsItems;
-	settingsItems: Link[] = settingsItems;
 
 	@State((state) => state.user.isAuthenticated) isAuthenticated!: boolean;
 	@Getter('user/accounts') accounts!: string[];
+	@Getter('user/user') user!: User;
 
 	mounted() {
 		this.makeNavigationResponsive(false);
+
+		if (process.env.NODE_ENV === 'production') {
+			window.onload = () =>
+				window.LOU.identify(this.user.email, {
+					plan: 'standard',
+					company: JSON.parse(localStorage.vuex).filters.filteredAccounts[0],
+					name: this.user.displayName,
+					role: this.user.studioRoles,
+				});
+		}
 	}
 
 	toggleNavigation(): void {
@@ -105,6 +107,13 @@ export default class App extends Vue {
 
 	get showLayout() {
 		return this.isAuthenticated && this.accounts.length > 0;
+	}
+
+	get routeKey() {
+		const currentAccount = this.$store.getters['filters/filteredAccounts'][0];
+		return currentAccount
+			? `${this.$store.getters['filters/filteredAccounts'][0].id}${this.$route.fullPath}`
+			: this.$route.fullPath;
 	}
 
 	@Watch('myProperty')

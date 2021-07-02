@@ -33,8 +33,13 @@
 			</template>
 
 			<template v-slot:item.actions="{ item }">
-				<v-icon v-if="showAirflowAction" class="ml-2" small @click="openAirflowDagRunUrl(item)">open_in_new</v-icon>
-				<v-icon v-if="showDeleteAction" class="ml-2" small @click="openDeleteDialog(item)">delete_forever</v-icon>
+				<div class="d-flex">
+					<direct-execution-icon
+						v-if="directExecutionPath"
+						:direct-execution="getDirectExecution(item, directExecutionPath)"
+					/>
+					<v-icon v-if="showDeleteAction" class="ml-2" small @click="openDeleteDialog(item)">delete_forever</v-icon>
+				</div>
 			</template>
 
 			<!-- Loop placed after default templates to override them if needed -->
@@ -91,17 +96,16 @@ import ListingFilters from './ListingFilters.vue';
 import VueJsonPretty from 'vue-json-pretty';
 import 'vue-json-pretty/lib/styles.css';
 import RunStatusChip from '@/components/data-workflows/common/runs/RunStatusChip.vue';
+import DirectExecutionIcon from '@/components/data-workflows/common/item/parameters/custom-parameters-item/DirectExecutionIcon.vue';
 
-import { SUPER_ADMIN } from '@/constants/user/roles';
 import { CONFIGURATIONS, RUNS, STATUS } from '@/constants/data-workflows/status';
 import { getActiveConfColor } from '@/util/data-workflows/configuration';
-import { dagRunAirflowUrl } from '@/util/data-workflows/run';
 import { mapState } from 'vuex';
 
 type Filter = [string, string, any];
 
 @Component({
-	components: { ConfigurationStatus, ListingFilters, VueJsonPretty, RunStatusChip },
+	components: { ConfigurationStatus, DirectExecutionIcon, ListingFilters, VueJsonPretty, RunStatusChip },
 	computed: {
 		...mapState({
 			firestoreItems(state: any) {
@@ -117,6 +121,7 @@ export default class ListingComponent extends Vue {
 	@Prop({ type: String, default: 'dag_execution_date' }) sortBy?: string[];
 	@Prop({ type: Boolean, default: true }) sortDesc?: boolean;
 	@Prop({ type: Number, default: 10 }) itemsPerPage?: number;
+	@Prop({ type: String }) directExecutionPath?: string;
 	@Prop({ type: Boolean, default: false }) showDeleteAction?: boolean;
 	@Prop(Function) customDataFetching?: () => Promise<any>;
 	@Prop(Boolean) isOtherRunDisplay?: boolean;
@@ -146,7 +151,8 @@ export default class ListingComponent extends Vue {
 
 	@Watch('$route.name')
 	async onRouteNameChanged() {
-		await this.$store.dispatch(`${this.moduleName}/closeDBChannel`);
+		// _identifier is not existing to properly close channel (Discussed with Luca)
+		await this.$store.dispatch(`${this.moduleName}/closeDBChannel`, { _identifier: 'none' });
 	}
 
 	private firestoreItems: any;
@@ -180,8 +186,20 @@ export default class ListingComponent extends Vue {
 		}
 	}
 
-	openAirflowDagRunUrl(item: AnyObject) {
-		window.open(dagRunAirflowUrl(item.dag_id, item.dag_run_id, item.dag_execution_date), '_blank');
+	getDirectExecution(item: any, path: string) {
+		path = path.replace(/\[(\w+)\]/g, '.$1'); // convert indexes to properties
+		path = path.replace(/^\./, ''); // strip a leading dot
+		const a = path.split('.');
+		for (let i = 0, n = a.length; i < n; ++i) {
+			if (typeof item === 'string') return;
+			const k = a[i];
+			if (k in item) {
+				item = item[k];
+			} else {
+				return;
+			}
+		}
+		return item;
 	}
 
 	openDeleteDialog(item: AnyObject) {
@@ -266,10 +284,6 @@ export default class ListingComponent extends Vue {
 			};
 		});
 		return merge(dataArray, formattedData);
-	}
-
-	get showAirflowAction() {
-		return this.userRole === SUPER_ADMIN.roleCode;
 	}
 }
 </script>

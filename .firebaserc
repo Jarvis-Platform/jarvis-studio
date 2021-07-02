@@ -1,0 +1,17 @@
+{
+  "projects": {
+    "default": "fd-jarvis-datalake"
+  },
+  "targets": {
+    "fd-jarvis-datalake": {
+      "hosting": {
+        "production": [
+          "fd-jarvis-datalake"
+        ],
+        "staging": [
+          "jarvis-studio-beta"
+        ]
+      }
+    }
+  }
+}

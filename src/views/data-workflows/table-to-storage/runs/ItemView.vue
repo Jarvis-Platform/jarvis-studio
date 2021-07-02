@@ -8,6 +8,7 @@
 <script lang="ts">
 import { Component, Mixins } from 'vue-property-decorator';
 import HeaderInfosMixin from '../header-infos';
+import DirectExecutionIcon from '@/components/data-workflows/common/item/parameters/custom-parameters-item/DirectExecutionIcon.vue';
 import RunDocMixin from '@/mixins/data-workflows/doc/run-doc-mixin';
 import { tableToStorageRuns } from '@/store/modules/easy-firestore/table-to-storage-runs';
 
@@ -57,6 +58,14 @@ export default class TableToStorageRunsItemView extends Mixins(HeaderInfosMixin,
 							id: 'environment',
 							label: 'Environment',
 							value: this.item.environment,
+						},
+						{
+							id: 'direct_execution',
+							label: 'Direct Execution',
+							component: DirectExecutionIcon,
+							properties: {
+								directExecution: this.item.configuration_context.direct_execution,
+							},
 						},
 					],
 				},

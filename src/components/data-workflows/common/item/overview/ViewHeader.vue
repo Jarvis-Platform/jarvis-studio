@@ -158,7 +158,7 @@
 
 			<template v-if="viewType === 'status'">
 				<v-btn color="complementary" class="mr-3" @click="resetWorkflowStatus">Reset</v-btn>
-				<jobs-ratio :jobs="item.jobs" />
+				<jobs-ratio :jobs="item.jobs ? item.jobs : {}" />
 			</template>
 		</v-row>
 

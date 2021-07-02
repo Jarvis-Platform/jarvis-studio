@@ -42,6 +42,7 @@ export const WORKFLOW_LENGTH: HeaderItem = {
 
 // CONFIGURATIONS
 export const ID: HeaderItem = { text: 'Configuration id', sortable: true, value: 'id' };
+export const PARAMETERS: HeaderItem = { text: 'Parameters', sortable: true, value: 'parameters' };
 export const ACTIVATED: HeaderItem = { text: 'Status', sortable: true, value: 'activated' };
 export const NB_DESTINATION_BUCKET: HeaderItem = {
 	text: 'Nb Destination Buckets',
@@ -50,9 +51,16 @@ export const NB_DESTINATION_BUCKET: HeaderItem = {
 };
 export const TABLE_NAME: HeaderItem = { text: 'Destination Table', sortable: true, value: 'table_name' };
 export const GCP_PROJECT: HeaderItem = { text: 'BQ Project ID', sortable: true, value: 'gcp_project' };
+export const GCP_PROJECT_ID: HeaderItem = { text: 'GCP Project ID', sortable: true, value: 'gcp_project_id' };
 export const GBQ_DATASET: HeaderItem = { text: 'BQ Dataset', sortable: true, value: 'gbq_dataset' };
+export const GCS_BUCKET: HeaderItem = { text: 'GCS Bucket', sortable: true, value: 'gcs_bucket' };
 export const GCS_DEST_BUCKET: HeaderItem = { text: 'Destination Bucket', sortable: true, value: 'gcs_dest_bucket' };
 export const GCS_DEST_PREFIX: HeaderItem = { text: 'Destination Prefix', sortable: true, value: 'gcs_dest_prefix' };
+export const GCS_WORKING_DIRECTORY: HeaderItem = {
+	text: 'GCS Working Directory',
+	sortable: true,
+	value: 'gcs_working_directory',
+};
 export const DEFAULT_BQ_DATASET: HeaderItem = {
 	text: 'BQ Default Dataset',
 	sortable: true,
