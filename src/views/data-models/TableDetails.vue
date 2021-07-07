@@ -7,91 +7,142 @@
 
 			<template v-else>
 				<v-row v-if="isJsonValid">
-					<v-col cols="12" offset="0">
-						<v-card elevation="0">
-							<v-card-title>
-								<v-icon color="blue-grey lighten-3" large class="mr-3">table_chart</v-icon>
-								<span class="display-1 font-weight-bold primary--text">{{ this.dataTableDetails.id }}</span>
-
-								<v-spacer />
-
-								<div class="card-title-right">
-									<v-tooltip bottom>
-										<template v-slot:activator="{ on }">
-											<span v-on="on"> Last Update: {{ refreshedTimestamp.dateFromNow }} </span>
-										</template>
-										<span>{{ refreshedTimestamp.dateFormatted }}</span>
-									</v-tooltip>
-
-									<v-btn @click="getDataTableDetails">Refresh</v-btn>
-									<v-btn @click="queryInBigQuery" color="primary">Query</v-btn>
-								</div>
-							</v-card-title>
-
-							<v-card-text>
-								<v-row>
-									<v-col>
-										<v-textarea
-											name="Description"
-											label="Description"
-											:value="dataTableDetails.description"
-											auto-grow
-											rows="1"
-											readonly
-											outline
-										/>
-									</v-col>
-								</v-row>
-
-								<v-row>
-									<v-col cols="3">
-										<v-text-field label="Account" :value="dataTableDetails.account" class="title" readonly outline />
-									</v-col>
-
-									<v-col cols="3">
-										<v-text-field label="Project Id" :value="this.projectId" class="title" readonly outline />
-									</v-col>
-
-									<v-col cols="3">
-										<v-text-field label="Dataset" :value="this.datasetId" class="title" readonly outline />
-									</v-col>
-
-									<v-col cols="3">
-										<v-text-field label="Location" :value="dataTableDetails.location" class="title" readonly outline />
-									</v-col>
-								</v-row>
-
-								<v-row>
-									<v-col cols="3">
-										<v-text-field label="Row Number" :value="numRowsFormatted" class="title" readonly outline />
-									</v-col>
-
-									<v-col cols="3">
-										<v-text-field label="Table Size" :value="numBytesFormatted" class="title" readonly outline />
-									</v-col>
-
-									<v-col cols="3">
-										<v-text-field label="Table Type" :value="dataTableDetails.kind" class="title" readonly outline />
-									</v-col>
-
-									<v-col cols="3">
-										<v-text-field label="Time Partitioned" :value="isTimePartitioned" class="title" readonly outline />
-									</v-col>
-								</v-row>
-							</v-card-text>
-						</v-card>
-					</v-col>
-
 					<v-col cols="12">
 						<v-tabs v-model="activeTab" color="black" background-color="#E0E0E0" slider-color="primary">
-							<v-tab ripple href="#dataoverview">Data Overview</v-tab>
+							<v-tab ripple href="#overview">Overview</v-tab>
+							<v-tab ripple href="#data">Data</v-tab>
 							<v-tab ripple href="#schema">Schema</v-tab>
 							<v-tab ripple href="#workflow">Workflow</v-tab>
 							<v-tab ripple href="#documentation">Documentation</v-tab>
 							<v-tab ripple href="#fulljson">Full Json</v-tab>
 							<v-tab ripple href="#notes">Notes</v-tab>
 
-							<v-tab-item value="dataoverview">
+							<v-tab-item value="overview">
+								<v-card>
+									<v-card-title>
+										<span class="title">Overview</span>
+										<v-spacer />
+									</v-card-title>
+									<v-card-text>
+										<v-card elevation="0">
+											<v-card-title>
+												<v-icon color="blue-grey lighten-3" large class="mr-3">table_chart</v-icon>
+												<span class="display-1 font-weight-bold primary--text">{{ this.dataTableDetails.id }}</span>
+
+												<v-spacer />
+
+												<div class="card-title-right">
+													<v-tooltip bottom>
+														<template v-slot:activator="{ on }">
+															<span v-on="on"> Last Update: {{ refreshedTimestamp.dateFromNow }} </span>
+														</template>
+														<span>{{ refreshedTimestamp.dateFormatted }}</span>
+													</v-tooltip>
+
+													<v-btn @click="getDataTableDetails">Refresh</v-btn>
+													<v-btn @click="queryInBigQuery" color="primary">Query</v-btn>
+												</div>
+											</v-card-title>
+
+											<v-card-text>
+												<v-row>
+													<v-col>
+														<v-textarea
+															name="Description"
+															label="Description"
+															:value="dataTableDetails.description"
+															auto-grow
+															rows="1"
+															readonly
+															outline
+														/>
+													</v-col>
+												</v-row>
+
+												<v-row>
+													<v-col cols="3">
+														<v-text-field
+															label="Account"
+															:value="dataTableDetails.account"
+															class="title"
+															readonly
+															outline
+														/>
+													</v-col>
+
+													<v-col cols="3">
+														<v-text-field label="Project Id" :value="this.projectId" class="title" readonly outline />
+													</v-col>
+
+													<v-col cols="3">
+														<v-text-field label="Dataset" :value="this.datasetId" class="title" readonly outline />
+													</v-col>
+
+													<v-col cols="3">
+														<v-text-field
+															label="Location"
+															:value="dataTableDetails.location"
+															class="title"
+															readonly
+															outline
+														/>
+													</v-col>
+												</v-row>
+
+												<v-row>
+													<v-col cols="3">
+														<v-text-field label="Row Number" :value="numRowsFormatted" class="title" readonly outline />
+													</v-col>
+
+													<v-col cols="3">
+														<v-text-field
+															label="Table Size"
+															:value="numBytesFormatted"
+															class="title"
+															readonly
+															outline
+														/>
+													</v-col>
+
+													<v-col cols="3">
+														<v-text-field
+															label="Table Type"
+															:value="dataTableDetails.kind"
+															class="title"
+															readonly
+															outline
+														/>
+													</v-col>
+
+													<v-col cols="3">
+														<v-text-field
+															label="Time Partitioned"
+															:value="isTimePartitioned"
+															class="title"
+															readonly
+															outline
+														/>
+													</v-col>
+												</v-row>
+
+												<v-row v-if="dataTableDetails.update_infos">
+													<v-col cols="3">
+														<v-text-field
+															label="Temporary table"
+															:value="dataTableDetails.temporary_table"
+															class="title"
+															readonly
+															outline
+														/>
+													</v-col>
+												</v-row>
+											</v-card-text>
+										</v-card>
+									</v-card-text>
+								</v-card>
+							</v-tab-item>
+
+							<v-tab-item value="data">
 								<v-card>
 									<v-card-title>
 										<span class="title">Data Overview</span>
@@ -133,8 +184,9 @@
 												/>
 											</v-col>
 										</v-row>
+
 										<v-row>
-											<v-col cols="5">
+											<v-col cols="3">
 												<v-text-field
 													label="Workflow Id"
 													:value="dataTableDetails.dag_id"
@@ -143,7 +195,7 @@
 													outline
 												/>
 											</v-col>
-											<v-col cols="2">
+											<v-col cols="3">
 												<v-text-field
 													label="Workflow Type"
 													:value="dataTableDetails.dag_type"
@@ -161,7 +213,7 @@
 													outline
 												/>
 											</v-col>
-											<v-col cols="2">
+											<v-col cols="3">
 												<v-text-field
 													label="Last Modified"
 													:value="this.workflowLastModifiedTime"
@@ -171,6 +223,80 @@
 												/>
 											</v-col>
 										</v-row>
+
+										<template v-if="dataTableDetails.update_infos">
+											<v-row>
+												<v-col cols="3">
+													<v-text-field
+														label="Total Update Tasks"
+														:value="dataTableDetails.update_infos.length"
+														class="subtitle-1"
+														readonly
+														outline
+													/>
+												</v-col>
+
+												<v-col cols="3">
+													<v-text-field
+														label="Total Update Duration"
+														:value="updateInfosJobsDuration"
+														class="subtitle-1"
+														readonly
+														outline
+													/>
+												</v-col>
+
+												<v-col cols="3">
+													<v-text-field
+														label="Total Bytes Processed"
+														:value="sumUpdateInfosProperty('total_bytes_processed')"
+														class="subtitle-1"
+														readonly
+														outline
+													/>
+												</v-col>
+
+												<v-col cols="3">
+													<v-text-field
+														label="Total Bytes Billed"
+														:value="sumUpdateInfosProperty('total_bytes_billed')"
+														class="subtitle-1"
+														readonly
+														outline
+													/>
+												</v-col>
+											</v-row>
+
+											<v-row>
+												<v-col cols="3">
+													<v-text-field
+														label="Total Slot Millis"
+														:value="`${sumUpdateInfosProperty('slot_millis')}ms`"
+														class="subtitle-1"
+														readonly
+														outline
+													/>
+												</v-col>
+											</v-row>
+
+											<h2 class="black--text mt-5 mb-3">Update Tasks</h2>
+											<v-data-table
+												:headers="updateTaskTable.headers"
+												:items="updateTaskTable.items"
+												hide-default-footer
+											>
+												<template v-slot:item.total_source_table="{ item }">
+													<pre>{{ item.referenced_tables.length }}</pre>
+												</template>
+											</v-data-table>
+
+											<h2 class="black--text mt-10 mb-3">Source Tables</h2>
+											<v-data-table
+												:headers="sourceTablesTable.headers"
+												:items="sourceTablesTable.items"
+												hide-default-footer
+											/>
+										</template>
 									</v-card-text>
 								</v-card>
 							</v-tab-item>
@@ -226,11 +352,12 @@
 <script lang="ts">
 // TODO: Refactor view
 
+import moment from 'moment';
 import { Component, Vue } from 'vue-property-decorator';
 import { mapState } from 'vuex';
 import VueJsonPretty from 'vue-json-pretty';
+import { AnyObject } from '@/types';
 import store from '@/store';
-import moment from 'moment';
 import JsonSchemaIsInvalid from '@/components/data-models/InvalidSchema.vue';
 import DataModelHeader from '@/components/data-models/DataModelHeader.vue';
 import tableSchemaView from '@/components/data-workflows/common/item/schema/TableSchemaView.vue';
@@ -320,6 +447,10 @@ export default class DataTableDetails extends Vue {
 		window.open(getBigQueryURL(this.projectId, this.datasetId, this.tableId), '_blank');
 	}
 
+	sumUpdateInfosProperty(key: string) {
+		return this.dataTableDetails.update_infos.reduce((a: number, b: AnyObject) => a + b[key], 0);
+	}
+
 	get tableId() {
 		return this.$route.params.tableId;
 	}
@@ -377,6 +508,56 @@ export default class DataTableDetails extends Vue {
 				},
 			},
 		];
+	}
+
+	get updateInfosJobsDuration() {
+		const accumulatedJobsDurations = this.dataTableDetails.update_infos.reduce(
+			(a: number, b: AnyObject) => a + this.$moment.duration(b.job_duration).asSeconds(),
+			0
+		);
+		return `${accumulatedJobsDurations}s`;
+	}
+
+	get updateTaskTable() {
+		const headers = [
+			{ text: 'Order', value: 'task_order' },
+			{ text: 'Task', value: 'task_id' },
+			{ text: 'Type', value: 'task_type' },
+			{ text: 'Script SQL', value: 'is_gbq_script' },
+			{ text: 'Update Duration', value: 'job_duration' },
+			{ text: 'Bytes Processed', value: 'total_bytes_processed' },
+			{ text: 'Bytes Billed', value: 'total_bytes_billed' },
+			{ text: 'Slot Millis', value: 'slot_millis' },
+			{ text: 'Total Source Tables', value: 'total_source_table' },
+		];
+		const items = this.dataTableDetails.update_infos;
+		return { headers, items };
+	}
+
+	get sourceTablesTable() {
+		const headers = [
+			{ text: 'Order', value: 'task_order' },
+			{ text: 'Task', value: 'task_id' },
+			{ text: 'Project ID', value: 'project_id' },
+			{ text: 'Dataset SQL', value: 'dataset_id' },
+			{ text: 'Table', value: 'table_id' },
+		];
+		const items = this.dataTableDetails.update_infos
+			.map((updateInfo: AnyObject) => {
+				const infos = [];
+				for (const referencedTable of updateInfo.referenced_tables) {
+					infos.push({
+						task_order: updateInfo.task_order,
+						task_id: updateInfo.task_id,
+						project_id: referencedTable.project_id,
+						dataset_id: referencedTable.dataset_id,
+						table_id: referencedTable.table_id,
+					});
+				}
+				return infos;
+			})
+			.flat();
+		return { headers, items };
 	}
 }
 </script>
