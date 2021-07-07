@@ -228,7 +228,7 @@
 											<v-row>
 												<v-col cols="3">
 													<v-text-field
-														label="Total Update Duration"
+														label="Total Update Tasks"
 														:value="dataTableDetails.update_infos.length"
 														class="subtitle-1"
 														readonly
@@ -540,7 +540,7 @@ export default class DataTableDetails extends Vue {
 			{ text: 'Task', value: 'task_id' },
 			{ text: 'Project ID', value: 'project_id' },
 			{ text: 'Dataset SQL', value: 'dataset_id' },
-			{ text: 'Table Duration', value: 'table_id' },
+			{ text: 'Table', value: 'table_id' },
 		];
 		const items = this.dataTableDetails.update_infos
 			.map((updateInfo: AnyObject) => {
